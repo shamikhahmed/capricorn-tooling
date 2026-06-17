@@ -1,0 +1,138 @@
+/* ════════════════════════════════════════════════════════════════
+   Capricorn Design System — Tokens
+   Source of truth: /shared/design-system/tokens.css
+   Vendored into apps as css/capricorn-core.css via
+   `node scripts/sync-design-system.mjs` — do not edit the copies.
+
+   Namespace: --cap-*
+   Per-app identity: override --cap-accent (+ optionally fonts) in
+   the app's own stylesheet AFTER this file. Everything else is the
+   shared Capricorn foundation.
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Brand core ── */
+  --cap-gold: #c9a227;
+  --cap-gold-soft: rgba(201, 162, 39, 0.35);
+  --cap-accent: var(--cap-gold);          /* apps override this */
+  --cap-accent-contrast: #0a0e17;         /* text color on accent */
+
+  /* ── Surfaces (dark — default) ── */
+  --cap-bg: #0a0e17;
+  --cap-bg-2: #111827;
+  --cap-surface: rgba(244, 240, 232, 0.04);
+  --cap-surface-2: rgba(244, 240, 232, 0.07);
+  --cap-border: rgba(244, 240, 232, 0.10);
+  --cap-border-strong: rgba(244, 240, 232, 0.18);
+
+  /* ── Text ── */
+  --cap-text: #f4f0e8;
+  --cap-text-dim: #9ca3af;
+  --cap-text-faint: #6b7280;
+
+  /* ── Semantic ── */
+  --cap-success: #34d399;
+  --cap-warning: #fbbf24;
+  --cap-danger: #f87171;
+  --cap-info: #60a5fa;
+
+  /* ── Type scale (fluid, 320 → 2560) ── */
+  --cap-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --cap-font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --cap-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --cap-text-xs: clamp(0.6875rem, 0.65rem + 0.15vw, 0.75rem);
+  --cap-text-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.875rem);
+  --cap-text-md: clamp(0.9375rem, 0.9rem + 0.25vw, 1.0625rem);
+  --cap-text-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
+  --cap-text-xl: clamp(1.4rem, 1.25rem + 0.8vw, 1.875rem);
+  --cap-text-2xl: clamp(1.8rem, 1.5rem + 1.6vw, 2.8rem);
+  --cap-text-3xl: clamp(2.4rem, 1.9rem + 2.8vw, 4.2rem);
+
+  /* ── Spacing scale (4px base) ── */
+  --cap-space-1: 4px;
+  --cap-space-2: 8px;
+  --cap-space-3: 12px;
+  --cap-space-4: 16px;
+  --cap-space-5: 24px;
+  --cap-space-6: 32px;
+  --cap-space-7: 48px;
+  --cap-space-8: 64px;
+  --cap-space-9: 96px;
+  --cap-space-section: clamp(64px, 10vw, 120px);
+
+  /* ── Radii ── */
+  --cap-radius-sm: 8px;
+  --cap-radius-md: 12px;
+  --cap-radius-lg: 18px;
+  --cap-radius-xl: 28px;
+  --cap-radius-pill: 999px;
+
+  /* ── Elevation (shadow + border pairing) ── */
+  --cap-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --cap-shadow-2: 0 4px 16px rgba(0, 0, 0, 0.30);
+  --cap-shadow-3: 0 12px 40px rgba(0, 0, 0, 0.40);
+  --cap-shadow-glow: 0 0 0 1px var(--cap-border), 0 8px 32px rgba(0, 0, 0, 0.35);
+  --cap-shadow-accent: 0 8px 28px color-mix(in srgb, var(--cap-accent) 28%, transparent);
+
+  /* ── Glass ── */
+  --cap-glass-bg: rgba(16, 20, 32, 0.72);
+  --cap-glass-blur: blur(20px) saturate(150%);
+  --cap-glass-border: rgba(244, 240, 232, 0.12);
+
+  /* ── Layout ── */
+  --cap-max: 1120px;
+  --cap-max-wide: 1440px;
+  --cap-gutter: clamp(16px, 4vw, 32px);
+  --cap-safe-t: env(safe-area-inset-top, 0px);
+  --cap-safe-b: env(safe-area-inset-bottom, 0px);
+  --cap-touch-target: 44px;
+
+  /* ── Motion ── */
+  --cap-ease: cubic-bezier(0.22, 1, 0.36, 1);        /* signature out-quint */
+  --cap-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --cap-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --cap-dur-fast: 150ms;
+  --cap-dur-base: 280ms;
+  --cap-dur-slow: 600ms;
+  --cap-dur-reveal: 800ms;
+
+  color-scheme: dark;
+}
+
+/* ── Light mode ──
+   Apps opt in with <html data-cap-theme="light"> or it follows the
+   OS when data-cap-theme="auto". Dark stays the Capricorn default. */
+[data-cap-theme="light"] {
+  --cap-bg: #faf8f4;
+  --cap-bg-2: #f0ede6;
+  --cap-surface: rgba(10, 14, 23, 0.04);
+  --cap-surface-2: rgba(10, 14, 23, 0.07);
+  --cap-border: rgba(10, 14, 23, 0.10);
+  --cap-border-strong: rgba(10, 14, 23, 0.20);
+  --cap-text: #131722;
+  --cap-text-dim: #4b5563;
+  --cap-text-faint: #9ca3af;
+  --cap-glass-bg: rgba(250, 248, 244, 0.78);
+  --cap-glass-border: rgba(10, 14, 23, 0.10);
+  --cap-shadow-1: 0 1px 2px rgba(16, 20, 32, 0.08);
+  --cap-shadow-2: 0 4px 16px rgba(16, 20, 32, 0.10);
+  --cap-shadow-3: 0 12px 40px rgba(16, 20, 32, 0.14);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  [data-cap-theme="auto"] {
+    --cap-bg: #faf8f4;
+    --cap-bg-2: #f0ede6;
+    --cap-surface: rgba(10, 14, 23, 0.04);
+    --cap-surface-2: rgba(10, 14, 23, 0.07);
+    --cap-border: rgba(10, 14, 23, 0.10);
+    --cap-border-strong: rgba(10, 14, 23, 0.20);
+    --cap-text: #131722;
+    --cap-text-dim: #4b5563;
+    --cap-text-faint: #9ca3af;
+    --cap-glass-bg: rgba(250, 248, 244, 0.78);
+    --cap-glass-border: rgba(10, 14, 23, 0.10);
+    color-scheme: light;
+  }
+}

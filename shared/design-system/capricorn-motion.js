@@ -1,0 +1,155 @@
+/* ════════════════════════════════════════════════════════════════
+   Capricorn Design System — motion runtime (no deps)
+   Drives reveals, kinetic type, parallax, ripples, 3D tilt, magnetic hover.
+   ════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  function observeVisible(selector, visibleClass) {
+    var nodes = document.querySelectorAll(selector);
+    if (!nodes.length) return;
+    if (reduced || !('IntersectionObserver' in window)) {
+      nodes.forEach(function (el) { el.classList.add(visibleClass); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add(visibleClass);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach(function (el, i) {
+      if (!el.style.getPropertyValue('--cap-stagger-i')) {
+        var sib = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : i;
+        el.style.setProperty('--cap-stagger-i', String(sib % 8));
+      }
+      io.observe(el);
+    });
+  }
+
+  function bindRipples() {
+    document.querySelectorAll('[data-cap-ripple], .cap-ripple-host').forEach(function (host) {
+      if (host.dataset.capRippleBound) return;
+      host.dataset.capRippleBound = '1';
+      host.addEventListener('pointerdown', function (ev) {
+        if (reduced) return;
+        var r = host.getBoundingClientRect();
+        var ripple = document.createElement('span');
+        ripple.className = 'cap-ripple';
+        var size = Math.max(r.width, r.height) * 1.2;
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (ev.clientX - r.left - size / 2) + 'px';
+        ripple.style.top = (ev.clientY - r.top - size / 2) + 'px';
+        host.appendChild(ripple);
+        ripple.addEventListener('animationend', function () { ripple.remove(); });
+      });
+    });
+  }
+
+  function bindMagnetic() {
+    if (reduced || !finePointer) return;
+    document.querySelectorAll('.cap-magnetic').forEach(function (el) {
+      if (el.dataset.capMagneticBound) return;
+      el.dataset.capMagneticBound = '1';
+      var strength = parseFloat(el.dataset.capStrength || '0.25');
+      el.addEventListener('pointermove', function (ev) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--cap-mx', ((ev.clientX - r.left - r.width / 2) * strength).toFixed(1));
+        el.style.setProperty('--cap-my', ((ev.clientY - r.top - r.height / 2) * strength).toFixed(1));
+      });
+      el.addEventListener('pointerleave', function () {
+        el.style.setProperty('--cap-mx', '0');
+        el.style.setProperty('--cap-my', '0');
+      });
+    });
+  }
+
+  function bindTilt() {
+    if (reduced || !finePointer) return;
+    document.querySelectorAll('[data-cap-tilt]').forEach(function (el) {
+      if (el.dataset.capTiltBound) return;
+      el.dataset.capTiltBound = '1';
+      var max = parseFloat(el.dataset.capTilt || '6');
+      el.classList.add('cap-depth');
+      el.addEventListener('pointermove', function (ev) {
+        var r = el.getBoundingClientRect();
+        var rx = ((ev.clientY - r.top) / r.height - 0.5) * -2 * max;
+        var ry = ((ev.clientX - r.left) / r.width - 0.5) * 2 * max;
+        el.style.transform = 'perspective(800px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+      });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+    });
+  }
+
+  function bindHero3d() {
+    if (reduced || !finePointer) return;
+    document.querySelectorAll('.cap-hero-3d').forEach(function (wrap) {
+      if (wrap.dataset.capHero3dBound) return;
+      wrap.dataset.capHero3dBound = '1';
+      var inner = wrap.querySelector('.cap-hero-3d-inner') || wrap;
+      wrap.addEventListener('pointermove', function (ev) {
+        var r = wrap.getBoundingClientRect();
+        var ry = ((ev.clientX - r.left) / r.width - 0.5) * 14;
+        var rx = ((ev.clientY - r.top) / r.height - 0.5) * -10;
+        inner.style.setProperty('--cap-ry', ry.toFixed(2) + 'deg');
+        inner.style.setProperty('--cap-rx', rx.toFixed(2) + 'deg');
+      });
+      wrap.addEventListener('pointerleave', function () {
+        inner.style.setProperty('--cap-ry', '0deg');
+        inner.style.setProperty('--cap-rx', '0deg');
+      });
+    });
+  }
+
+  function initScrollProgress() {
+    var progress = document.querySelector('.cap-scroll-progress');
+    if (!progress || reduced) return;
+    function updateScroll() {
+      var max = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
+      progress.style.setProperty('--cap-scroll-progress', String(window.scrollY / max));
+    }
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    updateScroll();
+  }
+
+  function initParallax() {
+    if (reduced) return;
+    var parallax = document.querySelectorAll('[data-cap-parallax]');
+    if (!parallax.length) return;
+    function parallaxFrame() {
+      parallax.forEach(function (el) {
+        var factor = parseFloat(el.dataset.capParallaxDepth || el.getAttribute('data-cap-parallax-depth') || '1') * 0.12;
+        var rect = el.getBoundingClientRect();
+        var center = rect.top + rect.height * 0.5 - innerHeight * 0.5;
+        el.style.setProperty('--cap-parallax-y', String(-center * factor * 0.08));
+      });
+      requestAnimationFrame(parallaxFrame);
+    }
+    requestAnimationFrame(parallaxFrame);
+  }
+
+  function init() {
+    observeVisible('.cap-reveal, .cap-reveal-scale, .cap-reveal-lines', 'is-visible');
+    observeVisible('.cap-kinetic', 'is-visible');
+    observeVisible('.cap-stagger', 'is-visible');
+    bindRipples();
+    bindMagnetic();
+    bindTilt();
+    bindHero3d();
+    initScrollProgress();
+    initParallax();
+  }
+
+  window.CapricornMotion = {
+    init: init,
+    refresh: function () {
+      init();
+      if (window.CapCinematic && window.CapCinematic.refresh) window.CapCinematic.refresh();
+    },
+  };
+
+  init();
+})();

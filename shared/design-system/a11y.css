@@ -1,0 +1,53 @@
+/* ════════════════════════════════════════════════════════════════
+   Capricorn Design System — Accessibility primitives
+   WCAG 2.2 AA baseline shared by every Cap app.
+   ════════════════════════════════════════════════════════════════ */
+
+/* Focus ring — visible for keyboard users only, on the app accent */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--cap-accent);
+  outline-offset: 2px;
+  border-radius: var(--cap-radius-sm);
+}
+:where(a, button, input, select, textarea, summary, [tabindex]):focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Skip link — first child of <body> */
+.cap-skip-link {
+  position: absolute;
+  top: calc(8px + var(--cap-safe-t));
+  left: 8px;
+  z-index: 1000;
+  padding: 10px 18px;
+  background: var(--cap-accent);
+  color: var(--cap-accent-contrast);
+  font-weight: 700;
+  border-radius: var(--cap-radius-pill);
+  transform: translateY(-200%);
+  transition: transform var(--cap-dur-fast) var(--cap-ease);
+}
+.cap-skip-link:focus-visible { transform: none; }
+
+/* Screen-reader only */
+.cap-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Touch targets — 44px minimum hit area.
+   Opt-in (.cap-btn / .cap-touch / form toggles) rather than every <button>:
+   a blanket rule inflates small visual controls like carousel dots. Tiny
+   controls should add .cap-touch or grow their hit area with padding. */
+:where(.cap-btn, .cap-touch, [role="button"], input[type="checkbox"], input[type="radio"]) {
+  min-height: var(--cap-touch-target);
+  min-width: var(--cap-touch-target);
+}
+
+/* Selection */
+::selection { background: var(--cap-accent); color: var(--cap-accent-contrast); }

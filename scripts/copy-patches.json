@@ -1,0 +1,517 @@
+[
+  {
+    "file": "VaultCap/presentation.html",
+    "old_string": "  <div class=\"anim\" style=\"font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.025em;margin-bottom:8px\">Military-grade encryption.</div>",
+    "new_string": "  <div class=\"anim\" style=\"font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.025em;margin-bottom:8px\">Bank-grade encryption. On your phone.</div>"
+  },
+  {
+    "file": "VaultCap/presentation.html",
+    "old_string": "    <div class=\"pain-item\"><span>☁️</span> Every app uploads your data to a server you don't control.</div>",
+    "new_string": "    <div class=\"pain-item\"><span>☁️</span> Finance apps want your logins — and phone home with your data.</div>"
+  },
+  {
+    "file": "VaultCap/presentation.html",
+    "old_string": "    <div class=\"pain-item\"><span>💔</span> No single tool handles PKR + GBP + AED + Zakat + Tax.</div>",
+    "new_string": "    <div class=\"pain-item\"><span>💔</span> Diaspora families juggle PK, UK, and UAE — with no private ledger.</div>"
+  },
+  {
+    "file": "VaultCap/presentation.html",
+    "old_string": "      <div><div style=\"font-weight:700;font-size:14px;margin-bottom:3px\">On-Device Storage Only</div><div style=\"font-size:12px;color:var(--text2)\">All vault data in localStorage · AES-256 encrypted at rest · offline-first</div></div>",
+    "new_string": "      <div><div style=\"font-weight:700;font-size:14px;margin-bottom:3px\">Your vault stays on your phone</div><div style=\"font-size:12px;color:var(--text2)\">Encrypted before it's saved. Works without the cloud.</div></div>"
+  },
+  {
+    "file": "VaultCap/presentation.html",
+    "old_string": "  <div class=\"anim label\">Finance Intelligence</div>",
+    "new_string": "  <div class=\"anim label\">Your finances</div>"
+  },
+  {
+    "file": "VaultCap/presentation.html",
+    "old_string": "  <div class=\"anim\" style=\"font-size:clamp(32px,5vw,64px);font-weight:800;letter-spacing:-.03em;margin-bottom:8px\">Your Money.</div>\n  <div class=\"anim\" style=\"font-size:clamp(32px,5vw,64px);font-weight:800;letter-spacing:-.03em;color:var(--accent);margin-bottom:24px\">Every Angle.</div>",
+    "new_string": "  <div class=\"anim\" style=\"font-size:clamp(32px,5vw,64px);font-weight:800;letter-spacing:-.03em;margin-bottom:8px\">Know your</div>\n  <div class=\"anim\" style=\"font-size:clamp(32px,5vw,64px);font-weight:800;letter-spacing:-.03em;color:var(--accent);margin-bottom:24px\">net worth.</div>"
+  },
+  {
+    "file": "VaultCap/presentation.html",
+    "old_string": "  <div class=\"anim\" style=\"font-size:clamp(26px,3.5vw,44px);font-weight:700;letter-spacing:-.025em;margin-bottom:6px\">Your complete financial picture.</div>",
+    "new_string": "  <div class=\"anim\" style=\"font-size:clamp(26px,3.5vw,44px);font-weight:700;letter-spacing:-.025em;margin-bottom:6px\">Know your net worth.</div>"
+  },
+  {
+    "file": "VaultCap/presentation.html",
+    "old_string": "  <div class=\"anim\" style=\"margin-top:24px;font-size:13px;color:var(--text3);text-align:center\">Offline-first · PWA · Zero dependencies · No npm · No framework · &lt;2 MB total</div>",
+    "new_string": "  <div class=\"anim\" style=\"margin-top:24px;font-size:13px;color:var(--text3);text-align:center\">Offline after first load. Add to Home Screen. Your data never leaves.</div>"
+  },
+  {
+    "file": "VaultCap/pitch.html",
+    "old_string": "    <h2 class=\"s2-headline reveal\">Managing money across countries<br><span>is broken.</span></h2>",
+    "new_string": "    <h2 class=\"s2-headline reveal\">Finance is <span>fragmented.</span></h2>"
+  },
+  {
+    "file": "VaultCap/pitch.html",
+    "old_string": "    <p class=\"s2-sub reveal delay-1\">Most people manage their financial life across spreadsheets, notes apps, and memory. That's not good enough.</p>",
+    "new_string": "    <p class=\"s2-sub reveal delay-1\">Budget apps want your bank logins. Password managers and finance tools live in silos — and both phone home.</p>"
+  },
+  {
+    "file": "VaultCap/pitch.html",
+    "old_string": "    <p class=\"s5-tagline reveal delay-2\">Privacy-first · Local-first · Offline-first</p>",
+    "new_string": "    <p class=\"s5-tagline reveal delay-2\">Bank-grade encryption. No account. No server. Just your vault.</p>"
+  },
+  {
+    "file": "VaultCap/pitch.html",
+    "old_string": "    <h2 class=\"section-title s10-title reveal\">Military-grade privacy.<br>Human-grade simplicity.</h2>",
+    "new_string": "    <h2 class=\"section-title s10-title reveal\">Bank-grade privacy.<br>Human-grade simplicity.</h2>"
+  },
+  {
+    "file": "VaultCap/pitch.html",
+    "old_string": "    <h2 class=\"section-title reveal\">Your complete financial picture.</h2>",
+    "new_string": "    <h2 class=\"section-title reveal\">Your net worth. One private ledger.</h2>"
+  },
+  {
+    "file": "VaultCap/pitch.html",
+    "old_string": "    <h2 class=\"section-title reveal\">Live Intelligence.</h2>",
+    "new_string": "    <h2 class=\"section-title reveal\">Rates that move with you.</h2>"
+  },
+  {
+    "file": "VaultCap/pitch.html",
+    "old_string": "    <p style=\"font-size:1.1rem;color:var(--text2);text-align:center;max-width:560px;margin-bottom:2.5rem;\" class=\"reveal delay-1\">Exchange rates, gold, silver — all live. Nisab calculated at today's price. Net worth updated the moment rates change. The financial world moves — VaultCap moves with it.</p>",
+    "new_string": "    <p style=\"font-size:1.1rem;color:var(--text2);text-align:center;max-width:560px;margin-bottom:2.5rem;\" class=\"reveal delay-1\">Live FX, gold, and silver. Zakat nisab at today's price. Net worth updates when rates move — still encrypted, still on your phone.</p>"
+  },
+  {
+    "file": "VaultCap/pitch.html",
+    "old_string": "        <div class=\"backup-node-label\">AI Extracts</div>",
+    "new_string": "        <div class=\"backup-node-label\">Smart Import</div>"
+  },
+  {
+    "file": "SteadyCap/presentation.html",
+    "old_string": "<div class=\"anim tagline\" style=\"color:var(--text);font-size:clamp(16px,2.2vw,22px);font-weight:600\">Personal Recovery Operating System\n</div>",
+    "new_string": "<div class=\"anim tagline\" style=\"color:var(--text);font-size:clamp(16px,2.2vw,22px);font-weight:600\">Recovery is a system. Not a streak.\n</div>"
+  },
+  {
+    "file": "SteadyCap/presentation.html",
+    "old_string": "<div class=\"anim tagline\">Habits · Recovery Score · Emergency SOS · Journal · Trigger Intelligence\n</div>",
+    "new_string": "<div class=\"anim tagline\">Habits · medicines · journal · craving forecasts · five-phase SOS\n</div>"
+  },
+  {
+    "file": "SteadyCap/presentation.html",
+    "old_string": "<div class=\"anim tagline\" style=\"margin-top:18px;text-align:left;max-width:560px\">People in recovery deserve a single, private command centre.\n\n</div>",
+    "new_string": "<div class=\"anim tagline\" style=\"margin-top:18px;text-align:left;max-width:560px\">You deserve one private place when cravings hit.\n\n</div>"
+  },
+  {
+    "file": "SteadyCap/presentation.html",
+    "old_string": "</div><div class=\"feat-t\">Trigger Intelligence\n</div><div class=\"feat-d\">Craving forecast from journal patterns — know risk before it hits.",
+    "new_string": "</div><div class=\"feat-t\">Trigger forecast\n</div><div class=\"feat-d\">Spots risk windows from patterns in your journal — not generic advice."
+  },
+  {
+    "file": "SteadyCap/presentation.html",
+    "old_string": "<div class=\"split-text\"><h2>Your daily command centre.</h2>\n<div class=\"tagline\">Greeting, progress pill \"3/7 tasks\", routine checklist rows with checkboxes, orange SOS button — mirrors app.css Today screen.\n</div>",
+    "new_string": "<div class=\"split-text\"><h2>Your day. One screen.</h2>\n<div class=\"tagline\">Routines, habit progress, gentle nudges — and one-tap SOS when cravings hit.\n</div>"
+  },
+  {
+    "file": "SteadyCap/presentation.html",
+    "old_string": "<div class=\"split-text\"><h2>Your 0–100 recovery compass.</h2>\n<div class=\"tagline\">Conic gradient ring — orange for habits, teal for routines — mirrors the live Recovery tab hero metric.\n</div>",
+    "new_string": "<div class=\"split-text\"><h2>Your recovery compass.</h2>\n<div class=\"tagline\">One score from habits, routines, journal, and milestones — calm progress, not guilt.\n</div>"
+  },
+  {
+    "file": "SteadyCap/presentation.html",
+    "old_string": "<div class=\"anim\"><h2>Science-informed. Human-centred.</h2>\n</div>",
+    "new_string": "<div class=\"anim\"><h2>See your body heal.</h2>\n</div>"
+  },
+  {
+    "file": "SteadyCap/presentation.html",
+    "old_string": "<div class=\"anim tagline\" style=\"margin-bottom:20px\">Phased flow: Pause → Ground → Breathe → Decide. One-thumb, full-screen, no distractions.\n</div>",
+    "new_string": "<div class=\"anim tagline\" style=\"margin-bottom:20px\">Five-phase crisis flow when seconds matter. One thumb. Full screen. No login.\n</div>"
+  },
+  {
+    "file": "SteadyCap/presentation.html",
+    "old_string": "<div class=\"anim label\">Tech Stack\n</div>\n\n<div class=\"anim\"><h2>iPhone-native feel. Zero framework.</h2>\n</div>\n\n<div class=\"anim tagline\" style=\"margin-bottom:20px\">Vanilla JS PWA. No build step. Ship from index.html.\n</div>",
+    "new_string": "<div class=\"anim label\">Private by design\n</div>\n\n<div class=\"anim\"><h2>One tap when it matters.</h2>\n</div>\n\n<div class=\"anim tagline\" style=\"margin-bottom:20px\">Install privately from Safari. SOS works offline — built for real moments.\n</div>"
+  },
+  {
+    "file": "SteadyCap/pitch.html",
+    "old_string": "    <p class=\"s1-tag reveal delay-2\">Personal Recovery Operating System</p>",
+    "new_string": "    <p class=\"s1-tag reveal delay-2\">Recovery is a system. Not a streak.</p>"
+  },
+  {
+    "file": "SteadyCap/pitch.html",
+    "old_string": "    <p class=\"s1-sub reveal delay-3\">Habits · Recovery Score · Emergency SOS · Journal</p>",
+    "new_string": "    <p class=\"s1-sub reveal delay-3\">When it matters, SteadyCap is one tap from your home screen.</p>"
+  },
+  {
+    "file": "SteadyCap/pitch.html",
+    "old_string": "    <p class=\"s4-tagline reveal delay-2\">One offline PWA · Zero servers · Your recovery OS</p>",
+    "new_string": "    <p class=\"s4-tagline reveal delay-2\">Serious where it needs to be. Warm where it matters.</p>"
+  },
+  {
+    "file": "SteadyCap/pitch.html",
+    "old_string": "        <div class=\"pillar-title\">Intelligence</div>\n        <div class=\"pillar-sub\">Craving forecast from journal patterns</div>",
+    "new_string": "        <div class=\"pillar-title\">Forecast</div>\n        <div class=\"pillar-sub\">Risk windows from your journal — not generic advice</div>"
+  },
+  {
+    "file": "SteadyCap/pitch.html",
+    "old_string": "    <p class=\"section-sub reveal delay-1\">Built for the moment you can't think straight. Phased flow: Pause → Ground → Breathe → Decide. One-thumb, full-screen, no distractions.</p>",
+    "new_string": "    <p class=\"section-sub reveal delay-1\">Built for the moment you can't think straight. Five-phase crisis flow works offline — one thumb, full screen.</p>"
+  },
+  {
+    "file": "SteadyCap/pitch.html",
+    "old_string": "      <h2 class=\"section-title reveal\">Journal &amp; trigger intelligence.</h2>",
+    "new_string": "      <h2 class=\"section-title reveal\">Journal &amp; trigger forecast.</h2>"
+  },
+  {
+    "file": "SteadyCap/pitch.html",
+    "old_string": "    <h2 class=\"section-title reveal\">Tech stack.</h2>\n    <p class=\"section-sub reveal delay-1\">No framework. No build step. Ship from index.html. Vanilla JS PWA with a premium dark-glass design system.</p>",
+    "new_string": "    <h2 class=\"section-title reveal\">Private by design.</h2>\n    <p class=\"section-sub reveal delay-1\">Zero servers. No accounts. Your habits, medicines, and journal stay on your phone.</p>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Your bottles. <span class=\"grad\">Organized.</span></div>",
+    "new_string": "  <div class=\"headline a2\">Know what you <span class=\"grad\">own.</span></div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"sub a4\" style=\"margin-top:16px\">Search seed DB · track levels · favorites · signature scent · family tags</div>",
+    "new_string": "  <div class=\"sub a4\" style=\"margin-top:16px\">Search the library. Track levels. Mark your signature scent.</div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Rules-based. <span class=\"grad\">Not cloud AI.</span></div>",
+    "new_string": "  <div class=\"headline a2\">Pick for the <span class=\"grad\">day.</span></div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "    <div class=\"card\"><h3>💼 Office preset</h3><p>Subtle projection, professional dress code, work occasion.</p></div>",
+    "new_string": "    <div class=\"card\"><h3>💼 Office</h3><p>Low projection. Work dress code. Built for the desk.</p></div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"sub a4\" style=\"margin-top:14px\">Smart Assistant logic — honest, local, no LLM required</div>",
+    "new_string": "  <div class=\"sub a4\" style=\"margin-top:14px\">Smart Assistant reads weather, occasion, and rotation — on your phone.</div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Experiment. <span class=\"grad\">Remember.</span></div>",
+    "new_string": "  <div class=\"headline a2\">Layer once. <span class=\"grad\">Wear again.</span></div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"sub a4\" style=\"margin-top:14px\">Layering Lab saves combos · Travel Kit packs decants for trips</div>",
+    "new_string": "  <div class=\"sub a4\" style=\"margin-top:14px\">Save combos in Layering Lab. Pack decants with Travel Kit.</div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Rotation <span class=\"grad\">intelligence</span></div>",
+    "new_string": "  <div class=\"headline a2\">See your <span class=\"grad\">rotation.</span></div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"sub a4\" style=\"margin-top:16px\">Calendar heatmap · family breakdown charts · neglected bottle alerts</div>",
+    "new_string": "  <div class=\"sub a4\" style=\"margin-top:16px\">Heatmap, family charts, and alerts for bottles you forgot.</div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "    <div class=\"card\"><h3>📴 Offline PWA</h3><p>Works after first load — no mandatory sync.</p></div>",
+    "new_string": "    <div class=\"card\"><h3>📴 Offline PWA</h3><p>Runs after first load. No account required.</p></div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Your wardrobe <span class=\"grad\">awaits</span></div>",
+    "new_string": "  <div class=\"headline a2\">Wear with <span class=\"grad\">intention.</span></div>"
+  },
+  {
+    "file": "ScentCap/public/presentation.html",
+    "old_string": "  <div class=\"sub a3\">Warm amber chrome · demo mode with 12 bottles · install to home screen</div>",
+    "new_string": "  <div class=\"sub a3\">Try demo mode with 12 bottles. Install to your home screen.</div>"
+  },
+  {
+    "file": "AuraCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Know your <span class=\"grad\">app personality</span></div>",
+    "new_string": "  <div class=\"headline a2\">See your <span class=\"grad\">app mix.</span></div>"
+  },
+  {
+    "file": "AuraCap/public/presentation.html",
+    "old_string": "  <div class=\"sub a4\">Rules-based Smart Assistant — no external LLM, honest marketing</div>",
+    "new_string": "  <div class=\"sub a4\">Smart Assistant on your app list. No cloud AI.</div>"
+  },
+  {
+    "file": "AuraCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Your apps. <span class=\"grad\">Locally.</span></div>",
+    "new_string": "  <div class=\"headline a2\">Import stays <span class=\"grad\">local.</span></div>"
+  },
+  {
+    "file": "AuraCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Wallpapers & <span class=\"grad\">Widgets</span></div>",
+    "new_string": "  <div class=\"headline a2\">Design your <span class=\"grad\">devices.</span></div>"
+  },
+  {
+    "file": "AuraCap/public/presentation.html",
+    "old_string": "  <div class=\"sub a4\" style=\"margin-top:14px\">Smart Designer · Smart Organizer · 12 Shortcuts · Digital Cleanse</div>",
+    "new_string": "  <div class=\"sub a4\" style=\"margin-top:14px\">Wallpapers, widgets, lockscreens, and 12 Shortcuts — offline.</div>"
+  },
+  {
+    "file": "AuraCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Complete <span class=\"grad\">ecosystem OS</span></div>",
+    "new_string": "  <div class=\"headline a2\">One home for <span class=\"grad\">everything.</span></div>"
+  },
+  {
+    "file": "AuraCap/public/presentation.html",
+    "old_string": "    <div class=\"card\"><h3>🤖 Smart Assistant</h3><p>Rules-based — not cloud AI.</p></div>",
+    "new_string": "    <div class=\"card\"><h3>🤖 Smart Assistant</h3><p>Local rules. No external LLM.</p></div>"
+  },
+  {
+    "file": "AuraCap/public/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Your ecosystem <span class=\"grad\">awaits</span></div>",
+    "new_string": "  <div class=\"headline a2\">Your setup. <span class=\"grad\">Understood.</span></div>"
+  },
+  {
+    "file": "AuraCap/public/presentation.html",
+    "old_string": "  <div class=\"sub a3\">Demo mode with sample wardrobe · import guide built in · install to home screen</div>",
+    "new_string": "  <div class=\"sub a3\">Sample wardrobe included. Import guide built in. Add to Home Screen.</div>"
+  },
+  {
+    "file": "DeePonyCap/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Three <span class=\"grad\">Moods</span></div>",
+    "new_string": "  <div class=\"headline a2\">Three <span class=\"grad\">modes.</span></div>"
+  },
+  {
+    "file": "DeePonyCap/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Sparkly. <span class=\"grad\">Not Corporate.</span></div>",
+    "new_string": "  <div class=\"headline a2\">Joyful. <span class=\"grad\">Not corporate.</span></div>"
+  },
+  {
+    "file": "DeePonyCap/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Zero Dependencies. <span class=\"grad\">Pure Joy.</span></div>",
+    "new_string": "  <div class=\"headline a2\">Zero servers. <span class=\"grad\">Pure joy.</span></div>"
+  },
+  {
+    "file": "DeePonyCap/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Parents Stay <span class=\"grad\">In Control</span></div>",
+    "new_string": "  <div class=\"headline a2\">Your data stays <span class=\"grad\">local.</span></div>"
+  },
+  {
+    "file": "DeePonyCap/presentation.html",
+    "old_string": "  <div class=\"headline a2\">Collectors Who Still Believe in <span class=\"grad\">Magic</span></div>",
+    "new_string": "  <div class=\"headline a2\">Made for <span class=\"grad\">collectors.</span></div>"
+  },
+  {
+    "file": "DeePonyCap/presentation.html",
+    "old_string": "  <div class=\"sub a3\" style=\"font-style:italic\">\"I built DeePonyCap because collectors deserve a magical home for their ponies — not another spreadsheet with ads.\"</div>",
+    "new_string": "  <div class=\"sub a3\" style=\"font-style:italic\">\"Kids deserve a stable for their ponies — not a spreadsheet with ads.\"</div>"
+  },
+  {
+    "file": "DeePonyCap/presentation.html",
+    "old_string": "  <div class=\"s1-title a2\" style=\"font-size:clamp(2.4rem,5vw,3.8rem)\">Your Stable awaits ✨</div>",
+    "new_string": "  <div class=\"s1-title a2\" style=\"font-size:clamp(2.4rem,5vw,3.8rem)\">Every pony. One stable. ✨</div>"
+  },
+  {
+    "file": "DeePonyCap/presentation.html",
+    "old_string": "  <div class=\"sub a3\">Install on iPhone · Add to Home Screen · Works offline</div>",
+    "new_string": "  <div class=\"sub a3\">Open the stable. No ads. No chat. No cloud.</div>"
+  },
+  {
+    "file": "ScentCap/public/landing.html",
+    "old_string": "    <h1>Your fragrance,<br>curated daily</h1>",
+    "new_string": "    <h1>Know what to<br>wear today.</h1>"
+  },
+  {
+    "file": "ScentCap/public/landing.html",
+    "old_string": "    <p class=\"sub\">Build a wardrobe, get weather-aware picks, layer with confidence, and track every wear — all on your device.</p>",
+    "new_string": "    <p class=\"sub\">Catalog bottles, get weather-aware picks, and log every wear — all on your phone.</p>"
+  },
+  {
+    "file": "ScentCap/public/landing.html",
+    "old_string": "    <div class=\"st\">Everything a fragrance lover needs</div>",
+    "new_string": "    <div class=\"st\">Your private perfumery</div>"
+  },
+  {
+    "file": "AuraCap/public/landing.html",
+    "old_string": "    <h1>Every device.<br>Perfected.</h1>",
+    "new_string": "    <h1>Your Apple setup.<br>Understood.</h1>"
+  },
+  {
+    "file": "AuraCap/public/landing.html",
+    "old_string": "    <p class=\"sub\">Organize iPhone, iPad, and Mac app setups with Digital DNA, smart folders, wallpapers, widgets, and rules-based design — all on your device.</p>",
+    "new_string": "    <p class=\"sub\">Import your apps, score your ecosystem, and design layouts for iPhone, iPad, and Mac — all on your device.</p>"
+  },
+  {
+    "file": "AuraCap/public/landing.html",
+    "old_string": "    <div class=\"st\">16 modules. One studio.</div>",
+    "new_string": "    <div class=\"st\">Sixteen modules. One studio.</div>"
+  },
+  {
+    "file": "DeePonyCap/landing.html",
+    "old_string": "    <h1>Your pony collection,<br>made magical</h1>",
+    "new_string": "    <h1>Every pony.<br>One stable.</h1>"
+  },
+  {
+    "file": "DeePonyCap/landing.html",
+    "old_string": "    <p class=\"sub\">Track every pony across five generations. Photos, wishlists, shelves, and sparkly stats — a child-friendly PWA that works offline.</p>",
+    "new_string": "    <p class=\"sub\">Photo your shelves, catalog G1–G5, and build a wishlist — no ads, no accounts, all on your device.</p>"
+  },
+  {
+    "file": "DeePonyCap/landing.html",
+    "old_string": "    <div class=\"st\">Everything a collector needs</div>",
+    "new_string": "    <div class=\"st\">Catalog joy. No cloud.</div>"
+  },
+  {
+    "file": "VaultCap/landing.html",
+    "old_string": "<h1>Your life.<br>Your vault.</h1>",
+    "new_string": "<h1>Everything you own.<br>Encrypted.</h1>"
+  },
+  {
+    "file": "VaultCap/landing.html",
+    "old_string": "<p class=\"tagline\">Zero-knowledge encrypted PWA for banks, cards, investments, documents, and family — across Pakistan, the UK, and the UAE. No servers. No subscriptions.</p>",
+    "new_string": "<p class=\"tagline\">Bank-grade encryption. No account. No server. Money, identity, and documents — encrypted on your phone before anything is saved.</p>"
+  },
+  {
+    "file": "VaultCap/landing.html",
+    "old_string": "<div class=\"st\">One app replaces a dozen</div>",
+    "new_string": "<div class=\"st\">Your whole life. One vault.</div>"
+  },
+  {
+    "file": "VaultCap/landing.html",
+    "old_string": "<div class=\"st\">Install & protect</div>",
+    "new_string": "<div class=\"st\">Set up in seconds.</div>"
+  },
+  {
+    "file": "VaultCap/landing.html",
+    "old_string": "<a href=\"index.html\" class=\"btn btn-p\">Launch VaultCap</a>",
+    "new_string": "<a href=\"index.html\" class=\"btn btn-p\">Open your vault</a>"
+  },
+  {
+    "file": "VaultCap/landing.html",
+    "old_string": "<a href=\"index.html\" class=\"btn btn-p\">Open Vault</a>",
+    "new_string": "<a href=\"index.html\" class=\"btn btn-p\">Open VaultCap</a>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<h1 class=\"hero-title\"><span>PulseCap</span></h1>",
+    "new_string": "<h1 class=\"hero-title\">Train with<br><span>intention.</span></h1>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<p class=\"hero-sub\">Your Intelligent Training Partner</p>",
+    "new_string": "<p class=\"hero-sub\">Your performance OS for serious lifters.</p>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<p class=\"hero-sub2\">Smart Coach · Offline-first · Built for athletes · 300+ exercises</p>",
+    "new_string": "<p class=\"hero-sub2\">Your training log, PRs, and recovery — on your phone, offline. No subscription. No wearable required.</p>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<h2 class=\"section-title\">Everything a serious athlete needs</h2>",
+    "new_string": "<h2 class=\"section-title\">Built for how you actually train.</h2>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<h2 class=\"section-title\">Up and running in 3 steps</h2>",
+    "new_string": "<h2 class=\"section-title\">Start in three steps.</h2>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<h2 class=\"section-title\" style=\"margin-bottom:24px\">Your app, your aesthetic</h2>",
+    "new_string": "<h2 class=\"section-title\" style=\"margin-bottom:24px\">Make it yours.</h2>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<h2 style=\"font-size:clamp(28px,6vw,48px);font-weight:900;letter-spacing:-2px;margin-bottom:12px\">Ready to train smarter?</h2>",
+    "new_string": "<h2 style=\"font-size:clamp(28px,6vw,48px);font-weight:900;letter-spacing:-2px;margin-bottom:12px\">Your next session awaits.</h2>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<a href=\"index.html\"><button class=\"nav-cta\">Open App →</button></a>",
+    "new_string": "<a href=\"index.html\"><button class=\"nav-cta\">Start training →</button></a>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<a href=\"index.html\"><button class=\"btn-hero btn-hero-p\">Open App →</button></a>",
+    "new_string": "<a href=\"index.html\"><button class=\"btn-hero btn-hero-p\">Start training →</button></a>"
+  },
+  {
+    "file": "PulseCap/landing.html",
+    "old_string": "<a href=\"index.html\"><button class=\"btn-hero btn-hero-p\" style=\"font-size:18px;padding:18px 40px\">Start PulseCap →</button></a>",
+    "new_string": "<a href=\"index.html\"><button class=\"btn-hero btn-hero-p\" style=\"font-size:18px;padding:18px 40px\">Train with intention →</button></a>"
+  },
+  {
+    "file": "PrismCap/landing.html",
+    "old_string": "<h1>Pass the phone.<br>Start the chaos.</h1>",
+    "new_string": "<h1>The living room<br>becomes an arcade.</h1>"
+  },
+  {
+    "file": "PrismCap/landing.html",
+    "old_string": "<p class=\"sub\">Social deception, reflex battles, strategy puzzles, and party chaos — one installable PWA. No accounts. No Wi‑Fi after first load.</p>",
+    "new_string": "<p class=\"sub\">38 pass-and-play games on one phone. Pass the phone, not your data. No accounts. No ads. No Wi‑Fi after first load.</p>"
+  },
+  {
+    "file": "PrismCap/landing.html",
+    "old_string": "<div class=\"st\">Something for every table</div>",
+    "new_string": "<div class=\"st\">A game for every mood.</div>"
+  },
+  {
+    "file": "PrismCap/landing.html",
+    "old_string": "<div class=\"st\">Built for iPhone nights</div>",
+    "new_string": "<div class=\"st\">Designed for the couch.</div>"
+  },
+  {
+    "file": "PrismCap/landing.html",
+    "old_string": "<a href=\"index.html\"><button class=\"btn btn-p\">Play Now</button></a>",
+    "new_string": "<a href=\"index.html\"><button class=\"btn btn-p\">Start playing</button></a>"
+  },
+  {
+    "file": "PrismCap/landing.html",
+    "old_string": "<a href=\"index.html\"><button class=\"btn btn-p\" style=\"font-size:16px;padding:14px 28px\">Launch PrismCap →</button></a>",
+    "new_string": "<a href=\"index.html\"><button class=\"btn btn-p\" style=\"font-size:16px;padding:14px 28px\">Open the arcade →</button></a>"
+  },
+  {
+    "file": "SteadyCap/landing.html",
+    "old_string": "<h1>Your <em>Recovery</em><br>Operating System</h1>",
+    "new_string": "<h1>Recovery is a system.<br><em>Not a streak.</em></h1>"
+  },
+  {
+    "file": "SteadyCap/landing.html",
+    "old_string": "<p class=\"sub\">Habits, recovery score, emergency SOS, journal, and trigger intelligence — one private app that stays on your phone.</p>",
+    "new_string": "<p class=\"sub\">When it matters, SteadyCap is one tap from your home screen. Habits, medicines, journal triggers, and SOS — private, on your phone.</p>"
+  },
+  {
+    "file": "SteadyCap/landing.html",
+    "old_string": "<div class=\"section-t\">Everything recovery needs</div>",
+    "new_string": "<div class=\"section-t\">Everything in one calm place.</div>"
+  },
+  {
+    "file": "SteadyCap/landing.html",
+    "old_string": "<div class=\"section-t\">Install in 30 seconds</div>",
+    "new_string": "<div class=\"section-t\">On your home screen in 30 seconds.</div>"
+  },
+  {
+    "file": "SteadyCap/landing.html",
+    "old_string": "<a href=\"index.html\" class=\"btn btn-p\">Launch SteadyCap</a>",
+    "new_string": "<a href=\"index.html\" class=\"btn btn-p\">Begin your recovery</a>"
+  },
+  {
+    "file": "SteadyCap/landing.html",
+    "old_string": "<a href=\"index.html\" class=\"btn btn-p\">Open App</a>",
+    "new_string": "<a href=\"index.html\" class=\"btn btn-p\">Open SteadyCap</a>"
+  },
+  {
+    "file": "LedgerCap/landing.html",
+    "old_string": "<h1>Your portfolio.<br>One ledger.</h1>",
+    "new_string": "<h1>Pakistani wealth.<br>One ledger.</h1>"
+  },
+  {
+    "file": "LedgerCap/landing.html",
+    "old_string": "<p class=\"sub\">PSX equities, Meezan Islamic funds, transaction history, and financial freedom projections — Bloomberg density on your iPhone. Offline-first PWA.</p>",
+    "new_string": "<p class=\"sub\">PSX, funds, Zakat, net worth — terminal-grade, phone-native, private. Your complete PKR wealth picture, offline on your iPhone.</p>"
+  },
+  {
+    "file": "LedgerCap/landing.html",
+    "old_string": "<div class=\"st\">Built for Pakistani wealth</div>",
+    "new_string": "<div class=\"st\">Terminal-grade. Phone-native.</div>"
+  },
+  {
+    "file": "LedgerCap/landing.html",
+    "old_string": "<a href=\"index.html\" class=\"btn btn-p\">Open App</a>",
+    "new_string": "<a href=\"index.html\" class=\"btn btn-p\">Open LedgerCap</a>"
+  },
+  {
+    "file": "LedgerCap/landing.html",
+    "old_string": "<a href=\"index.html\"><button class=\"btn btn-p\" style=\"font-size:16px;padding:14px 28px\">Launch LedgerCap →</button></a>",
+    "new_string": "<a href=\"index.html\"><button class=\"btn btn-p\" style=\"font-size:16px;padding:14px 28px\">View your ledger →</button></a>"
+  }
+]

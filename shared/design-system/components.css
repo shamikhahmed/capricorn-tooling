@@ -1,0 +1,151 @@
+/* ════════════════════════════════════════════════════════════════
+   Capricorn Design System — Components (optional layer)
+   Marketing/hub-oriented primitives. Apps keep their own component
+   styles; this layer powers landing pages, pitch pages, and the hub
+   so they stop re-implementing buttons, cards, and toasts.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Buttons ── */
+.cap-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cap-space-2);
+  padding: 12px 26px;
+  font: 600 var(--cap-text-sm) var(--cap-font-body);
+  letter-spacing: 0.01em;
+  border-radius: var(--cap-radius-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: transform var(--cap-dur-fast) var(--cap-ease),
+              box-shadow var(--cap-dur-base) var(--cap-ease),
+              background var(--cap-dur-fast) var(--cap-ease),
+              border-color var(--cap-dur-fast) var(--cap-ease);
+}
+.cap-btn:active { transform: scale(0.97); }
+
+.cap-btn-primary {
+  background: var(--cap-accent);
+  color: var(--cap-accent-contrast);
+}
+.cap-btn-primary:hover { box-shadow: var(--cap-shadow-accent); transform: translateY(-1px); }
+
+.cap-btn-ghost {
+  background: transparent;
+  color: var(--cap-text);
+  border-color: var(--cap-border-strong);
+}
+.cap-btn-ghost:hover { background: var(--cap-surface); border-color: var(--cap-accent); }
+
+/* ── Cards ── */
+.cap-card {
+  background: var(--cap-surface);
+  border: 1px solid var(--cap-border);
+  border-radius: var(--cap-radius-lg);
+  padding: var(--cap-space-6);
+  transition: border-color var(--cap-dur-base) var(--cap-ease),
+              transform var(--cap-dur-base) var(--cap-ease),
+              box-shadow var(--cap-dur-base) var(--cap-ease);
+}
+.cap-card:hover { border-color: var(--cap-border-strong); }
+a.cap-card:hover { transform: translateY(-4px); box-shadow: var(--cap-shadow-3); }
+
+.cap-card-glass {
+  background: var(--cap-glass-bg);
+  -webkit-backdrop-filter: var(--cap-glass-blur);
+  backdrop-filter: var(--cap-glass-blur);
+  border: 1px solid var(--cap-glass-border);
+  border-radius: var(--cap-radius-lg);
+}
+
+/* ── Eyebrow / section label ── */
+.cap-eyebrow {
+  font: 500 var(--cap-text-xs) var(--cap-font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cap-accent);
+}
+
+/* ── Inputs ── */
+.cap-input {
+  width: 100%;
+  padding: 12px 16px;
+  font: 400 var(--cap-text-md) var(--cap-font-body);
+  color: var(--cap-text);
+  background: var(--cap-surface);
+  border: 1px solid var(--cap-border);
+  border-radius: var(--cap-radius-md);
+  transition: border-color var(--cap-dur-fast) var(--cap-ease),
+              background var(--cap-dur-fast) var(--cap-ease);
+}
+.cap-input::placeholder { color: var(--cap-text-faint); }
+.cap-input:hover { border-color: var(--cap-border-strong); }
+.cap-input:focus-visible {
+  outline: none;
+  border-color: var(--cap-accent);
+  background: var(--cap-surface-2);
+}
+
+/* ── Toast ── */
+.cap-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + var(--cap-safe-b));
+  transform: translate(-50%, 16px);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: var(--cap-space-3);
+  padding: 12px 20px;
+  background: var(--cap-glass-bg);
+  -webkit-backdrop-filter: var(--cap-glass-blur);
+  backdrop-filter: var(--cap-glass-blur);
+  border: 1px solid var(--cap-glass-border);
+  border-radius: var(--cap-radius-pill);
+  font: 500 var(--cap-text-sm) var(--cap-font-body);
+  color: var(--cap-text);
+  box-shadow: var(--cap-shadow-3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--cap-dur-base) var(--cap-ease),
+              transform var(--cap-dur-base) var(--cap-ease);
+}
+.cap-toast.is-open { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.cap-toast[data-tone="success"] { border-color: color-mix(in srgb, var(--cap-success) 40%, transparent); }
+.cap-toast[data-tone="danger"]  { border-color: color-mix(in srgb, var(--cap-danger) 40%, transparent); }
+
+/* ── Empty state ── */
+.cap-empty {
+  display: grid;
+  place-items: center;
+  gap: var(--cap-space-3);
+  padding: var(--cap-space-8) var(--cap-space-5);
+  text-align: center;
+  color: var(--cap-text-dim);
+  border: 1px dashed var(--cap-border-strong);
+  border-radius: var(--cap-radius-lg);
+}
+.cap-empty .cap-empty-icon { font-size: 2rem; opacity: 0.7; }
+.cap-empty h3 { color: var(--cap-text); font-family: var(--cap-font-display); }
+
+/* ── Badge ── */
+.cap-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font: 600 var(--cap-text-xs) var(--cap-font-mono);
+  letter-spacing: 0.06em;
+  border-radius: var(--cap-radius-pill);
+  background: color-mix(in srgb, var(--cap-accent) 14%, transparent);
+  color: var(--cap-accent);
+  border: 1px solid color-mix(in srgb, var(--cap-accent) 30%, transparent);
+}
+
+/* ── Divider ── */
+.cap-divider {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--cap-border-strong), transparent);
+}

@@ -1,0 +1,23 @@
+{
+  "name": "capricorn-tooling",
+  "version": "1.0.0",
+  "description": "Cross-repo tooling for Capricorn Systems — marketing pipeline, design system sync, agent orchestration.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "release:marketing": "node scripts/release-marketing.mjs",
+    "sync:versions": "node scripts/sync-versions.mjs",
+    "sync:catalog": "node scripts/sync-catalog-versions.mjs",
+    "sync:design-system": "node scripts/sync-design-system.mjs",
+    "audit:tokens": "node scripts/audit-design-tokens.mjs",
+    "audit:truth": "node scripts/truth-audit.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shamikhahmed/capricorn-tooling.git"
+  },
+  "license": "UNLICENSED"
+}
