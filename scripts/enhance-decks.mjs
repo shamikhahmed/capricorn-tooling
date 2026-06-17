@@ -131,6 +131,61 @@ function cardTitle(prob) {
   return t.length > 42 ? `${t.slice(0, 39)}…` : t;
 }
 
+/** Replace first `.cards` block using div-depth matching (avoids stopping at first inner </div>). */
+function replaceFirstCardsDiv(fragment, cardsHtml) {
+  const marker = '<div class="cards">';
+  const idx = fragment.indexOf(marker);
+  if (idx === -1) return fragment;
+  let pos = idx + marker.length;
+  let depth = 1;
+  while (pos < fragment.length && depth > 0) {
+    const nextOpen = fragment.indexOf('<div', pos);
+    const nextClose = fragment.indexOf('</div>', pos);
+    if (nextClose === -1) break;
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      depth += 1;
+      pos = nextOpen + 4;
+    } else {
+      depth -= 1;
+      pos = nextClose + 6;
+    }
+  }
+  return `${fragment.slice(0, idx)}<div class="cards">\n      ${cardsHtml}\n    </div>${fragment.slice(pos)}`;
+}
+
+/** Remove duplicate card runs that appear after the `.cards` container closes. */
+function stripOrphanCardRuns(fragment) {
+  const marker = '<div class="cards">';
+  const idx = fragment.indexOf(marker);
+  if (idx === -1) return fragment;
+
+  let pos = idx + marker.length;
+  let depth = 1;
+  while (pos < fragment.length && depth > 0) {
+    const nextOpen = fragment.indexOf('<div', pos);
+    const nextClose = fragment.indexOf('</div>', pos);
+    if (nextClose === -1) break;
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      depth += 1;
+      pos = nextOpen + 4;
+    } else {
+      depth -= 1;
+      pos = nextClose + 6;
+    }
+  }
+
+  const before = fragment.slice(0, pos);
+  let tail = fragment.slice(pos);
+  while (/^\s*(?:<\/div>\s*)*(?:\s*<div class="card reveal[\s\S]*?<\/div>\s*)+/.test(tail)) {
+    tail = tail.replace(/^\s*(?:<\/div>\s*)*(?:\s*<div class="card reveal[\s\S]*?<\/div>\s*)+/, '\n');
+  }
+  return before + tail;
+}
+
+function repairSectionCards(inner) {
+  return stripOrphanCardRuns(inner);
+}
+
 function injectDeckCss(html) {
   if (html.includes('.deck-shot{')) return html;
   return html.replace('</style>', `${DECK_CSS}\n</style>`);
@@ -219,8 +274,12 @@ function patchVanillaPitch(html, p) {
     `<div class="card reveal delay-${i + 1}"><h3>${esc(f.t)}</h3><p>${esc(f.d)}</p></div>`,
   ).join('\n      ');
   html = html.replace(
-    /<section class="slide" id="s8">[\s\S]*?<div class="cards">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/,
-    (block) => block.replace(/<div class="cards">[\s\S]*?<\/div>/, `<div class="cards">\n      ${featCards}\n    </div>`),
+    /<section class="slide" id="s8">([\s\S]*?)<\/section>/,
+    (match, inner) => {
+      if (!inner.includes('<div class="cards">')) return match;
+      const body = replaceFirstCardsDiv(repairSectionCards(inner), featCards);
+      return `<section class="slide" id="s8">${body}</section>`;
+    },
   );
 
   if (html.includes('class="trust"')) {
@@ -229,6 +288,11 @@ function patchVanillaPitch(html, p) {
       `<div class="trust reveal delay-2">${esc(p.promise)}</div>`,
     );
   }
+
+  html = html.replace(
+    /(<section class="slide" id="[^"]+">)([\s\S]*?)(<\/section>)/g,
+    (match, open, inner, close) => `${open}${repairSectionCards(inner)}${close}`,
+  );
 
   return html;
 }
