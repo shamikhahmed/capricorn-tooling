@@ -44,9 +44,12 @@ for (const { name, index } of APPS) {
   else ok(name, 'no cinematic on shell');
   const core = join(dir, name === 'ScentCap' || name === 'AuraCap' ? 'public/css/capricorn-core.css' : 'css/capricorn-core.css');
   if (!existsSync(core)) fail(name, 'capricorn-core.css missing');
-  else if (!readFileSync(core, 'utf8').includes('data-cap-app="1"]')) {
-    fail(name, 'capricorn-core missing app-fast layer (re-run sync-design-system)');
-  } else ok(name, 'design system synced');
+  else {
+    const coreText = readFileSync(core, 'utf8');
+    if (!coreText.includes('data-cap-app="1"]') || !coreText.includes('.cap-tab-bar')) {
+      fail(name, 'capricorn-core outdated — run sync-design-system');
+    } else ok(name, 'design system synced');
+  }
 }
 
 const hub = join(ROOT, 'shamikhahmed.github.io/index.html');
