@@ -280,7 +280,17 @@ const CapCinematic = (() => {
     }, 100);
   }
 
+  function isAppShell() {
+    return document.body && document.body.getAttribute('data-cap-app') === '1';
+  }
+
   function init(opts = {}) {
+    if (isAppShell() || opts.fast === true) {
+      if (window.CapricornMotion && window.CapricornMotion.init) {
+        window.CapricornMotion.init();
+      }
+      return;
+    }
     registerGsap();
     schedulePatchNavigation();
     initScrollProgress();
@@ -315,8 +325,12 @@ window.CapMotion = {
   refresh: () => CapCinematic.refresh(),
 };
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => CapCinematic.init());
-} else {
+function _bootCinematic() {
+  if (document.body && document.body.getAttribute('data-cap-app') === '1') return;
   CapCinematic.init();
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _bootCinematic);
+} else {
+  _bootCinematic();
 }

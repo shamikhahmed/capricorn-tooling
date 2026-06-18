@@ -11,7 +11,7 @@ import { join } from 'node:path';
 import { WORKSPACE_ROOT as ROOT, SCRIPTS_DIR, SHARED_DIR } from './lib/workspace-root.mjs';
 const DS = join(SHARED_DIR, 'design-system');
 
-const CORE_LAYERS = ['tokens.css', 'a11y.css', 'motion.css', 'premium.css', 'motion-premium.css'];
+const CORE_LAYERS = ['tokens.css', 'a11y.css', 'motion.css', 'premium.css', 'motion-premium.css', 'app-fast.css'];
 const COMPONENT_LAYER = 'components.css';
 const JS_FILES = [
   'capricorn-motion.js',
