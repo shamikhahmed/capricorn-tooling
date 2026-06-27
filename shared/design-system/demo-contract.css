@@ -1,0 +1,162 @@
+/* Demo mode contract — shared banner + toast primitives (in-scope Cap apps) */
+
+.cap-demo-banner {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 8px);
+  left: 12px;
+  right: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+  z-index: 950;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--cap-accent) 85%, #000), var(--cap-accent));
+  border: 1px solid color-mix(in srgb, var(--cap-accent-contrast, #fff) 22%, transparent);
+  color: var(--cap-accent-contrast, #fff);
+  box-shadow: var(--cap-shadow-3, 0 8px 28px rgba(0, 0, 0, 0.35));
+  font: 500 var(--cap-text-sm, 0.8125rem) var(--cap-font-body, system-ui);
+  line-height: 1.45;
+}
+.cap-demo-banner[hidden] { display: none !important; }
+.cap-demo-banner p { flex: 1; margin: 0; }
+.cap-demo-banner strong { font-weight: 700; }
+.cap-demo-banner__dismiss {
+  flex-shrink: 0;
+  min-width: var(--cap-touch-target, 44px);
+  min-height: var(--cap-touch-target, 44px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+.cap-demo-banner__dismiss:focus-visible {
+  outline: 2px solid var(--cap-accent-contrast, #fff);
+  outline-offset: 2px;
+}
+
+/* Lightweight toast aligned with .cap-toast in components.css */
+.cap-toast-inline {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + var(--cap-safe-b, env(safe-area-inset-bottom, 0px)));
+  transform: translate(-50%, 0);
+  z-index: 900;
+  padding: 12px 20px;
+  background: var(--cap-glass-bg, rgba(28, 28, 30, 0.92));
+  border: 1px solid var(--cap-glass-border, rgba(255, 255, 255, 0.12));
+  border-radius: var(--cap-radius-pill, 999px);
+  font: 500 var(--cap-text-sm, 0.8125rem) var(--cap-font-body, system-ui);
+  color: var(--cap-text, #f5f5f7);
+  box-shadow: var(--cap-shadow-3, 0 8px 28px rgba(0, 0, 0, 0.35));
+  animation: cap-toast-in 0.28s var(--cap-ease, ease);
+  pointer-events: none;
+}
+.cap-toast-inline[data-tone="success"] { border-color: color-mix(in srgb, var(--cap-success, #34c759) 40%, transparent); }
+.cap-toast-inline[data-tone="warning"] { border-color: color-mix(in srgb, var(--cap-warning, #ff9f0a) 40%, transparent); }
+.cap-toast-inline[data-tone="danger"] { border-color: color-mix(in srgb, var(--cap-danger, #ff453a) 40%, transparent); }
+
+@keyframes cap-toast-in {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Shared empty state — vanilla apps (N7) */
+.cap-empty {
+  text-align: center;
+  padding: 2rem 1.25rem;
+  margin: 1rem 0;
+  border-radius: var(--cap-radius-lg, 16px);
+  background: var(--cap-surface-2, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--cap-border, rgba(255, 255, 255, 0.08));
+}
+.cap-empty__icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.cap-empty__title {
+  font: 700 var(--cap-text-lg, 1.0625rem) var(--cap-font-body, system-ui);
+  color: var(--cap-text, #f5f5f7);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+.cap-empty__body {
+  font: 400 var(--cap-text-sm, 0.8125rem) var(--cap-font-body, system-ui);
+  color: var(--cap-text-secondary, rgba(245, 245, 247, 0.72));
+  line-height: 1.55;
+  max-width: 22rem;
+  margin: 0 auto 1rem;
+}
+.cap-empty__cta { margin-top: 0.5rem; }
+
+/* Loading skeleton — lightweight pulse for lists */
+.cap-skeleton {
+  border-radius: var(--cap-radius-md, 12px);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--cap-text, #fff) 6%, transparent) 0%,
+    color-mix(in srgb, var(--cap-text, #fff) 12%, transparent) 50%,
+    color-mix(in srgb, var(--cap-text, #fff) 6%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: cap-skeleton-pulse 1.25s ease-in-out infinite;
+}
+@keyframes cap-skeleton-pulse {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* In-app offline notice (ScentCap + vanilla) */
+.cap-offline-banner {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 940;
+  max-width: min(420px, calc(100vw - 24px));
+  padding: 8px 14px;
+  border-radius: var(--cap-radius-pill, 999px);
+  background: color-mix(in srgb, var(--cap-warning, #ff9f0a) 18%, var(--cap-surface-1, #1c1c1e));
+  border: 1px solid color-mix(in srgb, var(--cap-warning, #ff9f0a) 35%, transparent);
+  color: var(--cap-text, #f5f5f7);
+  font: 500 var(--cap-text-xs, 0.75rem) var(--cap-font-body, system-ui);
+  text-align: center;
+  box-shadow: var(--cap-shadow-2, 0 4px 16px rgba(0, 0, 0, 0.25));
+  pointer-events: none;
+}
+
+/* VaultCap legacy empty-ios → shared cap-empty (N7 bridge) */
+.empty-ios {
+  text-align: center;
+  padding: 2rem 1.25rem;
+  margin: 1rem 0;
+  border-radius: var(--cap-radius-lg, 16px);
+  background: var(--cap-surface-2, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--cap-border, rgba(255, 255, 255, 0.08));
+}
+.empty-ios .ei-ic {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.empty-ios .ei-title {
+  font: 700 var(--cap-text-lg, 1.0625rem) var(--cap-font-body, system-ui);
+  color: var(--cap-text, #f5f5f7);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+.empty-ios .ei-sub {
+  font: 400 var(--cap-text-sm, 0.8125rem) var(--cap-font-body, system-ui);
+  color: var(--cap-text-secondary, rgba(245, 245, 247, 0.72));
+  line-height: 1.55;
+  max-width: 22rem;
+  margin: 0 auto 1rem;
+}

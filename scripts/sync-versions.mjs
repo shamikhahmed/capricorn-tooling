@@ -97,6 +97,19 @@ for (const app of APPS) {
     console.log(`✓ sw.js ${app.dir}`);
   }
 
+  const versionJs = join(base, 'js/version.js');
+  if (existsSync(versionJs) && version && swCache) {
+    let vjs = readFileSync(versionJs, 'utf8');
+    const next = vjs
+      .replace(/var APP_VERSION = '[^']+';/, `var APP_VERSION = '${version}';`)
+      .replace(/var SW_CACHE = '[^']+';/, `var SW_CACHE = '${swCache}';`);
+    if (next !== vjs) {
+      writeFileSync(versionJs, next);
+      count++;
+      console.log(`✓ js/version.js ${app.dir}`);
+    }
+  }
+
   if (syncLandingBadge(join(base, app.landing), version, app.dir)) {
     count++;
     console.log(`✓ landing ${app.dir}`);

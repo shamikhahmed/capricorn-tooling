@@ -1,0 +1,156 @@
+/* ════════════════════════════════════════════════════════════════
+   Capricorn Desktop Shell — Mac / Windows browsers (≥900px)
+   Sidebar + full-width content; phone shell only below breakpoint.
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  --cap-desktop-bg: #0a0a0f;
+  --cap-sidebar-w: 248px;
+  --cap-sidebar-w-wide: 272px;
+}
+
+@media (min-width: 900px) {
+  html.cap-desktop-bg {
+    background: var(--cap-desktop-bg);
+  }
+
+  .cap-desktop-shell {
+    display: flex;
+    width: 100%;
+    max-width: var(--cap-max-wide, 1440px);
+    margin: 0 auto;
+    min-height: 100dvh;
+    min-height: 100vh;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.42);
+    position: relative;
+    z-index: 1;
+  }
+
+  #cap-nav-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    width: var(--cap-sidebar-w);
+    min-width: var(--cap-sidebar-w);
+    max-width: var(--cap-sidebar-w-wide);
+    height: 100dvh;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+    border-right: 1px solid var(--cap-border, rgba(255, 255, 255, 0.08));
+    background: var(--cap-surface-1, rgba(22, 22, 26, 0.98));
+    padding: 1.25rem 0.65rem;
+    z-index: 120;
+  }
+
+  .cap-desktop-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    min-height: 100vh;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  body.cap-desktop-nav #nav,
+  body.cap-desktop-nav nav.nav.cap-mobile-only {
+    display: none !important;
+  }
+
+  .cap-sidebar-brand {
+    font: 700 1.0625rem var(--cap-font-body, system-ui);
+    letter-spacing: -0.02em;
+    padding: 0 0.75rem 1.25rem;
+    color: var(--cap-text, #f5f5f7);
+  }
+
+  .cap-side-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    margin-bottom: 2px;
+    border: none;
+    background: transparent;
+    color: var(--cap-text-secondary, rgba(245, 245, 247, 0.72));
+    font: 500 0.8125rem var(--cap-font-body, system-ui);
+    border-radius: var(--cap-radius-md, 12px);
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .cap-side-btn:hover {
+    background: color-mix(in srgb, var(--cap-text, #fff) 6%, transparent);
+    color: var(--cap-text, #f5f5f7);
+  }
+  .cap-side-btn.on,
+  .cap-side-btn.active {
+    background: color-mix(in srgb, var(--cap-accent, #5b8dee) 18%, transparent);
+    color: var(--cap-accent, #5b8dee);
+    font-weight: 600;
+  }
+  .cap-side-btn span:first-child {
+    font-size: 1.15rem;
+    line-height: 1;
+    width: 1.5rem;
+    text-align: center;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 899px) {
+  #cap-nav-sidebar {
+    display: none !important;
+  }
+}
+
+/* Phone column — mobile / narrow tablet only */
+@media (max-width: 899px) {
+  .cap-phone-shell {
+    max-width: min(430px, 100vw);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+}
+
+/* Visible scrollbars on desktop (Windows + Mac trackpad users) */
+@media (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  .cap-scroll-y,
+  #view,
+  .screen,
+  #screens .screen,
+  .main {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(127, 127, 127, 0.35) transparent;
+  }
+  .cap-scroll-y::-webkit-scrollbar,
+  #view::-webkit-scrollbar,
+  .screen::-webkit-scrollbar,
+  #screens .screen::-webkit-scrollbar,
+  .main::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .cap-scroll-y::-webkit-scrollbar-thumb,
+  #view::-webkit-scrollbar-thumb,
+  .screen::-webkit-scrollbar-thumb,
+  #screens .screen::-webkit-scrollbar-thumb,
+  .main::-webkit-scrollbar-thumb {
+    background: rgba(127, 127, 127, 0.35);
+    border-radius: 99px;
+  }
+  .cap-scroll-y::-webkit-scrollbar-thumb:hover,
+  #view::-webkit-scrollbar-thumb:hover,
+  .screen::-webkit-scrollbar-thumb:hover {
+    background: rgba(127, 127, 127, 0.55);
+  }
+}

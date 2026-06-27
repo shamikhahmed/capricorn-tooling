@@ -7,15 +7,14 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { WORKSPACE_ROOT as ROOT } from './lib/workspace-root.mjs';
 
+/** In-scope apps — cross-portfolio excellence initiative (June 2026). */
 const APPS = [
   { name: 'VaultCap', index: 'index.html' },
   { name: 'PulseCap', index: 'index.html' },
-  { name: 'PrismCap', index: 'index.html' },
   { name: 'SteadyCap', index: 'index.html' },
   { name: 'LedgerCap', index: 'index.html' },
   { name: 'DeePonyCap', index: 'index.html' },
   { name: 'ScentCap', index: 'index.html' },
-  { name: 'AuraCap', index: 'index.html' },
 ];
 
 let issues = 0;
@@ -38,25 +37,96 @@ for (const { name, index } of APPS) {
   const html = readFileSync(htmlPath, 'utf8');
   if (!html.includes('data-cap-app="1"')) fail(name, 'data-cap-app not set on body');
   else ok(name, 'fast app shell flag');
+  if (!html.includes('cap-demo-mode.js') && !html.includes('CapDemo')) {
+    fail(name, 'cap-demo-mode.js not linked — run sync-design-system');
+  } else ok(name, 'demo contract script');
   if (/gsap\.min\.js/.test(html)) fail(name, 'GSAP still loaded on app shell');
   else ok(name, 'no GSAP on shell');
   if (/capricorn-cinematic\.js/.test(html)) fail(name, 'cinematic still on shell');
   else ok(name, 'no cinematic on shell');
+  if (!/cap-skip-link|skip-link|Skip to content/i.test(html)) {
+    fail(name, 'missing skip link — add .cap-skip-link as first focusable element');
+  } else ok(name, 'skip link present');
+  if (name === 'ScentCap') {
+    if (!html.includes('Content-Security-Policy')) fail(name, 'CSP meta missing on index.html');
+    else ok(name, 'CSP meta present');
+  } else if (!html.includes('Content-Security-Policy')) {
+    fail(name, 'CSP meta missing');
+  } else ok(name, 'CSP meta present');
   const core = join(dir, name === 'ScentCap' || name === 'AuraCap' ? 'public/css/capricorn-core.css' : 'css/capricorn-core.css');
   if (!existsSync(core)) fail(name, 'capricorn-core.css missing');
   else {
     const coreText = readFileSync(core, 'utf8');
-    if (!coreText.includes('data-cap-app="1"]') || !coreText.includes('.cap-tab-bar')) {
+    if (!coreText.includes('data-cap-app="1"]') || !coreText.includes('.cap-tab-bar') || !coreText.includes('.cap-demo-banner')) {
       fail(name, 'capricorn-core outdated — run sync-design-system');
     } else ok(name, 'design system synced');
   }
 }
 
-const hub = join(ROOT, 'shamikhahmed.github.io/index.html');
-if (existsSync(hub)) {
-  const h = readFileSync(hub, 'utf8');
-  if (!h.includes('capricorn-core.css')) fail('hub', 'missing capricorn-core.css');
-  else ok('hub', 'capricorn-core linked');
+console.log(`\n--- Scope: ${APPS.length} in-scope apps ---`);
+
+console.log('\n--- Version consistency (M15) ---');
+for (const { name } of APPS) {
+  const vf = join(ROOT, name, 'VERSION.json');
+  if (!existsSync(vf)) {
+    fail(name, 'VERSION.json missing');
+    continue;
+  }
+  let meta;
+  try {
+    meta = JSON.parse(readFileSync(vf, 'utf8'));
+  } catch {
+    fail(name, 'VERSION.json invalid JSON');
+    continue;
+  }
+  const { version, swCache } = meta;
+  if (!version) {
+    fail(name, 'VERSION.json missing version field');
+    continue;
+  }
+
+  if (name === 'ScentCap') {
+    const pkgPath = join(ROOT, name, 'package.json');
+    if (!existsSync(pkgPath)) {
+      fail(name, 'package.json missing');
+    } else {
+      const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
+      if (pkg.version !== version) {
+        fail(name, `package.json v${pkg.version} ≠ VERSION.json v${version} — run sync-versions`);
+      } else {
+        ok(name, `v${version} (package.json aligned)`);
+      }
+    }
+    const vitePath = join(ROOT, name, 'vite.config.ts');
+    if (existsSync(vitePath)) {
+      const vite = readFileSync(vitePath, 'utf8');
+      if (!vite.includes('versionManifest.swCache') && swCache) {
+        fail(name, 'vite PWA cacheId not wired to VERSION.json swCache');
+      } else {
+        ok(name, 'vite PWA cacheId wired');
+      }
+    }
+    continue;
+  }
+
+  const swPath = join(ROOT, name, 'sw.js');
+  if (!existsSync(swPath)) {
+    fail(name, 'sw.js missing');
+    continue;
+  }
+  const sw = readFileSync(swPath, 'utf8');
+  let cacheName = sw.match(/^const CACHE = '([^']+)';/m)?.[1];
+  if (!cacheName && name === 'DeePonyCap') {
+    const vjs = join(ROOT, name, 'js/version.js');
+    if (existsSync(vjs)) {
+      cacheName = readFileSync(vjs, 'utf8').match(/SW_CACHE = '([^']+)'/)?.[1];
+    }
+  }
+  if (swCache && (!cacheName || cacheName !== swCache)) {
+    fail(name, `sw cache "${cacheName ?? '?'}" ≠ VERSION.json swCache "${swCache}" — run sync-versions`);
+  } else {
+    ok(name, `v${version} · swCache ${swCache || cacheName || 'n/a'}`);
+  }
 }
 
 const verify = join(ROOT, 'LedgerCap/scripts/verify-ledger.js');

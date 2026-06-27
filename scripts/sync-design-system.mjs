@@ -11,7 +11,7 @@ import { join } from 'node:path';
 import { WORKSPACE_ROOT as ROOT, SCRIPTS_DIR, SHARED_DIR } from './lib/workspace-root.mjs';
 const DS = join(SHARED_DIR, 'design-system');
 
-const CORE_LAYERS = ['tokens.css', 'a11y.css', 'motion.css', 'premium.css', 'motion-premium.css', 'cap-tabs.css', 'app-fast.css'];
+const CORE_LAYERS = ['tokens.css', 'a11y.css', 'motion.css', 'premium.css', 'motion-premium.css', 'cap-tabs.css', 'demo-contract.css', 'app-fast.css', 'cap-desktop-shell.css'];
 const COMPONENT_LAYER = 'components.css';
 const JS_FILES = [
   'capricorn-motion.js',
@@ -21,6 +21,8 @@ const JS_FILES = [
   'capricorn-deck.js',
   'capricorn-deck-pro.js',
   'capricorn-pitch.js',
+  'cap-demo-mode.js',
+  'cap-desktop-nav.js',
 ];
 const VENDOR_FILES = ['gsap.min.js', 'ScrollTrigger.min.js'];
 
@@ -77,5 +79,15 @@ for (const t of TARGETS) {
 
   synced++;
   console.log(`✓ ${t.app} → ${t.cssDir}/capricorn-core.css + ${JS_FILES.length} JS + vendor`);
+
+  if (t.app === 'ScentCap') {
+    const stylesDir = join(appDir, 'src/styles');
+    mkdirSync(stylesDir, { recursive: true });
+    writeFileSync(
+      join(stylesDir, 'cap-premium-base.css'),
+      banner(['premium.css']) + layer('premium.css')
+    );
+    console.log(`✓ ScentCap → src/styles/cap-premium-base.css`);
+  }
 }
 console.log(`design-system synced to ${synced} app(s)`);
