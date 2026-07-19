@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "locked_at": "2026-07-19",
+  "source": "shamikhahmed.github.io/assets/marks",
+  "apps": {
+    "auracap": {
+      "name": "AuraCap",
+      "mark_sha256": "62ffc91c8c8e1425ac6af8c3ffe9ad37bd32a6e998c9a85e01485a85922d81e6",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/auracap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "62ffc91c8c8e1425ac6af8c3ffe9ad37bd32a6e998c9a85e01485a85922d81e6",
+        "icon512": "a7178a514cef60aca2f89e55bd0a42d1211b4481243b7fef2c47cc782531d675",
+        "maskable512": "ef4ea00103b34dfc653f3b1aca132a7beabab0599ff5137b17ea38228e027f18"
+      }
+    },
+    "carcap": {
+      "name": "CarCap",
+      "mark_sha256": "ab9933f513f9f20312c74e21198207ad8fb38927e1b04988512816ad2364c6e8",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/carcap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "ab9933f513f9f20312c74e21198207ad8fb38927e1b04988512816ad2364c6e8",
+        "icon512": "b21796afc1835e973a07cdc216a0ddb6603952dbb1212ce78dc5305a3e0c4f3f",
+        "maskable512": "9eb9010fb9f4c26a83574c340afc24bfc75b0e4c34ba1734f7adece36db4f5c8"
+      }
+    },
+    "deeponycap": {
+      "name": "DeePonyCap",
+      "mark_sha256": "4d151be33cf08b3913fff5da43d2e711845a8156a912eb8c2909ffeb31d79598",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/deeponycap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "4d151be33cf08b3913fff5da43d2e711845a8156a912eb8c2909ffeb31d79598",
+        "icon512": "6bb029c4e66a654d4c56e4ea818a6de0b92b8a668673edde5039575ab17a0df4",
+        "maskable512": "1395aefba01c143022f028f3f00b2fa96dbb10afcffa974c8ec7009e599a1cd1"
+      }
+    },
+    "ideacap": {
+      "name": "IdeaCap",
+      "mark_sha256": "e9e6e28350ecbb28fd86a82da46273df845dc92ebd3c31680261d189f1596817",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/ideacap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "e9e6e28350ecbb28fd86a82da46273df845dc92ebd3c31680261d189f1596817",
+        "icon512": "15ffdeaea4b7912a67795b192f14d62749d72a73224ab93ec2f11c69064d05d2",
+        "maskable512": "06aeb7fbb9125e4b6c65a114219502f54775c59e39c3a7ca82be01a3cf356ed3"
+      }
+    },
+    "ledgercap": {
+      "name": "LedgerCap",
+      "mark_sha256": "cbd25fa5483bfc05043ba79d3db944e328f622dd1fbdf9fd240bd788e9bcccd9",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/ledgercap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "cbd25fa5483bfc05043ba79d3db944e328f622dd1fbdf9fd240bd788e9bcccd9",
+        "icon512": "a30d735f194008814443daec72aae0768527e6cfcbe626f62e4bfd8f89b59e9a",
+        "maskable512": "051bd8035fc91c571403c64bff2d9e26476972f590adeb7bffbc635590848357"
+      }
+    },
+    "masterycap": {
+      "name": "MasteryCap",
+      "mark_sha256": "cfeb41c37bfd72b9a52994fc0746d31bff4c14a3826fbe1177dafe94a5cab866",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/masterycap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "cfeb41c37bfd72b9a52994fc0746d31bff4c14a3826fbe1177dafe94a5cab866",
+        "icon512": "36e1a172ac607004be5c1ad18841021c1f77efecd3e3317bb611754c6f60efea",
+        "maskable512": "9b4c6a96846867b279d35cdf79690d55c55d95a5970dfda17f4811931fab4a2b"
+      }
+    },
+    "prismcap": {
+      "name": "PrismCap",
+      "mark_sha256": "6c06e8dd4fdd45d51e0dbdc4d0f0c47569ae0cd940ee9f8ae259cf0592ecb2eb",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/prismcap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "6c06e8dd4fdd45d51e0dbdc4d0f0c47569ae0cd940ee9f8ae259cf0592ecb2eb",
+        "icon512": "7762acabb812bffc411335ab0e8884a7992bf915bba2c0108a5a9a3825e03d05",
+        "maskable512": "c1233a900dac99b120240b521422b6e15f6dd89922e40a525cef51fbad056a4b"
+      }
+    },
+    "pulsecap": {
+      "name": "PulseCap",
+      "mark_sha256": "a1e1f803631cdcf2a4d2493bfeb202fd893fead0a44dc925a6f3db2adaa3dcc7",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/pulsecap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "a1e1f803631cdcf2a4d2493bfeb202fd893fead0a44dc925a6f3db2adaa3dcc7",
+        "icon512": "e27e682260b9454e39ee2fa2ba3673ec15e8a93eb8af07c551dc473c6cd49366",
+        "maskable512": "f11f275e6dca38a59b56833a1e3cc6e7b4fee657cb0f144597992007dd2b544b"
+      }
+    },
+    "scentcap": {
+      "name": "ScentCap",
+      "mark_sha256": "cc059004bc0264554f7c50592521cfd7a2e77fd959c6e327dc6a31312099633a",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/scentcap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "cc059004bc0264554f7c50592521cfd7a2e77fd959c6e327dc6a31312099633a",
+        "icon512": "1b538be61147c04e088535fa3c02f331f12138a1a7e0f24251f992767ef75e66",
+        "maskable512": "78e013d04a8f949cd5a083d02af4b37e268857d055c3712eabbcb31234bf70b2"
+      }
+    },
+    "soulcap": {
+      "name": "SoulCap",
+      "mark_sha256": "ad2ed2eed812a6d81ecb55ec8049c73b3351f008ad52afc64fea6fb5e65f1d6c",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/soulcap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "ad2ed2eed812a6d81ecb55ec8049c73b3351f008ad52afc64fea6fb5e65f1d6c",
+        "icon512": "5677a1a308f78ffc421e6bdf70e73702a0304de1b7e5a281646f8aeb53c4f421",
+        "maskable512": "74c5d94c82e9b06b5a75d427bd633af9ad023afd0dacc1671b444c76b2d76e1a"
+      }
+    },
+    "steadycap": {
+      "name": "SteadyCap",
+      "mark_sha256": "6d158b5d92aac2094a1f515957ca370c045e61ac7004c30bc8cefcdf4a3d4f17",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/steadycap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "6d158b5d92aac2094a1f515957ca370c045e61ac7004c30bc8cefcdf4a3d4f17",
+        "icon512": "34bb95873f10b0f53e06b92fe639bda717267bcf96e8bb7d16292a6627fe3a1d",
+        "maskable512": "189d7dc0b75c729a1e65a30cf160b5e31a6a37e90406598e726118fb3c6c7dec"
+      }
+    },
+    "travelcap": {
+      "name": "TravelCap",
+      "mark_sha256": "a19aa6177b1b697bdbd484e4cb888e5f7379ccdc213e1bd23c074b933b857c41",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/travelcap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "a19aa6177b1b697bdbd484e4cb888e5f7379ccdc213e1bd23c074b933b857c41",
+        "icon512": "d0c00cf27a9e07d70f00c16a0e34665bb87e6f86ff9b22ca382840d55d347e8e",
+        "maskable512": "aa962aed9e3312467570bf107656e228f5e6134ceb1bd0d3762bb6cccfd76623"
+      }
+    },
+    "vaultcap": {
+      "name": "VaultCap",
+      "mark_sha256": "048e2254b209cd38a37c2f5db3d727df0e3e020f88e944a57550b4fbad719ec4",
+      "pack_dir": "capricorn-tooling/shared/design-system/icon-packs/vaultcap",
+      "files": {
+        "mark": "mark.svg",
+        "favicon": "favicon.svg",
+        "icon192": "icon-192.png",
+        "icon512": "icon-512.png",
+        "maskable512": "icon-maskable-512.png",
+        "appleTouch180": "apple-touch-icon-180.png",
+        "icon1024": "icon-1024.png"
+      },
+      "hashes": {
+        "mark": "048e2254b209cd38a37c2f5db3d727df0e3e020f88e944a57550b4fbad719ec4",
+        "icon512": "e225d51a114bd11ed97c8a46fc048daff4449f91dff2b3825c6631ab69466d15",
+        "maskable512": "ff0b3869e45f27fdbf732604dd1d769b9e53ddc6d343438867da16f34d9241c6"
+      }
+    }
+  }
+}
