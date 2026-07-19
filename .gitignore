@@ -3,3 +3,12 @@ node_modules/
 *.log
 .env
 .env.*
+
+# Never commit Cap app clones into tooling
+DeePonyCap/
+LedgerCap/
+PrismCap/
+PulseCap/
+SteadyCap/
+VaultCap/
+shamikhahmed.github.io/
