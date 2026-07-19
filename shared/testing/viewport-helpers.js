@@ -62,7 +62,9 @@ async function assertCapSharedDesktop(page, ex) {
  */
 async function assertLedgerCapMobile(page, ex) {
   await ex(page.locator('#nav-sidebar')).toBeHidden();
-  await ex(page.locator('#nav .nav-tab').first()).toBeVisible();
+  const navBtn = page.locator('#nav .psx-nav-btn, #nav .nav-tab').first();
+  await ex(navBtn).toBeVisible();
+  await ex(page.locator('#nav')).toBeVisible();
   await ex(page.locator('body')).not.toHaveClass(/lc-desktop-nav/);
 }
 
