@@ -11,7 +11,10 @@
     "sync:design-system": "node scripts/sync-design-system.mjs",
     "build:tokens": "node scripts/build-design-tokens.mjs",
     "audit:tokens": "node scripts/audit-design-tokens.mjs",
-    "audit:truth": "node scripts/truth-audit.mjs"
+    "audit:truth": "node scripts/truth-audit.mjs",
+    "audit:versions": "node scripts/audit-version-truth.mjs",
+    "audit:secrets": "node scripts/audit-secrets.mjs",
+    "contrast:check": "node scripts/contrast-check.mjs"
   },
   "engines": {
     "node": ">=20"

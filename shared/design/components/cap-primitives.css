@@ -1,0 +1,115 @@
+/* Cap Foundation shared primitives — framework-free (FND-03) */
+.cap-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3, 8px);
+  min-height: 44px;
+  padding: 0 var(--space-5, 16px);
+  border-radius: var(--radius-sm, 10px);
+  border: none;
+  font: 600 17px/22px var(--font-ui, system-ui, sans-serif);
+  cursor: pointer;
+}
+.cap-btn--primary { background: var(--accent); color: var(--accent-contrast); }
+.cap-btn--secondary { background: var(--surface-2); color: var(--text); }
+.cap-btn--tertiary { background: transparent; color: var(--accent-text); }
+.cap-btn--destructive { background: var(--danger); color: #fff; }
+
+.cap-icon-btn {
+  width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none; background: transparent; border-radius: var(--radius-sm, 10px);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.cap-switch {
+  width: 51px; height: 31px; border-radius: 999px;
+  border: none; padding: 2px; cursor: pointer;
+  background: var(--separator);
+  position: relative;
+}
+.cap-switch[aria-checked="true"] { background: var(--accent); }
+.cap-switch__knob {
+  width: 27px; height: 27px; border-radius: 999px;
+  background: #fff; display: block;
+  transition: transform var(--dur-press, 120ms) var(--ease-standard, ease);
+}
+.cap-switch[aria-checked="true"] .cap-switch__knob { transform: translateX(20px); }
+
+.cap-banner {
+  display: flex; gap: var(--space-4, 12px); align-items: flex-start;
+  padding: var(--space-4, 12px) var(--space-5, 16px);
+  border-radius: var(--radius-md, 14px);
+  background: var(--surface-2);
+  color: var(--text);
+  margin: var(--space-4, 12px) 0;
+}
+.cap-banner--warning { background: color-mix(in srgb, var(--warning) 18%, var(--surface)); }
+.cap-banner--danger { background: color-mix(in srgb, var(--danger) 18%, var(--surface)); }
+
+.cap-sheet-backdrop {
+  position: fixed; inset: 0; background: var(--scrim); z-index: var(--z-sheet, 50);
+}
+.cap-sheet {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  max-height: 90dvh; max-height: 90vh;
+  background: var(--surface);
+  border-radius: var(--radius-lg, 20px) var(--radius-lg, 20px) 0 0;
+  padding: var(--space-4, 12px) var(--space-5, 16px) calc(var(--space-5, 16px) + env(safe-area-inset-bottom, 0px));
+  z-index: calc(var(--z-sheet, 50) + 1);
+  overflow: auto;
+}
+.cap-sheet__handle {
+  width: 36px; height: 5px; border-radius: 999px;
+  background: var(--separator); margin: 4px auto 12px;
+}
+
+.cap-toast {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(49px + env(safe-area-inset-bottom, 0px) + 12px);
+  z-index: var(--z-toast, 70);
+  background: var(--surface-2); color: var(--text);
+  padding: 12px 16px; border-radius: var(--radius-md, 14px);
+  box-shadow: var(--elev-2);
+  max-width: min(92vw, 420px);
+}
+
+.cap-dialog {
+  position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: min(92vw, 360px); background: var(--surface);
+  border-radius: var(--radius-lg, 20px); padding: 20px;
+  z-index: var(--z-modal, 60);
+  box-shadow: var(--elev-2);
+}
+.cap-dialog__actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+
+.cap-empty, .cap-error {
+  text-align: center; padding: 32px 16px; color: var(--text-secondary);
+}
+.cap-empty__title, .cap-error__title {
+  color: var(--text); font: 600 20px/25px var(--font-ui, system-ui);
+  margin: 12px 0 8px;
+}
+
+.cap-tabbar {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  height: calc(49px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  display: flex; z-index: var(--z-tabbar, 20);
+  background: var(--material-bar, var(--surface));
+  border-top: 0.5px solid var(--separator);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+.cap-tabbar a, .cap-tabbar button {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; font: 500 11px/13px var(--font-ui, system-ui); color: var(--text-secondary);
+  text-decoration: none; background: none; border: none; min-height: 44px;
+}
+.cap-tabbar [aria-current="page"] { color: var(--accent); }
+
+@media (prefers-reduced-transparency: reduce) {
+  .cap-tabbar { background: var(--surface); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
