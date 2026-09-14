@@ -9,6 +9,7 @@
     "sync:versions": "node scripts/sync-versions.mjs",
     "sync:catalog": "node scripts/sync-catalog-versions.mjs",
     "sync:design-system": "node scripts/sync-design-system.mjs",
+    "build:tokens": "node scripts/build-design-tokens.mjs",
     "audit:tokens": "node scripts/audit-design-tokens.mjs",
     "audit:truth": "node scripts/truth-audit.mjs"
   },
