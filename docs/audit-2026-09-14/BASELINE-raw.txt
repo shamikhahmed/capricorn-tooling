@@ -1,0 +1,368 @@
+===== AuraCap =====
+branch: main
+HEAD: e2b947f docs: regen screen gallery after home deep remint.
+status_sb: ## main
+upstream: NONE
+remote:
+origin	https://github.com/shamikhahmed/AuraCap.git (fetch)
+origin	https://github.com/shamikhahmed/AuraCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== CarCap =====
+branch: main
+HEAD: 85df8c7 docs: regen screen gallery after home deep remint.
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/CarCap.git (fetch)
+origin	https://github.com/shamikhahmed/CarCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== CookCap =====
+branch: main
+HEAD: a56ddc9 feat: ship v3.4.1 — bible §9 micros + onboard→flip 60fps proof
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/CookCap.git (fetch)
+origin	https://github.com/shamikhahmed/CookCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== DeeFoodieApp =====
+branch: main
+HEAD: 70a9b7c perf(mobile): offline Karachi map cache and smoother map UX
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/DeeFoodieApp.git (fetch)
+origin	https://github.com/shamikhahmed/DeeFoodieApp.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== DeePonyCap =====
+branch: main
+HEAD: 2995124 Quiet background updates; bump to 3.7.4.
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/DeePonyCap.git (fetch)
+origin	https://github.com/shamikhahmed/DeePonyCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== IdeaCap =====
+branch: main
+HEAD: 3ddd88f feat: native live dictation via platform STT (1.2.1)
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/IdeaCap.git (fetch)
+origin	https://github.com/shamikhahmed/IdeaCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 1
+tags_sample: v1.0.1 
+
+===== LedgerCap =====
+branch: main
+HEAD: ba9c350 fix: use window.esc for Urdu splash tagline.
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/LedgerCap.git (fetch)
+origin	https://github.com/shamikhahmed/LedgerCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== MasteryCap =====
+branch: main
+HEAD: 386bd1a feat: Charts + Hasil UR chrome (v51.8)
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/MasteryCap.git (fetch)
+origin	https://github.com/shamikhahmed/MasteryCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 20
+tags_sample: v51.4.0 v51.5.0 v51.6.0 v51.7.0 v51.8.0 
+
+===== PrismCap =====
+branch: main
+HEAD: 03fd9b9 docs: regen screen gallery after home deep remint.
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/PrismCap.git (fetch)
+origin	https://github.com/shamikhahmed/PrismCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== PulseCap =====
+branch: main
+HEAD: 6c78172 fix: v6.42.0 Library shortcut opened Settings, not the library
+status_sb: ## main
+upstream: NONE
+remote:
+origin	https://github.com/shamikhahmed/PulseCap.git (fetch)
+origin	https://github.com/shamikhahmed/PulseCap.git (push)
+dirty_count: 109
+dirty_files:
+ D .cursor/rules/project-rules.mdc
+ D .github/workflows/ci.yml
+ D .gitignore
+ D CHANGELOG.md
+ D CLAUDE.md
+ D CURSOR-CONTENT-AUDIT.md
+ D CURSOR-PHASE12-AUDIT.md
+ D FEATURES.md
+ D IA-RATIONALE.md
+ D PERFECTION-REVIEW.md
+ D PRIVACY.md
+ D README.md
+ D REBUILD-PROGRESS.md
+ D VERSION.json
+ D apple-touch-icon.png
+ D assets/apple-touch-icon-180.png
+ D assets/apple-touch-startup-320x568-dark.png
+ D assets/apple-touch-startup-320x568-light.png
+ D assets/apple-touch-startup-375x667-dark.png
+ D assets/apple-touch-startup-375x667-light.png
+ D assets/apple-touch-startup-375x812-dark.png
+ D assets/apple-touch-startup-375x812-light.png
+ D assets/apple-touch-startup-390x844-dark.png
+ D assets/apple-touch-startup-390x844-light.png
+ D assets/apple-touch-startup-414x736-dark.png
+ D assets/apple-touch-startup-414x736-light.png
+ D assets/apple-touch-startup-414x896-dark.png
+ D assets/apple-touch-startup-414x896-light.png
+ D assets/apple-touch-startup-428x926-dark.png
+ D assets/apple-touch-startup-428x926-light.png
+ D assets/icon-192.png
+ D assets/icon-512.png
+ D assets/icon-maskable-192.png
+ D assets/mark.svg
+ D assets/qr-pulsecap.png
+ D css/base.css
+ D css/capricorn-core.css
+ D css/components.css
+ D css/identity.css
+ D css/layout.css
+ D css/shell.css
+ D docs/AUDIT-IA.md
+ D docs/CURSOR-ULTRACODE.md
+ D docs/GUIDE.md
+ D docs/IOS_INFO_PLIST.md
+ D docs/MERGE-DECISION.md
+ D docs/PRODUCTION-AUDIT-5.5.2.md
+ D docs/SCREEN-GALLERY.md
+ D docs/ULTRACODE-STATE.md
+ D docs/V5.2-PLAN.md
+ D icon-128.png
+ D icon-144.png
+ D icon-152.png
+ D icon-167.png
+ D icon-180.png
+ D icon-192.png
+ D icon-384.png
+ D icon-72.png
+ D icon-96.png
+ D icons/icon-512.png
+ D icons/icon-maskable-512.png
+ D js/app.js
+ D js/cap-demo-mode.js
+ D js/cap-desktop-nav.js
+ D js/coach-kernel.js
+ D js/data/equipment-db.js
+ D js/data/exercise-db.js
+ D js/data/exercise-library.js
+ D js/data/foods-db.js
+ D js/data/form-loops.js
+ D js/data/injuries-db.js
+ D js/data/splits-db.js
+ D js/engines.js
+ D js/gym-tools.js
+ D js/storage.js
+ D js/training-plan.js
+ D landing.html
+ D mark.svg
+ D package-lock.json
+ D presentation.html
+ D qa/device-matrix/meta.json
+ D qa/device-matrix/probe-summary.json
+ D screen-gallery.html
+ D scripts/enrich-exdb.js
+ D tests/a11y.spec.js
+ D tests/content.spec.js
+ D tests/device-matrix.js
+ D tests/device-matrix.spec.js
+ D tests/edge-states.spec.js
+ D tests/flows.spec.js
+ D tests/functional.spec.js
+ D tests/helpers/viewport-helpers.js
+ D tests/iphone-soak.spec.js
+ D tests/module-smoke.spec.js
+ D tests/offline.spec.js
+ D tests/onboarding-skip-optional.spec.js
+ D tests/phase36.spec.js
+ D tests/qa-matrix.spec.js
+ D tests/smoke.spec.js
+ D tests/ux-integrity.spec.js
+ D tests/v61-gym-tools.spec.js
+ D tests/viewport.spec.js
+?? .DS_Store
+?? js/capricorn-deck-pro.js
+?? js/capricorn-pitch.js
+?? js/capricorn-premium-nav.js
+?? qa/device-matrix/browser/
+?? qa/device-matrix/ipad/
+?? qa/device-matrix/iphone/
+tags_local: 12
+tags_sample: v5.6.0 v5.6.1 v6.2.0 v6.2.1 v6.2.2 
+
+===== ScentCap =====
+branch: main
+HEAD: 88dd116 feat: Cap shell BP 700 + device-matrix visual QA (v2.0.10)
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/ScentCap.git (fetch)
+origin	https://github.com/shamikhahmed/ScentCap.git (push)
+dirty_count: 2
+dirty_files:
+?? src/components/layout/BoutiqueSplash.tsx
+?? src/components/layout/OfflineBanner.tsx
+tags_local: 1
+tags_sample: v2.0.10 
+
+===== SoulCap =====
+branch: main
+HEAD: 311574a test+polish(v8.1.0): full suite green (362), gallery+docs complete, close audit gaps
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/SoulCap.git (fetch)
+origin	https://github.com/shamikhahmed/SoulCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== SteadyCap =====
+branch: main
+HEAD: 17d9a95 docs: regen screen gallery after home deep remint.
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/SteadyCap.git (fetch)
+origin	https://github.com/shamikhahmed/SteadyCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 2
+tags_sample: v2.3.0 v2.3.1 
+
+===== TravelCap =====
+branch: main
+HEAD: d7bbc3b docs: regen screen gallery after home deep remint.
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/TravelCap.git (fetch)
+origin	https://github.com/shamikhahmed/TravelCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== VaultCap =====
+branch: main
+HEAD: 2447ed6 fix(v5.1.26): lock safe-bottom dual-path for home-button SE
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/VaultCap.git (fetch)
+origin	https://github.com/shamikhahmed/VaultCap.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== capricorn-lab =====
+branch: main
+HEAD: cdb24c4 docs: hub live at v0.10.1 + copy fonts/og in build
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/capricorn-lab.git (fetch)
+origin	https://github.com/shamikhahmed/capricorn-lab.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== capricorn-os-next =====
+branch: main
+HEAD: e9b9a2a fix: GitHub-only SOCIAL and Thirteen Caps OS meta.
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/capricorn-os-next.git (fetch)
+origin	https://github.com/shamikhahmed/capricorn-os-next.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== capricorn-tooling =====
+branch: main
+HEAD: ea1df97 fix: make-capricorn-qr also resolves PrismCap qrcode.
+status_sb: ## main...origin/main
+upstream: origin/main
+remote:
+origin	https://github.com/shamikhahmed/capricorn-tooling.git (fetch)
+origin	https://github.com/shamikhahmed/capricorn-tooling.git (push)
+dirty_count: 1
+dirty_files:
+?? CLAUDE.md
+tags_local: 0
+tags_sample: 
+
+===== shamikhahmed.github.io =====
+branch: main
+HEAD: 85c7f3a local restore snapshot (canonical history on GitHub origin)
+status_sb: ## main
+upstream: NONE
+remote:
+origin	https://github.com/shamikhahmed/shamikhahmed.github.io.git (fetch)
+origin	https://github.com/shamikhahmed/shamikhahmed.github.io.git (push)
+dirty_count: 0
+dirty_files:
+tags_local: 0
+tags_sample: 
+
+===== WORKSPACE_CLUTTER =====
+/Users/shamikhahmed/Projects/Cap/Cap-Apps/shamikhahmed.github.io-backup-2026-07-10
+/Users/shamikhahmed/Projects/Cap/Cap-Apps/shamikhahmed.github.io-backup-pre-os-live-2026-07-10-v0101
+/Users/shamikhahmed/Projects/Cap/Cap-Apps/shamikhahmed.github.io-backup-pre-os-live-2026-07-10-v096
+/Users/shamikhahmed/Projects/Cap/Cap-Apps/capricorn-os-next/.git.broken-20260911013611
+  0B	/Users/shamikhahmed/Projects/Cap/Cap-Apps/shamikhahmed.github.io-backup-2026-07-10
+  0B	/Users/shamikhahmed/Projects/Cap/Cap-Apps/shamikhahmed.github.io-backup-pre-os-live-2026-07-10-v0101
+  0B	/Users/shamikhahmed/Projects/Cap/Cap-Apps/shamikhahmed.github.io-backup-pre-os-live-2026-07-10-v096
+  0B	/Users/shamikhahmed/Projects/Cap/Cap-Apps/capricorn-os-next/.git.broken-20260911013611
