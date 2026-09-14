@@ -106,3 +106,23 @@ See D-03. Evidence: 102 deletions leave a non-runnable tree; HEAD@6c78172 still 
 
 ### Q-2 · IdeaCap · FLT-03 · D-02
 Disk is v1.2.1; Brain claims v2.0.0. No alternate remote branch found yet during FLT-00. IDEA-P0-01 proceeds on 1.2.1.
+
+### Q-3 · SoulCap · SOUL-P1-04 · Now screen IA
+**Question:** Pare Now to check-in + one suggested technique + Explore + Help (move secondary cards below fold)?  
+**Options:** A) Yes as specified · B) Keep current density · C) Different IA  
+**Recommendation:** A  
+**Blocks:** SOUL-P1-04  
+**Meanwhile:** P1-01..03 shipped; IA change parked
+
+### Q-4 · SoulCap · SOUL-P1-05 · Optional app lock
+**Question:** Add optional WebAuthn/passcode lock with encrypted at-rest journal storage?  
+**Options:** A) Passcode + WebCrypto · B) WebAuthn only · C) Defer  
+**Recommendation:** C until after Tier 1 visual/a11y gates; storage migration needs approval  
+**Blocks:** SOUL-P1-05 crypto/storage
+
+### Q-5 · SoulCap · SOUL-P1-06 · Minify/split build
+**Question:** Add a build step to minify/split app.js/data.js for the no-bundler app?  
+**Options:** A) esbuild one-file minify · B) manual module split · C) defer  
+**Recommendation:** A behind a `npm run build:docs` that keeps source readable  
+**Blocks:** SOUL-P1-06
+
