@@ -56,9 +56,9 @@ class CapTokens extends ThemeExtension<CapTokens> {
     text: Color(0xFF000000),
     textSecondary: const Color(0xFF000000), // non-hex: rgba(60,60,67,0.6)
     textTertiary: const Color(0xFF000000), // non-hex: rgba(60,60,67,0.3)
-    accent: Color(0xFF0A84FF),
+    accent: Color(0xFF0055CC),
     accentContrast: Color(0xFFFFFFFF),
-    accentText: Color(0xFF0070E0),
+    accentText: Color(0xFF0046AD),
     success: Color(0xFF34C759),
     successText: Color(0xFF248A3D),
     warning: Color(0xFFFF9F0A),
