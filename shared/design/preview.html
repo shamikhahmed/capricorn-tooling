@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cap Foundation preview</title>
+  <link rel="stylesheet" href="./cap-foundation.css" />
+  <link rel="stylesheet" href="./components/cap-primitives.css" />
+  <style>
+    main { max-width: 720px; margin: 0 auto; padding: 24px 16px 96px; }
+    section { margin: 32px 0; }
+    h1 { font: 700 34px/41px var(--font-ui); }
+    h2 { font: 600 20px/25px var(--font-ui); margin-top: 0; }
+    .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Cap Foundation</h1>
+    <p>Light/dark + reduced-motion preview for shared primitives (FND-01…03).</p>
+    <div class="row">
+      <button type="button" class="cap-btn cap-btn--secondary" id="theme-toggle">Toggle theme</button>
+    </div>
+
+    <section>
+      <h2>Buttons</h2>
+      <div class="row">
+        <button type="button" class="cap-btn cap-btn--primary">Save</button>
+        <button type="button" class="cap-btn cap-btn--secondary">Cancel</button>
+        <button type="button" class="cap-btn cap-btn--tertiary">Learn more</button>
+        <button type="button" class="cap-btn cap-btn--destructive">Delete trip</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Switch</h2>
+      <button type="button" class="cap-switch" role="switch" aria-checked="false" aria-label="Compact view" id="demo-switch">
+        <span class="cap-switch__knob" aria-hidden="true"></span>
+      </button>
+    </section>
+
+    <section>
+      <h2>Banner</h2>
+      <div class="cap-banner" role="status">
+        <span>Sample data. Your data isn't affected.</span>
+        <button type="button" class="cap-btn cap-btn--tertiary">Use my data</button>
+      </div>
+      <div class="cap-banner cap-banner--warning" role="status">Prices are from 1 Jul 2026.</div>
+    </section>
+
+    <section>
+      <h2>Empty / Error</h2>
+      <div class="cap-empty">
+        <div class="cap-empty__title">No trips yet</div>
+        <p>Plan your first trip to see it here.</p>
+        <button type="button" class="cap-btn cap-btn--primary">New trip</button>
+      </div>
+      <div class="cap-error">
+        <div class="cap-error__title">Couldn't load prices</div>
+        <p>Check your connection and try again.</p>
+        <button type="button" class="cap-btn cap-btn--secondary">Retry</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Confirm</h2>
+      <button type="button" class="cap-btn cap-btn--destructive" id="open-confirm">Delete trip</button>
+    </section>
+  </main>
+
+  <nav class="cap-tabbar" aria-label="Demo tabs">
+    <a href="#" aria-current="page">Today</a>
+    <a href="#">Train</a>
+    <a href="#">Progress</a>
+    <a href="#">Me</a>
+  </nav>
+
+  <script type="module">
+    import { CapConfirm, CapSwitch } from './components/cap-primitives.js';
+    const root = document.documentElement;
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+    });
+    CapSwitch.bind(document.getElementById('demo-switch'));
+    document.getElementById('open-confirm').addEventListener('click', async () => {
+      const ok = await CapConfirm.open({
+        title: 'Delete this trip?',
+        body: 'This removes the trip from this device and can't be undone.',
+        confirmLabel: 'Delete trip',
+        destructive: true,
+      });
+      console.log('confirm', ok);
+    });
+  </script>
+</body>
+</html>
