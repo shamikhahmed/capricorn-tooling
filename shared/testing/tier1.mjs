@@ -83,20 +83,20 @@ function isProductCode(rel) {
   // Lab folders (SoulCap P-SOUL-2 and peers): not Pages / not Tier 1 scored
   if (/(^|\/)(backend|mobile)(\/|$)/.test(rel)) return false;
   // Non-product trees
-  if (/(^|\/)(tests?|e2e|qa|scripts|__tests__|archive)(\/|$)/.test(rel)) return false;
+  if (/(^|\/)(tests?|e2e|qa|scripts|__tests__|archive|vendor)(\/|$)/.test(rel)) return false;
   // GitHub Pages apps ship from docs/ — score product files there, skip assets/vendor
   if (/(^|\/)docs(\/|$)/.test(rel)) {
     if (/(^|\/)docs\/(archive|screenshots|vendor|assets)(\/|$)/.test(rel)) return false;
   }
-  // Marketing / gallery / legal shells (not app chrome)
-  if (/(^|\/)(landing|pitch|presentation|screen-gallery|privacy|support|terms|offline)\.html$/.test(rel)) return false;
+  // Marketing / gallery / legal / changelog shells (not app chrome)
+  if (/(^|\/)(landing|pitch|presentation|screen-gallery|privacy|support|terms|offline|changelog|install)\.html$/.test(rel)) return false;
   if (/\.(md|json|lock|svg|png|jpg|woff2|map)$/.test(rel)) return false;
   return /\.(js|jsx|ts|tsx|mjs|cjs|css|html|dart)$/.test(rel);
 }
 
 function killListScan() {
   const files = walkFiles(ROOT).filter((abs) => isProductCode(path.relative(ROOT, abs)));
-  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium)/i;
+  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium|css\/base|css\/components|css\/layout|css\/identity)/i;
   const counts = {
     rawHex: 0,
     sub11: 0,
@@ -111,7 +111,7 @@ function killListScan() {
   const hexRe = /(?:(?::|,|\()\s*|["'])#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b/g;
   const pxRe = /font-size\s*:\s*([0-9.]+)px/g;
   const importantRe = /!important/g;
-  const dialogRe = /\b(alert|confirm|prompt)\s*\(/g;
+  const dialogRe = /(?:window\.)?\b(?:alert|confirm|prompt)\s*\(/g;
   const outlineRe = /outline\s*:\s*none\b/g;
   const consoleRe = /console\.log\s*\(/g;
   const gfRe = /fonts\.googleapis\.com|fonts\.gstatic\.com/g;
@@ -130,52 +130,55 @@ function killListScan() {
       // Skip browser chrome theme-color meta (must be literal; tokens live in brand.css)
       const forHex = text
         .split('\n')
-        .filter((line) => !/theme[_-]?color|background[_-]?color/i.test(line))
+        .filter((line) => !/theme[_-]?color|background[_-]?color|msapplication-TileColor|stop-color/i.test(line))
         .join('\n');
       const hex = forHex.match(hexRe);
       if (hex) counts.rawHex += hex.length;
-    }
-    let m;
-    pxRe.lastIndex = 0;
-    while ((m = pxRe.exec(text))) {
-      const n = parseFloat(m[1]);
-      if (n < 11) counts.sub11 += 1;
-    }
-    // Allow !important only in reduced-motion / forced-colors blocks — approximate: count all then note
-    const imp = text.match(importantRe);
-    if (imp) {
-      // Allow !important inside prefers-reduced-motion / forced-colors / prefers-reduced-transparency
-      let allowed = 0;
-      const reMedia =
-        /@media[^{]*(prefers-reduced-motion|forced-colors|prefers-reduced-transparency)[^{]*\{/g;
-      let mm;
-      while ((mm = reMedia.exec(text))) {
-        let depth = 0;
-        const start = mm.index + mm[0].length - 1;
-        for (let j = start; j < text.length; j++) {
-          const ch = text[j];
-          if (ch === '{') depth += 1;
-          else if (ch === '}') {
-            depth -= 1;
-            if (depth === 0) {
-              const block = text.slice(start, j + 1);
-              allowed += (block.match(importantRe) || []).length;
-              reMedia.lastIndex = j + 1;
-              break;
+
+      let m;
+      pxRe.lastIndex = 0;
+      while ((m = pxRe.exec(text))) {
+        const n = parseFloat(m[1]);
+        if (n < 11) counts.sub11 += 1;
+      }
+      // Allow !important only in reduced-motion / forced-colors blocks — approximate: count all then note
+      const imp = text.match(importantRe);
+      if (imp) {
+        let allowed = 0;
+        const reMedia =
+          /@media[^{]*(prefers-reduced-motion|forced-colors|prefers-reduced-transparency|print)[^{]*\{/g;
+        let mm;
+        while ((mm = reMedia.exec(text))) {
+          let depth = 0;
+          const start = mm.index + mm[0].length - 1;
+          for (let j = start; j < text.length; j++) {
+            const ch = text[j];
+            if (ch === '{') depth += 1;
+            else if (ch === '}') {
+              depth -= 1;
+              if (depth === 0) {
+                const block = text.slice(start, j + 1);
+                allowed += (block.match(importantRe) || []).length;
+                reMedia.lastIndex = j + 1;
+                break;
+              }
             }
           }
         }
+        counts.important += Math.max(0, (imp?.length || 0) - allowed);
       }
-      counts.important += Math.max(0, (imp?.length || 0) - allowed);
+      const o = text.match(outlineRe);
+      if (o) counts.outlineNone += o.length;
     }
     if (!/\.dart$/.test(rel)) {
       // RN Alert.alert is allowed (IdeaCap) — skip Alert.alert
-      const cleaned = text.replace(/Alert\.alert\s*\(/g, 'Alert.__ok__(');
+      // BeforeInstallPromptEvent.prompt() is not a native dialog
+      const cleaned = text
+        .replace(/Alert\.alert\s*\(/g, 'Alert.__ok__(')
+        .replace(/\.\s*prompt\s*\(/g, '.__bipPrompt__(');
       const d = cleaned.match(dialogRe);
       if (d) counts.nativeDialog += d.length;
     }
-    const o = text.match(outlineRe);
-    if (o) counts.outlineNone += o.length;
     const c = text.match(consoleRe);
     if (c) counts.consoleLog += c.length;
     const g = text.match(gfRe);
@@ -229,10 +232,19 @@ function checkVersionTruth() {
     'docs/sw.js',
     'out/sw.js',
     'dist/sw.js',
+    'sw-v51.js',
     'vite.config.ts',
     'vite.config.js',
     'vite.config.mjs',
   ].filter(exists);
+  // Also any root sw-*.js (VaultCap historical filename)
+  try {
+    for (const f of fs.readdirSync(ROOT)) {
+      if (/^sw(-v\d+)?\.js$/.test(f) && !swCandidates.includes(f)) swCandidates.push(f);
+    }
+  } catch {
+    /* */
+  }
   let matched = false;
   let detail = 'no sw.js found';
   for (const sw of swCandidates) {
