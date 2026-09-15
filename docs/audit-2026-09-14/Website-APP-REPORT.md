@@ -56,6 +56,18 @@ D-13, P-HUB-1, G-3 (website keeps “Capricorn OS”), G-4, G-7 §4.1, G-9, D-04
 - `shamikhahmed.github.io`: `node scripts/link-check.mjs` — passed
 - Live Cap HTTP 200 smoke — see PROGRESS / release log below
 
+
+## Live smoke (2026-09-15)
+
+| URL | Status |
+|-----|--------|
+| https://shamikhahmed.github.io/ | 200 · serves `index-BATYLbi3.js` · no Google Fonts |
+| support.html / privacy.html | 200 |
+| VaultCap … CookCap (14 public Caps) | **all 200** |
+| Hub deploy | `2bc2bc8` |
+| Lab release | `d8adcae` / tag `v1.0.0` |
+
+
 ## Remaining / gaps
 
 - Lighthouse ≥ 90 on lock→desktop: run locally after Pages propagate (not blocked)
