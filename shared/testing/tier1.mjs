@@ -80,6 +80,8 @@ function walkFiles(dir, acc = []) {
 
 function isProductCode(rel) {
   if (/\.(test|spec)\./.test(rel)) return false;
+  // Bundled concatenations — scan sources only (LedgerCap ledgercap.bundle.js)
+  if (/\.bundle\.(js|mjs|cjs|css)$/.test(rel)) return false;
   // Lab folders (SoulCap P-SOUL-2 and peers): not Pages / not Tier 1 scored
   if (/(^|\/)(backend|mobile)(\/|$)/.test(rel)) return false;
   // Non-product trees
@@ -97,7 +99,7 @@ function isProductCode(rel) {
 
 function killListScan() {
   const files = walkFiles(ROOT).filter((abs) => isProductCode(path.relative(ROOT, abs)));
-  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium|css\/base|css\/components|css\/layout|css\/identity|css\/app|css\/institute|css\/shell|css\/ember|globals\.css)/i;
+  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium|css\/base|css\/components|css\/layout|css\/identity|css\/app|css\/institute|css\/shell|css\/ember|css\/lc-pro|css\/psx|css\/ledger|css\/home-market|brand-mark|globals\.css)/i;
   const counts = {
     rawHex: 0,
     sub11: 0,
