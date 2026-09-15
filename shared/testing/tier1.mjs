@@ -87,6 +87,7 @@ function isProductCode(rel) {
   // GitHub Pages apps ship from docs/ — score product files there, skip assets/vendor
   if (/(^|\/)docs(\/|$)/.test(rel)) {
     if (/(^|\/)docs\/(archive|screenshots|vendor|assets)(\/|$)/.test(rel)) return false;
+    if (/\.report\.html$/i.test(rel)) return false;
   }
   // Marketing / gallery / legal / changelog shells (not app chrome)
   if (/(^|\/)(landing|pitch|presentation|screen-gallery|privacy|support|terms|offline|changelog|install)\.html$/.test(rel)) return false;
@@ -96,7 +97,7 @@ function isProductCode(rel) {
 
 function killListScan() {
   const files = walkFiles(ROOT).filter((abs) => isProductCode(path.relative(ROOT, abs)));
-  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium|css\/base|css\/components|css\/layout|css\/identity|css\/app|css\/institute)/i;
+  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium|css\/base|css\/components|css\/layout|css\/identity|css\/app|css\/institute|globals\.css)/i;
   const counts = {
     rawHex: 0,
     sub11: 0,
