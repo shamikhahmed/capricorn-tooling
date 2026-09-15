@@ -134,16 +134,6 @@ for (const app of APPS) {
   }
 }
 
-// Hub package version tracks marketing releases
-const hubPkgPath = join(ROOT, 'shamikhahmed.github.io/package.json');
-if (existsSync(hubPkgPath)) {
-  const hubPkg = JSON.parse(readFileSync(hubPkgPath, 'utf8'));
-  if (hubPkg.version !== '1.2.1') {
-    hubPkg.version = '1.2.1';
-    writeFileSync(hubPkgPath, `${JSON.stringify(hubPkg, null, 2)}\n`);
-    count++;
-    console.log('✓ package.json shamikhahmed.github.io');
-  }
-}
+// Hub package.json is owned by hub releases — do not clamp/downgrade here.
 
 console.log(`\nsync-versions: ${count} file(s) updated`);
