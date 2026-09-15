@@ -10,8 +10,8 @@ Current step: **Website finalize** (§14 #16) / Step R leftovers
 11. CarCap 1.0.1
 12. PrismCap 4.5.3
 13. DeePonyCap 3.8.3 · CI https://github.com/shamikhahmed/DeePonyCap/actions/runs/34974097403
-14. DeeFoodieApp 1.0.0+3 · CI https://github.com/shamikhahmed/DeeFoodieApp/actions/runs/34974575199
-15. IdeaCap 2.0.1 · CI https://github.com/shamikhahmed/IdeaCap/actions/runs/34974550687
+14. DeeFoodieApp 1.0.0+3 · `TIER1.json` PASS · merge `29a51a9` · tip `62ac3de` · iOS https://github.com/shamikhahmed/DeeFoodieApp/actions/runs/34974575232 · Web https://github.com/shamikhahmed/DeeFoodieApp/actions/runs/34974575199
+15. IdeaCap 2.0.1 · tip `13eb83f` · `TIER1.json` PASS · CI https://github.com/shamikhahmed/IdeaCap/actions/runs/34974922528 (merge `34974550687`)
 16. Hub workforce + catalog (latest OS redeploys on hub main)
 
 ## In flight
