@@ -55,11 +55,22 @@ function readVersion(dir) {
   return meta.version;
 }
 
-function patchBlock(text, slug, ver, tagline) {
+/** Hub products-data.js: keyed blocks `slug: { … ver: '…' }` */
+function patchKeyedBlock(text, slug, ver, tagline) {
   let next = text;
   const verRe = new RegExp(`(${slug}:\\s*\\{[\\s\\S]*?ver:\\s*)'[^']*'`);
   if (verRe.test(next)) next = next.replace(verRe, `$1'${ver}'`);
   const tagRe = new RegExp(`(${slug}:\\s*\\{[\\s\\S]*?tagline:\\s*)'[^']*'`);
+  if (tagRe.test(next) && tagline) next = next.replace(tagRe, `$1'${tagline.replace(/'/g, "\\'")}'`);
+  return next;
+}
+
+/** Lab products.js: array objects `{ slug: 'x', … ver: '…' }` */
+function patchSlugObject(text, slug, ver, tagline) {
+  let next = text;
+  const verRe = new RegExp(`(\\{\\s*slug:\\s*'${slug}'[\\s\\S]*?ver:\\s*)'[^']*'`);
+  if (verRe.test(next)) next = next.replace(verRe, `$1'${ver}'`);
+  const tagRe = new RegExp(`(\\{\\s*slug:\\s*'${slug}'[\\s\\S]*?tagline:\\s*)'[^']*'`);
   if (tagRe.test(next) && tagline) next = next.replace(tagRe, `$1'${tagline.replace(/'/g, "\\'")}'`);
   return next;
 }
@@ -80,7 +91,7 @@ for (const row of APPS) {
 const hubPath = join(ROOT, 'shamikhahmed.github.io/js/products-data.js');
 let hub = readFileSync(hubPath, 'utf8');
 for (const [slug, { ver, tagline }] of Object.entries(versions)) {
-  hub = patchBlock(hub, slug, ver, tagline);
+  hub = patchKeyedBlock(hub, slug, ver, tagline);
 }
 writeFileSync(hubPath, hub);
 
@@ -88,9 +99,12 @@ const labPath = join(ROOT, 'capricorn-lab/js/products.js');
 if (existsSync(labPath)) {
   let lab = readFileSync(labPath, 'utf8');
   for (const [slug, { ver, tagline }] of Object.entries(versions)) {
-    lab = patchBlock(lab, slug, ver, tagline);
+    lab = patchSlugObject(lab, slug, ver, tagline);
   }
   writeFileSync(labPath, lab);
+  console.log('Updated lab catalog:', labPath);
+} else {
+  console.warn('skip lab catalog (missing)', labPath);
 }
 
 console.log('Synced catalog versions:', Object.fromEntries(Object.entries(versions).map(([k, v]) => [k, v.ver])));
