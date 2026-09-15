@@ -96,7 +96,7 @@ function isProductCode(rel) {
 
 function killListScan() {
   const files = walkFiles(ROOT).filter((abs) => isProductCode(path.relative(ROOT, abs)));
-  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium|css\/base|css\/components|css\/layout|css\/identity)/i;
+  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium|css\/base|css\/components|css\/layout|css\/identity|css\/app|css\/institute)/i;
   const counts = {
     rawHex: 0,
     sub11: 0,
@@ -315,19 +315,31 @@ function checkCi() {
     warn('ci:main', 'skipped via TIER1_SKIP_CI');
     return;
   }
-  const r = sh('gh run list -b main --limit 1 --json conclusion,status,databaseId,displayTitle,url 2>/dev/null');
+  // Prefer completed runs (skip in-flight Deploy Pages / matrix jobs with empty conclusion)
+  const r = sh(
+    'gh run list -b main --limit 15 --json conclusion,status,databaseId,displayTitle,url,name 2>/dev/null',
+  );
   if (typeof r === 'object' && r.error) {
     warn('ci:main', `gh unavailable: ${r.stderr || r.stdout}`);
     return;
   }
   try {
     const arr = JSON.parse(r || '[]');
-    const latest = arr[0];
+    const done = arr.filter((x) => x && x.conclusion);
+    const latest = done[0] || arr[0];
     if (!latest) {
       warn('ci:main', 'no runs');
       return;
     }
-    add(latest.conclusion === 'success', 'ci:main', `${latest.displayTitle} → ${latest.conclusion} ${latest.url || ''}`);
+    if (!latest.conclusion) {
+      warn('ci:main', `latest still ${latest.status || 'unknown'}: ${latest.displayTitle || latest.name}`);
+      return;
+    }
+    add(
+      latest.conclusion === 'success',
+      'ci:main',
+      `${latest.displayTitle || latest.name} → ${latest.conclusion} ${latest.url || ''}`,
+    );
   } catch {
     warn('ci:main', 'could not parse gh output');
   }
