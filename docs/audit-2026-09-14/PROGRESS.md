@@ -1,36 +1,21 @@
 # Cap Fleet Finish Program — Progress
 
-Updated: 2026-09-15T13:30:00Z · Prompt: **v2**
+Updated: 2026-09-15T13:25:00Z · Prompt: **v2**
 
-Current step: **app loops**
-Current app: **DeeFoodieApp** (§14 #14) — `finish/deefoodie-tier1` TIER1 PASS · merge when CI green
+Current step: **Website finalize** (§14 #16) / Step R leftovers
 
 ## Closed (automated TIER1 PASS; VO ⛔ — fleet Tier 1 not claimed)
-1. SoulCap
-2. ScentCap
-3. MasteryCap
-4. VaultCap
-5. CookCap (3.5.1 · gallery desktop regenerated `adfc1df`)
-6. PulseCap (6.43.1)
-7. SteadyCap (2.5.4)
-8. TravelCap (1.0.2)
-9. LedgerCap (3.57.2 · CI https://github.com/shamikhahmed/LedgerCap/actions/runs/34967963640)
-10. AuraCap (5.4.2 · CI https://github.com/shamikhahmed/AuraCap/actions/runs/34971080491)
-11. CarCap (1.0.1 · CI https://github.com/shamikhahmed/CarCap/actions/runs/34970139363)
-12. PrismCap (4.5.3 · CI https://github.com/shamikhahmed/PrismCap/actions/runs/34972484644)
-13. Website workforce widgets live · Browser MCP paired
-14. DeePonyCap (3.8.3 · tag `v3.8.3` · `qa/finish-loop/TIER1.json` PASS · CI https://github.com/shamikhahmed/DeePonyCap/actions/runs/34974097403 · warn: matrix:shots)
+1–9. Soul · Scent · Mastery · Vault · Cook · Pulse · Steady · Travel · Ledger
+10. AuraCap 5.4.2
+11. CarCap 1.0.1
+12. PrismCap 4.5.3
+13. DeePonyCap 3.8.3 · CI https://github.com/shamikhahmed/DeePonyCap/actions/runs/34974097403
+14. DeeFoodieApp 1.0.0+3 · CI https://github.com/shamikhahmed/DeeFoodieApp/actions/runs/34974575199
+15. IdeaCap 2.0.1 · CI https://github.com/shamikhahmed/IdeaCap/actions/runs/34974550687
+16. Hub workforce + catalog (latest OS redeploys on hub main)
 
 ## In flight
-- **DeeFoodieApp (§14 #14):** `TIER1.json` **PASS** on `finish/deefoodie-tier1` (1.0.0+3 · C-20 `__APP_READY__` · C-21 `finish-matrix.test.dart` · LH JSON scores null). Awaiting CI → merge main.
-- Galleries / hub sync / mobile CookCap gallery
-- Step R leftovers C-19 / C-22 / C-27
-
-## Step R leftovers
-- **C-19** — open
-- **C-22** — still open. Partial evidence only: `_workspace/lighthouse-summary-2026-09-15.json` + per-app LH JSONs. Not fleet-wide thresholds. DeeFoodie LH JSON is presence-only (scores null).
-- **C-27** Brain ⏳
-
-Next after DeeFoodieApp merge: IdeaCap (§14 #15) → Website finalize (§14 #16).
+- Website finalize §14 #16
+- Step R: C-19 / C-22 open · C-27 done
 
 BLOCKED-EXTERNAL: Xcode / TestFlight / physical VO-TB
