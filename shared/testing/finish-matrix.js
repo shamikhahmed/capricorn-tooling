@@ -1,6 +1,8 @@
 /**
  * Cap Fleet finish-matrix helpers (FLT-07 / §6.2).
  * Import from Playwright specs in each web repo.
+ *
+ * Smoke (default): 3 viewports × themes. Full: FINISH_MATRIX_FULL=1 → all 15.
  */
 
 export const FINISH_VIEWPORTS = [
@@ -20,6 +22,18 @@ export const FINISH_VIEWPORTS = [
   { name: 'desktop', width: 1920, height: 1080 },
   { name: 'wide', width: 2560, height: 1440 },
 ];
+
+/** Default first-pass smoke set (must stay a subset of FINISH_VIEWPORTS). */
+export const FINISH_SMOKE_VIEWPORTS = FINISH_VIEWPORTS.filter((v) =>
+  ['iphone-se3', 'iphone-16', 'laptop'].includes(v.name),
+);
+
+export const FINISH_THEMES = ['light', 'dark'];
+
+/** Smoke unless FINISH_MATRIX_FULL=1. */
+export function matrixViewports() {
+  return process.env.FINISH_MATRIX_FULL === '1' ? FINISH_VIEWPORTS : FINISH_SMOKE_VIEWPORTS;
+}
 
 /** Wait until the app signals the first real screen (not splash). */
 export async function waitForAppReady(page, { timeout = 15000 } = {}) {
@@ -57,4 +71,28 @@ export async function assertNotObscured(page, selector) {
     return !!(top && (top === el || el.contains(top)));
   }, selector);
   if (!ok) throw new Error(`Obscured or missing primary control: ${selector}`);
+}
+
+/** Apply light/dark for matrix runs (emulateMedia + common class/dataset hooks). */
+export async function applyFinishTheme(page, theme) {
+  await page.emulateMedia({ colorScheme: theme });
+  await page.evaluate((t) => {
+    const root = document.documentElement;
+    root.dataset.theme = t;
+    root.dataset.colorScheme = t;
+    root.classList.toggle('dark', t === 'dark');
+    root.classList.toggle('light', t === 'light');
+    root.classList.toggle('theme-dark', t === 'dark');
+    root.classList.toggle('theme-light', t === 'light');
+    if (document.body) {
+      document.body.classList.toggle('dark', t === 'dark');
+      document.body.classList.toggle('light', t === 'light');
+    }
+    try {
+      localStorage.setItem('theme', t);
+      localStorage.setItem('color-scheme', t);
+    } catch (_) {
+      /* ignore */
+    }
+  }, theme);
 }

@@ -29,19 +29,19 @@ Current app after Step R: **SoulCap** (1/16) — run `npm run tier1`, fix every 
 | C-16 | Self-host fonts (G-9) |
 | C-19 | Kill-list zeroing per app |
 | C-20 | `window.__APP_READY__` + gallery regen |
-| C-21 | finish-matrix specs + CI |
+| C-21 | finish-matrix specs + CI | **Done** (smoke wired; failures drive queue) |
 | C-22 | Lighthouse JSON per primary route |
-| C-23 | Loop records / APP-REPORTs |
-| C-24 | Docs cleanup + SoulCap SISTER-* out of Pages |
+| C-23 | Loop records / APP-REPORTs | **Done** (honest stubs; Tier 1 not verified) |
+| C-24 | Docs cleanup + SoulCap SISTER-* out of Pages | **Done** |
 | C-27 | Brain notes (Desktop paths + ScentCap entry) |
 | C-28 | PROGRESS honesty (this file — partial) |
 
 ## Next 5 actions
 1. C-16 self-host fonts across listed apps; CSP + privacy; re-release.
-2. C-10 wire `npm run tier1` starting SoulCap / TravelCap / DeePonyCap.
-3. C-19 kill-list queues (start with apps already near-zero: CarCap, TravelCap).
-4. C-20 `__APP_READY__` + gallery review for listed apps.
-5. C-21 finish-matrix specs in every web repo.
+2. C-20 `__APP_READY__` (unblocks finish-matrix green).
+3. Drive finish-matrix failures → green (`FINISH_MATRIX_FULL=1`).
+4. C-22 Lighthouse JSON per primary route.
+5. C-10 wire `npm run tier1` in every app; C-27 Brain.
 
 ## App status (review 2, 2026-09-15 + Step R deltas)
 | App | Released | Status | Notes |
