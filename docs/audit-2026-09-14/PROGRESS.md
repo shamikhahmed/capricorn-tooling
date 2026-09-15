@@ -1,9 +1,9 @@
 # Cap Fleet Finish Program — Progress
 
-Updated: 2026-09-15T13:25:00Z · Prompt: **v2**
+Updated: 2026-09-15T13:30:00Z · Prompt: **v2**
 
 Current step: **app loops**
-Current app: **DeeFoodieApp** (§14 #14) — next after DeePonyCap close
+Current app: **DeeFoodieApp** (§14 #14) — `finish/deefoodie-tier1` TIER1 PASS · merge when CI green
 
 ## Closed (automated TIER1 PASS; VO ⛔ — fleet Tier 1 not claimed)
 1. SoulCap
@@ -22,15 +22,15 @@ Current app: **DeeFoodieApp** (§14 #14) — next after DeePonyCap close
 14. DeePonyCap (3.8.3 · tag `v3.8.3` · `qa/finish-loop/TIER1.json` PASS · CI https://github.com/shamikhahmed/DeePonyCap/actions/runs/34974097403 · warn: matrix:shots)
 
 ## In flight
-- DeeFoodieApp (§14 #14)
+- **DeeFoodieApp (§14 #14):** `TIER1.json` **PASS** on `finish/deefoodie-tier1` (1.0.0+3 · C-20 `__APP_READY__` · C-21 `finish-matrix.test.dart` · LH JSON scores null). Awaiting CI → merge main.
 - Galleries / hub sync / mobile CookCap gallery
 - Step R leftovers C-19 / C-22 / C-27
 
 ## Step R leftovers
 - **C-19** — open
-- **C-22** — still open. Partial evidence only: `_workspace/lighthouse-summary-2026-09-15.json` + per-app LH JSONs. Not fleet-wide thresholds.
+- **C-22** — still open. Partial evidence only: `_workspace/lighthouse-summary-2026-09-15.json` + per-app LH JSONs. Not fleet-wide thresholds. DeeFoodie LH JSON is presence-only (scores null).
 - **C-27** Brain ⏳
 
-Next: DeeFoodieApp (§14 #14) → IdeaCap (§14 #15) → Website finalize (§14 #16).
+Next after DeeFoodieApp merge: IdeaCap (§14 #15) → Website finalize (§14 #16).
 
 BLOCKED-EXTERNAL: Xcode / TestFlight / physical VO-TB

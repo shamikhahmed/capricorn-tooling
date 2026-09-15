@@ -277,7 +277,9 @@ function checkVersionTruth() {
 function checkSuppressions() {
   const files = walkFiles(ROOT).filter((abs) => isProductCode(path.relative(ROOT, abs)));
   const bad = [];
-  const re = /eslint-disable|@ts-ignore|@ts-expect-error|\.skip\(|\.only\(|xit\(|xdescribe\(|fit\(|fdescribe\(/;
+  // Word-bound xit/fit — bare xit( matches process.exit( (false positive on Nest/Prisma CLI).
+  const re =
+    /eslint-disable|@ts-ignore|@ts-expect-error|\.skip\(|\.only\(|\bxit\(|\bxdescribe\(|\bfit\(|\bfdescribe\(/;
   for (const abs of files) {
     const rel = path.relative(ROOT, abs);
     const text = fs.readFileSync(abs, 'utf8');
