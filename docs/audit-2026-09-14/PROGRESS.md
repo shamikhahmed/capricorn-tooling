@@ -14,6 +14,9 @@ Current step: **Website finalize** (§14 #16) / Step R leftovers
 15. IdeaCap 2.0.1 · tip `13eb83f` · `TIER1.json` PASS · CI https://github.com/shamikhahmed/IdeaCap/actions/runs/34974922528 (merge `34974550687`)
 16. Hub workforce + catalog (latest OS redeploys on hub main)
 
+## Galleries
+Closed-Cap screen galleries current on main (Soul/Vault/Travel/Ledger regen; Scent/Mastery/Pulse/Steady already synced; CookCap desktop+mobile hardened).
+
 ## In flight
 - Website finalize §14 #16
 - Step R: C-19 / C-22 open · C-27 done
