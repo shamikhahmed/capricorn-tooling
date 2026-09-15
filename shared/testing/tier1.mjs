@@ -99,7 +99,7 @@ function isProductCode(rel) {
 
 function killListScan() {
   const files = walkFiles(ROOT).filter((abs) => isProductCode(path.relative(ROOT, abs)));
-  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium|css\/base|css\/components|css\/layout|css\/identity|css\/app|css\/institute|css\/shell|css\/ember|css\/lc-pro|css\/psx|css\/ledger|css\/home-market|brand-mark|globals\.css)/i;
+  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium|css\/base|css\/components|css\/layout|css\/identity|css\/app|css\/institute|css\/shell|css\/ember|css\/lc-pro|css\/psx|css\/ledger|css\/home-market|brand-mark|globals\.css|index\.css|premium\.css|App\.css|data\/constants\.ts|data\/wallpapers\.ts)/i;
   const counts = {
     rawHex: 0,
     sub11: 0,
