@@ -61,23 +61,25 @@ The fleet is **design-ambitious and release-poor**. Several apps show genuine cr
 | IdeaCap | Expo SDK 57 / RN 0.86 (iOS/Android/web) | **38** | 🔴 | 🔴 | 🔴 |
 | Hub / Lab / OS-next | Vite + three.js marketing OS | **54** | 🟠 | n/a | n/a |
 
-### Human decisions required before implementation (Cursor must stop on these)
+### Decisions — all LOCKED on 2026-09-14 (see `DECISIONS.md`)
 
-| ID | Decision | Why it blocks |
+The owner delegated every decision to Claude. Final answers, approved copy and product decisions are in `DECISIONS.md` and built into `CURSOR-MASTER-PROMPT.md` v2. Cursor does not re-open these.
+
+| ID | LOCKED answer (execute) | Was blocking |
 |---|---|---|
-| D-01 | **Store submission plan.** Owner directive 2026-09-14: *every* app must reach **Tier 1** (🟢 ≥ 80 with hard gates — Cursor prompt §16.1). Remaining decision is only which apps are submitted to App Store / Google Play and in what order. Recommendation: stagger submissions (ScentCap and VaultCap first), give each a distinct native capability, never submit several same-shell wrappers at once. | 4.3 spam / 4.2 risk applies to submissions, not to the quality work |
-| D-02 | **IdeaCap baseline**: recover the v2.0.0 "production-overhaul" work (other machine / remote branch?) or redo from 1.2.1. | Brain says it exists; disk doesn't |
-| D-03 | **PulseCap**: were the 102 deletions an intentional move into `docs/` or damage? | Can't commit or revert safely without intent |
-| D-04 | **DeePonyCap IP**: remove all My Little Pony/Hasbro names & imagery and reposition as a generic collectible tracker, or keep private/unlisted. | Legal + 5.2.1 |
-| D-05 | **SoulCap clinical/legal**: crisis-resource policy (region-aware helplines vs "local emergency services" only), qualified reviewer sign-off, 18+ gate wording. | 1.4.1 + user safety |
-| D-06 | **PrismCap game names**: rename Connect Four / Codenames / Taboo variants. | Trademark |
-| D-07 | **Naming**: TravelOS vs TravelCap; PrismOS remnants; "OS" suffixes in marketing. | Brand consistency, metadata |
-| D-08 | **VaultCap network features**: make logo proxy and LLM import strictly opt-in with consent, or remove. | Privacy promise |
-| D-09 | **LedgerCap data sources**: licensing for PSX/Yahoo data; drop public CORS proxies; whether LedgerCap is ever a store app (3.2.1(viii), 5.2.2). | Legal + security |
-| D-10 | **DeeFoodieApp distribution**: two-user private app → TestFlight/private distribution (recommended) vs public App Store (needs real auth, hosting, moderation, account deletion, SIWA if social login). | Determines all DeeFoodie P0s |
-| D-11 | **Monetization**: backlog mentions VaultPro/AuraCap Pro/ScentCap `LAUNCH_PREVIEW`. In native builds, digital unlocks require IAP (3.1.1). Decide free vs IAP. | Store rules |
-| D-12 | **Legal identity**: publisher name (Capricorn Systems vs personal), support email, privacy-policy host, data-controller address. | Required for every listing and privacy page |
-| D-13 | **Website source of truth**: capricorn-lab or capricorn-os-next builds the live hub (Brain notes contradict each other); retire the other. | Website updates and folder cleanup |
+| D-01 / G-1 | All apps Tier 1 as PWAs. Native-ready + store pack (no submission): ScentCap, VaultCap (+ Capacitor 8). DeeFoodie: private TestFlight pack. IdeaCap: native builds compile + packs. Others PWA-only. No Play submissions. | Store / native scope |
+| D-02 | Rebuild IdeaCap from current 1.2.1 → real 2.0.0. v2.0.0 not on disk/remote; Brain note corrected. | IdeaCap baseline |
+| D-03 | PulseCap 102 deletions = damage. Restore from `origin/main`; keep `preserve/pre-finish-2026-09-14` forever. | PulseCap baseline |
+| D-04 | DeePonyCap: strip all third-party IP from bundled content; user-defined series; never modify user data; non-affiliation line. | Legal + 5.2.1 |
+| D-05 | SoulCap: region-aware Help + age gate per DECISIONS §4.3; verify numbers from official sources (omit unverifiable); clinical review noted before any future store submit. | Safety / 1.4.1 |
+| D-06 | PrismCap: Four in a Row · Clue Grid · Word Dodge + change distinctive elements; review all 39 names. | Trademark |
+| D-07 / G-3 | Cap names everywhere (TravelCap, PrismCap; DeeFoodie user-facing). No "OS" in product descriptions. Website keeps "Capricorn OS". | Brand |
+| D-08 | VaultCap: network logos + LLM import opt-in, default off (existing installs off); model `claude-haiku-4-5`. | Privacy promise |
+| D-09 | LedgerCap: Worker-only, attribution, disclaimer, PWA-only. | Legal + security |
+| D-10 | DeeFoodie: private TestFlight, per-user bearer tokens, in-app Delete my data. | Auth / distribution |
+| D-11 / G-2 | Everything free. Remove Pro/paywall/upgrade UI and gates. | Store rules |
+| D-12 / G-4 | Publisher Capricorn Systems, Karachi. Per-app `privacy.html`. Support via hub `support.html` → GitHub issues. No personal email/phone. | Listings / privacy |
+| D-13 | capricorn-lab is canonical for the website; port passing os-next modules; archive os-next. | Hub source of truth |
 
 ---
 
