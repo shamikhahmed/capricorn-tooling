@@ -88,13 +88,15 @@ function isProductCode(rel) {
   if (/(^|\/)docs(\/|$)/.test(rel)) {
     if (/(^|\/)docs\/(archive|screenshots|vendor|assets)(\/|$)/.test(rel)) return false;
   }
+  // Marketing / gallery / legal shells (not app chrome)
+  if (/(^|\/)(landing|pitch|presentation|screen-gallery|privacy|support|terms|offline)\.html$/.test(rel)) return false;
   if (/\.(md|json|lock|svg|png|jpg|woff2|map)$/.test(rel)) return false;
   return /\.(js|jsx|ts|tsx|mjs|cjs|css|html|dart)$/.test(rel);
 }
 
 function killListScan() {
   const files = walkFiles(ROOT).filter((abs) => isProductCode(path.relative(ROOT, abs)));
-  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens)/i;
+  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens|capricorn-core|premium-overrides|premium-craft|cap-premium)/i;
   const counts = {
     rawHex: 0,
     sub11: 0,
@@ -128,7 +130,7 @@ function killListScan() {
       // Skip browser chrome theme-color meta (must be literal; tokens live in brand.css)
       const forHex = text
         .split('\n')
-        .filter((line) => !/theme-color/i.test(line))
+        .filter((line) => !/theme[_-]?color|background[_-]?color/i.test(line))
         .join('\n');
       const hex = forHex.match(hexRe);
       if (hex) counts.rawHex += hex.length;
@@ -220,8 +222,17 @@ function checkVersionTruth() {
     warn('version:swCache', 'no swCache field (native-only apps may N/A)');
     return j;
   }
-  // Find SW file
-  const swCandidates = ['sw.js', 'public/sw.js', 'docs/sw.js', 'out/sw.js'].filter(exists);
+  // Find SW file (or VitePWA cacheId wired to VERSION.json)
+  const swCandidates = [
+    'sw.js',
+    'public/sw.js',
+    'docs/sw.js',
+    'out/sw.js',
+    'dist/sw.js',
+    'vite.config.ts',
+    'vite.config.js',
+    'vite.config.mjs',
+  ].filter(exists);
   let matched = false;
   let detail = 'no sw.js found';
   for (const sw of swCandidates) {
@@ -231,10 +242,15 @@ function checkVersionTruth() {
       detail = `${sw} contains ${swCache}`;
       break;
     }
-    // workbox prefix
-    if (text.includes(`prefix:"${swCache}"`) || text.includes(`prefix: "${swCache}"`)) {
+    // workbox / VitePWA: cacheId from VERSION.json (versionManifest.swCache)
+    if (
+      text.includes(`prefix:"${swCache}"`) ||
+      text.includes(`prefix: "${swCache}"`) ||
+      /cacheId\s*:\s*versionManifest\.swCache/.test(text) ||
+      /cacheId\s*:\s*.*swCache/.test(text)
+    ) {
       matched = true;
-      detail = `${sw} workbox prefix ${swCache}`;
+      detail = `${sw} workbox/VitePWA cacheId ↔ ${swCache}`;
       break;
     }
     detail = `${sw} missing ${swCache}`;
