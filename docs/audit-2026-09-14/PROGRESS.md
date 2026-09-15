@@ -1,45 +1,74 @@
 # Cap Fleet Finish Program — Progress
 
-Updated: 2026-09-15 (owner review 2) · Prompt: **v2 + §2.3 corrections**
+Updated: 2026-09-15 (Step R corrections C-15/C-17/C-18/C-25/C-26) · Prompt: **v2 + §2.3**
 
 ## Status reset
-The previous entry ("fleet Tier 1 complete; no next implementable item") was **not accurate** and is revoked by review 2 (prompt §2.3). The P0/P1 decision work already merged remains valid. **No app is Tier 1 until its `qa/finish-loop/TIER1.json` is PASS and manual evidence is linked.**
+The previous entry ("fleet Tier 1 complete") remains **revoked**. **No app is Tier 1 until its `qa/finish-loop/TIER1.json` is PASS and manual evidence is linked.**
 
-Current step: **R — corrections C-09…C-28** (prompt §2.3), starting with C-10 (tier1 gate runner), C-11 (TravelCap red CI), C-13 (TravelCap broken SW), C-14 (DeePonyCap stale SW).
+Current step: **R — corrections C-09…C-28** (prompt §2.3).
 
 Current app after Step R: **SoulCap** (1/16) — run `npm run tier1`, fix every failure, re-run until PASS.
 
-Next 5 actions:
-1. C-10 build `capricorn-tooling/shared/testing/tier1.mjs` + `npm run tier1` wiring (start with SoulCap, TravelCap, DeePonyCap).
-2. C-11 TravelCap lockfile regenerated against the public registry; CI green on `main`.
-3. C-13 TravelCap basePath-aware precache; precache-URL test; live offline proof.
-4. C-14 DeePonyCap `sw.js` cache = `VERSION.json.swCache`; release; live proof.
-5. C-26 merge capricorn-tooling `finish/phase-0` → `main` after verify.
+## Step R — this session (done)
 
-## App status (review 2, 2026-09-15)
-| App | Released | Status | Main gaps found in review |
+| ID | Status | Evidence |
+|---|---|---|
+| C-15 Website | **Done** | TravelOS removed from hub `js/products-data.js`; capricorn-lab SoT TravelCap 1.0.1 (`v1.0.1`); Hub redirects use absolute `https://shamikhahmed.github.io/<Cap>/`; Hub CI run [34948208573](https://github.com/shamikhahmed/shamikhahmed.github.io/actions/runs/34948208573) **success**; hub tagged `v1.3.1`; live catalog shows TravelCap copy (no TravelOS). |
+| C-17 SteadyCap | **Done** | Product UI streak copy rewritten (linkedRecoveryEngine, onboarding, profile, habit-links, programs); release **2.5.2** / `steadycap-v52` tag `v2.5.2`; live `VERSION.json` + `sw.js` = v52; onboarding live: "Recovery is a system, not a count." |
+| C-18 Suppressions | **Done** | DeeFoodieApp: `process.stderr.write` (no eslint-disable); IdeaCap: `Share.share` instead of `console.log`. Both on `main`. |
+| C-25 Tags | **Done** | LedgerCap `v3.57.0` → `e5ec9ca` (release commit; did not move tags). Hub `v1.3.1`, lab `v1.0.1`, SteadyCap `v2.5.2`, tooling `v1.0.0`. Fleet scan: no other missing `v<version>` for current VERSION/package. |
+| C-26 Tooling | **Done** | `finish/phase-0` merged to `main` (prefer merge) at `59d12f7`; includes `shared/testing/tier1.mjs`; audit docs re-copied; tagged `v1.0.0`; pushed. |
+
+## Step R — still remaining
+
+| ID | Item |
+|---|---|
+| C-09 | Honesty rules (ongoing — never estimated scores / fake Tier 1) |
+| C-10 | Wire `npm run tier1` in every app (runner exists in tooling after C-26) |
+| C-11–C-14 | TravelCap CI/SW + DeePonyCap SW (verify if already fixed by parallel work) |
+| C-16 | Self-host fonts (G-9) |
+| C-19 | Kill-list zeroing per app |
+| C-20 | `window.__APP_READY__` + gallery regen |
+| C-21 | finish-matrix specs + CI |
+| C-22 | Lighthouse JSON per primary route |
+| C-23 | Loop records / APP-REPORTs |
+| C-24 | Docs cleanup + SoulCap SISTER-* out of Pages |
+| C-27 | Brain notes (Desktop paths + ScentCap entry) |
+| C-28 | PROGRESS honesty (this file — partial) |
+
+## Next 5 actions
+1. C-16 self-host fonts across listed apps; CSP + privacy; re-release.
+2. C-10 wire `npm run tier1` starting SoulCap / TravelCap / DeePonyCap.
+3. C-19 kill-list queues (start with apps already near-zero: CarCap, TravelCap).
+4. C-20 `__APP_READY__` + gallery review for listed apps.
+5. C-21 finish-matrix specs in every web repo.
+
+## App status (review 2, 2026-09-15 + Step R deltas)
+| App | Released | Status | Notes |
 |---|---|---|---|
-| SoulCap | 8.2.0 | In progress — not verified | tier1 runner, matrix, Lighthouse, kill-list (299 raw hex, 28 !important), gallery review, public SISTER-* docs |
-| ScentCap | 2.1.0 | In progress — not verified | matrix, Lighthouse, `__APP_READY__`, kill-list, records |
-| MasteryCap | 51.9.0 | In progress — not verified | `__APP_READY__`, Google Fonts, 39 sub-12px, 73 innerHTML to classify, gallery, records, root prompt docs |
-| CookCap | 3.5.0 | In progress — not verified | `__APP_READY__`, 3 native dialogs, Google Fonts temp page, gallery, records, root prompt docs |
-| VaultCap | 5.2.1 | In progress — not verified | `__APP_READY__`, 297 sub-12px, 128 !important, 176 innerHTML, Google Fonts, gallery |
-| PulseCap | 6.43.0 | In progress — not verified | `__APP_READY__`, 144 sub-12px, 107 !important, 11 outline:none, gallery, root prompt docs |
-| SteadyCap | 2.5.1 | In progress — not verified | streak language in UI, `__APP_READY__`, 98 sub-12px, Google Fonts, gallery |
-| TravelCap | 1.0.0 | In progress — not verified | **CI red**, **broken live SW**, 11 added suppressions, "TravelOS" on website, gallery |
-| LedgerCap | 3.57.0 | In progress — not verified | `__APP_READY__`, 202 innerHTML, 127 sub-12px, 39 console.log, Google Fonts, no v3.57.0 tag, gallery |
-| AuraCap | 5.4.0 | In progress — not verified | matrix, Lighthouse, kill-list, gallery, records |
-| CarCap | 1.0.0 | In progress — not verified | matrix, Lighthouse, kill-list small |
-| PrismCap | 4.5.0 | In progress — not verified | `__APP_READY__`, 196 !important, 153 innerHTML, 11 native dialogs, Google Fonts, gallery, records |
-| DeePonyCap | 3.8.0 | In progress — not verified | **SW cache not bumped (v55 vs v60)**, 15 native dialogs, Google Fonts, gallery, records |
-| DeeFoodieApp | 1.0.0+3 | In progress — not verified | added `no-console` suppression, Flutter responsive tests, records |
-| IdeaCap | 2.0.0 | In progress — not verified | no `qa/finish-loop/` at all, added `no-console` suppression, web matrix |
-| Website | hub `2bc2bc8` | In progress — not verified | **Hub CI red (links)**, "TravelOS" copy, no tags, Lighthouse |
+| SoulCap | 8.2.0 | In progress — not verified | Next after Step R |
+| ScentCap | 2.1.0 | In progress — not verified | |
+| MasteryCap | 51.9.0 | In progress — not verified | |
+| CookCap | 3.5.0 | In progress — not verified | |
+| VaultCap | 5.2.1 | In progress — not verified | |
+| PulseCap | 6.43.0 | In progress — not verified | |
+| SteadyCap | **2.5.2** | In progress — not verified | C-17 streak language fixed live |
+| TravelCap | 1.0.1 | In progress — not verified | |
+| LedgerCap | 3.57.0 | In progress — not verified | `v3.57.0` tagged (C-25) |
+| AuraCap | 5.4.0 | In progress — not verified | |
+| CarCap | 1.0.0 | In progress — not verified | |
+| PrismCap | 4.5.0 | In progress — not verified | |
+| DeePonyCap | 3.8.1 | In progress — not verified | |
+| DeeFoodieApp | 1.0.0+3 | In progress — not verified | C-18 done |
+| IdeaCap | 2.0.0 | In progress — not verified | C-18 done |
+| Website | hub **1.3.1** / lab **1.0.1** | In progress — not verified | C-15 done; Hub CI green |
 
 ## BLOCKED-EXTERNAL (legitimate)
-- Full Xcode / `xcodebuild` archive (Command Line Tools only on this machine): ScentCap, VaultCap, IdeaCap, DeeFoodieApp.
+- Full Xcode / `xcodebuild` archive (Command Line Tools only): ScentCap, VaultCap, IdeaCap, DeeFoodieApp.
 - App Store Connect / TestFlight uploads (owner accounts).
-- Physical iPhone/Android VoiceOver/TalkBack (use macOS VoiceOver + Safari and emulators meanwhile).
+- Physical iPhone/Android VoiceOver/TalkBack (use macOS VoiceOver + Safari meanwhile).
 
 ## Last green checkpoints
-Record per repo as work resumes.
+- Hub CI `main` success: run 34948208573 (C-15).
+- SteadyCap live: VERSION 2.5.2 / SW `steadycap-v52` (C-17).
+- capricorn-tooling `main` @ `59d12f7` with `tier1.mjs` (C-26).
