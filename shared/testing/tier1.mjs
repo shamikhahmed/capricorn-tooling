@@ -80,7 +80,14 @@ function walkFiles(dir, acc = []) {
 
 function isProductCode(rel) {
   if (/\.(test|spec)\./.test(rel)) return false;
-  if (/(^|\/)(tests?|e2e|qa|docs|scripts|__tests__)(\/|$)/.test(rel)) return false;
+  // Lab folders (SoulCap P-SOUL-2 and peers): not Pages / not Tier 1 scored
+  if (/(^|\/)(backend|mobile)(\/|$)/.test(rel)) return false;
+  // Non-product trees
+  if (/(^|\/)(tests?|e2e|qa|scripts|__tests__|archive)(\/|$)/.test(rel)) return false;
+  // GitHub Pages apps ship from docs/ — score product files there, skip assets/vendor
+  if (/(^|\/)docs(\/|$)/.test(rel)) {
+    if (/(^|\/)docs\/(archive|screenshots|vendor|assets)(\/|$)/.test(rel)) return false;
+  }
   if (/\.(md|json|lock|svg|png|jpg|woff2|map)$/.test(rel)) return false;
   return /\.(js|jsx|ts|tsx|mjs|cjs|css|html|dart)$/.test(rel);
 }
@@ -98,7 +105,8 @@ function killListScan() {
     googleFonts: 0,
     innerHTML: 0,
   };
-  const hexRe = /#[0-9a-fA-F]{3,8}\b/g;
+  // Color hex only (not CSS/JS id selectors like #helpFab). Require color-ish prefix.
+  const hexRe = /(?:(?::|,|\()\s*|["'])#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b/g;
   const pxRe = /font-size\s*:\s*([0-9.]+)px/g;
   const importantRe = /!important/g;
   const dialogRe = /\b(alert|confirm|prompt)\s*\(/g;
@@ -117,7 +125,12 @@ function killListScan() {
     }
     const inBrand = brandOk.test(rel);
     if (!inBrand) {
-      const hex = text.match(hexRe);
+      // Skip browser chrome theme-color meta (must be literal; tokens live in brand.css)
+      const forHex = text
+        .split('\n')
+        .filter((line) => !/theme-color/i.test(line))
+        .join('\n');
+      const hex = forHex.match(hexRe);
       if (hex) counts.rawHex += hex.length;
     }
     let m;
@@ -129,12 +142,26 @@ function killListScan() {
     // Allow !important only in reduced-motion / forced-colors blocks — approximate: count all then note
     const imp = text.match(importantRe);
     if (imp) {
-      // subtract those inside @media (prefers-reduced-motion) or forced-colors loosely
-      const blocks = text.split(/@media[^{]+\{/);
+      // Allow !important inside prefers-reduced-motion / forced-colors / prefers-reduced-transparency
       let allowed = 0;
-      for (const b of blocks) {
-        if (/prefers-reduced-motion|forced-colors|prefers-reduced-transparency/.test(b.slice(0, 80))) {
-          allowed += (b.match(importantRe) || []).length;
+      const reMedia =
+        /@media[^{]*(prefers-reduced-motion|forced-colors|prefers-reduced-transparency)[^{]*\{/g;
+      let mm;
+      while ((mm = reMedia.exec(text))) {
+        let depth = 0;
+        const start = mm.index + mm[0].length - 1;
+        for (let j = start; j < text.length; j++) {
+          const ch = text[j];
+          if (ch === '{') depth += 1;
+          else if (ch === '}') {
+            depth -= 1;
+            if (depth === 0) {
+              const block = text.slice(start, j + 1);
+              allowed += (block.match(importantRe) || []).length;
+              reMedia.lastIndex = j + 1;
+              break;
+            }
+          }
         }
       }
       counts.important += Math.max(0, (imp?.length || 0) - allowed);
