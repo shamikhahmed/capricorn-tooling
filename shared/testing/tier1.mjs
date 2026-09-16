@@ -651,14 +651,17 @@ function checkGalleryFreshness() {
 
 function checkLiveVersion(ver) {
   const mode = (process.env.TIER1_LIVE_VERSION || 'warn').toLowerCase();
+  // Pages paths match repo folder names (SoulCap, PulseCap) — prefer cwd basename.
   const app =
+    path.basename(ROOT) ||
     ver?.app ||
+    ver?.name ||
     ver?.slug ||
     (() => {
       try {
         return JSON.parse(tryRead('package.json') || '{}').name;
       } catch {
-        return path.basename(ROOT);
+        return null;
       }
     })();
   if (!app) {
