@@ -14,11 +14,14 @@
  *   TIER1_SKIP_CI — set to 1 to skip gh run check (local-only)
  *   TIER1_SKIP_LH — set to 1 to skip requiring lighthouse JSON files
  *   TIER1_SKIP_MATRIX — set to 1 to skip requiring finish-matrix evidence
+ *   TIER1_SKIP_AXE — set to 1 to skip axe JSON gate
+ *   TIER1_SKIP_GALLERY — set to 1 to skip gallery freshness
+ *   TIER1_CI_WORKFLOW — exact Actions workflow name (or qa/finish-loop/CI-WORKFLOW.txt)
+ *   TIER1_LIVE_VERSION — "warn" (default) or "fail" for live VERSION.json
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync, spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 
 const ROOT = process.cwd();
 const OUT_DIR = path.join(ROOT, 'qa', 'finish-loop');
@@ -67,6 +70,16 @@ function sh(cmd, opts = {}) {
   }
 }
 
+const UI_PATHSPECS =
+  "'*.css' '*.scss' '*.html' '*.htm' '*.js' '*.jsx' '*.mjs' '*.cjs' '*.ts' '*.tsx' '*.vue' '*.svelte' '*.dart' '**/manifest*.json' '**/index.html'";
+
+function lastUiCommitIso() {
+  const r = sh(`git log -1 --format=%cI -- ${UI_PATHSPECS} 2>/dev/null`);
+  if (typeof r === 'object' && r.error) return null;
+  const iso = String(r || '').trim();
+  return iso || null;
+}
+
 function walkFiles(dir, acc = []) {
   if (!fs.existsSync(dir)) return acc;
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -80,14 +93,37 @@ function walkFiles(dir, acc = []) {
 
 function isProductCode(rel) {
   if (/\.(test|spec)\./.test(rel)) return false;
-  if (/(^|\/)(tests?|e2e|qa|docs|scripts|__tests__)(\/|$)/.test(rel)) return false;
+  // Bundled concatenations — scan sources only (LedgerCap ledgercap.bundle.js)
+  if (/\.bundle\.(js|mjs|cjs|css)$/.test(rel)) return false;
+  // Lab folders (SoulCap P-SOUL-2 and peers): not Pages / not Tier 1 scored
+  if (/(^|\/)(backend|mobile)(\/|$)/.test(rel)) return false;
+  // Non-product trees
+  if (/(^|\/)(tests?|e2e|qa|scripts|__tests__|archive|vendor)(\/|$)/.test(rel)) return false;
+  // GitHub Pages apps ship from docs/ — score product files there, skip assets/vendor
+  if (/(^|\/)docs(\/|$)/.test(rel)) {
+    if (/(^|\/)docs\/(archive|screenshots|vendor|assets)(\/|$)/.test(rel)) return false;
+    if (/\.report\.html$/i.test(rel)) return false;
+  }
+  // Marketing / gallery / legal / changelog shells (not app chrome)
+  if (/(^|\/)(landing|pitch|presentation|screen-gallery|privacy|support|terms|offline|changelog|install)\.html$/.test(rel)) return false;
   if (/\.(md|json|lock|svg|png|jpg|woff2|map)$/.test(rel)) return false;
   return /\.(js|jsx|ts|tsx|mjs|cjs|css|html|dart)$/.test(rel);
 }
 
+function isHexExemptPath(rel) {
+  // C-29: hex-only exemptions — never sizes / !important / outline
+  const n = rel.replace(/\\/g, '/');
+  if (/(^|\/)(capricorn-tooling\/)?shared\/design\//.test(n)) return true;
+  const base = path.basename(n);
+  if (/^tokens\./i.test(base)) return true;
+  if (/^brand\.css$/i.test(base)) return true;
+  if (/^brand-palette\./i.test(base)) return true;
+  if (/(^|\/)js\/brand\/colors\.js$/i.test(n)) return true;
+  return false;
+}
+
 function killListScan() {
   const files = walkFiles(ROOT).filter((abs) => isProductCode(path.relative(ROOT, abs)));
-  const brandOk = /(tokens|brand|theme|cap-foundation|design-tokens)/i;
   const counts = {
     rawHex: 0,
     sub11: 0,
@@ -98,10 +134,12 @@ function killListScan() {
     googleFonts: 0,
     innerHTML: 0,
   };
-  const hexRe = /#[0-9a-fA-F]{3,8}\b/g;
+  // Color hex only (not CSS/JS id selectors like #helpFab). Require color-ish prefix.
+  const hexRe = /(?:(?::|,|\()\s*|["'])#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b/g;
   const pxRe = /font-size\s*:\s*([0-9.]+)px/g;
+  const remRe = /font-size\s*:\s*([0-9.]+)(rem|em)\b/g;
   const importantRe = /!important/g;
-  const dialogRe = /\b(alert|confirm|prompt)\s*\(/g;
+  const dialogRe = /(?:window\.)?\b(?:alert|confirm|prompt)\s*\(/g;
   const outlineRe = /outline\s*:\s*none\b/g;
   const consoleRe = /console\.log\s*\(/g;
   const gfRe = /fonts\.googleapis\.com|fonts\.gstatic\.com/g;
@@ -115,38 +153,64 @@ function killListScan() {
     } catch {
       continue;
     }
-    const inBrand = brandOk.test(rel);
-    if (!inBrand) {
-      const hex = text.match(hexRe);
+    const hexExempt = isHexExemptPath(rel);
+    if (!hexExempt) {
+      // Only skip theme-color meta / manifest theme_color (C-29 — not any background-color line)
+      const forHex = text
+        .split('\n')
+        .filter((line) => !/theme[_-]?color|msapplication-TileColor|stop-color/i.test(line))
+        .join('\n');
+      const hex = forHex.match(hexRe);
       if (hex) counts.rawHex += hex.length;
     }
+
     let m;
     pxRe.lastIndex = 0;
     while ((m = pxRe.exec(text))) {
       const n = parseFloat(m[1]);
       if (n < 11) counts.sub11 += 1;
     }
-    // Allow !important only in reduced-motion / forced-colors blocks — approximate: count all then note
+    remRe.lastIndex = 0;
+    while ((m = remRe.exec(text))) {
+      const n = parseFloat(m[1]);
+      if (n < 0.6875) counts.sub11 += 1;
+    }
+    // Allow !important only in reduced-motion / forced-colors blocks
     const imp = text.match(importantRe);
     if (imp) {
-      // subtract those inside @media (prefers-reduced-motion) or forced-colors loosely
-      const blocks = text.split(/@media[^{]+\{/);
       let allowed = 0;
-      for (const b of blocks) {
-        if (/prefers-reduced-motion|forced-colors|prefers-reduced-transparency/.test(b.slice(0, 80))) {
-          allowed += (b.match(importantRe) || []).length;
+      const reMedia =
+        /@media[^{]*(prefers-reduced-motion|forced-colors|prefers-reduced-transparency|print)[^{]*\{/g;
+      let mm;
+      while ((mm = reMedia.exec(text))) {
+        let depth = 0;
+        const start = mm.index + mm[0].length - 1;
+        for (let j = start; j < text.length; j++) {
+          const ch = text[j];
+          if (ch === '{') depth += 1;
+          else if (ch === '}') {
+            depth -= 1;
+            if (depth === 0) {
+              const block = text.slice(start, j + 1);
+              allowed += (block.match(importantRe) || []).length;
+              reMedia.lastIndex = j + 1;
+              break;
+            }
+          }
         }
       }
       counts.important += Math.max(0, (imp?.length || 0) - allowed);
     }
+    const o = text.match(outlineRe);
+    if (o) counts.outlineNone += o.length;
+
     if (!/\.dart$/.test(rel)) {
-      // RN Alert.alert is allowed (IdeaCap) — skip Alert.alert
-      const cleaned = text.replace(/Alert\.alert\s*\(/g, 'Alert.__ok__(');
+      const cleaned = text
+        .replace(/Alert\.alert\s*\(/g, 'Alert.__ok__(')
+        .replace(/\.\s*prompt\s*\(/g, '.__bipPrompt__(');
       const d = cleaned.match(dialogRe);
       if (d) counts.nativeDialog += d.length;
     }
-    const o = text.match(outlineRe);
-    if (o) counts.outlineNone += o.length;
     const c = text.match(consoleRe);
     if (c) counts.consoleLog += c.length;
     const g = text.match(gfRe);
@@ -193,8 +257,26 @@ function checkVersionTruth() {
     warn('version:swCache', 'no swCache field (native-only apps may N/A)');
     return j;
   }
-  // Find SW file
-  const swCandidates = ['sw.js', 'public/sw.js', 'docs/sw.js', 'out/sw.js'].filter(exists);
+  // Find SW file (or VitePWA cacheId wired to VERSION.json)
+  const swCandidates = [
+    'sw.js',
+    'public/sw.js',
+    'docs/sw.js',
+    'out/sw.js',
+    'dist/sw.js',
+    'sw-v51.js',
+    'vite.config.ts',
+    'vite.config.js',
+    'vite.config.mjs',
+  ].filter(exists);
+  // Also any root sw-*.js (VaultCap historical filename)
+  try {
+    for (const f of fs.readdirSync(ROOT)) {
+      if (/^sw(-v\d+)?\.js$/.test(f) && !swCandidates.includes(f)) swCandidates.push(f);
+    }
+  } catch {
+    /* */
+  }
   let matched = false;
   let detail = 'no sw.js found';
   for (const sw of swCandidates) {
@@ -204,10 +286,15 @@ function checkVersionTruth() {
       detail = `${sw} contains ${swCache}`;
       break;
     }
-    // workbox prefix
-    if (text.includes(`prefix:"${swCache}"`) || text.includes(`prefix: "${swCache}"`)) {
+    // workbox / VitePWA: cacheId from VERSION.json (versionManifest.swCache)
+    if (
+      text.includes(`prefix:"${swCache}"`) ||
+      text.includes(`prefix: "${swCache}"`) ||
+      /cacheId\s*:\s*versionManifest\.swCache/.test(text) ||
+      /cacheId\s*:\s*.*swCache/.test(text)
+    ) {
       matched = true;
-      detail = `${sw} workbox prefix ${swCache}`;
+      detail = `${sw} workbox/VitePWA cacheId ↔ ${swCache}`;
       break;
     }
     detail = `${sw} missing ${swCache}`;
@@ -219,7 +306,9 @@ function checkVersionTruth() {
 function checkSuppressions() {
   const files = walkFiles(ROOT).filter((abs) => isProductCode(path.relative(ROOT, abs)));
   const bad = [];
-  const re = /eslint-disable|@ts-ignore|@ts-expect-error|\.skip\(|\.only\(|xit\(|xdescribe\(|fit\(|fdescribe\(/;
+  // Word-bound xit/fit — bare xit( matches process.exit( (false positive on Nest/Prisma CLI).
+  const re =
+    /eslint-disable|@ts-ignore|@ts-expect-error|\.skip\(|\.only\(|\bxit\(|\bxdescribe\(|\bfit\(|\bfdescribe\(/;
   for (const abs of files) {
     const rel = path.relative(ROOT, abs);
     const text = fs.readFileSync(abs, 'utf8');
@@ -235,16 +324,17 @@ function checkSuppressions() {
 }
 
 function checkAppReady() {
-  // Search product sources for __APP_READY__
-  const files = walkFiles(ROOT);
+  // C-32: assignment in product code (not only test references)
+  const files = walkFiles(ROOT).filter((abs) => {
+    const rel = path.relative(ROOT, abs);
+    if (/(^|\/)(tests?|e2e|qa|__tests__)(\/|$)/.test(rel)) return false;
+    return isProductCode(rel);
+  });
   let found = false;
   for (const abs of files) {
-    const rel = path.relative(ROOT, abs);
-    if (!/\.(js|jsx|ts|tsx|html|mjs)$/.test(rel)) continue;
-    if (/(node_modules|dist|out|\.next)/.test(rel)) continue;
     try {
       const t = fs.readFileSync(abs, 'utf8');
-      if (/__APP_READY__/.test(t)) {
+      if (/__APP_READY__\s*=/.test(t) || /\[['"]__APP_READY__['"]\]\s*=/.test(t)) {
         found = true;
         break;
       }
@@ -252,27 +342,116 @@ function checkAppReady() {
       /* */
     }
   }
-  add(found, 'app-ready', found ? 'window.__APP_READY__ referenced' : 'missing __APP_READY__');
+  add(found, 'app-ready', found ? 'window.__APP_READY__ assigned in product code' : 'missing __APP_READY__ assignment in product code');
 }
 
+function loadSkipAllowlist() {
+  const candidates = ['qa/finish-loop/skip-allowlist.json', 'qa/finish-loop/test-skip-allowlist.json'];
+  for (const c of candidates) {
+    const raw = tryRead(c);
+    if (!raw) continue;
+    try {
+      const j = JSON.parse(raw);
+      const entries = Array.isArray(j) ? j : j.entries || j.allow || [];
+      return {
+        path: c,
+        entries: entries.map((e) => (typeof e === 'string' ? { pattern: e, reason: 'legacy' } : e)),
+      };
+    } catch {
+      warn('test-skip:allowlist', `invalid JSON ${c}`);
+    }
+  }
+  return { path: null, entries: [] };
+}
+
+/** C-32: scan test folders for .skip / .only / fixme — gallery allowlist only by default. */
+function checkTestSkips() {
+  const allowlist = loadSkipAllowlist();
+  const testFiles = walkFiles(ROOT).filter((abs) => {
+    const rel = path.relative(ROOT, abs).replace(/\\/g, '/');
+    if (!/\.(js|jsx|ts|tsx|mjs|cjs)$/.test(rel)) return false;
+    return /(^|\/)(tests?|e2e|__tests__)(\/|$)/.test(rel) || /\.(test|spec)\./.test(rel);
+  });
+  const re =
+    /\.(?:skip|only)\s*\(|\bfixme\b|\bit\.skip\b|\bdescribe\.skip\b|\btest\.skip\b|\bxit\b|\bfit\b/i;
+  const bad = [];
+  for (const abs of testFiles) {
+    const rel = path.relative(ROOT, abs);
+    let text;
+    try {
+      text = fs.readFileSync(abs, 'utf8');
+    } catch {
+      continue;
+    }
+    text.split('\n').forEach((line, i) => {
+      if (!re.test(line)) return;
+      const allowed = allowlist.entries.some((e) => {
+        const pat = e.pattern || e.file || e.path || '';
+        const reason = (e.reason || '').trim();
+        if (!pat || reason.length < 8) return false;
+        return rel.includes(pat) || new RegExp(pat).test(`${rel}:${line}`);
+      });
+      if (!allowed) bad.push(`${rel}:${i + 1}: ${line.trim().slice(0, 120)}`);
+    });
+  }
+  add(
+    bad.length === 0,
+    'test-skip',
+    bad.length
+      ? `${bad.length} hits (allowlist: ${allowlist.path || 'none'})\n${bad.slice(0, 15).join('\n')}`
+      : 'none',
+  );
+}
+
+/**
+ * C-32: named workflow for current main SHA — not "any latest run".
+ */
 function checkCi() {
   if (process.env.TIER1_SKIP_CI === '1') {
     warn('ci:main', 'skipped via TIER1_SKIP_CI');
     return;
   }
-  const r = sh('gh run list -b main --limit 1 --json conclusion,status,databaseId,displayTitle,url 2>/dev/null');
+  const named =
+    (process.env.TIER1_CI_WORKFLOW || '').trim() ||
+    (tryRead('qa/finish-loop/CI-WORKFLOW.txt') || '').trim() ||
+    null;
+  if (!named) {
+    add(
+      false,
+      'ci:workflow-name',
+      'set TIER1_CI_WORKFLOW or qa/finish-loop/CI-WORKFLOW.txt to the exact workflow name',
+    );
+    return;
+  }
+  const sha = sh('git rev-parse origin/main 2>/dev/null || git rev-parse main 2>/dev/null || git rev-parse HEAD');
+  if (typeof sha === 'object' && sha.error) {
+    warn('ci:main', `could not resolve main SHA: ${sha.stderr || sha.stdout}`);
+    return;
+  }
+  const r = sh(
+    `gh run list -b main --commit ${sha} --workflow ${JSON.stringify(named)} --limit 5 --json conclusion,status,databaseId,displayTitle,url,name,headSha 2>/dev/null`,
+  );
   if (typeof r === 'object' && r.error) {
     warn('ci:main', `gh unavailable: ${r.stderr || r.stdout}`);
     return;
   }
   try {
     const arr = JSON.parse(r || '[]');
-    const latest = arr[0];
-    if (!latest) {
-      warn('ci:main', 'no runs');
+    const done = arr.filter((x) => x && x.conclusion);
+    const hit = done[0] || arr[0];
+    if (!hit) {
+      add(false, 'ci:main', `no runs of "${named}" for ${String(sha).slice(0, 7)}`);
       return;
     }
-    add(latest.conclusion === 'success', 'ci:main', `${latest.displayTitle} → ${latest.conclusion} ${latest.url || ''}`);
+    if (!hit.conclusion) {
+      warn('ci:main', `latest still ${hit.status || 'unknown'}: ${hit.displayTitle || hit.name}`);
+      return;
+    }
+    add(
+      hit.conclusion === 'success',
+      'ci:main',
+      `${named} @ ${String(sha).slice(0, 7)} → ${hit.conclusion} ${hit.url || ''}`,
+    );
   } catch {
     warn('ci:main', 'could not parse gh output');
   }
@@ -296,9 +475,49 @@ function checkMatrix() {
     return;
   }
   const specs = walkFiles(ROOT).filter((abs) => /finish-matrix\.(spec|test)\./.test(abs));
-  add(specs.length > 0, 'matrix:spec', specs.length ? specs.map((p) => path.relative(ROOT, p)).join(', ') : 'no finish-matrix spec');
-  const shots = exists('qa/finish-loop/shots');
-  if (!shots) warn('matrix:shots', 'qa/finish-loop/shots missing (run matrix)');
+  add(
+    specs.length > 0,
+    'matrix:spec',
+    specs.length ? specs.map((p) => path.relative(ROOT, p)).join(', ') : 'no finish-matrix spec',
+  );
+  const resultsPath = 'qa/finish-loop/matrix-results.json';
+  if (!exists(resultsPath)) {
+    add(false, 'matrix:results', 'missing qa/finish-loop/matrix-results.json (CI must set FINISH_MATRIX=1)');
+    return;
+  }
+  try {
+    const j = JSON.parse(read(resultsPath));
+    const failures = j.failures ?? j.failed ?? 0;
+    const failCount = Array.isArray(failures) ? failures.length : Number(failures || 0);
+    add(failCount === 0, 'matrix:failures', failCount === 0 ? '0' : String(failCount));
+
+    const routes = j.routes || j.routeCount;
+    const viewports = j.viewports || j.viewportCount;
+    const themes = j.themes || j.themeCount;
+    const routeN = Array.isArray(routes) ? routes.length : Number(routes || 0);
+    const vpN = Array.isArray(viewports) ? viewports.length : Number(viewports || 0);
+    const themeN = Array.isArray(themes) ? themes.length : Number(themes || 0);
+    const expected =
+      routeN * vpN * themeN || Number(j.expectedShots ?? j.expected ?? 0);
+    const shots = Number(j.shotCount ?? j.shots ?? (Array.isArray(j.shots) ? j.shots.length : 0));
+    if (expected <= 0) {
+      add(false, 'matrix:shot-count', 'routes/viewports/themes (or expectedShots) missing or zero');
+    } else {
+      add(shots === expected, 'matrix:shot-count', `${shots} shots (need routes×viewports×themes = ${expected})`);
+    }
+
+    const ts = j.generatedAt || j.timestamp || j.finishedAt;
+    const uiIso = lastUiCommitIso();
+    if (!ts) {
+      add(false, 'matrix:freshness', 'no timestamp in matrix-results.json');
+    } else if (uiIso && Date.parse(ts) < Date.parse(uiIso)) {
+      add(false, 'matrix:freshness', `matrix ${ts} before last UI commit ${uiIso}`);
+    } else {
+      add(true, 'matrix:freshness', String(ts));
+    }
+  } catch (e) {
+    add(false, 'matrix:results', `invalid JSON: ${e.message}`);
+  }
 }
 
 function checkLighthouse() {
@@ -311,8 +530,157 @@ function checkLighthouse() {
     add(false, 'lighthouse:dir', 'missing qa/finish-loop/lighthouse/');
     return;
   }
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json') && !f.includes('.report.'));
+  if (files.length === 0) {
+    add(false, 'lighthouse:files', 'empty');
+    return;
+  }
+  const uiIso = lastUiCommitIso();
+  let okCount = 0;
+  for (const f of files) {
+    const abs = path.join(dir, f);
+    let j;
+    try {
+      j = JSON.parse(fs.readFileSync(abs, 'utf8'));
+    } catch (e) {
+      add(false, `lighthouse:${f}`, `invalid JSON: ${e.message}`);
+      continue;
+    }
+    const ua = String(j.userAgent || '');
+    if (/tier1-evidence-stub/i.test(ua) || /n\/a-flutter/i.test(String(j.lighthouseVersion || ''))) {
+      add(false, `lighthouse:${f}`, 'stub / placeholder — delete and run real Lighthouse');
+      continue;
+    }
+    const cats = j.categories || {};
+    const perf = cats.performance?.score;
+    const a11y = cats.accessibility?.score;
+    const bp = cats['best-practices']?.score ?? cats.bestPractices?.score;
+    if (perf == null || a11y == null || bp == null) {
+      add(false, `lighthouse:${f}`, 'null category scores — not claimed');
+      continue;
+    }
+    const audits = j.audits || {};
+    const lcp = audits['largest-contentful-paint']?.numericValue;
+    const tbt = audits['total-blocking-time']?.numericValue;
+    const cls = audits['cumulative-layout-shift']?.numericValue;
+    if (lcp == null || tbt == null || cls == null) {
+      add(false, `lighthouse:${f}`, 'missing LCP/TBT/CLS numericValue');
+      continue;
+    }
+    const fetchTime = j.fetchTime || j.generatedTime;
+    if (uiIso && fetchTime && Date.parse(fetchTime) < Date.parse(uiIso)) {
+      add(false, `lighthouse:${f}`, `fetchTime ${fetchTime} before last UI commit ${uiIso}`);
+      continue;
+    }
+    const perfPct = perf <= 1 ? perf * 100 : perf;
+    const a11yPct = a11y <= 1 ? a11y * 100 : a11y;
+    const bpPct = bp <= 1 ? bp * 100 : bp;
+    const gate =
+      perfPct >= 90 && a11yPct >= 95 && bpPct >= 95 && lcp <= 2500 && tbt <= 200 && cls <= 0.1;
+    add(
+      gate,
+      `lighthouse:${f}`,
+      `perf ${perfPct.toFixed(0)} a11y ${a11yPct.toFixed(0)} bp ${bpPct.toFixed(0)} LCP ${lcp} TBT ${tbt} CLS ${cls}`,
+    );
+    if (gate) okCount += 1;
+  }
+  add(okCount === files.length && files.length > 0, 'lighthouse:passing', `${okCount}/${files.length} files meet thresholds`);
+}
+
+function checkAxe() {
+  if (process.env.TIER1_SKIP_AXE === '1') {
+    warn('axe', 'skipped');
+    return;
+  }
+  const dir = path.join(ROOT, 'qa', 'finish-loop', 'axe');
+  if (!fs.existsSync(dir)) {
+    add(false, 'axe:dir', 'missing qa/finish-loop/axe/ (JSON per route×theme)');
+    return;
+  }
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
-  add(files.length > 0, 'lighthouse:files', files.length ? `${files.length} JSON` : 'empty');
+  if (files.length === 0) {
+    add(false, 'axe:files', 'empty');
+    return;
+  }
+  const bad = [];
+  for (const f of files) {
+    let j;
+    try {
+      j = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+    } catch {
+      bad.push(`${f}: invalid JSON`);
+      continue;
+    }
+    const violations = j.violations || j.results?.violations || [];
+    const serious = violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
+    const nodes = serious.reduce((n, v) => n + (v.nodes?.length || 1), 0);
+    if (nodes > 0) bad.push(`${f}: ${nodes} serious/critical (${serious.map((v) => v.id).join(',')})`);
+  }
+  add(bad.length === 0, 'axe:serious-critical', bad.length ? bad.slice(0, 10).join('\n') : `${files.length} JSON clean`);
+}
+
+function checkGalleryFreshness() {
+  if (process.env.TIER1_SKIP_GALLERY === '1') {
+    warn('gallery', 'skipped');
+    return;
+  }
+  const candidates = [
+    'docs/screenshots/gallery/gallery-manifest.json',
+    'gallery-manifest.json',
+    'public/gallery-manifest.json',
+    'assets/screenshots/gallery-manifest.json',
+  ];
+  const hit = candidates.find(exists);
+  if (!hit) {
+    add(false, 'gallery:manifest', 'gallery-manifest.json not found');
+    return;
+  }
+  const uiIso = lastUiCommitIso();
+  const log = sh(`git log -1 --format=%cI -- ${hit} 2>/dev/null`);
+  const galIso = typeof log === 'string' && log ? log : null;
+  if (!galIso) {
+    add(false, 'gallery:freshness', `${hit} not in git history`);
+    return;
+  }
+  if (uiIso && Date.parse(galIso) < Date.parse(uiIso)) {
+    add(false, 'gallery:freshness', `gallery ${galIso} before last UI commit ${uiIso}`);
+  } else {
+    add(true, 'gallery:freshness', `${hit} @ ${galIso}`);
+  }
+}
+
+function checkLiveVersion(ver) {
+  const mode = (process.env.TIER1_LIVE_VERSION || 'warn').toLowerCase();
+  // Pages paths match repo folder names (SoulCap, PulseCap) — prefer cwd basename.
+  const app =
+    path.basename(ROOT) ||
+    ver?.app ||
+    ver?.name ||
+    ver?.slug ||
+    (() => {
+      try {
+        return JSON.parse(tryRead('package.json') || '{}').name;
+      } catch {
+        return null;
+      }
+    })();
+  if (!app) {
+    warn('live:VERSION.json', 'no app name');
+    return;
+  }
+  const slug = String(app)
+    .replace(/^@.*\//, '')
+    .replace(/[^A-Za-z0-9-]/g, '');
+  const url = `https://shamikhahmed.github.io/${slug}/VERSION.json`;
+  const r = sh(`curl -sS -o /dev/null -w "%{http_code}" --max-time 15 ${JSON.stringify(url)} 2>/dev/null`);
+  const code = typeof r === 'string' ? r.trim() : '';
+  if (code === '200') {
+    add(true, 'live:VERSION.json', `${url} → 200`);
+    return;
+  }
+  const detail = `${url} → ${code || 'unreachable'}`;
+  if (mode === 'fail') add(false, 'live:VERSION.json', detail);
+  else warn('live:VERSION.json', detail);
 }
 
 function checkSinks() {
@@ -344,11 +712,15 @@ function main() {
   const ver = checkVersionTruth();
   checkRecords();
   checkSuppressions();
+  checkTestSkips();
   checkAppReady();
   checkCi();
   checkTag(ver?.version || pkg?.version);
   checkMatrix();
   checkLighthouse();
+  checkAxe();
+  checkGalleryFreshness();
+  checkLiveVersion(ver);
   checkSinks();
 
   const kills = killListScan();

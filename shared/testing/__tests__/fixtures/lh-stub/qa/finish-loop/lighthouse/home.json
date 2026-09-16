@@ -1,0 +1,10 @@
+{
+  "userAgent": "tier1-evidence-stub",
+  "fetchTime": "2099-01-01T00:00:00.000Z",
+  "categories": {
+    "performance": { "score": null },
+    "accessibility": { "score": null },
+    "best-practices": { "score": null }
+  },
+  "audits": {}
+}

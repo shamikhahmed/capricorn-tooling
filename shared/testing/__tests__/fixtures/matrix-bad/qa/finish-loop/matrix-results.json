@@ -1,0 +1,8 @@
+{
+  "timestamp": "2020-01-01T00:00:00.000Z",
+  "routes": ["home"],
+  "viewports": ["iphone-16"],
+  "themes": ["light", "dark"],
+  "shotCount": 1,
+  "failures": ["overflow on home/dark"]
+}
