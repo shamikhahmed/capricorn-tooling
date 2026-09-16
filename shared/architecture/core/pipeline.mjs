@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { ArchitectureGraph } from './graph.mjs';
 import { detectStacks } from './detect.mjs';
 import { runExtractors } from './extract/index.mjs';
@@ -11,6 +12,9 @@ import { computeStats } from './stats.mjs';
 import { canonicalize } from './serialize.mjs';
 import { ANALYZER_VERSION, SCHEMA_VERSION } from './constants.mjs';
 import { writeAuditMarkdown } from './audit.mjs';
+
+const VIEWER_SRC = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'viewer');
+const VIEWER_ASSETS = ['index.html', 'viewer.js', 'viewer.css'];
 
 /**
  * @param {string} root
@@ -86,6 +90,20 @@ export function writeOutputs(outDir, doc, opts) {
   fs.writeFileSync(jsPath, 'window.ARCH_DATA = ' + JSON.stringify(doc) + ';\n');
   if (opts && opts.writeAudit) {
     fs.writeFileSync(path.join(outDir, 'AUDIT.md'), writeAuditMarkdown(doc, opts.root || ''));
+  }
+  copyViewerAssets(outDir);
+}
+
+/** Copy shared static viewer next to generated data (SPEC §1.2). No-op if outDir is the source viewer. */
+export function copyViewerAssets(outDir) {
+  const absOut = path.resolve(outDir);
+  const absSrc = path.resolve(VIEWER_SRC);
+  if (absOut === absSrc) return;
+  if (!fs.existsSync(absSrc)) return;
+  for (const name of VIEWER_ASSETS) {
+    const from = path.join(absSrc, name);
+    if (!fs.existsSync(from)) continue;
+    fs.copyFileSync(from, path.join(absOut, name));
   }
 }
 

@@ -19,6 +19,8 @@
     "test:tier1": "node --test shared/testing/__tests__/tier1.test.mjs",
     "architecture:analyze": "node shared/architecture/analyze.mjs",
     "architecture:test": "node --test shared/architecture/__tests__/architecture.test.mjs",
+    "architecture:viewer": "node shared/architecture/prepare-viewer.mjs",
+    "architecture:viewer:stress": "node shared/architecture/prepare-viewer.mjs --stress 5000",
     "test": "node --test shared/testing/__tests__/tier1.test.mjs shared/architecture/__tests__/architecture.test.mjs"
   },
   "engines": {

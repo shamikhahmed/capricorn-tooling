@@ -144,7 +144,7 @@ Pilot order: PulseCap → ScentCap → roll-out (ARCH-04 / ARCH-05).
 | ID | Item | Status |
 |---|---|---|
 | ARCH-01 | Core + schema + fixtures | ✅ Done (`c941978` / merge `c628e40`; tests 16/16) |
-| ARCH-02 | Static viewer (`viewer/*`) | ❌ Next |
+| ARCH-02 | Static viewer (`viewer/*`) | ✅ Done (`finish/arch-02`; `npm run architecture:viewer`) |
 | ARCH-03 | Stack adapters completeness | Partial extractors in core; adapters packaging TBD |
 | ARCH-04 | Pilot PulseCap + ScentCap | ❌ |
 | ARCH-05 | Roll-out all apps + hub | ❌ |
