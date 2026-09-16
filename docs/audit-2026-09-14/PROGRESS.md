@@ -9,7 +9,7 @@ Current step: **Step R product loops** (runner C-29…C-33 done) — parallel ag
 
 ## Done
 - **C-29…C-33 ✅** hardened `tier1.mjs` + tests (tooling)
-- **C-53 ✅** eng-mode rule (verify agent confirming Pages 404)
+- **C-53 ✅** eng-mode rule on origin/main all 18 repos; hub Pages `.cursor` → 404 (allowlisted deploy)
 - **C-34** SW offline e2e fix merged `ac0da66`; `docs/VERSION.json` live path `528c951` — CI watching
 - Parallel waves launched for LH, matrix, kill-list, C-57, ARCH-01, product C-37…C-47 batches
 
