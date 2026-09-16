@@ -145,7 +145,7 @@ Pilot order: PulseCap → ScentCap → roll-out (ARCH-04 / ARCH-05).
 |---|---|---|
 | ARCH-01 | Core + schema + fixtures | ✅ Done (`c941978` / merge `c628e40`; tests 16/16) |
 | ARCH-02 | Static viewer (`viewer/*`) | ✅ Done (`finish/arch-02` `10d977c`) |
-| ARCH-03 | Stack adapters completeness | ✅ Done (`finish/arch-03`; adapters/ + cloudflare + backend-presence; tests 22/22; analyzer 1.1.0) |
+| ARCH-03 | Stack adapters completeness | ✅ Done (`finish/arch-03` `1dddd1a`; adapters/ + cloudflare + backend-presence; tests 22/22; analyzer 1.1.0) |
 | ARCH-04 | Pilot PulseCap + ScentCap | ❌ Next |
 | ARCH-05 | Roll-out all apps + hub | ❌ |
 | ARCH-06 | Never publish maps (C-57 curl 404) | Partially via C-57 allowlists; curl gate TBD |
