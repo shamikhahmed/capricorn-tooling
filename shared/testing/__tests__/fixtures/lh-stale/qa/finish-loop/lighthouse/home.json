@@ -1,0 +1,14 @@
+{
+  "userAgent": "Mozilla/5.0",
+  "fetchTime": "2020-01-01T00:00:00.000Z",
+  "categories": {
+    "performance": { "score": 0.95 },
+    "accessibility": { "score": 0.99 },
+    "best-practices": { "score": 0.99 }
+  },
+  "audits": {
+    "largest-contentful-paint": { "numericValue": 1000 },
+    "total-blocking-time": { "numericValue": 50 },
+    "cumulative-layout-shift": { "numericValue": 0.01 }
+  }
+}

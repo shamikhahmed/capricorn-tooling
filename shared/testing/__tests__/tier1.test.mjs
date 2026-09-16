@@ -70,11 +70,156 @@ test('C-30: stub lighthouse JSON fails', () => {
   assert.match(r.stdout + r.stderr, /stub|null|lighthouse/i);
 });
 
+test('C-32: missing axe dir fails', () => {
+  const root = makeFixture({
+    'VERSION.json': JSON.stringify({ app: 'Fx', version: '0.0.1' }),
+    'package.json': JSON.stringify({ name: 'Fx' }),
+    'index.js': 'window.__APP_READY__ = true;\n',
+    'qa/finish-loop/BASELINE.md': '# b\n',
+    'qa/finish-loop/LOG.md': '# l\n',
+    'qa/finish-loop/STATES.md': '# s\n',
+    'qa/finish-loop/APP-REPORT.md': '# report\n' + 'x'.repeat(1100),
+    'qa/finish-loop/DOCS-INVENTORY.md': '# d\n',
+    'qa/finish-loop/CI-WORKFLOW.txt': 'Verify and deploy\n',
+    'qa/finish-loop/matrix-results.json': JSON.stringify({
+      timestamp: '2099-01-01T00:00:00.000Z',
+      routes: ['home'],
+      viewports: ['iphone-16'],
+      themes: ['light', 'dark'],
+      shotCount: 2,
+      failures: [],
+    }),
+    'tests/finish-matrix.spec.mjs': 'export {};\n',
+  });
+  const r = spawnSync(process.execPath, [TIER1], {
+    cwd: root,
+    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_LH: '1', TIER1_SKIP_GALLERY: '1' },
+    encoding: 'utf8',
+  });
+  assert.notEqual(r.status, 0);
+  assert.match(r.stdout + r.stderr, /axe:dir|axe/i);
+});
+
+test('C-32: __APP_READY__ only in tests fails', () => {
+  const root = makeFixture({
+    'VERSION.json': JSON.stringify({ app: 'Fx', version: '0.0.1' }),
+    'package.json': JSON.stringify({ name: 'Fx' }),
+    'e2e/app.spec.js': 'await page.waitForFunction(() => window.__APP_READY__);\n',
+    'qa/finish-loop/BASELINE.md': '# b\n',
+    'qa/finish-loop/LOG.md': '# l\n',
+    'qa/finish-loop/STATES.md': '# s\n',
+    'qa/finish-loop/APP-REPORT.md': '# report\n' + 'x'.repeat(1100),
+    'qa/finish-loop/DOCS-INVENTORY.md': '# d\n',
+  });
+  const r = spawnSync(process.execPath, [TIER1], {
+    cwd: root,
+    env: {
+      ...process.env,
+      TIER1_SKIP_CI: '1',
+      TIER1_SKIP_LH: '1',
+      TIER1_SKIP_MATRIX: '1',
+      TIER1_SKIP_AXE: '1',
+      TIER1_SKIP_GALLERY: '1',
+    },
+    encoding: 'utf8',
+  });
+  assert.notEqual(r.status, 0);
+  assert.match(r.stdout + r.stderr, /app-ready/i);
+});
+
+test('C-32: test.skip without gallery allowlist fails', () => {
+  const root = makeFixture({
+    'VERSION.json': JSON.stringify({ app: 'Fx', version: '0.0.1' }),
+    'package.json': JSON.stringify({ name: 'Fx' }),
+    'index.js': 'window.__APP_READY__ = true;\n',
+    'e2e/x.spec.js': "test.skip('nope', () => {});\n",
+    'qa/finish-loop/BASELINE.md': '# b\n',
+    'qa/finish-loop/LOG.md': '# l\n',
+    'qa/finish-loop/STATES.md': '# s\n',
+    'qa/finish-loop/APP-REPORT.md': '# report\n' + 'x'.repeat(1100),
+    'qa/finish-loop/DOCS-INVENTORY.md': '# d\n',
+  });
+  const r = spawnSync(process.execPath, [TIER1], {
+    cwd: root,
+    env: {
+      ...process.env,
+      TIER1_SKIP_CI: '1',
+      TIER1_SKIP_LH: '1',
+      TIER1_SKIP_MATRIX: '1',
+      TIER1_SKIP_AXE: '1',
+      TIER1_SKIP_GALLERY: '1',
+    },
+    encoding: 'utf8',
+  });
+  assert.notEqual(r.status, 0);
+  assert.match(r.stdout + r.stderr, /test-skip/i);
+});
+
+test('C-30: null LCP/TBT/CLS fails', () => {
+  const root = makeFixture({
+    'VERSION.json': JSON.stringify({ app: 'Fx', version: '0.0.1' }),
+    'package.json': JSON.stringify({ name: 'Fx' }),
+    'index.js': 'window.__APP_READY__ = true;\n',
+    'qa/finish-loop/BASELINE.md': '# b\n',
+    'qa/finish-loop/LOG.md': '# l\n',
+    'qa/finish-loop/STATES.md': '# s\n',
+    'qa/finish-loop/APP-REPORT.md': '# report\n' + 'x'.repeat(1100),
+    'qa/finish-loop/DOCS-INVENTORY.md': '# d\n',
+    'qa/finish-loop/lighthouse/home.json': JSON.stringify({
+      userAgent: 'Mozilla/5.0',
+      fetchTime: '2099-01-01T00:00:00.000Z',
+      categories: {
+        performance: { score: 0.95 },
+        accessibility: { score: 0.99 },
+        'best-practices': { score: 0.99 },
+      },
+      audits: {},
+    }),
+  });
+  const r = spawnSync(process.execPath, [TIER1], {
+    cwd: root,
+    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_MATRIX: '1', TIER1_SKIP_AXE: '1', TIER1_SKIP_GALLERY: '1' },
+    encoding: 'utf8',
+  });
+  assert.notEqual(r.status, 0);
+  assert.match(r.stdout + r.stderr, /LCP\/TBT\/CLS|missing LCP/i);
+});
+
+test('C-29: rem font-size below 0.6875rem counts as sub-11', () => {
+  const root = makeFixture({
+    'VERSION.json': JSON.stringify({ app: 'Fx', version: '0.0.1', swCache: 'fx-v1' }),
+    'package.json': JSON.stringify({ name: 'fx' }),
+    'sw.js': "const CACHE='fx-v1';\n",
+    'tokens.css': '.x{font-size:0.5rem;}\n',
+    'index.js': 'window.__APP_READY__ = true;\n',
+    'qa/finish-loop/BASELINE.md': '# b\n',
+    'qa/finish-loop/LOG.md': '# l\n',
+    'qa/finish-loop/STATES.md': '# s\n',
+    'qa/finish-loop/APP-REPORT.md': '# report\n' + 'x'.repeat(1100),
+    'qa/finish-loop/DOCS-INVENTORY.md': '# d\n',
+    'qa/finish-loop/SINKS.md': '# sinks\n',
+  });
+  const r = spawnSync(process.execPath, [TIER1], {
+    cwd: root,
+    env: {
+      ...process.env,
+      TIER1_SKIP_CI: '1',
+      TIER1_SKIP_LH: '1',
+      TIER1_SKIP_MATRIX: '1',
+      TIER1_SKIP_AXE: '1',
+      TIER1_SKIP_GALLERY: '1',
+    },
+    encoding: 'utf8',
+  });
+  assert.notEqual(r.status, 0);
+  assert.match(r.stdout + r.stderr, /sub-11/i);
+});
+
 test('C-31: missing matrix-results.json fails', () => {
   const root = makeFixture({
     'VERSION.json': JSON.stringify({ app: 'Fx', version: '0.0.1' }),
     'package.json': JSON.stringify({ name: 'fx' }),
-    'tests/finish-matrix.spec.mjs': 'test.skip(!process.env.FINISH_MATRIX, "gate");\n',
+    'tests/finish-matrix.spec.mjs': 'export {};\n',
     'index.js': 'window.__APP_READY__ = true;\n',
     'qa/finish-loop/BASELINE.md': '# b\n',
     'qa/finish-loop/LOG.md': '# l\n',
@@ -84,7 +229,7 @@ test('C-31: missing matrix-results.json fails', () => {
   });
   const r = spawnSync(process.execPath, [TIER1], {
     cwd: root,
-    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_LH: '1' },
+    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_LH: '1', TIER1_SKIP_AXE: '1', TIER1_SKIP_GALLERY: '1' },
     encoding: 'utf8',
   });
   assert.notEqual(r.status, 0);

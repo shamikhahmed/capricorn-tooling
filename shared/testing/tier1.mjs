@@ -14,11 +14,14 @@
  *   TIER1_SKIP_CI — set to 1 to skip gh run check (local-only)
  *   TIER1_SKIP_LH — set to 1 to skip requiring lighthouse JSON files
  *   TIER1_SKIP_MATRIX — set to 1 to skip requiring finish-matrix evidence
+ *   TIER1_SKIP_AXE — set to 1 to skip axe JSON gate
+ *   TIER1_SKIP_GALLERY — set to 1 to skip gallery freshness
+ *   TIER1_CI_WORKFLOW — exact Actions workflow name (or qa/finish-loop/CI-WORKFLOW.txt)
+ *   TIER1_LIVE_VERSION — "warn" (default) or "fail" for live VERSION.json
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync, spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 
 const ROOT = process.cwd();
 const OUT_DIR = path.join(ROOT, 'qa', 'finish-loop');
@@ -67,6 +70,16 @@ function sh(cmd, opts = {}) {
   }
 }
 
+const UI_PATHSPECS =
+  "'*.css' '*.scss' '*.html' '*.htm' '*.js' '*.jsx' '*.mjs' '*.cjs' '*.ts' '*.tsx' '*.vue' '*.svelte' '*.dart' '**/manifest*.json' '**/index.html'";
+
+function lastUiCommitIso() {
+  const r = sh(`git log -1 --format=%cI -- ${UI_PATHSPECS} 2>/dev/null`);
+  if (typeof r === 'object' && r.error) return null;
+  const iso = String(r || '').trim();
+  return iso || null;
+}
+
 function walkFiles(dir, acc = []) {
   if (!fs.existsSync(dir)) return acc;
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -100,7 +113,7 @@ function isProductCode(rel) {
 function isHexExemptPath(rel) {
   // C-29: hex-only exemptions — never sizes / !important / outline
   const n = rel.replace(/\\/g, '/');
-  if (n.includes('capricorn-tooling/shared/design/')) return true;
+  if (/(^|\/)(capricorn-tooling\/)?shared\/design\//.test(n)) return true;
   const base = path.basename(n);
   if (/^tokens\./i.test(base)) return true;
   if (/^brand\.css$/i.test(base)) return true;
@@ -332,14 +345,91 @@ function checkAppReady() {
   add(found, 'app-ready', found ? 'window.__APP_READY__ assigned in product code' : 'missing __APP_READY__ assignment in product code');
 }
 
+function loadSkipAllowlist() {
+  const candidates = ['qa/finish-loop/skip-allowlist.json', 'qa/finish-loop/test-skip-allowlist.json'];
+  for (const c of candidates) {
+    const raw = tryRead(c);
+    if (!raw) continue;
+    try {
+      const j = JSON.parse(raw);
+      const entries = Array.isArray(j) ? j : j.entries || j.allow || [];
+      return {
+        path: c,
+        entries: entries.map((e) => (typeof e === 'string' ? { pattern: e, reason: 'legacy' } : e)),
+      };
+    } catch {
+      warn('test-skip:allowlist', `invalid JSON ${c}`);
+    }
+  }
+  return { path: null, entries: [] };
+}
+
+/** C-32: scan test folders for .skip / .only / fixme — gallery allowlist only by default. */
+function checkTestSkips() {
+  const allowlist = loadSkipAllowlist();
+  const testFiles = walkFiles(ROOT).filter((abs) => {
+    const rel = path.relative(ROOT, abs).replace(/\\/g, '/');
+    if (!/\.(js|jsx|ts|tsx|mjs|cjs)$/.test(rel)) return false;
+    return /(^|\/)(tests?|e2e|__tests__)(\/|$)/.test(rel) || /\.(test|spec)\./.test(rel);
+  });
+  const re =
+    /\.(?:skip|only)\s*\(|\bfixme\b|\bit\.skip\b|\bdescribe\.skip\b|\btest\.skip\b|\bxit\b|\bfit\b/i;
+  const bad = [];
+  for (const abs of testFiles) {
+    const rel = path.relative(ROOT, abs);
+    let text;
+    try {
+      text = fs.readFileSync(abs, 'utf8');
+    } catch {
+      continue;
+    }
+    text.split('\n').forEach((line, i) => {
+      if (!re.test(line)) return;
+      const allowed = allowlist.entries.some((e) => {
+        const pat = e.pattern || e.file || e.path || '';
+        const reason = (e.reason || '').trim();
+        if (!pat || reason.length < 8) return false;
+        return rel.includes(pat) || new RegExp(pat).test(`${rel}:${line}`);
+      });
+      if (!allowed) bad.push(`${rel}:${i + 1}: ${line.trim().slice(0, 120)}`);
+    });
+  }
+  add(
+    bad.length === 0,
+    'test-skip',
+    bad.length
+      ? `${bad.length} hits (allowlist: ${allowlist.path || 'none'})\n${bad.slice(0, 15).join('\n')}`
+      : 'none',
+  );
+}
+
+/**
+ * C-32: named workflow for current main SHA — not "any latest run".
+ */
 function checkCi() {
   if (process.env.TIER1_SKIP_CI === '1') {
     warn('ci:main', 'skipped via TIER1_SKIP_CI');
     return;
   }
-  const head = String(sh('git rev-parse HEAD') || '').trim();
+  const named =
+    (process.env.TIER1_CI_WORKFLOW || '').trim() ||
+    (tryRead('qa/finish-loop/CI-WORKFLOW.txt') || '').trim() ||
+    null;
+  if (!named) {
+    add(
+      false,
+      'ci:workflow-name',
+      'set TIER1_CI_WORKFLOW or qa/finish-loop/CI-WORKFLOW.txt to the exact workflow name',
+    );
+    return;
+  }
+  const sha = sh('git rev-parse origin/main 2>/dev/null || git rev-parse main 2>/dev/null || git rev-parse HEAD');
+  if (typeof sha === 'object' && sha.error) {
+    warn('ci:main', `could not resolve main SHA: ${sha.stderr || sha.stdout}`);
+    return;
+  }
   const r = sh(
-    'gh run list -b main --limit 30 --json conclusion,status,databaseId,displayTitle,url,name,headSha 2>/dev/null',
+    `gh run list -b main --commit ${sha} --workflow ${JSON.stringify(named)} --limit 5 --json conclusion,status,databaseId,displayTitle,url,name,headSha 2>/dev/null`,
   );
   if (typeof r === 'object' && r.error) {
     warn('ci:main', `gh unavailable: ${r.stderr || r.stdout}`);
@@ -347,26 +437,20 @@ function checkCi() {
   }
   try {
     const arr = JSON.parse(r || '[]');
-    const forHead = arr.filter((x) => x && x.headSha && head && x.headSha.startsWith(head.slice(0, 7)));
-    const pool = forHead.length ? forHead : arr;
-    const done = pool.filter((x) => x && x.conclusion);
-    const prefer =
-      done.find((x) => /verify|ci|test|quality|check/i.test(`${x.name || ''} ${x.displayTitle || ''}`)) ||
-      done[0];
-    const latest = prefer || pool[0];
-    if (!latest) {
-      warn('ci:main', 'no runs');
+    const done = arr.filter((x) => x && x.conclusion);
+    const hit = done[0] || arr[0];
+    if (!hit) {
+      add(false, 'ci:main', `no runs of "${named}" for ${String(sha).slice(0, 7)}`);
       return;
     }
-    if (!latest.conclusion) {
-      warn('ci:main', `latest still ${latest.status || 'unknown'}: ${latest.displayTitle || latest.name}`);
+    if (!hit.conclusion) {
+      warn('ci:main', `latest still ${hit.status || 'unknown'}: ${hit.displayTitle || hit.name}`);
       return;
     }
-    const shaNote = forHead.length ? `sha ${head.slice(0, 7)}` : `no CI run for ${head.slice(0, 7)}`;
     add(
-      latest.conclusion === 'success' && forHead.length > 0,
+      hit.conclusion === 'success',
       'ci:main',
-      `${latest.displayTitle || latest.name} → ${latest.conclusion} ${shaNote} ${latest.url || ''}`,
+      `${named} @ ${String(sha).slice(0, 7)} → ${hit.conclusion} ${hit.url || ''}`,
     );
   } catch {
     warn('ci:main', 'could not parse gh output');
@@ -391,26 +475,46 @@ function checkMatrix() {
     return;
   }
   const specs = walkFiles(ROOT).filter((abs) => /finish-matrix\.(spec|test)\./.test(abs));
-  add(specs.length > 0, 'matrix:spec', specs.length ? specs.map((p) => path.relative(ROOT, p)).join(', ') : 'no finish-matrix spec');
+  add(
+    specs.length > 0,
+    'matrix:spec',
+    specs.length ? specs.map((p) => path.relative(ROOT, p)).join(', ') : 'no finish-matrix spec',
+  );
   const resultsPath = 'qa/finish-loop/matrix-results.json';
   if (!exists(resultsPath)) {
-    add(false, 'matrix:results', 'missing qa/finish-loop/matrix-results.json (run FINISH_MATRIX=1)');
+    add(false, 'matrix:results', 'missing qa/finish-loop/matrix-results.json (CI must set FINISH_MATRIX=1)');
     return;
   }
   try {
     const j = JSON.parse(read(resultsPath));
-    const fails = Number(j.failures ?? j.failed ?? j.fail ?? 0);
+    const failures = j.failures ?? j.failed ?? 0;
+    const failCount = Array.isArray(failures) ? failures.length : Number(failures || 0);
+    add(failCount === 0, 'matrix:failures', failCount === 0 ? '0' : String(failCount));
+
+    const routes = j.routes || j.routeCount;
+    const viewports = j.viewports || j.viewportCount;
+    const themes = j.themes || j.themeCount;
+    const routeN = Array.isArray(routes) ? routes.length : Number(routes || 0);
+    const vpN = Array.isArray(viewports) ? viewports.length : Number(viewports || 0);
+    const themeN = Array.isArray(themes) ? themes.length : Number(themes || 0);
+    const expected =
+      routeN * vpN * themeN || Number(j.expectedShots ?? j.expected ?? 0);
     const shots = Number(j.shotCount ?? j.shots ?? (Array.isArray(j.shots) ? j.shots.length : 0));
-    const expected = Number(j.expectedShots ?? j.expected ?? 0);
-    add(fails === 0, 'matrix:failures', `${fails} failures`);
-    if (expected > 0) {
-      add(shots >= expected, 'matrix:shot-count', `${shots} shots (need ≥ ${expected})`);
+    if (expected <= 0) {
+      add(false, 'matrix:shot-count', 'routes/viewports/themes (or expectedShots) missing or zero');
     } else {
-      warn('matrix:shot-count', 'matrix-results.json missing expectedShots');
+      add(shots === expected, 'matrix:shot-count', `${shots} shots (need routes×viewports×themes = ${expected})`);
     }
+
     const ts = j.generatedAt || j.timestamp || j.finishedAt;
-    if (ts) add(true, 'matrix:timestamp', String(ts));
-    else warn('matrix:timestamp', 'no generatedAt in matrix-results.json');
+    const uiIso = lastUiCommitIso();
+    if (!ts) {
+      add(false, 'matrix:freshness', 'no timestamp in matrix-results.json');
+    } else if (uiIso && Date.parse(ts) < Date.parse(uiIso)) {
+      add(false, 'matrix:freshness', `matrix ${ts} before last UI commit ${uiIso}`);
+    } else {
+      add(true, 'matrix:freshness', String(ts));
+    }
   } catch (e) {
     add(false, 'matrix:results', `invalid JSON: ${e.message}`);
   }
@@ -426,11 +530,12 @@ function checkLighthouse() {
     add(false, 'lighthouse:dir', 'missing qa/finish-loop/lighthouse/');
     return;
   }
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json') && !f.includes('.report.'));
   if (files.length === 0) {
     add(false, 'lighthouse:files', 'empty');
     return;
   }
+  const uiIso = lastUiCommitIso();
   let okCount = 0;
   for (const f of files) {
     const abs = path.join(dir, f);
@@ -454,29 +559,125 @@ function checkLighthouse() {
       add(false, `lighthouse:${f}`, 'null category scores — not claimed');
       continue;
     }
-    // Lighthouse scores are 0–1
-    const perfPct = perf <= 1 ? perf * 100 : perf;
-    const a11yPct = a11y <= 1 ? a11y * 100 : a11y;
-    const bpPct = bp <= 1 ? bp * 100 : bp;
     const audits = j.audits || {};
     const lcp = audits['largest-contentful-paint']?.numericValue;
     const tbt = audits['total-blocking-time']?.numericValue;
     const cls = audits['cumulative-layout-shift']?.numericValue;
+    if (lcp == null || tbt == null || cls == null) {
+      add(false, `lighthouse:${f}`, 'missing LCP/TBT/CLS numericValue');
+      continue;
+    }
+    const fetchTime = j.fetchTime || j.generatedTime;
+    if (uiIso && fetchTime && Date.parse(fetchTime) < Date.parse(uiIso)) {
+      add(false, `lighthouse:${f}`, `fetchTime ${fetchTime} before last UI commit ${uiIso}`);
+      continue;
+    }
+    const perfPct = perf <= 1 ? perf * 100 : perf;
+    const a11yPct = a11y <= 1 ? a11y * 100 : a11y;
+    const bpPct = bp <= 1 ? bp * 100 : bp;
     const gate =
-      perfPct >= 90 &&
-      a11yPct >= 95 &&
-      bpPct >= 95 &&
-      (lcp == null || lcp <= 2500) &&
-      (tbt == null || tbt <= 200) &&
-      (cls == null || cls <= 0.1);
+      perfPct >= 90 && a11yPct >= 95 && bpPct >= 95 && lcp <= 2500 && tbt <= 200 && cls <= 0.1;
     add(
       gate,
       `lighthouse:${f}`,
-      `perf ${perfPct.toFixed(0)} a11y ${a11yPct.toFixed(0)} bp ${bpPct.toFixed(0)} LCP ${lcp ?? 'n/a'} TBT ${tbt ?? 'n/a'} CLS ${cls ?? 'n/a'}`,
+      `perf ${perfPct.toFixed(0)} a11y ${a11yPct.toFixed(0)} bp ${bpPct.toFixed(0)} LCP ${lcp} TBT ${tbt} CLS ${cls}`,
     );
     if (gate) okCount += 1;
   }
-  add(okCount > 0, 'lighthouse:passing', `${okCount}/${files.length} files meet thresholds`);
+  add(okCount === files.length && files.length > 0, 'lighthouse:passing', `${okCount}/${files.length} files meet thresholds`);
+}
+
+function checkAxe() {
+  if (process.env.TIER1_SKIP_AXE === '1') {
+    warn('axe', 'skipped');
+    return;
+  }
+  const dir = path.join(ROOT, 'qa', 'finish-loop', 'axe');
+  if (!fs.existsSync(dir)) {
+    add(false, 'axe:dir', 'missing qa/finish-loop/axe/ (JSON per route×theme)');
+    return;
+  }
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+  if (files.length === 0) {
+    add(false, 'axe:files', 'empty');
+    return;
+  }
+  const bad = [];
+  for (const f of files) {
+    let j;
+    try {
+      j = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+    } catch {
+      bad.push(`${f}: invalid JSON`);
+      continue;
+    }
+    const violations = j.violations || j.results?.violations || [];
+    const serious = violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
+    const nodes = serious.reduce((n, v) => n + (v.nodes?.length || 1), 0);
+    if (nodes > 0) bad.push(`${f}: ${nodes} serious/critical (${serious.map((v) => v.id).join(',')})`);
+  }
+  add(bad.length === 0, 'axe:serious-critical', bad.length ? bad.slice(0, 10).join('\n') : `${files.length} JSON clean`);
+}
+
+function checkGalleryFreshness() {
+  if (process.env.TIER1_SKIP_GALLERY === '1') {
+    warn('gallery', 'skipped');
+    return;
+  }
+  const candidates = [
+    'docs/screenshots/gallery/gallery-manifest.json',
+    'gallery-manifest.json',
+    'public/gallery-manifest.json',
+    'assets/screenshots/gallery-manifest.json',
+  ];
+  const hit = candidates.find(exists);
+  if (!hit) {
+    add(false, 'gallery:manifest', 'gallery-manifest.json not found');
+    return;
+  }
+  const uiIso = lastUiCommitIso();
+  const log = sh(`git log -1 --format=%cI -- ${hit} 2>/dev/null`);
+  const galIso = typeof log === 'string' && log ? log : null;
+  if (!galIso) {
+    add(false, 'gallery:freshness', `${hit} not in git history`);
+    return;
+  }
+  if (uiIso && Date.parse(galIso) < Date.parse(uiIso)) {
+    add(false, 'gallery:freshness', `gallery ${galIso} before last UI commit ${uiIso}`);
+  } else {
+    add(true, 'gallery:freshness', `${hit} @ ${galIso}`);
+  }
+}
+
+function checkLiveVersion(ver) {
+  const mode = (process.env.TIER1_LIVE_VERSION || 'warn').toLowerCase();
+  const app =
+    ver?.app ||
+    ver?.slug ||
+    (() => {
+      try {
+        return JSON.parse(tryRead('package.json') || '{}').name;
+      } catch {
+        return path.basename(ROOT);
+      }
+    })();
+  if (!app) {
+    warn('live:VERSION.json', 'no app name');
+    return;
+  }
+  const slug = String(app)
+    .replace(/^@.*\//, '')
+    .replace(/[^A-Za-z0-9-]/g, '');
+  const url = `https://shamikhahmed.github.io/${slug}/VERSION.json`;
+  const r = sh(`curl -sS -o /dev/null -w "%{http_code}" --max-time 15 ${JSON.stringify(url)} 2>/dev/null`);
+  const code = typeof r === 'string' ? r.trim() : '';
+  if (code === '200') {
+    add(true, 'live:VERSION.json', `${url} → 200`);
+    return;
+  }
+  const detail = `${url} → ${code || 'unreachable'}`;
+  if (mode === 'fail') add(false, 'live:VERSION.json', detail);
+  else warn('live:VERSION.json', detail);
 }
 
 function checkSinks() {
@@ -508,11 +709,15 @@ function main() {
   const ver = checkVersionTruth();
   checkRecords();
   checkSuppressions();
+  checkTestSkips();
   checkAppReady();
   checkCi();
   checkTag(ver?.version || pkg?.version);
   checkMatrix();
   checkLighthouse();
+  checkAxe();
+  checkGalleryFreshness();
+  checkLiveVersion(ver);
   checkSinks();
 
   const kills = killListScan();

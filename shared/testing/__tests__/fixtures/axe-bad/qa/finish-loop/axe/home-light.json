@@ -1,0 +1,9 @@
+{
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes": [{ "html": "<button>" }, { "html": "<a>" }]
+    }
+  ]
+}

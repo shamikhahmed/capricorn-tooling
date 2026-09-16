@@ -1,7 +1,7 @@
 {
   "name": "capricorn-tooling",
   "version": "1.0.0",
-  "description": "Cross-repo tooling for Capricorn Systems — marketing pipeline, design system sync, agent orchestration.",
+  "description": "Cross-repo tooling for Capricorn Systems \u2014 marketing pipeline, design system sync, agent orchestration.",
   "private": true,
   "type": "module",
   "scripts": {
@@ -16,7 +16,8 @@
     "audit:secrets": "node scripts/audit-secrets.mjs",
     "contrast:check": "node scripts/contrast-check.mjs",
     "tier1": "node shared/testing/tier1.mjs",
-    "test:tier1": "node --test shared/testing/__tests__/tier1.test.mjs"
+    "test:tier1": "node --test shared/testing/__tests__/tier1.test.mjs",
+    "test": "node --test shared/testing/__tests__/tier1.test.mjs"
   },
   "engines": {
     "node": ">=20"
