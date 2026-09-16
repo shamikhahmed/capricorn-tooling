@@ -15,7 +15,11 @@
     "audit:versions": "node scripts/audit-version-truth.mjs",
     "audit:secrets": "node scripts/audit-secrets.mjs",
     "contrast:check": "node scripts/contrast-check.mjs",
-    "tier1": "node shared/testing/tier1.mjs"
+    "tier1": "node shared/testing/tier1.mjs",
+    "test:tier1": "node --test shared/testing/__tests__/tier1.test.mjs",
+    "architecture:analyze": "node shared/architecture/analyze.mjs",
+    "architecture:test": "node --test shared/architecture/__tests__/architecture.test.mjs",
+    "test": "node --test shared/testing/__tests__/tier1.test.mjs shared/architecture/__tests__/architecture.test.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -24,5 +28,8 @@
     "type": "git",
     "url": "https://github.com/shamikhahmed/capricorn-tooling.git"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
 }
