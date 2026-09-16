@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Cap Architecture Map</title>
+  <link rel="stylesheet" href="viewer.css" />
+</head>
+<body>
+  <a class="skip-link" href="#graph-panel">Skip to graph</a>
+
+  <header class="topbar" role="banner">
+    <div class="topbar-meta" id="topbar-meta" aria-live="polite">
+      <strong id="app-name">Architecture Map</strong>
+      <span id="app-version" class="muted"></span>
+      <span id="app-commit" class="mono muted"></span>
+      <span id="app-generated" class="muted"></span>
+    </div>
+    <div class="health" id="health-summary" aria-label="Health summary"></div>
+    <div class="topbar-controls">
+      <label class="sr-only" for="global-search">Search</label>
+      <input id="global-search" type="search" placeholder="Search (name, path:line, route…)" autocomplete="off" />
+      <label>
+        Mode
+        <select id="mode-select" aria-label="View mode">
+          <option value="focus">Focus</option>
+          <option value="full">Full</option>
+          <option value="feature">Feature</option>
+          <option value="data">Data</option>
+          <option value="ui">UI</option>
+          <option value="backend">Backend</option>
+        </select>
+      </label>
+      <label>
+        Depth
+        <select id="depth-select" aria-label="Connection depth">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="full">Full</option>
+        </select>
+      </label>
+      <button type="button" id="btn-trace-up" title="Trace upstream">Trace ↑</button>
+      <button type="button" id="btn-trace-down" title="Trace downstream">Trace ↓</button>
+      <button type="button" id="btn-impact" title="Impact analysis">Impact</button>
+      <button type="button" id="btn-fit" title="Fit graph">Fit</button>
+      <button type="button" id="btn-reset" title="Reset view">Reset</button>
+      <button type="button" id="btn-theme" title="Toggle light/dark" aria-pressed="false">Theme</button>
+      <button type="button" id="btn-workspace" title="Set workspace root for editor links">Workspace…</button>
+    </div>
+  </header>
+
+  <div class="workspace" id="workspace">
+    <aside class="panel left" aria-label="Architecture explorer">
+      <nav class="tabs left-tabs" role="tablist" aria-label="Explorer tabs">
+        <button type="button" role="tab" aria-selected="true" data-left-tab="tree">Tree</button>
+        <button type="button" role="tab" aria-selected="false" data-left-tab="types">Types</button>
+        <button type="button" role="tab" aria-selected="false" data-left-tab="features">Features</button>
+        <button type="button" role="tab" aria-selected="false" data-left-tab="filters">Filters</button>
+      </nav>
+      <div class="panel-body" id="left-panel"></div>
+    </aside>
+
+    <main class="center" id="graph-panel" tabindex="0" aria-label="Architecture graph">
+      <div class="graph-toolbar" role="toolbar" aria-label="Graph tabs">
+        <nav class="tabs main-tabs" role="tablist" aria-label="Main views">
+          <button type="button" role="tab" aria-selected="true" data-main-tab="graph">Graph</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="routes">Routes</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="components">Components</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="services">Services</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="functions">Hooks/Functions</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="state">State</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="storage">Storage</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="network">Network/APIs</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="database">Database</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="env">Env/config</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="features">Features</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="traces">Traces</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="findings">Findings</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="audit">Audit</button>
+          <button type="button" role="tab" aria-selected="false" data-main-tab="legend">Legend</button>
+        </nav>
+      </div>
+      <div id="main-view" class="main-view" aria-live="polite">
+        <div id="graph-host" class="graph-host" hidden>
+          <svg id="graph-svg" role="img" aria-label="Connection graph"></svg>
+          <canvas id="graph-canvas" hidden aria-label="Connection graph canvas"></canvas>
+          <div id="graph-empty" class="empty" hidden>No nodes match the current filters.</div>
+        </div>
+        <div id="list-host" class="list-host" hidden></div>
+      </div>
+      <p id="sr-summary" class="sr-only" aria-live="polite"></p>
+    </main>
+
+    <aside class="panel right" aria-label="Node details">
+      <h2 class="panel-title">Details</h2>
+      <div class="panel-body" id="right-panel">
+        <p class="muted">Select a node to inspect relationships, evidence, and “How this works”.</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="bottom" aria-label="Evidence">
+    <h2 class="panel-title">Evidence</h2>
+    <div id="evidence-panel" class="evidence-list"></div>
+  </section>
+
+  <script src="architecture-data.js"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>

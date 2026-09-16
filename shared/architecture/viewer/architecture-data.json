@@ -1,0 +1,444 @@
+{
+  "analyzerCoverage": {
+    "unresolved": []
+  },
+  "analyzerVersion": "1.0.0",
+  "app": "vanilla-dispatch",
+  "appVersion": "0.0.0",
+  "database": {
+    "engine": null,
+    "tables": []
+  },
+  "edges": [
+    {
+      "evidence": [
+        {
+          "file": "app.js",
+          "line": 12,
+          "snippet": "handleAct(…"
+        }
+      ],
+      "from": "file:app.js",
+      "id": "e:CALLS:file:app.js->function:app.js#handleAct",
+      "status": "VERIFIED",
+      "to": "function:app.js#handleAct",
+      "type": "CALLS"
+    },
+    {
+      "evidence": [
+        {
+          "file": "app.js",
+          "line": 6,
+          "snippet": "save(…"
+        }
+      ],
+      "from": "function:app.js#handleAct",
+      "id": "e:CALLS:function:app.js#handleAct->function:app.js#save",
+      "status": "VERIFIED",
+      "to": "function:app.js#save",
+      "type": "CALLS"
+    },
+    {
+      "evidence": [
+        {
+          "file": "app.js",
+          "line": 7,
+          "snippet": "case 'explode': return"
+        }
+      ],
+      "from": "event:app.js#explode",
+      "id": "e:HANDLES:event:app.js#explode->function:app.js#return:explode→return_(undefined)",
+      "label": "explode→return (undefined)",
+      "status": "BROKEN",
+      "to": "function:app.js#return",
+      "type": "HANDLES"
+    },
+    {
+      "evidence": [
+        {
+          "file": "app.js",
+          "line": 6,
+          "snippet": "case 'save': return"
+        }
+      ],
+      "from": "event:app.js#save",
+      "id": "e:HANDLES:event:app.js#save->function:app.js#return:save→return_(undefined)",
+      "label": "save→return (undefined)",
+      "status": "BROKEN",
+      "to": "function:app.js#return",
+      "type": "HANDLES"
+    },
+    {
+      "evidence": [
+        {
+          "file": "index.html",
+          "line": 4,
+          "snippet": "data-act=explode (no handler)"
+        }
+      ],
+      "from": "event:index.html#explode",
+      "id": "e:HANDLES:event:index.html#explode->function:index.html#explode",
+      "status": "BROKEN",
+      "to": "function:index.html#explode",
+      "type": "HANDLES"
+    },
+    {
+      "evidence": [
+        {
+          "file": "index.html",
+          "line": 3,
+          "snippet": "data-act=save"
+        }
+      ],
+      "from": "event:index.html#save",
+      "id": "e:HANDLES:event:index.html#save->function:app.js#save",
+      "status": "INFERRED",
+      "to": "function:app.js#save",
+      "type": "HANDLES"
+    },
+    {
+      "evidence": [
+        {
+          "file": "index.html",
+          "line": 5,
+          "snippet": "<script src=\"app.js\">"
+        }
+      ],
+      "from": "entry:index.html#index.html",
+      "id": "e:LOADS:entry:index.html#index.html->file:app.js#app.js",
+      "status": "VERIFIED",
+      "to": "file:app.js#app.js",
+      "type": "LOADS"
+    },
+    {
+      "evidence": [
+        {
+          "file": "index.html",
+          "line": 4,
+          "snippet": "data-act=\"explode\""
+        }
+      ],
+      "from": "entry:index.html#index.html",
+      "id": "e:TRIGGERS:entry:index.html#index.html->event:index.html#explode:explode",
+      "label": "explode",
+      "status": "VERIFIED",
+      "to": "event:index.html#explode",
+      "type": "TRIGGERS"
+    },
+    {
+      "evidence": [
+        {
+          "file": "index.html",
+          "line": 3,
+          "snippet": "data-act=\"save\""
+        }
+      ],
+      "from": "entry:index.html#index.html",
+      "id": "e:TRIGGERS:entry:index.html#index.html->event:index.html#save:save",
+      "label": "save",
+      "status": "VERIFIED",
+      "to": "event:index.html#save",
+      "type": "TRIGGERS"
+    }
+  ],
+  "env": [],
+  "features": [],
+  "findings": [
+    {
+      "evidence": [
+        {
+          "file": "app.js",
+          "line": 6,
+          "snippet": "case 'save': return"
+        }
+      ],
+      "explanation": "Edge target node is missing: HANDLES event:app.js#save → function:app.js#return",
+      "id": "F-001-BROKEN",
+      "kind": "BROKEN",
+      "nodes": [
+        "event:app.js#save",
+        "function:app.js#return"
+      ],
+      "severity": "warn"
+    },
+    {
+      "evidence": [
+        {
+          "file": "app.js",
+          "line": 7,
+          "snippet": "case 'explode': return"
+        }
+      ],
+      "explanation": "Edge target node is missing: HANDLES event:app.js#explode → function:app.js#return",
+      "id": "F-002-BROKEN",
+      "kind": "BROKEN",
+      "nodes": [
+        "event:app.js#explode",
+        "function:app.js#return"
+      ],
+      "severity": "warn"
+    },
+    {
+      "evidence": [
+        {
+          "file": "index.html",
+          "line": 4,
+          "snippet": "data-act=explode (no handler)"
+        }
+      ],
+      "explanation": "Edge target node is missing: HANDLES event:index.html#explode → function:index.html#explode",
+      "id": "F-003-BROKEN",
+      "kind": "BROKEN",
+      "nodes": [
+        "event:index.html#explode",
+        "function:index.html#explode"
+      ],
+      "severity": "warn"
+    },
+    {
+      "evidence": [
+        {
+          "file": "app.js",
+          "line": 4,
+          "snippet": "handleAct"
+        }
+      ],
+      "explanation": "Unreachable from entry points: function:app.js#handleAct",
+      "id": "F-004-ORPHAN",
+      "kind": "ORPHAN",
+      "nodes": [
+        "function:app.js#handleAct"
+      ],
+      "severity": "info"
+    },
+    {
+      "evidence": [
+        {
+          "file": "app.js",
+          "line": 6,
+          "snippet": "save"
+        }
+      ],
+      "explanation": "Unreachable from entry points: event:app.js#save",
+      "id": "F-005-ORPHAN",
+      "kind": "ORPHAN",
+      "nodes": [
+        "event:app.js#save"
+      ],
+      "severity": "info"
+    },
+    {
+      "evidence": [
+        {
+          "file": "app.js",
+          "line": 7,
+          "snippet": "explode"
+        }
+      ],
+      "explanation": "Unreachable from entry points: event:app.js#explode",
+      "id": "F-006-ORPHAN",
+      "kind": "ORPHAN",
+      "nodes": [
+        "event:app.js#explode"
+      ],
+      "severity": "info"
+    }
+  ],
+  "generatedAt": "2026-09-16T10:51:43.460Z",
+  "network": [],
+  "nodes": [
+    {
+      "endLine": 0,
+      "feature": null,
+      "file": ".",
+      "flags": [],
+      "id": "app:.#vanilla-dispatch",
+      "layer": "app",
+      "line": 0,
+      "meta": {
+        "version": "0.0.0"
+      },
+      "name": "vanilla-dispatch",
+      "type": "app"
+    },
+    {
+      "endLine": 0,
+      "feature": null,
+      "file": "index.html",
+      "flags": [],
+      "id": "entry:index.html#index.html",
+      "layer": "app",
+      "line": 0,
+      "meta": {},
+      "name": "index.html",
+      "type": "entry"
+    },
+    {
+      "endLine": 7,
+      "feature": null,
+      "file": "app.js",
+      "flags": [
+        "ORPHANED"
+      ],
+      "id": "event:app.js#explode",
+      "layer": "event",
+      "line": 7,
+      "meta": {},
+      "name": "explode",
+      "type": "event"
+    },
+    {
+      "endLine": 6,
+      "feature": null,
+      "file": "app.js",
+      "flags": [
+        "ORPHANED"
+      ],
+      "id": "event:app.js#save",
+      "layer": "event",
+      "line": 6,
+      "meta": {},
+      "name": "save",
+      "type": "event"
+    },
+    {
+      "endLine": 4,
+      "feature": null,
+      "file": "index.html",
+      "flags": [],
+      "id": "event:index.html#explode",
+      "layer": "event",
+      "line": 4,
+      "meta": {},
+      "name": "explode",
+      "type": "event"
+    },
+    {
+      "endLine": 3,
+      "feature": null,
+      "file": "index.html",
+      "flags": [],
+      "id": "event:index.html#save",
+      "layer": "event",
+      "line": 3,
+      "meta": {},
+      "name": "save",
+      "type": "event"
+    },
+    {
+      "endLine": 0,
+      "feature": null,
+      "file": "app.js",
+      "flags": [],
+      "id": "file:app.js#app.js",
+      "layer": "logic",
+      "line": 0,
+      "meta": {},
+      "name": "app.js",
+      "type": "file"
+    },
+    {
+      "endLine": 0,
+      "feature": null,
+      "file": "index.html",
+      "flags": [],
+      "id": "file:index.html#index.html",
+      "layer": "config",
+      "line": 0,
+      "meta": {},
+      "name": "index.html",
+      "type": "file"
+    },
+    {
+      "endLine": 9,
+      "feature": null,
+      "file": "app.js",
+      "flags": [
+        "ORPHANED"
+      ],
+      "id": "function:app.js#handleAct",
+      "layer": "logic",
+      "line": 4,
+      "meta": {
+        "body": "\n  switch (act) {\n    case 'save': return save();\n    case 'explode': return missingHandler();\n  }\n",
+        "exported": true
+      },
+      "name": "handleAct",
+      "type": "function"
+    },
+    {
+      "endLine": 3,
+      "feature": null,
+      "file": "app.js",
+      "flags": [],
+      "id": "function:app.js#save",
+      "layer": "logic",
+      "line": 1,
+      "meta": {
+        "body": "\n  localStorage.setItem('ok', '1');\n",
+        "exported": true
+      },
+      "name": "save",
+      "type": "function"
+    }
+  ],
+  "schemaVersion": 1,
+  "sourceCommit": "dbec2d7e12e1f227297ffba089d98ca80e7447bf",
+  "stacks": [
+    "env-config",
+    "html",
+    "vanilla-globals"
+  ],
+  "stats": {
+    "apiEndpoints": 0,
+    "brokenPaths": 6,
+    "classes": 0,
+    "components": 0,
+    "dead": 0,
+    "demo": 0,
+    "dependencies": 0,
+    "duplicates": 0,
+    "edges": {
+      "byStatus": {
+        "BROKEN": 3,
+        "INFERRED": 1,
+        "UNKNOWN": 0,
+        "VERIFIED": 5
+      },
+      "total": 9
+    },
+    "envVars": 0,
+    "externalHosts": 0,
+    "featuresComplete": 0,
+    "featuresIncomplete": 0,
+    "files": 2,
+    "findings": 6,
+    "functions": 2,
+    "hardcoded": 0,
+    "hooks": 0,
+    "mock": 0,
+    "orphans": 3,
+    "routes": 0,
+    "screens": 0,
+    "securityItems": 0,
+    "services": 0,
+    "stateHolders": 0,
+    "storageKeys": 0,
+    "tables": 0,
+    "unknown": 0,
+    "unused": 0
+  },
+  "storage": [],
+  "traces": {
+    "actions": [],
+    "data": [],
+    "display": []
+  },
+  "trees": {
+    "components": {},
+    "files": {},
+    "routes": {},
+    "services": {},
+    "state": {}
+  }
+}
