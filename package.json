@@ -1,7 +1,7 @@
 {
   "name": "capricorn-tooling",
   "version": "1.0.0",
-  "description": "Cross-repo tooling for Capricorn Systems — marketing pipeline, design system sync, agent orchestration.",
+  "description": "Cross-repo tooling for Capricorn Systems \u2014 marketing pipeline, design system sync, agent orchestration.",
   "private": true,
   "type": "module",
   "scripts": {
