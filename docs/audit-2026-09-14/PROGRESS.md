@@ -3,6 +3,16 @@
 ## ⚠️ Owner review 3 (2026-09-16) — read first
 `TIER1.json` PASS from gate runner v1 does **not** prove Tier 1. Every app: **In progress — Tier 1 not verified.**
 
+<<<<<<< HEAD
+Updated: 2026-09-16T10:10:00Z · Prompt: **v2** + Review 3
+
+Current step: **Step R** — hardened runner on tooling `a760cb4` (+ live-slug follow-up); apps FAIL honestly; next product fixes (C-34, real LH, kill-list, matrix evidence)
+
+Current item: C-34 merge watching · real LH · axe JSON · matrix-results · kill-list
+
+Next 5 actions:
+1. C-34 SoulCap: serviceWorkers allow on offline suites (687597c) — watching CI
+=======
 Updated: 2026-09-16T09:50:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
 
 Current step: **Step R** — hardened runner on tooling `a760cb4` (+ live-slug follow-up); apps FAIL honestly; next product fixes (C-34, real LH, kill-list, matrix evidence)
@@ -11,6 +21,7 @@ Current item: C-34 · real LH · axe JSON · matrix-results · kill-list
 
 Next 5 actions:
 1. C-34 SoulCap e2e red CI
+>>>>>>> origin/main
 2. Real Lighthouse (SoulCap perf 30 / TBT 6341; PulseCap perf 58 / LCP 8.3s) + commit fresh JSON
 3. Run `FINISH_MATRIX=1` → commit `matrix-results.json` + shots
 4. Kill-list under C-29 (PulseCap 188 hex / 82 !important / 4 sub-11)

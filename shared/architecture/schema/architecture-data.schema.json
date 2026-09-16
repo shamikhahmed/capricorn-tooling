@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://capricorn.systems/schemas/architecture-data.schema.json",
+  "title": "Cap Architecture Connection Map data",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "analyzerVersion",
+    "app",
+    "appVersion",
+    "sourceCommit",
+    "generatedAt",
+    "stacks",
+    "stats",
+    "nodes",
+    "edges",
+    "trees",
+    "storage",
+    "network",
+    "database",
+    "env",
+    "features",
+    "traces",
+    "findings"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "analyzerVersion": { "type": "string", "minLength": 1 },
+    "app": { "type": "string", "minLength": 1 },
+    "appVersion": { "type": "string" },
+    "sourceCommit": { "type": "string" },
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "stacks": { "type": "array", "items": { "type": "string" } },
+    "stats": { "type": "object" },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/edge" }
+    },
+    "trees": { "type": "object" },
+    "storage": { "type": "array" },
+    "network": { "type": "array" },
+    "database": { "type": "object" },
+    "env": { "type": "array" },
+    "features": { "type": "array" },
+    "traces": { "type": "object" },
+    "findings": { "type": "array" },
+    "analyzerCoverage": { "type": "object" }
+  },
+  "$defs": {
+    "nodeType": {
+      "type": "string",
+      "enum": [
+        "app", "entry", "config", "route", "screen", "layout", "component", "primitive",
+        "event", "function", "hook", "class", "logic", "validator", "state", "store",
+        "context", "service", "worker", "api-endpoint", "external", "auth", "database",
+        "table", "column", "storage", "static-data", "env", "file", "dependency"
+      ]
+    },
+    "edgeType": {
+      "type": "string",
+      "enum": [
+        "IMPORTS", "EXPORTS", "LOADS", "RENDERS", "CALLS", "USES", "HANDLES", "TRIGGERS",
+        "ROUTES_TO", "NAVIGATES_TO", "READS", "WRITES", "UPDATES", "DERIVES_FROM", "STATE",
+        "PERSISTS_TO", "STORES_IN", "CACHES", "FETCHES_FROM", "QUERIES", "MUTATES",
+        "AUTHENTICATES_THROUGH", "AUTHORIZES", "EXTERNAL", "CONFIG", "ENV", "DEPENDS_ON"
+      ]
+    },
+    "edgeStatus": {
+      "type": "string",
+      "enum": ["VERIFIED", "INFERRED", "UNKNOWN", "BROKEN"]
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["file", "line", "snippet"],
+      "properties": {
+        "file": { "type": "string" },
+        "line": { "type": "integer", "minimum": 0 },
+        "snippet": { "type": "string", "maxLength": 120 }
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": ["id", "type", "name", "file"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "$ref": "#/$defs/nodeType" },
+        "name": { "type": "string" },
+        "file": { "type": "string" },
+        "line": { "type": "integer" },
+        "endLine": { "type": "integer" },
+        "layer": { "type": "string" },
+        "feature": { "type": ["string", "null"] },
+        "flags": { "type": "array", "items": { "type": "string" } },
+        "meta": { "type": "object" }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": ["id", "from", "to", "type", "status", "evidence"],
+      "properties": {
+        "id": { "type": "string" },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "type": { "$ref": "#/$defs/edgeType" },
+        "status": { "$ref": "#/$defs/edgeStatus" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+        "label": { "type": "string" }
+      }
+    }
+  }
+}
