@@ -51,7 +51,7 @@ export function extractEsModules(root, graph) {
     }
 
     extractStorageAndFetch(f, text, graph);
-    extractRoutes(f, text, graph);
+    // Routes owned by adapters/routes-react.mjs (ARCH-03)
     extractDexie(f, text, graph);
   }
 }
@@ -252,33 +252,6 @@ function extractStorageAndFetch(f, text, graph) {
       evidence: [makeEvidence(f.rel, line, m[0].slice(0, 100))],
       label: url,
     });
-  }
-}
-
-function extractRoutes(f, text, graph) {
-  // react-router <Route path="..."
-  const routeRe = /<Route\b[^>]*\bpath=["']([^"']+)["'][^>]*>/g;
-  let m;
-  while ((m = routeRe.exec(text))) {
-    const line = lineAt(text, m.index);
-    graph.addNode({ type: 'route', name: m[1], file: f.rel, line, layer: 'screen' });
-  }
-  // React Navigation Stack.Screen name=
-  const screenRe = /<Stack\.Screen\b[^>]*\bname=["']([^"']+)["'][^>]*>/g;
-  while ((m = screenRe.exec(text))) {
-    const line = lineAt(text, m.index);
-    graph.addNode({ type: 'screen', name: m[1], file: f.rel, line });
-    graph.addNode({ type: 'route', name: m[1], file: f.rel, line });
-  }
-  // Next app dir: file path app/**/page.tsx
-  if (/^app\/.*page\.(t|j)sx?$/.test(f.rel) || f.rel === 'app/page.tsx' || f.rel === 'app/page.jsx') {
-    const routePath = '/' + f.rel
-      .replace(/^app/, '')
-      .replace(/\/page\.(t|j)sx?$/, '')
-      .replace(/\/\([^)]+\)/g, '') // route groups
-      .replace(/\\/g, '/') || '/';
-    graph.addNode({ type: 'route', name: routePath, file: f.rel, layer: 'screen' });
-    graph.addNode({ type: 'screen', name: routePath, file: f.rel });
   }
 }
 

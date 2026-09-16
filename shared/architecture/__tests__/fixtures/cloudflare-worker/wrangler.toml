@@ -1,0 +1,15 @@
+name = "vault-proxy"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "SESSIONS_KV"
+id = "00000000000000000000000000000000"
+
+[[r2_buckets]]
+binding = "BLOBS_BUCKET"
+bucket_name = "demo-blobs"
+
+[vars]
+PUBLIC_ORIGIN = "https://example.invalid"
+API_TOKEN = "do-not-store-this-value-in-graph"

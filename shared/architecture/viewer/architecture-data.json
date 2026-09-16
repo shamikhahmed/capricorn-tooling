@@ -1,8 +1,21 @@
 {
   "analyzerCoverage": {
-    "unresolved": []
+    "adaptersRun": [
+      "backend-presence",
+      "env-config",
+      "html",
+      "vanilla-globals"
+    ],
+    "backendPresence": {
+      "firebase": false,
+      "sqlite": false,
+      "supabase": false
+    },
+    "unresolved": [
+      "supabase/firebase/sqlite: verified absence (no createClient/.from()/firebase/sqflite/expo-sqlite matches)"
+    ]
   },
-  "analyzerVersion": "1.0.0",
+  "analyzerVersion": "1.1.0",
   "app": "vanilla-dispatch",
   "appVersion": "0.0.0",
   "database": {
@@ -244,7 +257,7 @@
       "severity": "info"
     }
   ],
-  "generatedAt": "2026-09-16T10:51:43.460Z",
+  "generatedAt": "2026-09-16T11:06:36.130Z",
   "network": [],
   "nodes": [
     {
@@ -383,7 +396,7 @@
     }
   ],
   "schemaVersion": 1,
-  "sourceCommit": "dbec2d7e12e1f227297ffba089d98ca80e7447bf",
+  "sourceCommit": "17b6959979cc2b13ea8210486570c027a3f9398f",
   "stacks": [
     "env-config",
     "html",
