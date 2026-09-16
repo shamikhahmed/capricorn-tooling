@@ -15,7 +15,8 @@
     "audit:versions": "node scripts/audit-version-truth.mjs",
     "audit:secrets": "node scripts/audit-secrets.mjs",
     "contrast:check": "node scripts/contrast-check.mjs",
-    "tier1": "node shared/testing/tier1.mjs"
+    "tier1": "node shared/testing/tier1.mjs",
+    "test:tier1": "node --test shared/testing/__tests__/tier1.test.mjs"
   },
   "engines": {
     "node": ">=20"
