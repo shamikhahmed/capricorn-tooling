@@ -43,7 +43,7 @@ Apps whose Pages source was the **repo root** published internals: `qa/finish-lo
 | MasteryCap `AUDIT.md` | 200 | **404** (`f0c8ad2`) |
 | SteadyCap `HANDOVER.md`, `CLAUDE.md`, `package.json` | 200 / 200 / 404 | **404** (`62227f2`) |
 | PrismCap `HANDOVER.md` | 200 | **404** (`164b927`) |
-| PulseCap `CLAUDE.md`, `qa/…/TIER1.json` | 200 | Scripts fixed (`65a037c`); **live 404 pending** CI verify+matrix then deploy-pages |
+| PulseCap `CLAUDE.md`, `qa/…/TIER1.json` | 200 | Scripts fixed (`65a037c`); **live 404 confirmed** 2026-09-16 |
 | `.cursor/rules` on DeePony/Ledger/Prism/Steady | mixed | **404** |
 | Aura / Scent / Cook (`dist`/`out`) HANDOVER | — | **404** |
 | SoulCap (`docs/` artifact) HANDOVER / architecture | — | **404** |
@@ -66,10 +66,29 @@ Apps whose Pages source was the **repo root** published internals: `qa/finish-lo
 ### Remaining hygiene (documented, not all fixed this pass)
 - **Custom `404.html`:** none of the sample Caps serve a real `404.html` (GitHub soft-404). Optional follow-up.
 - **Cache headers:** GitHub Pages sets CDN `cache-control` / `max-age` (observed ~600s on hub). Apps cannot set custom cache headers on Pages without a Worker/proxy — note only; SW cache names remain the app update lever.
-- **PulseCap live:** wait for CI `deploy-pages` after merge; re-curl `CLAUDE.md` + `TIER1.json`.
 - **CarCap:** no GitHub Pages API on repo; `/CarCap/` served via hub mirror — already 404 on junk paths; confirm hub stage allowlist covers CarCap tree.
 - **DeeFoodieApp:** `/DeeFoodieApp/` returns 200 HTML stub — confirm no secrets; private app.
 - **ARCH-06:** after maps exist, curl `…/docs/architecture/index.html` (SoulCap `…/architecture/index.html`) must stay 404.
+
+## 2026-09-16 — C-57 sealed (after-deploy live proof)
+
+### Verdict
+**C-57 ✅ sealed.** Pages hygiene only — **not** fleet Tier 1.
+
+### After-deploy curl (2026-09-16)
+Full matrix: hub + 14 Caps on `cap-apps.github.io`, plus prior personal hosts `shamikhahmed.github.io` for Vault/Pulse/Ledger/DeePony/Mastery/Steady/Prism/Soul (+ hub). Paths: `.cursor/`, `CLAUDE.md`, `HANDOVER.md`, `SECURITY.md`, `SINKS.md`, `TIER1.json`, `qa/finish-loop/SINKS.md`, `qa/finish-loop/TIER1.json`, `wrangler.toml`, `worker/wrangler.toml`.
+
+| Host | Sample / scope | Result |
+|---|---|---|
+| `cap-apps.github.io` hub | `.cursor/`, `HANDOVER.md`, `SECURITY.md`, `CLAUDE.md`, `qa/…/SINKS.md` | **404** |
+| `cap-apps.github.io/{Soul,Vault,Pulse,Ledger,DeePony,Mastery,Steady,Prism,Aura,Scent,Cook,Car,Travel,Idea}Cap` | all leak paths above | **404** (incl. Pulse live) |
+| `shamikhahmed.github.io/{Vault,Pulse,Ledger,DeePony,Mastery,Steady,Prism,Soul}Cap` | same leak set | **404** |
+| `shamikhahmed.github.io` hub | `.cursor/`, `HANDOVER.md` | **404** |
+
+**Totals:** 227/227 → HTTP 404; **0 remaining 200s** on leak paths.
+
+### Allowlist SHAs (unchanged)
+Vault `b6f1334` · DeePony `4942677` · Ledger `355e660` · Mastery `f0c8ad2` · Steady `62227f2` · Prism `164b927` · Pulse `65a037c` · hub allowlist (C-53).
 
 ### ARCH-01
 Fleet topology written: `docs/audit-2026-09-14/ARCHITECTURE-FLEET-MAP.md` (+ `shared/architecture/FLEET.md` pointer). Analyzer core already on main (`c941978` / `c628e40`, 16/16 tests). Next: ARCH-02 viewer.
