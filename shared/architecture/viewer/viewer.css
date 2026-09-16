@@ -348,6 +348,10 @@ button[aria-pressed="true"] {
   color: var(--muted);
 }
 
+.empty[hidden] {
+  display: none !important;
+}
+
 .bottom {
   height: var(--bottom-h);
   border-top: 1px solid var(--border);
