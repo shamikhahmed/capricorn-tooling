@@ -3,11 +3,11 @@
 ## ⚠️ Owner review 3 (2026-09-16) — read first
 `TIER1.json` PASS from gate runner v1 does **not** prove Tier 1. Every app: **In progress — Tier 1 not verified.**
 
-Updated: 2026-09-16T09:50:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
+Updated: 2026-09-16T09:45:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
 
 Current step: **Step R** — C-31 matrix CI wired (SoulCap/PulseCap templates); continue C-34 + real LH + kill-list
 
-Current item: C-31 · C-34 · C-30 real LH runs
+Current item: C-34 · C-30 real LH · C-32 axe/gallery
 
 Next 5 actions:
 1. Finish C-34 SoulCap e2e red CI
