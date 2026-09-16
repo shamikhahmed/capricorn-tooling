@@ -73,3 +73,7 @@ Apps whose Pages source was the **repo root** published internals: `qa/finish-lo
 
 ### ARCH-01
 Fleet topology written: `docs/audit-2026-09-14/ARCHITECTURE-FLEET-MAP.md` (+ `shared/architecture/FLEET.md` pointer). Analyzer core already on main (`c941978` / `c628e40`, 16/16 tests). Next: ARCH-02 viewer.
+
+## 2026-09-16 — C-30 product LH (SoulCap + PulseCap)
+- Real lighthouse@13.4.1 JSON committed on `finish/soulcap-c30` (`154a515`) and `finish/pulsecap-c30` (`cacae9b`).
+- Stub LH dirs still empty for Aura/Car/DeePony/Idea/Ledger/Prism/Travel/DeeFoodie (prior delete commits); no remaining `tier1-evidence-stub` outside test fixtures.
