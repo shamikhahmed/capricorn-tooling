@@ -18,7 +18,7 @@
     "tier1": "node shared/testing/tier1.mjs",
     "test:tier1": "node --test shared/testing/__tests__/tier1.test.mjs",
     "architecture:analyze": "node shared/architecture/analyze.mjs",
-    "architecture:test": "node --test shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs shared/architecture/__tests__/pages-unpublished.test.mjs shared/architecture/__tests__/findings-to-queue.test.mjs shared/architecture/__tests__/check-staleness.test.mjs shared/architecture/__tests__/regenerate.test.mjs",
+    "architecture:test": "node --test shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs shared/architecture/__tests__/pages-unpublished.test.mjs shared/architecture/__tests__/findings-to-queue.test.mjs shared/architecture/__tests__/check-staleness.test.mjs shared/architecture/__tests__/regenerate.test.mjs shared/architecture/__tests__/app-report-section.test.mjs",
     "architecture:viewer": "node shared/architecture/prepare-viewer.mjs",
     "architecture:viewer:stress": "node shared/architecture/prepare-viewer.mjs --stress 5000",
     "architecture:pages-404": "node scripts/verify-architecture-unpublished.mjs",
@@ -26,7 +26,8 @@
     "architecture:check": "node scripts/architecture-check.mjs",
     "architecture:regen": "node scripts/architecture-regenerate.mjs",
     "architecture:regenerate": "node scripts/architecture-regenerate.mjs",
-    "test": "node --test shared/testing/__tests__/tier1.test.mjs shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs shared/architecture/__tests__/pages-unpublished.test.mjs shared/architecture/__tests__/findings-to-queue.test.mjs shared/architecture/__tests__/check-staleness.test.mjs shared/architecture/__tests__/regenerate.test.mjs"
+    "architecture:app-report": "node scripts/architecture-app-report.mjs",
+    "test": "node --test shared/testing/__tests__/tier1.test.mjs shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs shared/architecture/__tests__/pages-unpublished.test.mjs shared/architecture/__tests__/findings-to-queue.test.mjs shared/architecture/__tests__/check-staleness.test.mjs shared/architecture/__tests__/regenerate.test.mjs shared/architecture/__tests__/app-report-section.test.mjs"
   },
   "engines": {
     "node": ">=20"

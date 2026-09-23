@@ -326,5 +326,40 @@ Pilot `architecture-data.*` remain gitignored under `pilot-*/`; evidence JSON co
 | ID | Item | Status |
 |---|---|---|
 | ARCH-01…08 | Core … staleness/G15 | ✅ |
-| ARCH-09 | Regenerate workflow | ✅ this PR |
-| ARCH-10 | APP-REPORT Architecture section | ❌ |
+| ARCH-09 | Regenerate workflow | ✅ |
+| ARCH-10 | APP-REPORT Architecture section | ✅ this PR |
+
+---
+
+# ARCH-10 — APP-REPORT Architecture section
+
+**Date:** 2026-09-23  
+**Branch:** `finish/arch-10`  
+**Base:** ARCH-09 merge `cbbc25c`
+
+## Scope
+
+Emit a paste-ready `## Architecture` block for Cap Finish `qa/finish-loop/APP-REPORT.md` from pilot maps (+ optional ARCH-07 queue). Also ship a blank shared template.
+
+## Pieces
+
+| Piece | Path |
+|---|---|
+| Generator | `shared/architecture/app-report-section.mjs` |
+| CLI | `npm run architecture:app-report` (`scripts/architecture-app-report.mjs`) |
+| Blank template | `shared/architecture/templates/APP-REPORT-ARCHITECTURE.md` |
+| Tests | `shared/architecture/__tests__/app-report-section.test.mjs` |
+| Proof | `qa/architecture/APP-REPORT-ARCH10-PulseCap.md` + `qa/architecture/proof/` |
+
+## Commands
+
+```bash
+npm run architecture:app-report -- --app PulseCap
+npm run architecture:app-report -- --app PulseCap --out qa/architecture/APP-REPORT-ARCH10-PulseCap.md
+npm run architecture:app-report -- --app PulseCap --insert ../PulseCap/qa/finish-loop/APP-REPORT.md
+npm run architecture:app-report -- --template
+```
+
+## Honesty
+
+Map-derived SPEC §10 answers only; gaps stated. Does **not** claim product Tier 1. Architecture track ARCH-01…10 complete on tooling.

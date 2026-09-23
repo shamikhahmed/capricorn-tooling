@@ -45,3 +45,11 @@ Open locally (file://): `qa/architecture/pilot-<slug>/index.html` after regenera
 | pilot-aura … pilot-vault | remaining Caps |
 | pilot-lab / pilot-hub | capricorn-lab / shamikhahmed.github.io |
 | queue/ | `<App>-ARCH-<n>` items (ARCH-07) |
+
+## ARCH-10 APP-REPORT
+
+```bash
+npm run architecture:app-report -- --app PulseCap
+npm run architecture:app-report -- --template
+```
+Paste into each Cap `qa/finish-loop/APP-REPORT.md`.
