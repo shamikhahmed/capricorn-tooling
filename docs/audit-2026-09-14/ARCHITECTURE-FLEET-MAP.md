@@ -156,8 +156,8 @@ Outputs (tooling): `qa/architecture/pilot-*/` via `--config qa/architecture/pilo
 | ARCH-05 | Roll-out all apps + hub | ✅ Done (`finish/arch-05`; analyzer 1.3.0; 17 apps; spot-check 314/314; tests 27/27; nest nested detect; Next src/app; tabs-id/tuples) |
 | ARCH-06 | Never publish maps (C-57 curl 404) | ✅ Done (`finish/arch-06`); `npm run architecture:pages-404` + CI workflow; matrix hosts × apps × artifacts → 404/410 |
 | ARCH-07 | Findings → queue items | ✅ Done (`finish/arch-07`); `npm run architecture:queue` → `qa/architecture/queue/` + `QUEUE-INDEX`; proof Pulse+Scent+Car+Vault = **1986** items |
-| ARCH-08 | Staleness + `architecture:check` + G15 | ✅ Done (`finish/arch-08`); viewer sync + `sourceCommit` freshness; `tier1` G15; evidence `CHECK-ARCH08.json` (12/17 pilots fresh; 5 stale until ARCH-09) |
-| ARCH-09 | Regenerate workflow on structural change | ❌ |
+| ARCH-08 | Staleness + `architecture:check` + G15 | ✅ Done (`finish/arch-08`); viewer sync + `sourceCommit` freshness; `tier1` G15; evidence `CHECK-ARCH08.json` |
+| ARCH-09 | Regenerate workflow on structural change | ✅ Done (`finish/arch-09`); `npm run architecture:regen` + CI dry-run; refreshed Cook/Ledger/Pulse/Scent/Travel; check **17/17** |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |
 
 ---

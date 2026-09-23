@@ -266,6 +266,65 @@ npm run architecture:check -- --root ../PulseCap --map qa/architecture/pilot-pul
 | ID | Item | Status |
 |---|---|---|
 | ARCH-01…07 | Core / viewer / adapters / pilots / fleet / Pages 404 / findings→queue | ✅ |
-| ARCH-08 | Staleness + `architecture:check` + G15 | ✅ this PR |
-| ARCH-09 | Regenerate workflow | ❌ |
+| ARCH-08 | Staleness + `architecture:check` + G15 | ✅ |
+| ARCH-09 | Regenerate workflow | ✅ (see ARCH-09 section below) |
+| ARCH-10 | APP-REPORT Architecture section | ❌ |
+
+---
+
+# ARCH-09 — Regenerate workflow
+
+**Date:** 2026-09-23  
+**Tooling branch:** `finish/arch-09`  
+**Base:** `origin/main` @ `16f3555` (ARCH-08 merge PR #14)
+
+## Scope
+
+SPEC §9 / §1.3 + master prompt §2.6 ARCH-09: after structural change (or when `architecture:check` reports stale `sourceCommit`), regenerate pilot maps from Cap-Apps sibling checkouts. Never fake success when siblings are missing. CI runs unit tests + dry-run discovery; live regen is local / optional when `CAP_APPS_ROOT` is set.
+
+## Deliverables
+
+| Piece | Path |
+|---|---|
+| Core | `shared/architecture/regenerate.mjs` |
+| CLI | `scripts/architecture-regenerate.mjs` |
+| npm | `npm run architecture:regen` / `architecture:regenerate` (`--stale`, `--slugs`, `--dry-run`) |
+| Tests | `shared/architecture/__tests__/regenerate.test.mjs` (in `architecture:test`) |
+| CI | `.github/workflows/architecture-regenerate.yml` (unit + dry-run; live regen is local) |
+| Evidence | `qa/architecture/REGEN-ARCH09.json` + refreshed `CHECK-ARCH08.json` |
+
+## Commands
+
+```bash
+git fetch origin && git checkout -b finish/arch-09 origin/main
+npm run architecture:test          # 51/51
+npm run architecture:regen -- --dry-run
+npm run architecture:regen -- --stale
+# or explicit stale set from ARCH-08:
+npm run architecture:regen -- --slugs cook,ledger,pulse,scent,travel
+npm run architecture:check         # expect 17/17 after regen
+```
+
+## Proof (this branch)
+
+`architecture:test` **51/51**.  
+`architecture:regen -- --slugs cook,ledger,pulse,scent,travel` → **ok=5 failed=0** (siblings present).  
+`architecture:check` → **17/17 PASS** (was 12/17; Cook/Ledger/Pulse/Scent/Travel refreshed).  
+Pilot `architecture-data.*` remain gitignored under `pilot-*/`; evidence JSON committed.
+
+## Honesty / not covered here
+
+| Covered by ARCH-09 | Not covered (deferred) |
+|---|---|
+| Discover pilots + analyze → `pilot-*` outs | ARCH-10 APP-REPORT Architecture section |
+| `--stale` uses ARCH-08 check | Auto-commit of regenerated maps into Cap app repos |
+| Honest skip when Cap sibling missing | Live CI regen without Cap-Apps checkout (dry-run only) |
+| Does not fail on findings | Re-queue after regen (re-run `architecture:queue` separately) |
+
+## Remaining ARCH items
+
+| ID | Item | Status |
+|---|---|---|
+| ARCH-01…08 | Core … staleness/G15 | ✅ |
+| ARCH-09 | Regenerate workflow | ✅ this PR |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |

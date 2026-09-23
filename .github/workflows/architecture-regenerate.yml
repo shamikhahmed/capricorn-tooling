@@ -1,0 +1,49 @@
+name: Architecture Regenerate (ARCH-09)
+
+# Regenerate / refresh architecture maps after structural analyzer or pilot-config change.
+# Full regen needs Cap-Apps siblings (local: npm run architecture:regen).
+# CI always runs unit tests + dry-run discovery (honest skip when siblings absent).
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly — nudge freshness after app structural merges
+    - cron: '27 6 * * 1'
+  push:
+    branches: [main]
+    paths:
+      - 'shared/architecture/**'
+      - 'qa/architecture/pilots/**'
+      - 'scripts/architecture-regenerate.mjs'
+      - 'scripts/architecture-check.mjs'
+      - 'package.json'
+      - '.github/workflows/architecture-regenerate.yml'
+  pull_request:
+    paths:
+      - 'shared/architecture/**'
+      - 'qa/architecture/pilots/**'
+      - 'scripts/architecture-regenerate.mjs'
+      - 'scripts/architecture-check.mjs'
+      - 'package.json'
+      - '.github/workflows/architecture-regenerate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Architecture unit tests (incl. ARCH-09 regen)
+        run: npm run architecture:test
+      - name: Regenerate dry-run (sibling discovery)
+        run: npm run architecture:regen -- --dry-run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: regen-arch09-dry-run
+          path: qa/architecture/REGEN-ARCH09.json
+          retention-days: 30
