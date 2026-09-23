@@ -3,9 +3,9 @@
 ## ⚠️ Owner review 3 (2026-09-16) — read first
 Hardened runner v2 on tooling — `TIER1.json` PASS only when real gates pass. Every app until then: **In progress — not verified.** Review 3 does **not** verify fleet Tier 1.
 
-Updated: 2026-09-23T13:25:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
+Updated: 2026-09-23T09:10:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
 
-Current step: **Step R** — CarCap+SoulCap+PulseCap Tier1 PASS; ScentCap LH gates clear (closing tag/kill); **ARCH-01…10 ✅**
+Current step: **Step R** — CarCap+SoulCap+PulseCap+**ScentCap** Tier1 PASS (Scent on stepR PR); ARCH-01…10 ✅
 
 ## Done
 - **C-29…C-33 ✅** hardened `tier1.mjs` + tests (tooling)
@@ -26,11 +26,12 @@ Current step: **Step R** — CarCap+SoulCap+PulseCap Tier1 PASS; ScentCap LH gat
 - **CarCap ✅** hardened Tier1 **PASS** on main after stepR merge `dcfa383` (re-verified 2026-09-23; LH+matrix+axe+kill-list green)
 - **SoulCap ✅** hardened Tier1 **PASS** on main via PR #11 (`32c6961`) — v8.3.2 Review 3 gates (LH desktop 99 / mobile 98)
 - **PulseCap ✅** hardened Tier1 **PASS** on main (`a1e865a` / PR #6) — live mobile LH **P90** / LCP **2.1s** / TBT **~35–40ms**; desktop **P100**; MODULE_CHAIN defer + SW `pulsecap-v125`. Re-verified `npm run tier1` → PASS (ci:main warn until tip CI finishes).
-- **ScentCap stepR** kill-list cleared (`raw-hex`/`sub-11` → 0) v2.1.3; Tier1 **FAIL** only live mobile LH (retry P62 / LCP~18s; local preview earlier P74). `live:VERSION.json` 404 until main deploy
+- **ScentCap ✅** hardened Tier1 **PASS** on `finish/scentcap-stepR` (`526f52c`) — mobile P97 / desktop P100; tag v2.1.4; live VERSION warn until main Pages
+- **ScentCap (prior)** kill-list cleared (`raw-hex`/`sub-11` → 0) v2.1.3; Tier1 **FAIL** only live mobile LH (retry P62 / LCP~18s; local preview earlier P74). `live:VERSION.json` 404 until main deploy
 - **Cook/Travel/Ledger/Prism stepR** axe/gallery/matrix cleared; all **FAIL** LH only (Cook P51/68, Travel P62/74, Ledger P33, Prism P12/29)
 
 ## Honest
-CarCap + SoulCap + **PulseCap** **PASS** on main (hardened runner). Most other Caps still **FAIL** — primary remaining gate is **Lighthouse thresholds**. C-34 ≠ Tier 1 fleet-wide. C-57 ≠ Tier 1. ARCH-01…10 ✅ on tooling. Remaining product Caps primarily LH thresholds (ScentCap near PASS).
+CarCap + SoulCap + PulseCap **PASS** on main; **ScentCap PASS** on stepR (merge pending) (hardened runner). Most other Caps still **FAIL** — primary remaining gate is **Lighthouse thresholds**. C-34 ≠ Tier 1 fleet-wide. C-57 ≠ Tier 1. ARCH-01…10 ✅ on tooling. Remaining product Caps primarily LH thresholds (Cook/Travel/Ledger/Prism/…).
 
 BLOCKED-EXTERNAL: Xcode / TestFlight / physical VO-TB (macOS VO+Safari OK for web)
 
