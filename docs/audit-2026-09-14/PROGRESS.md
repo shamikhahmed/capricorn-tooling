@@ -3,9 +3,9 @@
 ## ⚠️ Owner review 3 (2026-09-16) — read first
 Hardened runner v2 on tooling — `TIER1.json` PASS only when real gates pass. Every app until then: **In progress — not verified.** Review 3 does **not** verify fleet Tier 1.
 
-Updated: 2026-09-23T11:00:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
+Updated: 2026-09-23T06:20:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
 
-Current step: **Step R** — CarCap+SoulCap Tier1 PASS on main; Pulse/Scent/Steady/Vault/Cook evidence loops; **ARCH-06** done → ARCH-07+
+Current step: **Step R** — CarCap+SoulCap Tier1 PASS on main; remaining Caps = **LH thresholds** (kill/axe/matrix mostly cleared); **ARCH-07** findings→queue
 
 ## Done
 - **C-29…C-33 ✅** hardened `tier1.mjs` + tests (tooling)
@@ -16,15 +16,17 @@ Current step: **Step R** — CarCap+SoulCap Tier1 PASS on main; Pulse/Scent/Stea
 - **ARCH-03 ✅** SPEC §3 adapters on main (PR #4 `a9f587a`); analyzer was **1.1.0**; tests **22/22**
 - **ARCH-04 ✅** PulseCap + ScentCap precision pilot (`finish/arch-04` / PR #6): analyzer **1.2.0**; `reg`/`go` + `MODULE_CHAIN`; routes `ROUTES_TO`/`NAVIGATES_TO`; `--config` + `excludeStacks`; spot-check **60/60 (100%)**; `qa/architecture/`; tests **24/24**
 - **ARCH-05 ✅** Fleet roll-out (`finish/arch-05`): analyzer **1.3.0**; 17 apps (all Caps + lab + hub); Next `src/app`, tabs-id/tuples, multiline Stack.Screen, nested Nest detect, skip releases/bundle/hub mirrors; spot-check **314/314 (100%)**; tests **27/27**
-- **ARCH-06 ✅** Never publish maps (`finish/arch-06`): `npm run architecture:pages-404` + CI `architecture-pages-404.yml`; curl fleet map URLs on `shamikhahmed.github.io` + `cap-apps.github.io` → HTTP 404/410; evidence `qa/architecture/PAGES-404-ARCH06.json` (aligns C-57 allowlists)
+- **ARCH-06 ✅** Never publish maps — PR #10 merge `bc7227c` (`d82364c`); CI unit+live-404 green; evidence **96/96** → 404 in `qa/architecture/PAGES-404-ARCH06.json`
 - **C-57 🟡→mostly ✅** allowlisted Pages: Vault `b6f1334`, DeePony `4942677`, Ledger `355e660`, Mastery `f0c8ad2`, Steady `62227f2`, Prism `164b927`; Pulse scripts merge `65a037c`. Aura/Scent/Cook/Soul/hub already non-root artifacts.
 - **C-35 partial** CarCap+ScentCap contrast on main (CI green); SoulCap axe on stepR
 - **CarCap ✅** hardened Tier1 **PASS** on main after stepR merge `dcfa383` (re-verified 2026-09-23; LH+matrix+axe+kill-list green)
 - **SoulCap ✅** hardened Tier1 **PASS** on main via PR #11 (`32c6961`) — v8.3.2 Review 3 gates (LH desktop 99 / mobile 98)
-- **Scent/Steady/Vault stepR** evidence mostly closed ([Scent Steady Vault gaps](72e69769)): Scent only kill-list left (mobile LH P96); Steady tag v2.5.5 + LH/axe remain; Vault mobile LH P75
+- **PulseCap stepR** CI **green** on `finish/pulsecap-stepR` (`a8a7616`) — verify + finish-matrix; Tier1 still **FAIL** LH mobile TBT/perf (defer MODULE_CHAIN landed)
+- **ScentCap stepR** kill-list cleared (`raw-hex`/`sub-11` → 0) v2.1.3; Tier1 **FAIL** only live mobile LH (retry P62 / LCP~18s; local preview earlier P74). `live:VERSION.json` 404 until main deploy
+- **Cook/Travel/Ledger/Prism stepR** axe/gallery/matrix cleared; all **FAIL** LH only (Cook P51/68, Travel P62/74, Ledger P33, Prism P12/29)
 
 ## Honest
-CarCap + SoulCap **PASS** on main. Most other Caps still **FAIL** (LH thresholds, gallery, axe, matrix; ScentCap matrix blocked on __APP_READY__). C-34 ≠ Tier 1 fleet-wide. C-57 ≠ Tier 1. ARCH-05 structural maps ✅ fleet-wide in tooling `qa/architecture/`; ARCH-06 Pages 404 gate ✅; journey traces / ARCH-07 finding triage / per-app `docs/architecture/` still open. Stale PASS files (ScentCap/Mastery/Idea/DeeFoodie dated ≤2026-09-15) need re-run under current runner.
+CarCap + SoulCap **PASS** on main. Most other Caps still **FAIL** hardened tier1 — primary remaining gate is **Lighthouse thresholds** (perf≥90, LCP≤2.5s, TBT≤200, CLS≤0.1). C-34 ≠ Tier 1 fleet-wide. C-57 ≠ Tier 1. ARCH-01…06 ✅ on tooling main; **ARCH-07+** open (findings→queue, staleness, regenerate, APP-REPORT). No estimated scores; no Tier1 PASS claim without runner PASS + live evidence.
 
 BLOCKED-EXTERNAL: Xcode / TestFlight / physical VO-TB (macOS VO+Safari OK for web)
 
