@@ -158,7 +158,7 @@ Outputs (tooling): `qa/architecture/pilot-*/` via `--config qa/architecture/pilo
 | ARCH-07 | Findings → queue items | ✅ Done (`finish/arch-07`); `npm run architecture:queue` → `qa/architecture/queue/` + `QUEUE-INDEX`; proof Pulse+Scent+Car+Vault = **1986** items |
 | ARCH-08 | Staleness + `architecture:check` + G15 | ✅ Done (`finish/arch-08`); viewer sync + `sourceCommit` freshness; `tier1` G15; evidence `CHECK-ARCH08.json` |
 | ARCH-09 | Regenerate workflow on structural change | ✅ Done (`finish/arch-09`); `npm run architecture:regen` + CI dry-run; refreshed Cook/Ledger/Pulse/Scent/Travel; check **17/17** |
-| ARCH-10 | APP-REPORT Architecture section | ❌ |
+| ARCH-10 | APP-REPORT Architecture section | ✅ `finish/arch-10` / `npm run architecture:app-report` |
 
 ---
 

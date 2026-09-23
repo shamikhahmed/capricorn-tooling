@@ -5,7 +5,7 @@ Hardened runner v2 on tooling — `TIER1.json` PASS only when real gates pass. E
 
 Updated: 2026-09-23T13:25:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
 
-Current step: **Step R** — CarCap+SoulCap+**PulseCap** Tier1 PASS on main; remaining Caps primarily **LH thresholds**; **ARCH-10** APP-REPORT Architecture next (ARCH-09 ✅)
+Current step: **Step R** — CarCap+SoulCap+PulseCap Tier1 PASS; ScentCap LH gates clear (closing tag/kill); **ARCH-01…10 ✅**
 
 ## Done
 - **C-29…C-33 ✅** hardened `tier1.mjs` + tests (tooling)
@@ -19,7 +19,8 @@ Current step: **Step R** — CarCap+SoulCap+**PulseCap** Tier1 PASS on main; rem
 - **ARCH-06 ✅** Never publish maps — PR #10 merge `bc7227c` (`d82364c`); CI unit+live-404 green; evidence **96/96** → 404 in `qa/architecture/PAGES-404-ARCH06.json`
 - **ARCH-07 ✅** Findings → queue — `finish/arch-07`; `npm run architecture:queue`; proof Pulse+Scent+Car+Vault = **1986** `<App>-ARCH-<n>` items under `qa/architecture/queue/` + `QUEUE-INDEX`; tests **36/36**
 - **ARCH-08 ✅** Staleness + check + G15 — `finish/arch-08`; `npm run architecture:check`; viewer sync + `sourceCommit` freshness; `tier1` `g15:architecture`; tests **46/46**; evidence `CHECK-ARCH08.json`
-- **ARCH-09 ✅** Regenerate workflow — `finish/arch-09`; `npm run architecture:regen` (`--stale` / `--slugs`); CI dry-run; refreshed Cook/Ledger/Pulse/Scent/Travel; `architecture:check` **17/17**; tests **51/51**; evidence `REGEN-ARCH09.json`
+- **ARCH-09 ✅** regenerate workflow (`cbbc25c`)
+- **ARCH-10 ✅** APP-REPORT Architecture section — `npm run architecture:app-report`; template + PulseCap proof Regenerate workflow — `finish/arch-09`; `npm run architecture:regen` (`--stale` / `--slugs`); CI dry-run; refreshed Cook/Ledger/Pulse/Scent/Travel; `architecture:check` **17/17**; tests **51/51**; evidence `REGEN-ARCH09.json`
 - **C-57 🟡→mostly ✅** allowlisted Pages: Vault `b6f1334`, DeePony `4942677`, Ledger `355e660`, Mastery `f0c8ad2`, Steady `62227f2`, Prism `164b927`; Pulse scripts merge `65a037c`. Aura/Scent/Cook/Soul/hub already non-root artifacts.
 - **C-35 partial** CarCap+ScentCap contrast on main (CI green); SoulCap axe on stepR
 - **CarCap ✅** hardened Tier1 **PASS** on main after stepR merge `dcfa383` (re-verified 2026-09-23; LH+matrix+axe+kill-list green)
@@ -29,7 +30,7 @@ Current step: **Step R** — CarCap+SoulCap+**PulseCap** Tier1 PASS on main; rem
 - **Cook/Travel/Ledger/Prism stepR** axe/gallery/matrix cleared; all **FAIL** LH only (Cook P51/68, Travel P62/74, Ledger P33, Prism P12/29)
 
 ## Honest
-CarCap + SoulCap + **PulseCap** **PASS** on main (hardened runner). Most other Caps still **FAIL** — primary remaining gate is **Lighthouse thresholds**. C-34 ≠ Tier 1 fleet-wide. C-57 ≠ Tier 1. ARCH-01…09 ✅; **ARCH-10** open (APP-REPORT Architecture section). No estimated scores; no fleet Tier 1 claim.
+CarCap + SoulCap + **PulseCap** **PASS** on main (hardened runner). Most other Caps still **FAIL** — primary remaining gate is **Lighthouse thresholds**. C-34 ≠ Tier 1 fleet-wide. C-57 ≠ Tier 1. ARCH-01…10 ✅ on tooling. Remaining product Caps primarily LH thresholds (ScentCap near PASS).
 
 BLOCKED-EXTERNAL: Xcode / TestFlight / physical VO-TB (macOS VO+Safari OK for web)
 
