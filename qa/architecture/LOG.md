@@ -79,7 +79,7 @@ Backend presence (supabase/firebase/sqlite): **absent** on all 17 AUDIT runs.
 
 ## Honest gaps (→ later ARCH)
 
-- Journey traces from `primaryJourneys` still not auto-materialized (`traces.actions`) — ARCH-08.
+- Journey traces from `primaryJourneys` still not auto-materialized (`traces.actions`) — analyzer coverage gap (not ARCH-08; ARCH-08 is staleness/check).
 - Findings triage → queue items — ARCH-07 ✅.
 - Per-app `docs/architecture/` + `architecture:analyze` script in each repo — follow-up.
 - CookCap is a single Next page (accurate); deeper recipe IA is component-graph only.
@@ -94,7 +94,7 @@ Backend presence (supabase/firebase/sqlite): **absent** on all 17 AUDIT runs.
 | ARCH-05 | Roll-out all apps + hub | ✅ this PR |
 | ARCH-06 | Never publish maps (curl 404) | ✅ PR #10 `bc7227c` |
 | ARCH-07 | Findings → queue items | ✅ (see ARCH-07 section below) |
-| ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
+| ARCH-08 | Staleness + `architecture:check` + G15 | ✅ (see ARCH-08 section below) |
 | ARCH-09 | Regenerate workflow | ❌ |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |
 
@@ -146,7 +146,7 @@ npm run architecture:pages-404     # live curl; writes PAGES-404-ARCH06.json
 | ARCH-01…05 | Core / viewer / adapters / pilots / fleet | ✅ |
 | ARCH-06 | Never publish maps (curl 404) | ✅ this PR |
 | ARCH-07 | Findings → queue items | ✅ (see ARCH-07 section below) |
-| ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
+| ARCH-08 | Staleness + `architecture:check` + G15 | ✅ (see ARCH-08 section below) |
 | ARCH-09 | Regenerate workflow | ❌ |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |
 
@@ -206,6 +206,66 @@ Example IDs: `PulseCap-ARCH-01` (BROKEN), `ScentCap-ARCH-01` (SECURITY / `VITE_F
 |---|---|---|
 | ARCH-01…06 | Core / viewer / adapters / pilots / fleet / Pages 404 | ✅ |
 | ARCH-07 | Findings → queue items | ✅ this PR |
-| ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
+| ARCH-08 | Staleness + `architecture:check` + G15 | ✅ (see ARCH-08 section below) |
+| ARCH-09 | Regenerate workflow | ❌ |
+| ARCH-10 | APP-REPORT Architecture section | ❌ |
+
+---
+
+# ARCH-08 — Staleness + `architecture:check` + G15
+
+**Date:** 2026-09-23  
+**Tooling branch:** `finish/arch-08`  
+**Base:** `origin/main` @ `777f0dc` (ARCH-07 merge PR #12)
+
+## Scope
+
+SPEC §1.3 + master prompt §2.6 ARCH-08: CI / check fails when a map's **viewer copy drifts** from `shared/architecture/viewer/` or when `architecture-data.json` **`sourceCommit` is behind** the latest commit touching mapped source files (node `file` paths). Never fails on findings.
+
+Wire **G15** into `tier1.mjs` as the ARCH-08 subset (hard-fail only when a map is present).
+
+## Deliverables
+
+| Piece | Path |
+|---|---|
+| Core | `shared/architecture/check-staleness.mjs` |
+| CLI | `scripts/architecture-check.mjs` |
+| npm | `npm run architecture:check` (default: all `qa/architecture/pilot-*`) |
+| Tests | `shared/architecture/__tests__/check-staleness.test.mjs` (in `architecture:test`) |
+| G15 | `shared/testing/tier1.mjs` → `g15:architecture` (+ `TIER1_SKIP_ARCH=1`) |
+| Evidence | `qa/architecture/CHECK-ARCH08.json` |
+
+## Commands
+
+```bash
+git fetch origin && git checkout -b finish/arch-08 origin/main
+npm run architecture:test          # 46/46
+npm run architecture:check         # pilots × Cap siblings; writes CHECK-ARCH08.json
+# single app:
+npm run architecture:check -- --root ../PulseCap --map qa/architecture/pilot-pulse
+```
+
+## Proof (this branch)
+
+`architecture:test` **46/46**.  
+`architecture:check` on tooling pilots vs Cap-Apps siblings: **12/17 PASS**, **5 FAIL** (stale sourceCommit — Cook/Ledger/Pulse/Scent/Travel). Viewer sync OK on all present pilots. Failures are **correct** gate behavior until ARCH-09 regenerate.
+
+## Honesty / not covered here
+
+| Covered by ARCH-08 | Not covered (deferred) |
+|---|---|
+| Viewer asset byte-sync vs shared viewer | `traces.actions` / journey auto-materialization (analyzer gap; earlier LOG mis-labeled as ARCH-08 — belongs with analyzer completeness, not this gate) |
+| `sourceCommit` freshness vs mapped sources | Unexplained `BROKEN` edge count = 0 |
+| G15 soft-warn when map absent; hard-fail when map present + stale/drift | `NO_VERIFIED_SOURCE` on primary screens |
+| | Full AUDIT.md “every finding resolved or queued” (ARCH-07 queues; triage is human) |
+| | Live Pages 404 (ARCH-06) |
+| | Per-app CI scripts (add when `docs/architecture/` lands in each repo) |
+
+## Remaining ARCH items
+
+| ID | Item | Status |
+|---|---|---|
+| ARCH-01…07 | Core / viewer / adapters / pilots / fleet / Pages 404 / findings→queue | ✅ |
+| ARCH-08 | Staleness + `architecture:check` + G15 | ✅ this PR |
 | ARCH-09 | Regenerate workflow | ❌ |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |

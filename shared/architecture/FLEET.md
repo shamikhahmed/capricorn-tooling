@@ -7,3 +7,4 @@ Adapters: `shared/architecture/adapters/` (vanilla Cap static + routes-react + c
 Pilot/roll-out outputs: `qa/architecture/` (see `LOG.md`).
 **Never published:** ARCH-06 ✅ `npm run architecture:pages-404` (curl 404 gate; C-57 allowlists).
 **Findings → queue:** ARCH-07 ✅ `npm run architecture:queue` → `qa/architecture/queue/<App>-ARCH-QUEUE.*` + `QUEUE-INDEX.md`.
+**Staleness / G15:** ARCH-08 ✅ `npm run architecture:check` (viewer sync + `sourceCommit` freshness; `tier1` gate `g15:architecture`).

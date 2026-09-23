@@ -16,12 +16,18 @@
  *   TIER1_SKIP_MATRIX — set to 1 to skip requiring finish-matrix evidence
  *   TIER1_SKIP_AXE — set to 1 to skip axe JSON gate
  *   TIER1_SKIP_GALLERY — set to 1 to skip gallery freshness
+ *   TIER1_SKIP_ARCH — set to 1 to skip G15 architecture map check (ARCH-08)
  *   TIER1_CI_WORKFLOW — exact Actions workflow name (or qa/finish-loop/CI-WORKFLOW.txt)
  *   TIER1_LIVE_VERSION — "warn" (default) or "fail" for live VERSION.json
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import {
+  checkArchitectureMap,
+  resolveMapDir,
+} from '../architecture/check-staleness.mjs';
 
 const ROOT = process.cwd();
 const OUT_DIR = path.join(ROOT, 'qa', 'finish-loop');
@@ -692,6 +698,56 @@ function checkSinks() {
   add(true, 'sinks:SINKS.md', 'present');
 }
 
+/**
+ * G15 (ARCH-08 subset): when a committed map exists, require viewer sync +
+ * sourceCommit freshness vs mapped sources. Does not fail on findings.
+ * Full G15 (0 unexplained BROKEN, NO_VERIFIED_SOURCE, AUDIT triage) remains
+ * separate — see qa/architecture/LOG.md ARCH-08 honesty.
+ */
+function checkArchitectureG15() {
+  if (process.env.TIER1_SKIP_ARCH === '1') {
+    warn('g15:architecture', 'skipped via TIER1_SKIP_ARCH');
+    return;
+  }
+  const mapDir = resolveMapDir(ROOT);
+  const dataPath = path.join(mapDir, 'architecture-data.json');
+  if (!fs.existsSync(dataPath)) {
+    warn(
+      'g15:architecture',
+      'map not present (docs/architecture or architecture/) — soft until per-app map lands; tooling pilots use npm run architecture:check',
+    );
+    return;
+  }
+  let sharedViewerDir;
+  try {
+    // Prefer sibling capricorn-tooling when apps import shared via symlink/path
+    const toolingCandidate = path.resolve(ROOT, '..', 'capricorn-tooling', 'shared', 'architecture', 'viewer');
+    if (fs.existsSync(path.join(toolingCandidate, 'viewer.js'))) {
+      sharedViewerDir = toolingCandidate;
+    } else {
+      sharedViewerDir = path.join(
+        path.dirname(fileURLToPath(import.meta.url)),
+        '..',
+        'architecture',
+        'viewer',
+      );
+    }
+  } catch {
+    sharedViewerDir = undefined;
+  }
+  const r = checkArchitectureMap({ root: ROOT, mapDir, sharedViewerDir });
+  if (r.ok) {
+    add(
+      true,
+      'g15:architecture',
+      `viewer+fresh ok @ ${(r.sourceCommit || '').slice(0, 8)} (analyzer ${r.analyzerVersion || '?'})`,
+    );
+    return;
+  }
+  const detail = (r.errors || []).join(', ') || 'failed';
+  add(false, 'g15:architecture', detail);
+}
+
 function checkPackageScripts() {
   const pkg = tryRead('package.json');
   if (!pkg) {
@@ -722,6 +778,7 @@ function main() {
   checkGalleryFreshness();
   checkLiveVersion(ver);
   checkSinks();
+  checkArchitectureG15();
 
   const kills = killListScan();
   add(kills.rawHex === 0, 'kill:raw-hex', String(kills.rawHex));

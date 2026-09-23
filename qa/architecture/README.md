@@ -1,9 +1,10 @@
-# Architecture analyze outputs (ARCH-04…07)
+# Architecture analyze outputs (ARCH-04…08)
 
 Configs: `qa/architecture/pilots/*.architecture.config.json`  
 Spot-checks: `SPOT-CHECK.json` (ARCH-04 Pulse/Scent 60/60), `SPOT-CHECK-ARCH05.json` (fleet 314/314)  
 Pages 404: `PAGES-404-ARCH06.json` (ARCH-06 live curl; regenerate with `npm run architecture:pages-404`)  
 **Findings → queue (ARCH-07):** `QUEUE-INDEX.md` + `queue/<App>-ARCH-QUEUE.{json,md}`  
+**Staleness check (ARCH-08):** `CHECK-ARCH08.json` via `npm run architecture:check`  
 Log: `LOG.md`
 
 Regenerate (do not commit large `architecture-data.*` / viewer copies — gitignored under `pilot-*/`):
@@ -25,6 +26,9 @@ npm run architecture:pages-404
 npm run architecture:queue
 # proof set:
 npm run architecture:queue -- --apps PulseCap,ScentCap,CarCap,VaultCap
+
+# ARCH-08 — viewer sync + sourceCommit freshness (fails on stale; never on findings)
+npm run architecture:check
 ```
 
 Open locally (file://): `qa/architecture/pilot-<slug>/index.html` after regenerate.
