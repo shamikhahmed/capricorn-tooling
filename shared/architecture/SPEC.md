@@ -50,7 +50,7 @@ capricorn-tooling/shared/architecture/
 
 **Exceptions**
 - **SoulCap:** `docs/` is the GitHub Pages root. Use `architecture/` at the repo root instead of `docs/architecture/`.
-- Any repo whose Pages artifact would include `docs/architecture/` must exclude it (C-57 allowlist). Add a test/CI check that `https://shamikhahmed.github.io/<App>/docs/architecture/index.html` (and SoulCap `…/architecture/index.html`) return 404.
+- Any repo whose Pages artifact would include `docs/architecture/` must exclude it (C-57 allowlist). **ARCH-06 gate:** `npm run architecture:pages-404` (and CI workflow `architecture-pages-404.yml`) curls every fleet map URL on `shamikhahmed.github.io` + `cap-apps.github.io` and requires HTTP 404/410 for `…/docs/architecture/{index.html,architecture-data.json,architecture-data.js}` (SoulCap: `…/architecture/…`).
 
 ### 1.3 Commit policy
 Commit generated outputs (so the map can be opened from a fresh clone) together with `analyzerVersion` and the source commit SHA inside the JSON. CI regenerates and fails **only** on analyzer errors or staleness (the JSON's `sourceCommit` is older than the last commit touching mapped source files) — never on findings.

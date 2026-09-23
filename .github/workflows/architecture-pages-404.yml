@@ -1,0 +1,52 @@
+name: Architecture Pages 404 (ARCH-06)
+
+# Live curl gate: architecture maps must not be served on GitHub Pages (C-57 / ARCH-06).
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly — catches accidental publish after app deploys
+    - cron: '17 6 * * 1'
+  push:
+    branches: [main]
+    paths:
+      - 'shared/architecture/pages-unpublished.mjs'
+      - 'scripts/verify-architecture-unpublished.mjs'
+      - 'shared/architecture/__tests__/pages-unpublished.test.mjs'
+      - '.github/workflows/architecture-pages-404.yml'
+  pull_request:
+    paths:
+      - 'shared/architecture/pages-unpublished.mjs'
+      - 'scripts/verify-architecture-unpublished.mjs'
+      - 'shared/architecture/__tests__/pages-unpublished.test.mjs'
+      - '.github/workflows/architecture-pages-404.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Offline URL-matrix tests
+        run: npm run architecture:test
+
+  live-404:
+    runs-on: ubuntu-latest
+    needs: [unit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Curl architecture URLs (must be 404/410)
+        run: npm run architecture:pages-404
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pages-404-arch06
+          path: qa/architecture/PAGES-404-ARCH06.json
+          retention-days: 30

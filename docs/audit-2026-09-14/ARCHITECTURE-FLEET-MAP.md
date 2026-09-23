@@ -1,8 +1,8 @@
 # Cap Fleet — Architecture Connection Map (fleet level)
 
-**Status:** ARCH-01–05 ✅ (core + viewer + adapters + Pulse/Scent pilot + fleet roll-out). This document is the **fleet topology** map: how apps, hub, tooling, and shared contracts relate. Per-app interactive maps: `qa/architecture/pilot-*` in tooling (land into each repo’s `docs/architecture/` as follow-up).
+**Status:** ARCH-01–06 ✅ (core + viewer + adapters + Pulse/Scent pilot + fleet roll-out + Pages 404 gate). This document is the **fleet topology** map: how apps, hub, tooling, and shared contracts relate. Per-app interactive maps: `qa/architecture/pilot-*` in tooling (land into each repo’s `docs/architecture/` as follow-up).
 
-**Never published** on GitHub Pages (C-57 / ARCH-06). Lives only in `capricorn-tooling/docs/audit-*` and each app’s private `docs/architecture/` (SoulCap: `architecture/` at repo root).
+**Never published** on GitHub Pages (C-57 / ARCH-06 ✅). Lives only in `capricorn-tooling/docs/audit-*` and each app’s private `docs/architecture/` (SoulCap: `architecture/` at repo root). Live proof: `npm run architecture:pages-404` → `qa/architecture/PAGES-404-ARCH06.json`.
 
 ---
 
@@ -150,7 +150,7 @@ Outputs (tooling): `qa/architecture/pilot-*/` via `--config qa/architecture/pilo
 | ARCH-03 | Stack adapters completeness | ✅ Done (`finish/arch-03` `1dddd1a` / merge `a9f587a`; adapters/ + cloudflare + backend-presence; tests 22/22; analyzer 1.1.0) |
 | ARCH-04 | Pilot PulseCap + ScentCap | ✅ Done (`finish/arch-04`; analyzer 1.2.0; reg/go + MODULE_CHAIN; routes ROUTES_TO/NAVIGATES_TO; spot-check 60/60; tests 24/24; `qa/architecture/`) |
 | ARCH-05 | Roll-out all apps + hub | ✅ Done (`finish/arch-05`; analyzer 1.3.0; 17 apps; spot-check 314/314; tests 27/27; nest nested detect; Next src/app; tabs-id/tuples) |
-| ARCH-06 | Never publish maps (C-57 curl 404) | Partially via C-57 allowlists; curl gate TBD |
+| ARCH-06 | Never publish maps (C-57 curl 404) | ✅ Done (`finish/arch-06`); `npm run architecture:pages-404` + CI workflow; matrix hosts × apps × artifacts → 404/410 |
 | ARCH-07 | Findings → queue items | ❌ |
 | ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
 | ARCH-09 | Regenerate workflow on structural change | ❌ |
