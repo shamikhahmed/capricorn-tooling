@@ -128,8 +128,8 @@ function main() {
       regeneratesPilots: true,
       requiresCapSiblings: true,
       failsOnFindings: false,
-      ciWithoutSiblings: 'dry-run / skip — see workflow architecture-regenerate.yml',
-      note: 'SPEC §9: regenerate after structural change. ARCH-08 check verifies freshness.',
+      ciWithoutSiblings: 'dry-run — see workflow architecture-regenerate.yml',
+      note: 'SPEC §9: regenerate after structural change. ARCH-08 check verifies freshness. Live regen is local (Cap siblings).',
     },
     results: results.map(function (r) {
       return {

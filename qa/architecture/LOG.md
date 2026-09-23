@@ -290,7 +290,7 @@ SPEC §9 / §1.3 + master prompt §2.6 ARCH-09: after structural change (or when
 | CLI | `scripts/architecture-regenerate.mjs` |
 | npm | `npm run architecture:regen` / `architecture:regenerate` (`--stale`, `--slugs`, `--dry-run`) |
 | Tests | `shared/architecture/__tests__/regenerate.test.mjs` (in `architecture:test`) |
-| CI | `.github/workflows/architecture-regenerate.yml` |
+| CI | `.github/workflows/architecture-regenerate.yml` (unit + dry-run; live regen is local) |
 | Evidence | `qa/architecture/REGEN-ARCH09.json` + refreshed `CHECK-ARCH08.json` |
 
 ## Commands
