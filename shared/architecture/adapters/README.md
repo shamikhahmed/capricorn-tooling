@@ -24,3 +24,5 @@ node shared/architecture/analyze.mjs --root /path/to/App --config qa/architectur
 ```
 
 ARCH-04 precision notes: PulseCap uses `dispatchPatterns: [{ type: 'reg-go' }]` + `lazyModuleMap: MODULE_CHAIN`; ScentCap uses `excludeStacks: ['vanilla-globals']`. See `qa/architecture/LOG.md`.
+
+ARCH-05: `tabs-id` / `tabs-tuples` / `data-tab` / `data-go`; Next `src/app`; multiline `Stack.Screen`; skip `releases` / `*.bundle.js` / hub Cap mirrors; nested Nest detect for DeeFoodieApp/api.

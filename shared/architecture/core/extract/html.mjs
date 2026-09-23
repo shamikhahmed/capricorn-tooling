@@ -10,8 +10,12 @@ import { nodeId } from '../ids.mjs';
  * @param {string} root
  * @param {import('../graph.mjs').ArchitectureGraph} graph
  */
-export function extractHtml(root, graph) {
-  const files = listFiles(root, { extensions: ['.html', '.htm'], maxFiles: 100 });
+export function extractHtml(root, graph, config) {
+  const files = listFiles(root, {
+    extensions: ['.html', '.htm'],
+    maxFiles: 100,
+    skipDirs: (config && config.skipDirs) || undefined,
+  });
   for (const f of files) {
     const text = readText(f.abs);
     graph.addNode({ type: 'entry', name: path.basename(f.rel), file: f.rel, layer: 'app' });
@@ -48,6 +52,31 @@ export function extractHtml(root, graph) {
         type: 'LOADS',
         status: EDGE_STATUS.VERIFIED,
         evidence: [makeEvidence(f.rel, lineAt(text, man.index), man[0].slice(0, 100))],
+      });
+    }
+
+    // data-tab / data-go → screens (SoulCap tabs, CarCap data-go)
+    const tabRe = /\bdata-(?:tab|go)\s*=\s*["']([^"']+)["']/gi;
+    let tm;
+    while ((tm = tabRe.exec(text))) {
+      const id = tm[1];
+      if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(id)) continue;
+      const line = lineAt(text, tm.index);
+      const screen = graph.addNode({
+        id: 'screen:' + id,
+        type: 'screen',
+        name: id,
+        file: f.rel,
+        line,
+        layer: 'screen',
+      });
+      graph.addEdge({
+        from: nodeId('entry', f.rel, path.basename(f.rel)),
+        to: screen.id,
+        type: 'NAVIGATES_TO',
+        status: EDGE_STATUS.VERIFIED,
+        evidence: [makeEvidence(f.rel, line, tm[0])],
+        label: tm[0],
       });
     }
   }

@@ -1,0 +1,19 @@
+{
+  "app": "LedgerCap",
+  "entryPoints": ["index.html", "js/app.js", "js/ui/navigation.js"],
+  "excludeStacks": ["es-modules"],
+  "dispatchPatterns": [
+    { "type": "tabs-id", "names": ["TABS", "MORE"] },
+    { "type": "reg-go", "register": null, "navigate": "Navigation.go" },
+    { "type": "data-act", "dispatcher": "handleAct" },
+    { "type": "data-tab" }
+  ],
+  "features": ["home", "market", "funds", "portfolio", "research", "settings"],
+  "primaryJourneys": [
+    { "id": "home", "label": "Open hub", "steps": ["home"] },
+    { "id": "portfolio", "label": "Hub → Portfolio", "steps": ["home", "portfolio"] },
+    { "id": "settings", "label": "Open settings", "steps": ["home", "settings"] }
+  ],
+  "dashboardScreens": ["home"],
+  "demoSources": ["js/cap-demo-mode.js"]
+}

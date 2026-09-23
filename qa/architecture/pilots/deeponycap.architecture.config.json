@@ -1,0 +1,18 @@
+{
+  "app": "DeePonyCap",
+  "entryPoints": ["index.html", "js/app.js", "js/modules/navigation.js"],
+  "excludeStacks": ["es-modules"],
+  "dispatchPatterns": [
+    { "type": "tabs-id", "names": ["TABS"] },
+    { "type": "reg-go", "register": null, "navigate": "Nav.go" },
+    { "type": "data-tab" }
+  ],
+  "features": ["stable", "logs", "map", "wishlist", "accessories", "settings"],
+  "primaryJourneys": [
+    { "id": "stable", "label": "Open stable", "steps": ["stable"] },
+    { "id": "logs", "label": "Stable → Logs", "steps": ["stable", "logs"] },
+    { "id": "map", "label": "Open map", "steps": ["stable", "map"] }
+  ],
+  "dashboardScreens": ["stable"],
+  "demoSources": ["js/demo-seed.js"]
+}

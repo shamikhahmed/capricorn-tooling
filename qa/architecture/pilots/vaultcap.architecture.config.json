@@ -1,0 +1,19 @@
+{
+  "app": "VaultCap",
+  "entryPoints": ["index.html", "js/app.js", "js/core/router.js", "js/core/module-registry.js"],
+  "excludeStacks": ["es-modules"],
+  "dispatchPatterns": [
+    { "type": "tabs-id", "names": ["ALL_MODULES"] },
+    { "type": "data-act", "dispatcher": "handleAct" },
+    { "type": "data-tab" },
+    { "type": "reg-go", "register": null, "navigate": "go" }
+  ],
+  "features": ["lock", "home", "banks", "cards", "bills", "family", "settings"],
+  "primaryJourneys": [
+    { "id": "unlock", "label": "Unlock vault", "steps": ["lock", "home"] },
+    { "id": "banks", "label": "Home → Banks", "steps": ["home", "banks"] },
+    { "id": "settings", "label": "Open settings", "steps": ["home", "settings"] }
+  ],
+  "dashboardScreens": ["home"],
+  "demoSources": ["js/cap-demo-mode.js"]
+}

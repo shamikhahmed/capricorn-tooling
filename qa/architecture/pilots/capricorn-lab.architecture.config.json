@@ -1,0 +1,9 @@
+{
+  "app": "capricorn-lab",
+  "entryPoints": ["index.html", "js/main.js"],
+  "features": ["desktop", "dock", "lock", "products", "control-center"],
+  "primaryJourneys": [
+    { "id": "boot", "label": "Boot desktop", "steps": ["lock", "desktop"] }
+  ],
+  "dashboardScreens": ["desktop"]
+}

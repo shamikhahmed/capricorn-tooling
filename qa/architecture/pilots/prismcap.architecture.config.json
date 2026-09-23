@@ -1,0 +1,15 @@
+{
+  "app": "PrismCap",
+  "entryPoints": ["index.html", "js/app.js", "src/main.ts"],
+  "dispatchPatterns": [
+    { "type": "data-tab" },
+    { "type": "data-act", "dispatcher": "handleAct" },
+    { "type": "reg-go", "register": null, "navigate": "go" }
+  ],
+  "features": ["deck", "games", "settings"],
+  "primaryJourneys": [
+    { "id": "home", "label": "Open app", "steps": ["home"] }
+  ],
+  "dashboardScreens": ["home"],
+  "demoSources": ["js/cap-demo-mode.js"]
+}

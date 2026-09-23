@@ -16,7 +16,8 @@ import { nodeId } from '../ids.mjs';
  * @param {object} [config]
  */
 export function extractVanilla(root, graph, config) {
-  const htmlFiles = listFiles(root, { extensions: ['.html', '.htm'], maxFiles: 50 });
+  const skipDirs = (config && config.skipDirs) || undefined;
+  const htmlFiles = listFiles(root, { extensions: ['.html', '.htm'], maxFiles: 50, skipDirs });
   const scriptOrder = [];
 
   for (const hf of htmlFiles) {
@@ -64,7 +65,11 @@ export function extractVanilla(root, graph, config) {
     }
   }
 
-  const jsFiles = listFiles(root, { extensions: ['.js', '.mjs'], maxFiles: 2000 }).filter(function (f) {
+  const jsFiles = listFiles(root, {
+    extensions: ['.js', '.mjs'],
+    maxFiles: 2000,
+    skipDirs: (config && config.skipDirs) || undefined,
+  }).filter(function (f) {
     // Prefer classic scripts; still parse modules lightly
     return !f.rel.includes('node_modules');
   });
@@ -157,6 +162,18 @@ export function extractVanilla(root, graph, config) {
     for (const pat of dispatchPatterns) {
       if (pat.type === 'reg-go') {
         extractRegGo(jf, text, graph, globals, pat);
+        continue;
+      }
+      if (pat.type === 'tabs-id') {
+        extractTabsId(jf, text, graph, pat);
+        continue;
+      }
+      if (pat.type === 'tabs-tuples') {
+        extractTabsTuples(jf, text, graph, pat);
+        continue;
+      }
+      if (pat.type === 'data-tab' || pat.type === 'data-go') {
+        extractDataNavAttrs(jf, text, graph, pat);
         continue;
       }
       if (pat.type === 'data-act' || pat.dispatcher) {
@@ -270,6 +287,7 @@ export function extractVanilla(root, graph, config) {
 
 /**
  * PulseCap-style screen registry: reg('screen', fn) + go('screen').
+ * navigate may be dotted: Nav.go / Navigation.go.
  * @param {{ rel: string }} jf
  * @param {string} text
  * @param {import('../graph.mjs').ArchitectureGraph} graph
@@ -277,43 +295,219 @@ export function extractVanilla(root, graph, config) {
  * @param {{ register?: string, navigate?: string }} pat
  */
 function extractRegGo(jf, text, graph, globals, pat) {
-  const register = pat.register || 'reg';
-  const navigate = pat.navigate || 'go';
+  const register = Object.prototype.hasOwnProperty.call(pat, 'register')
+    ? pat.register
+    : 'reg';
+  const navigate = Object.prototype.hasOwnProperty.call(pat, 'navigate')
+    ? pat.navigate
+    : 'go';
 
-  const regRe = new RegExp(
-    '\\b' + escapeRe(register) + '\\s*\\(\\s*[\'"]([^\'"]+)[\'"]',
-    'g'
-  );
-  let m;
-  while ((m = regRe.exec(text))) {
-    const id = m[1];
-    if (!isLiteralScreenId(id)) continue;
-    const line = lineAt(text, m.index);
-    const screen = graph.addNode({
-      id: 'screen:' + id,
-      type: 'screen',
-      name: id,
-      file: jf.rel,
-      line,
-      layer: 'screen',
-    });
-    const caller = enclosingFunction(text, m.index, jf.rel, globals);
-    // Registration itself is structural evidence from the file
-    graph.addEdge({
-      from: caller || nodeId('file', jf.rel),
-      to: screen.id,
-      type: 'ROUTES_TO',
-      status: EDGE_STATUS.VERIFIED,
-      evidence: [makeEvidence(jf.rel, line, m[0] + '…')],
-      label: register + '(' + id + ')',
-    });
+  if (register) {
+    const regRe = new RegExp(
+      '\\b' + escapeRe(register) + '\\s*\\(\\s*[\'"]([^\'"]+)[\'"]',
+      'g'
+    );
+    let m;
+    while ((m = regRe.exec(text))) {
+      const id = m[1];
+      if (!isLiteralScreenId(id)) continue;
+      const line = lineAt(text, m.index);
+      const screen = graph.addNode({
+        id: 'screen:' + id,
+        type: 'screen',
+        name: id,
+        file: jf.rel,
+        line,
+        layer: 'screen',
+      });
+      const caller = enclosingFunction(text, m.index, jf.rel, globals);
+      graph.addEdge({
+        from: caller || nodeId('file', jf.rel),
+        to: screen.id,
+        type: 'ROUTES_TO',
+        status: EDGE_STATUS.VERIFIED,
+        evidence: [makeEvidence(jf.rel, line, m[0] + '…')],
+        label: register + '(' + id + ')',
+      });
+    }
   }
 
-  const goRe = new RegExp(
-    '\\b' + escapeRe(navigate) + '\\s*\\(\\s*[\'"]([^\'"]+)[\'"]',
-    'g'
-  );
-  while ((m = goRe.exec(text))) {
+  if (navigate) {
+    // Allow Navigation.go / Nav.go as full navigate, or this.go / go when bare.
+    const goPat = String(navigate).includes('.')
+      ? '\\b' + escapeRe(navigate)
+      : '(?:\\b\\w+\\.)?\\b' + escapeRe(navigate);
+    const goRe = new RegExp(
+      goPat + '\\s*\\(\\s*[\'"]([^\'"]+)[\'"]',
+      'g'
+    );
+    let m;
+    while ((m = goRe.exec(text))) {
+      const id = m[1];
+      if (!isLiteralScreenId(id)) continue;
+      const line = lineAt(text, m.index);
+      const screen = graph.addNode({
+        id: 'screen:' + id,
+        type: 'screen',
+        name: id,
+        file: jf.rel,
+        line,
+        layer: 'screen',
+      });
+      const caller = enclosingFunction(text, m.index, jf.rel, globals);
+      graph.addEdge({
+        from: caller || nodeId('file', jf.rel),
+        to: screen.id,
+        type: 'NAVIGATES_TO',
+        status: EDGE_STATUS.VERIFIED,
+        evidence: [makeEvidence(jf.rel, line, m[0] + '…')],
+        label: navigate + '(' + id + ')',
+      });
+    }
+  }
+}
+
+/**
+ * Tuple tab lists: const tabs = [['today', 'home', label], …] (MasteryCap).
+ * Uses the first string literal of each inner array as the screen id.
+ */
+function extractTabsTuples(jf, text, graph, pat) {
+  const names = (pat && pat.names) || ['tabs'];
+  for (const name of names) {
+    const startRe = new RegExp(
+      '(?:const|let|var)\\s+' + escapeRe(name) + '\\s*=\\s*\\[',
+      'g'
+    );
+    let m;
+    while ((m = startRe.exec(text))) {
+      const openIdx = text.indexOf('[', m.index);
+      if (openIdx < 0) continue;
+      const body = extractBalancedBracket(text, openIdx);
+      if (body == null) continue;
+      const line = lineAt(text, m.index);
+      const rowRe = /\[\s*['"]([^'"]+)['"]/g;
+      let rm;
+      while ((rm = rowRe.exec(body))) {
+        const id = rm[1];
+        if (!isLiteralScreenId(id)) continue;
+        const screen = graph.addNode({
+          id: 'screen:' + id,
+          type: 'screen',
+          name: id,
+          file: jf.rel,
+          line,
+          layer: 'screen',
+        });
+        graph.addEdge({
+          from: nodeId('file', jf.rel),
+          to: screen.id,
+          type: 'ROUTES_TO',
+          status: EDGE_STATUS.VERIFIED,
+          evidence: [makeEvidence(jf.rel, line, name + "[0]='" + id + "'")],
+          label: name + ':' + id,
+        });
+      }
+    }
+  }
+}
+
+/**
+ * Tab / screen lists: TABS = ['a','b'] or TABS = [{ id: 'a' }, …] / MORE arrays.
+ * @param {{ rel: string }} jf
+ * @param {string} text
+ * @param {import('../graph.mjs').ArchitectureGraph} graph
+ * @param {{ names?: string[] }} pat
+ */
+function extractTabsId(jf, text, graph, pat) {
+  const names = (pat && pat.names) || ['TABS', 'MORE', 'tabs'];
+  for (const name of names) {
+    const startRe = new RegExp(
+      '(?:const|let|var)\\s+' + escapeRe(name) + '\\s*=\\s*\\[',
+      'g'
+    );
+    let m;
+    while ((m = startRe.exec(text))) {
+      const openIdx = text.indexOf('[', m.index);
+      if (openIdx < 0) continue;
+      const body = extractBalancedBracket(text, openIdx);
+      if (body == null) continue;
+      const line = lineAt(text, m.index);
+      const ids = [];
+      if (/\bid\s*:/.test(body)) {
+        const idRe = /\bid\s*:\s*['"]([^'"]+)['"]/g;
+        let im;
+        while ((im = idRe.exec(body))) ids.push(im[1]);
+      } else {
+        for (const s of extractStringLiterals(body)) ids.push(s);
+      }
+      for (const id of ids) {
+        if (!isLiteralScreenId(id)) continue;
+        const screen = graph.addNode({
+          id: 'screen:' + id,
+          type: 'screen',
+          name: id,
+          file: jf.rel,
+          line,
+          layer: 'screen',
+        });
+        graph.addEdge({
+          from: nodeId('file', jf.rel),
+          to: screen.id,
+          type: 'ROUTES_TO',
+          status: EDGE_STATUS.VERIFIED,
+          evidence: [makeEvidence(jf.rel, line, name + ':' + id)],
+          label: name + ':' + id,
+        });
+      }
+    }
+  }
+
+  // Object property: Nav._sidebarTabs = […]  or  _sidebarTabs: […]
+  const propArrRe = /\.?(_sidebarTabs)\s*[:=]\s*\[/g;
+  let pm;
+  while ((pm = propArrRe.exec(text))) {
+    const openIdx = text.indexOf('[', pm.index);
+    if (openIdx < 0) continue;
+    const body = extractBalancedBracket(text, openIdx);
+    if (body == null) continue;
+    const idRe = /\bid\s*:\s*['"]([^'"]+)['"]/g;
+    let im;
+    const line = lineAt(text, pm.index);
+    while ((im = idRe.exec(body))) {
+      const id = im[1];
+      if (!isLiteralScreenId(id)) continue;
+      const screen = graph.addNode({
+        id: 'screen:' + id,
+        type: 'screen',
+        name: id,
+        file: jf.rel,
+        line,
+        layer: 'screen',
+      });
+      graph.addEdge({
+        from: nodeId('file', jf.rel),
+        to: screen.id,
+        type: 'ROUTES_TO',
+        status: EDGE_STATUS.VERIFIED,
+        evidence: [makeEvidence(jf.rel, line, '_sidebarTabs.id=' + id)],
+        label: 'tab:' + id,
+      });
+    }
+  }
+}
+
+/**
+ * data-tab / data-go attributes in HTML or JS templates → screens + NAVIGATES_TO.
+ * @param {{ rel: string }} jf
+ * @param {string} text
+ * @param {import('../graph.mjs').ArchitectureGraph} graph
+ * @param {{ type?: string, attr?: string }} pat
+ */
+function extractDataNavAttrs(jf, text, graph, pat) {
+  const attr = pat.attr || (pat.type === 'data-go' ? 'data-go' : 'data-tab');
+  const re = new RegExp('\\b' + escapeRe(attr) + '\\s*=\\s*["\']([^"\']+)["\']', 'gi');
+  let m;
+  while ((m = re.exec(text))) {
     const id = m[1];
     if (!isLiteralScreenId(id)) continue;
     const line = lineAt(text, m.index);
@@ -325,14 +519,13 @@ function extractRegGo(jf, text, graph, globals, pat) {
       line,
       layer: 'screen',
     });
-    const caller = enclosingFunction(text, m.index, jf.rel, globals);
     graph.addEdge({
-      from: caller || nodeId('file', jf.rel),
+      from: nodeId('file', jf.rel),
       to: screen.id,
       type: 'NAVIGATES_TO',
       status: EDGE_STATUS.VERIFIED,
-      evidence: [makeEvidence(jf.rel, line, m[0] + '…')],
-      label: navigate + '(' + id + ')',
+      evidence: [makeEvidence(jf.rel, line, attr + '=' + id)],
+      label: attr + ':' + id,
     });
   }
 }
@@ -441,6 +634,21 @@ function extractBalanced(text, openBraceIndex) {
     }
   }
   return text.slice(openBraceIndex + 1, openBraceIndex + 400);
+}
+
+function extractBalancedBracket(text, openBracketIndex) {
+  let depth = 0;
+  for (let i = openBracketIndex; i < text.length; i++) {
+    const c = text[i];
+    if (c === '[') depth++;
+    else if (c === ']') {
+      depth--;
+      if (depth === 0) return text.slice(openBracketIndex + 1, i);
+    }
+    // Bail on runaway (avoid scanning huge files forever)
+    if (i - openBracketIndex > 12000) break;
+  }
+  return text.slice(openBracketIndex + 1, openBracketIndex + 2000);
 }
 
 function enclosingFunction(text, index, file, globals) {

@@ -1,22 +1,26 @@
-# Architecture pilot outputs (ARCH-04)
+# Architecture analyze outputs (ARCH-04 pilot + ARCH-05 roll-out)
 
-Regenerate (do not commit large `architecture-data.*` / viewer copies):
+Configs: `qa/architecture/pilots/*.architecture.config.json`  
+Spot-checks: `SPOT-CHECK.json` (ARCH-04 Pulse/Scent 60/60), `SPOT-CHECK-ARCH05.json` (fleet 314/314)  
+Log: `LOG.md`
+
+Regenerate (do not commit large `architecture-data.*` / viewer copies — gitignored under `pilot-*/`):
 
 ```bash
 # from capricorn-tooling/
 npm run architecture:test
 
+# example
 node shared/architecture/analyze.mjs \
-  --root ../PulseCap \
-  --config qa/architecture/pilots/pulsecap.architecture.config.json \
-  --out qa/architecture/pilot-pulse
-
-node shared/architecture/analyze.mjs \
-  --root ../ScentCap \
-  --config qa/architecture/pilots/scentcap.architecture.config.json \
-  --out qa/architecture/pilot-scent
+  --root ../CarCap \
+  --config qa/architecture/pilots/carcap.architecture.config.json \
+  --out qa/architecture/pilot-car
 ```
 
-Open locally (file://): `qa/architecture/pilot-pulse/index.html` or `qa/architecture/pilot-scent/index.html` after regenerate.
+Open locally (file://): `qa/architecture/pilot-<slug>/index.html` after regenerate.
 
-Committed here: pilot configs, `LOG.md`, and `SPOT-CHECK.json`. Regenerate for local AUDIT.md + viewer.
+| Out dir | App |
+|---|---|
+| pilot-pulse / pilot-scent | PulseCap / ScentCap (ARCH-04) |
+| pilot-aura … pilot-vault | remaining Caps |
+| pilot-lab / pilot-hub | capricorn-lab / shamikhahmed.github.io |

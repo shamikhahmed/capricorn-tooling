@@ -153,3 +153,38 @@ test('ARCH-04 routes-react: ROUTES_TO element + NAVIGATES_TO Link', () => {
     return /Home/.test(e.to) || /Home/.test(e.label || '');
   }), 'ROUTES_TO targets Home');
 });
+
+test('ARCH-05 vanilla tabs-id + Nav.go / Navigation.go + data-go', () => {
+  const doc = analyzeFixture('vanilla-nav-tabs');
+  const screens = doc.nodes.filter(function (n) { return n.type === 'screen'; });
+  for (const id of ['today', 'garage', 'settings', 'import', 'stable', 'map', 'now']) {
+    assert.ok(screens.some(function (s) { return s.name === id; }), 'screen ' + id);
+  }
+  const nav = doc.edges.filter(function (e) { return e.type === 'NAVIGATES_TO'; });
+  assert.ok(nav.some(function (e) { return e.to === 'screen:today'; }), 'go(today)');
+  assert.ok(nav.some(function (e) { return e.to === 'screen:garage'; }), 'Navigation.go(garage)');
+  assert.ok(nav.some(function (e) { return e.to === 'screen:stable'; }), 'Nav.go(stable)');
+  assert.ok(nav.some(function (e) { return e.to === 'screen:settings'; }), 'data-go settings');
+  assert.ok(nav.some(function (e) { return e.to === 'screen:now'; }), 'html data-tab now');
+});
+
+test('ARCH-05 routes-react: src/app page routes (Next)', () => {
+  const doc = analyzeFixture('next-src-app');
+  assert.ok(doc.stacks.includes('routes-react'));
+  const routes = doc.nodes.filter(function (n) { return n.type === 'route'; });
+  assert.ok(routes.some(function (r) { return r.name === '/'; }), 'route /');
+  assert.ok(routes.some(function (r) { return r.name === '/settings'; }), 'route /settings');
+});
+
+test('ARCH-05 routes-react: multiline Stack.Screen name', () => {
+  const doc = analyzeFixture('expo-nav-multiline');
+  assert.ok(doc.nodes.some(function (n) {
+    return n.type === 'screen' && n.name === 'Home';
+  }), 'Home screen');
+  assert.ok(doc.nodes.some(function (n) {
+    return n.type === 'screen' && n.name === 'Record';
+  }), 'Record screen (multiline Stack.Screen)');
+  assert.ok(doc.nodes.some(function (n) {
+    return n.type === 'route' && n.name === 'Record';
+  }), 'Record route');
+});

@@ -1,0 +1,10 @@
+{
+  "app": "vanilla-nav-tabs",
+  "dispatchPatterns": [
+    { "type": "tabs-id", "names": ["TABS", "MORE"] },
+    { "type": "reg-go", "register": null, "navigate": "Navigation.go" },
+    { "type": "reg-go", "register": null, "navigate": "Nav.go" },
+    { "type": "reg-go", "register": null, "navigate": "go" },
+    { "type": "data-go" }
+  ]
+}

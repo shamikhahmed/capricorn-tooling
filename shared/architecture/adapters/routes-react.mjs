@@ -77,22 +77,50 @@ export function extractRoutesFromFile(f, text, graph) {
     }
   }
 
-  const screenRe = /<Stack\.Screen\b[^>]*\bname=["']([^'"]+)["'][^>]*>/g;
+  // Multiline Stack.Screen (Expo / RN) — name may be on a following line
+  const screenRe = /<Stack\.Screen\b[\s\S]{0,400}?\bname=["']([^"']+)["']/g;
   while ((m = screenRe.exec(text))) {
     const line = lineAt(text, m.index);
-    graph.addNode({ type: 'screen', name: m[1], file: f.rel, line });
-    graph.addNode({ id: 'route:' + m[1], type: 'route', name: m[1], file: f.rel, line });
+    const screenName = m[1];
+    graph.addNode({
+      id: 'screen:' + screenName,
+      type: 'screen',
+      name: screenName,
+      file: f.rel,
+      line,
+      layer: 'screen',
+    });
+    graph.addNode({
+      id: 'route:' + screenName,
+      type: 'route',
+      name: screenName,
+      file: f.rel,
+      line,
+      layer: 'screen',
+    });
   }
 
   const rel = f.rel.replace(/\\/g, '/');
-  if (/^app\/.*page\.(t|j)sx?$/.test(rel) || rel === 'app/page.tsx' || rel === 'app/page.jsx') {
-    const routePath = '/' + rel
-      .replace(/^app/, '')
+  // Next App Router: app/**/page or src/app/**/page (CookCap / TravelCap)
+  const nextPage = /^(?:src\/)?app\/(?:.*\/)?page\.(t|j)sx?$/.exec(rel);
+  if (nextPage) {
+    let routePath = '/' + rel
+      .replace(/^(?:src\/)?app/, '')
       .replace(/\/page\.(t|j)sx?$/, '')
       .replace(/\/\([^)]+\)/g, '')
-      .replace(/\\/g, '/') || '/';
+      .replace(/\\/g, '/');
+    if (routePath === '/' || routePath === '') routePath = '/';
+    else if (!routePath.startsWith('/')) routePath = '/' + routePath;
+    // Collapse accidental double slashes from empty segments
+    routePath = routePath.replace(/\/{2,}/g, '/') || '/';
     graph.addNode({ id: 'route:' + routePath, type: 'route', name: routePath, file: f.rel, layer: 'screen' });
-    graph.addNode({ type: 'screen', name: routePath, file: f.rel });
+    graph.addNode({
+      id: 'screen:' + routePath,
+      type: 'screen',
+      name: routePath,
+      file: f.rel,
+      layer: 'screen',
+    });
   }
 }
 
