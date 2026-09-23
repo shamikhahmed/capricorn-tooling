@@ -24,7 +24,20 @@ export function detectStacks(root) {
         continue;
       }
       for (const ent of entries) {
-        if (ent.name === 'node_modules' || ent.name === '.git' || ent.name === 'dist' || ent.name === 'build') continue;
+        if (
+          ent.name === 'node_modules' ||
+          ent.name === '.git' ||
+          ent.name === 'dist' ||
+          ent.name === 'build' ||
+          ent.name === 'vendor' ||
+          ent.name === 'tests' ||
+          ent.name === 'e2e' ||
+          ent.name === 'qa' ||
+          ent.name === 'scripts' ||
+          ent.name === 'test-results'
+        ) {
+          continue;
+        }
         const full = path.join(dir, ent.name);
         if (ent.isDirectory()) {
           stack.push(full);

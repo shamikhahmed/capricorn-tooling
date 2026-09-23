@@ -1,6 +1,6 @@
 # Cap Fleet — Architecture Connection Map (fleet level)
 
-**Status:** ARCH-01–03 ✅ (core + viewer + adapters). This document is the **fleet topology** map: how apps, hub, tooling, and shared contracts relate. Per-app interactive maps are ARCH-04…ARCH-05.
+**Status:** ARCH-01–04 ✅ (core + viewer + adapters + Pulse/Scent pilot). This document is the **fleet topology** map: how apps, hub, tooling, and shared contracts relate. Per-app interactive maps are ARCH-05+.
 
 **Never published** on GitHub Pages (C-57 / ARCH-06). Lives only in `capricorn-tooling/docs/audit-*` and each app’s private `docs/architecture/` (SoulCap: `architecture/` at repo root).
 
@@ -135,7 +135,9 @@ shared/architecture/analyze.mjs ── adapters (vanilla / react / nest / dart /
         └─ viewer copy under docs/architecture/ (ARCH-02; never Pages)
 ```
 
-Pilot order: PulseCap → ScentCap → roll-out (ARCH-04 / ARCH-05).
+Pilot order: PulseCap → ScentCap → roll-out (ARCH-04 ✅ / ARCH-05).
+
+Outputs (tooling pilot): `qa/architecture/{pilot-pulse,pilot-scent}/` via `--config qa/architecture/pilots/*.architecture.config.json`. Spot-check LOG: `qa/architecture/LOG.md` (60/60 = 100%).
 
 ---
 
@@ -145,9 +147,9 @@ Pilot order: PulseCap → ScentCap → roll-out (ARCH-04 / ARCH-05).
 |---|---|---|
 | ARCH-01 | Core + schema + fixtures | ✅ Done (`c941978` / merge `c628e40`; tests 16/16) |
 | ARCH-02 | Static viewer (`viewer/*`) | ✅ Done (`finish/arch-02` `10d977c`) |
-| ARCH-03 | Stack adapters completeness | ✅ Done (`finish/arch-03` `1dddd1a`; adapters/ + cloudflare + backend-presence; tests 22/22; analyzer 1.1.0) |
-| ARCH-04 | Pilot PulseCap + ScentCap | ❌ Next |
-| ARCH-05 | Roll-out all apps + hub | ❌ |
+| ARCH-03 | Stack adapters completeness | ✅ Done (`finish/arch-03` `1dddd1a` / merge `a9f587a`; adapters/ + cloudflare + backend-presence; tests 22/22; analyzer 1.1.0) |
+| ARCH-04 | Pilot PulseCap + ScentCap | ✅ Done (`finish/arch-04`; analyzer 1.2.0; reg/go + MODULE_CHAIN; routes ROUTES_TO/NAVIGATES_TO; spot-check 60/60; tests 24/24; `qa/architecture/`) |
+| ARCH-05 | Roll-out all apps + hub | ❌ Next |
 | ARCH-06 | Never publish maps (C-57 curl 404) | Partially via C-57 allowlists; curl gate TBD |
 | ARCH-07 | Findings → queue items | ❌ |
 | ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |

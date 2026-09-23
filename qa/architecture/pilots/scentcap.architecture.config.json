@@ -1,0 +1,34 @@
+{
+  "app": "ScentCap",
+  "entryPoints": ["index.html", "src/main.tsx", "src/App.tsx"],
+  "excludeStacks": ["vanilla-globals"],
+  "features": [
+    "collection",
+    "advisor",
+    "calendar",
+    "analytics",
+    "layering",
+    "travel",
+    "settings",
+    "onboarding"
+  ],
+  "primaryJourneys": [
+    {
+      "id": "add-fragrance",
+      "label": "Home → Add fragrance",
+      "steps": ["/", "/add"]
+    },
+    {
+      "id": "browse-collection",
+      "label": "Home → Collection → Detail",
+      "steps": ["/", "/collection", "/fragrance/:id"]
+    },
+    {
+      "id": "advisor",
+      "label": "Open advisor",
+      "steps": ["/", "/advisor"]
+    }
+  ],
+  "dashboardScreens": ["/"],
+  "demoSources": ["src/data", "public/js/cap-demo-mode.js"]
+}

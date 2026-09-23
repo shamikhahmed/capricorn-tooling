@@ -1,0 +1,7 @@
+{
+  "app": "vanilla-reg-go",
+  "dispatchPatterns": [
+    { "type": "reg-go", "register": "reg", "navigate": "go" }
+  ],
+  "lazyModuleMap": "MODULE_CHAIN"
+}

@@ -6,6 +6,8 @@ import path from 'node:path';
 const SKIP_DIRS = new Set([
   'node_modules', '.git', 'dist', 'build', 'coverage', '.next', '.turbo',
   'ios', 'android', 'Pods', '.dart_tool',
+  // Tests / tooling / minified vendor — not product architecture (ARCH-04)
+  'vendor', 'tests', 'e2e', 'qa', 'scripts', 'test-results', 'playwright-report',
 ]);
 
 /**
