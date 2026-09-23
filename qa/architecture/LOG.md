@@ -92,7 +92,7 @@ Backend presence (supabase/firebase/sqlite): **absent** on all 17 AUDIT runs.
 |---|---|---|
 | ARCH-01…04 | Core / viewer / adapters / Pulse+Scent pilot | ✅ |
 | ARCH-05 | Roll-out all apps + hub | ✅ this PR |
-| ARCH-06 | Never publish maps (curl 404) | Partial (C-57); curl gate TBD |
+| ARCH-06 | Never publish maps (curl 404) | ✅ PR #10 `bc7227c` |
 | ARCH-07 | Findings → queue items | ❌ |
 | ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
 | ARCH-09 | Regenerate workflow | ❌ |
