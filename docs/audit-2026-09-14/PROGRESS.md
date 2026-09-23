@@ -3,7 +3,7 @@
 ## ⚠️ Owner review 3 (2026-09-16) — read first
 Hardened runner v2 on tooling — `TIER1.json` PASS only when real gates pass. Every app until then: **In progress — not verified.** Review 3 does **not** verify fleet Tier 1.
 
-Updated: 2026-09-23T05:40:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
+Updated: 2026-09-23T05:46:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
 
 Current step: **Step R** — CarCap+SoulCap Tier1 PASS on main; Pulse/Scent/Steady/Vault/Cook evidence loops; **ARCH-04** done → ARCH-05 roll-out
 
@@ -19,6 +19,7 @@ Current step: **Step R** — CarCap+SoulCap Tier1 PASS on main; Pulse/Scent/Stea
 - **C-35 partial** CarCap+ScentCap contrast on main (CI green); SoulCap axe on stepR
 - **CarCap ✅** hardened Tier1 **PASS** on main after stepR merge `dcfa383` (re-verified 2026-09-23; LH+matrix+axe+kill-list green)
 - **SoulCap ✅** hardened Tier1 **PASS** on main via PR #11 (`32c6961`) — v8.3.2 Review 3 gates (LH desktop 99 / mobile 98)
+- **Scent/Steady/Vault stepR** evidence mostly closed ([Scent Steady Vault gaps](72e69769)): Scent only kill-list left (mobile LH P96); Steady tag v2.5.5 + LH/axe remain; Vault mobile LH P75
 
 ## Honest
 CarCap + SoulCap **PASS** on main. Most other Caps still **FAIL** (LH thresholds, gallery, axe, matrix; ScentCap matrix blocked on __APP_READY__). C-34 ≠ Tier 1 fleet-wide. C-57 ≠ Tier 1. ARCH-04 structural precision ✅ on Pulse+Scent; journey traces / ARCH-07 finding triage / per-app `docs/architecture/` still open (**ARCH-05+**). Stale PASS files (ScentCap/Mastery/Idea/DeeFoodie dated ≤2026-09-15) need re-run under current runner.
