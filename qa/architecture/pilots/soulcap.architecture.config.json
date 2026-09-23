@@ -1,0 +1,17 @@
+{
+  "app": "SoulCap",
+  "entryPoints": ["index.html", "app.js"],
+  "excludeStacks": ["es-modules"],
+  "dispatchPatterns": [
+    { "type": "data-tab" },
+    { "type": "data-act", "dispatcher": "handleAct" }
+  ],
+  "features": ["now", "calm", "journal", "map", "me"],
+  "primaryJourneys": [
+    { "id": "now", "label": "Open now", "steps": ["now"] },
+    { "id": "journal", "label": "Now → Journal", "steps": ["now", "journal"] },
+    { "id": "calm", "label": "Open calm", "steps": ["now", "calm"] }
+  ],
+  "dashboardScreens": ["now"],
+  "outputDir": "architecture"
+}

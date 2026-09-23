@@ -1,0 +1,17 @@
+{
+  "app": "SteadyCap",
+  "entryPoints": ["index.html", "js/app.js", "js/ui/navigation.js"],
+  "excludeStacks": ["es-modules"],
+  "dispatchPatterns": [
+    { "type": "tabs-id", "names": ["TABS"] },
+    { "type": "reg-go", "register": null, "navigate": "Navigation.go" },
+    { "type": "data-tab" }
+  ],
+  "features": ["dashboard", "recovery", "emergency", "knowledge", "profile", "journal"],
+  "primaryJourneys": [
+    { "id": "today", "label": "Open today", "steps": ["dashboard"] },
+    { "id": "journal", "label": "Today → Journal", "steps": ["dashboard", "journal"] },
+    { "id": "sos", "label": "Open SOS", "steps": ["dashboard", "emergency"] }
+  ],
+  "dashboardScreens": ["dashboard"]
+}

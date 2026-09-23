@@ -1,0 +1,18 @@
+{
+  "app": "CarCap",
+  "entryPoints": ["index.html", "js/app.js"],
+  "excludeStacks": ["es-modules"],
+  "dispatchPatterns": [
+    { "type": "tabs-id", "names": ["TABS"] },
+    { "type": "reg-go", "register": null, "navigate": "go" },
+    { "type": "data-go" },
+    { "type": "data-act", "dispatcher": "handleAct" }
+  ],
+  "features": ["today", "garage", "service", "fuel", "docs", "settings"],
+  "primaryJourneys": [
+    { "id": "garage", "label": "Today → Garage", "steps": ["today", "garage"] },
+    { "id": "log-fuel", "label": "Garage → Fuel", "steps": ["garage", "fuel"] },
+    { "id": "settings", "label": "Open settings", "steps": ["today", "settings"] }
+  ],
+  "dashboardScreens": ["today"]
+}

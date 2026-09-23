@@ -1,0 +1,12 @@
+{
+  "app": "TravelCap",
+  "entryPoints": ["src/app/(app)/page.tsx", "src/app/layout.tsx"],
+  "excludeStacks": ["vanilla-globals"],
+  "features": ["trips", "flights", "hotels", "packing", "budget", "documents", "settings"],
+  "primaryJourneys": [
+    { "id": "home", "label": "Open home", "steps": ["/"] },
+    { "id": "trips", "label": "Home → Trips", "steps": ["/", "/trips"] },
+    { "id": "settings", "label": "Open settings", "steps": ["/", "/settings"] }
+  ],
+  "dashboardScreens": ["/"]
+}

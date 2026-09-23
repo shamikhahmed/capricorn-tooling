@@ -1,0 +1,2285 @@
+{
+  "analyzerVersion": "1.3.0",
+  "apps": {
+    "aura": {
+      "app": "auracap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 469,
+      "edges": 438,
+      "screens": 0,
+      "routes": 26,
+      "stacks": [
+        "env-config",
+        "es-modules",
+        "html",
+        "routes-react"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "AU01",
+          "ok": true,
+          "claim": "route:/apps",
+          "detail": "src/components/layout/Topbar.tsx contains apps"
+        },
+        {
+          "id": "AU02",
+          "ok": true,
+          "claim": "route:/dna",
+          "detail": "src/components/layout/Topbar.tsx contains dna"
+        },
+        {
+          "id": "AU03",
+          "ok": true,
+          "claim": "route:/lockscreen",
+          "detail": "src/pages/Wallpapers.tsx contains lockscreen"
+        },
+        {
+          "id": "AU04",
+          "ok": true,
+          "claim": "route:/profiles",
+          "detail": "src/App.tsx contains profiles"
+        },
+        {
+          "id": "AU05",
+          "ok": true,
+          "claim": "route:cleanse",
+          "detail": "src/App.tsx contains cleanse"
+        },
+        {
+          "id": "AU06",
+          "ok": true,
+          "claim": "route:designer",
+          "detail": "src/App.tsx contains designer"
+        },
+        {
+          "id": "AU07",
+          "ok": true,
+          "claim": "route:import",
+          "detail": "src/App.tsx contains import"
+        },
+        {
+          "id": "AU08",
+          "ok": true,
+          "claim": "route:lockscreen",
+          "detail": "src/App.tsx contains lockscreen"
+        },
+        {
+          "id": "AU09",
+          "ok": true,
+          "claim": "route:routine",
+          "detail": "src/App.tsx contains routine"
+        },
+        {
+          "id": "AU10",
+          "ok": true,
+          "claim": "route:shortcuts",
+          "detail": "src/App.tsx contains shortcuts"
+        },
+        {
+          "id": "AU11",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/device/DevicePreview.tsx→file:src/components/device/IPadPreview#IPadPreview",
+          "detail": "src/components/device/DevicePreview.tsx:3 snippet✓"
+        },
+        {
+          "id": "AU12",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/layout/AppShell.tsx→file:src/components/layout/MobileTabBar#MobileTabBar",
+          "detail": "src/components/layout/AppShell.tsx:5 snippet✓"
+        },
+        {
+          "id": "AU13",
+          "ok": true,
+          "claim": "IMPORTS file:src/engines/chat.ts→file:src/engines/scores#scores",
+          "detail": "src/engines/chat.ts:1 snippet✓"
+        },
+        {
+          "id": "AU14",
+          "ok": true,
+          "claim": "IMPORTS file:src/main.tsx→file:src/tokens.css#tokens.css",
+          "detail": "src/main.tsx:3 snippet✓"
+        },
+        {
+          "id": "AU15",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:src/App.tsx→route:/profiles",
+          "detail": "src/App.tsx:79 snippet✓"
+        },
+        {
+          "id": "AU16",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:src/components/layout/Topbar.tsx→route:/profiles",
+          "detail": "src/components/layout/Topbar.tsx:87 snippet✓"
+        },
+        {
+          "id": "AU17",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:src/pages/ImportApps.tsx→route:/import-guide",
+          "detail": "src/pages/ImportApps.tsx:58 snippet✓"
+        },
+        {
+          "id": "AU18",
+          "ok": true,
+          "claim": "ROUTES_TO route:cleanse→component:src/pages/DigitalCleanse.tsx#DigitalCleanse",
+          "detail": "src/App.tsx:76 snippet✓"
+        },
+        {
+          "id": "AU19",
+          "ok": true,
+          "claim": "ROUTES_TO route:import→component:src/pages/ImportApps.tsx#ImportApps",
+          "detail": "src/App.tsx:67 snippet✓"
+        },
+        {
+          "id": "AU20",
+          "ok": true,
+          "claim": "ROUTES_TO route:routine→component:src/pages/DailyRoutine.tsx#DailyRoutine",
+          "detail": "src/App.tsx:77 snippet✓"
+        }
+      ]
+    },
+    "car": {
+      "app": "carcap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 68,
+      "edges": 126,
+      "screens": 6,
+      "routes": 0,
+      "stacks": [
+        "env-config",
+        "html",
+        "service-worker",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "CA01",
+          "ok": true,
+          "claim": "screen:docs",
+          "detail": "index.html contains docs"
+        },
+        {
+          "id": "CA02",
+          "ok": true,
+          "claim": "screen:fuel",
+          "detail": "index.html contains fuel"
+        },
+        {
+          "id": "CA03",
+          "ok": true,
+          "claim": "screen:garage",
+          "detail": "index.html contains garage"
+        },
+        {
+          "id": "CA04",
+          "ok": true,
+          "claim": "screen:service",
+          "detail": "index.html contains service"
+        },
+        {
+          "id": "CA05",
+          "ok": true,
+          "claim": "screen:settings",
+          "detail": "index.html contains settings"
+        },
+        {
+          "id": "CA06",
+          "ok": true,
+          "claim": "screen:today",
+          "detail": "index.html contains today"
+        },
+        {
+          "id": "CA07",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→config:manifest.json#manifest",
+          "detail": "index.html:28 snippet✓"
+        },
+        {
+          "id": "CA08",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/brand/colors.js#colors.js",
+          "detail": "index.html:90 snippet✓"
+        },
+        {
+          "id": "CA09",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/photos.js#photos.js",
+          "detail": "index.html:92 snippet✓"
+        },
+        {
+          "id": "CA10",
+          "ok": true,
+          "claim": "NAVIGATES_TO entry:index.html#index.html→screen:docs",
+          "detail": "index.html:79 snippet✓"
+        },
+        {
+          "id": "CA11",
+          "ok": true,
+          "claim": "NAVIGATES_TO entry:index.html#index.html→screen:service",
+          "detail": "index.html:71 snippet✓"
+        },
+        {
+          "id": "CA12",
+          "ok": true,
+          "claim": "NAVIGATES_TO entry:index.html#index.html→screen:today",
+          "detail": "index.html:63 snippet✓"
+        },
+        {
+          "id": "CA13",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/app.js→screen:garage",
+          "detail": "js/app.js:158 file✓"
+        },
+        {
+          "id": "CA14",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/app.js#modalFuel→screen:fuel",
+          "detail": "js/app.js:698 file✓"
+        },
+        {
+          "id": "CA15",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/app.js#modalVehicle→screen:garage",
+          "detail": "js/app.js:618 file✓"
+        },
+        {
+          "id": "CA16",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/app.js#onClick→screen:fuel",
+          "detail": "js/app.js:882 file✓"
+        },
+        {
+          "id": "CA17",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/app.js#onClick→screen:service",
+          "detail": "js/app.js:876 file✓"
+        },
+        {
+          "id": "CA18",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/app.js#toggleNotifications→screen:settings",
+          "detail": "js/app.js:780 file✓"
+        },
+        {
+          "id": "CA19",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/app.js→screen:fuel",
+          "detail": "js/app.js:5 file✓"
+        },
+        {
+          "id": "CA20",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/app.js→screen:service",
+          "detail": "js/app.js:5 file✓"
+        }
+      ]
+    },
+    "cook": {
+      "app": "cookcap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 682,
+      "edges": 515,
+      "screens": 1,
+      "routes": 1,
+      "stacks": [
+        "env-config",
+        "es-modules",
+        "routes-react",
+        "service-worker"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "CO01",
+          "ok": true,
+          "claim": "route:/",
+          "detail": "src/app/page.tsx exists (name not required in body)"
+        },
+        {
+          "id": "CO02",
+          "ok": true,
+          "claim": "IMPORTS file:src/app/layout.tsx→file:src/app/globals.css#globals.css",
+          "detail": "src/app/layout.tsx:3 snippet✓"
+        },
+        {
+          "id": "CO03",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/app/OnboardingFlow.tsx→file:src/components/app/onboarding/useOnboardingSteps#useOnboardingSteps",
+          "detail": "src/components/app/OnboardingFlow.tsx:9 snippet✓"
+        },
+        {
+          "id": "CO04",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/book/Book.tsx→file:src/components/book/BookmarkRail#BookmarkRail",
+          "detail": "src/components/book/Book.tsx:17 snippet✓"
+        },
+        {
+          "id": "CO05",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/book/BookmarkRail.tsx→file:src/components/book/BookController#BookController",
+          "detail": "src/components/book/BookmarkRail.tsx:10 snippet✓"
+        },
+        {
+          "id": "CO06",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/book/LeafView.tsx→file:src/components/book/leaves/ChapterLeaf#ChapterLeaf",
+          "detail": "src/components/book/LeafView.tsx:8 snippet✓"
+        },
+        {
+          "id": "CO07",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/book/LeafView.tsx→file:src/components/book/leaves/ForYouLeaf#ForYouLeaf",
+          "detail": "src/components/book/LeafView.tsx:9 snippet✓"
+        },
+        {
+          "id": "CO08",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/book/LeafView.tsx→file:src/components/book/leaves/RecipeLeaf#RecipeLeaf",
+          "detail": "src/components/book/LeafView.tsx:10 snippet✓"
+        },
+        {
+          "id": "CO09",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/book/Shell.tsx→file:src/components/book/Book#Book",
+          "detail": "src/components/book/Shell.tsx:7 snippet✓"
+        },
+        {
+          "id": "CO10",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/book/WarmLeafPool.tsx→file:src/components/book/LeafView#LeafView",
+          "detail": "src/components/book/WarmLeafPool.tsx:4 snippet✓"
+        },
+        {
+          "id": "CO11",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/profiles/PantryDrawer.tsx→file:src/components/profiles/BudgetPanel#BudgetPanel",
+          "detail": "src/components/profiles/PantryDrawer.tsx:13 snippet✓"
+        },
+        {
+          "id": "CO12",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/profiles/nutrition.ts→file:src/lib/profiles/types#types",
+          "detail": "src/lib/profiles/nutrition.ts:2 snippet✓"
+        },
+        {
+          "id": "CO13",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/recipes/chapters.ts→file:src/lib/recipes/types#types",
+          "detail": "src/lib/recipes/chapters.ts:1 snippet✓"
+        },
+        {
+          "id": "CO14",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/recipes/data-fill.ts→file:src/lib/recipes/types#types",
+          "detail": "src/lib/recipes/data-fill.ts:1 snippet✓"
+        },
+        {
+          "id": "CO15",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/recipes/data-goal.ts→file:src/lib/recipes/types#types",
+          "detail": "src/lib/recipes/data-goal.ts:1 snippet✓"
+        },
+        {
+          "id": "CO16",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/recipes/data-world-table.ts→file:src/lib/recipes/types#types",
+          "detail": "src/lib/recipes/data-world-table.ts:1 snippet✓"
+        },
+        {
+          "id": "CO17",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/recipes/data.ts→file:src/lib/recipes/data-foodfusion#data-foodfusion",
+          "detail": "src/lib/recipes/data.ts:4 snippet✓"
+        },
+        {
+          "id": "CO18",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/recipes/data.ts→file:src/lib/recipes/data-serve-with#data-serve-with",
+          "detail": "src/lib/recipes/data.ts:6 snippet✓"
+        },
+        {
+          "id": "CO19",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/recipes/enrich.ts→file:src/lib/recipes/healthier-swaps#healthier-swaps",
+          "detail": "src/lib/recipes/enrich.ts:2 snippet✓"
+        },
+        {
+          "id": "CO20",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/recipes/healthier-swaps.ts→file:src/lib/recipes/types#types",
+          "detail": "src/lib/recipes/healthier-swaps.ts:1 snippet✓"
+        }
+      ]
+    },
+    "deefoodie": {
+      "app": "DeeFoodie",
+      "precision": 1,
+      "right": 6,
+      "total": 6,
+      "nodes": 672,
+      "edges": 1040,
+      "screens": 0,
+      "routes": 28,
+      "stacks": [
+        "dart-flutter",
+        "env-config",
+        "html"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "DE01",
+          "ok": true,
+          "claim": "route:/",
+          "detail": "mobile/lib/router/app_router.dart exists (name not required in body)"
+        },
+        {
+          "id": "DE02",
+          "ok": true,
+          "claim": "route:/collections",
+          "detail": "mobile/lib/router/app_router.dart contains collections"
+        },
+        {
+          "id": "DE03",
+          "ok": true,
+          "claim": "route:/edit-visit/:id",
+          "detail": "mobile/lib/router/app_router.dart contains edit-visit"
+        },
+        {
+          "id": "DE04",
+          "ok": true,
+          "claim": "route:/miss-it",
+          "detail": "mobile/lib/router/app_router.dart contains miss-it"
+        },
+        {
+          "id": "DE05",
+          "ok": true,
+          "claim": "route:/seasonal/:id",
+          "detail": "mobile/lib/router/app_router.dart contains seasonal"
+        },
+        {
+          "id": "DE06",
+          "ok": true,
+          "claim": "LOADS entry:mobile/web/index.html#index.html→config:manifest.json#manifest",
+          "detail": "mobile/web/index.html:19 snippet✓"
+        }
+      ]
+    },
+    "deepony": {
+      "app": "deeponycap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 266,
+      "edges": 432,
+      "screens": 6,
+      "routes": 0,
+      "stacks": [
+        "env-config",
+        "html",
+        "service-worker",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "DE01",
+          "ok": true,
+          "claim": "screen:accessories",
+          "detail": "index.html contains accessories"
+        },
+        {
+          "id": "DE02",
+          "ok": true,
+          "claim": "screen:logs",
+          "detail": "index.html contains logs"
+        },
+        {
+          "id": "DE03",
+          "ok": true,
+          "claim": "screen:map",
+          "detail": "index.html contains map"
+        },
+        {
+          "id": "DE04",
+          "ok": true,
+          "claim": "screen:stable",
+          "detail": "index.html contains stable"
+        },
+        {
+          "id": "DE05",
+          "ok": true,
+          "claim": "screen:stats",
+          "detail": "js/modules/render-core.js contains stats"
+        },
+        {
+          "id": "DE06",
+          "ok": true,
+          "claim": "screen:wishlist",
+          "detail": "index.html contains wishlist"
+        },
+        {
+          "id": "DE07",
+          "ok": true,
+          "claim": "LOADS entry:changelog.html#changelog.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "changelog.html:78 snippet✓"
+        },
+        {
+          "id": "DE08",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→config:manifest.json#manifest",
+          "detail": "index.html:35 snippet✓"
+        },
+        {
+          "id": "DE09",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/cap-desktop-nav.js#cap-desktop-nav.js",
+          "detail": "index.html:190 snippet✓"
+        },
+        {
+          "id": "DE10",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/demo-seed.js#demo-seed.js",
+          "detail": "index.html:165 snippet✓"
+        },
+        {
+          "id": "DE11",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/modules/animations.js#animations.js",
+          "detail": "index.html:179 snippet✓"
+        },
+        {
+          "id": "DE12",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/modules/navigation.js#navigation.js",
+          "detail": "index.html:183 snippet✓"
+        },
+        {
+          "id": "DE13",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/modules/pony-utils.js#pony-utils.js",
+          "detail": "index.html:169 snippet✓"
+        },
+        {
+          "id": "DE14",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/modules/theme.js#theme.js",
+          "detail": "index.html:172 snippet✓"
+        },
+        {
+          "id": "DE15",
+          "ok": true,
+          "claim": "LOADS entry:landing.html#landing.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "landing.html:92 snippet✓"
+        },
+        {
+          "id": "DE16",
+          "ok": true,
+          "claim": "LOADS entry:pitch.html#pitch.html→file:js/capricorn-pitch.js#capricorn-pitch.js",
+          "detail": "pitch.html:428 snippet✓"
+        },
+        {
+          "id": "DE17",
+          "ok": true,
+          "claim": "LOADS entry:presentation.html#presentation.html→file:js/vendor/ScrollTrigger.min.js#ScrollTrigger.min.js",
+          "detail": "presentation.html:132 snippet✓"
+        },
+        {
+          "id": "DE18",
+          "ok": true,
+          "claim": "NAVIGATES_TO entry:index.html#index.html→screen:stable",
+          "detail": "index.html:143 snippet✓"
+        },
+        {
+          "id": "DE19",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/modules/render-core.js→screen:stable",
+          "detail": "js/modules/render-core.js:442 file✓"
+        },
+        {
+          "id": "DE20",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/modules/navigation.js→screen:accessories",
+          "detail": "js/modules/navigation.js:3 file✓"
+        }
+      ]
+    },
+    "idea": {
+      "app": "ideacap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 226,
+      "edges": 165,
+      "screens": 4,
+      "routes": 4,
+      "stacks": [
+        "env-config",
+        "es-modules",
+        "routes-react"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "ID01",
+          "ok": true,
+          "claim": "screen:Home",
+          "detail": "App.tsx contains Home"
+        },
+        {
+          "id": "ID02",
+          "ok": true,
+          "claim": "screen:NoteDetail",
+          "detail": "App.tsx contains NoteDetail"
+        },
+        {
+          "id": "ID03",
+          "ok": true,
+          "claim": "screen:Record",
+          "detail": "App.tsx contains Record"
+        },
+        {
+          "id": "ID04",
+          "ok": true,
+          "claim": "screen:Settings",
+          "detail": "App.tsx contains Settings"
+        },
+        {
+          "id": "ID05",
+          "ok": true,
+          "claim": "IMPORTS file:App.tsx→file:src/context/NotesContext#NotesContext",
+          "detail": "App.tsx:11 snippet✓"
+        },
+        {
+          "id": "ID06",
+          "ok": true,
+          "claim": "IMPORTS file:App.tsx→file:src/screens/RecordScreen#RecordScreen",
+          "detail": "App.tsx:13 snippet✓"
+        },
+        {
+          "id": "ID07",
+          "ok": true,
+          "claim": "IMPORTS file:index.ts→file:App#App",
+          "detail": "index.ts:3 snippet✓"
+        },
+        {
+          "id": "ID08",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/NoteCard.tsx→file:src/components/GlassCard#GlassCard",
+          "detail": "src/components/NoteCard.tsx:4 snippet✓"
+        },
+        {
+          "id": "ID09",
+          "ok": true,
+          "claim": "IMPORTS file:src/context/NotesContext.tsx→file:src/storage/notes#notes",
+          "detail": "src/context/NotesContext.tsx:11 file✓"
+        },
+        {
+          "id": "ID10",
+          "ok": true,
+          "claim": "IMPORTS file:src/screens/HomeScreen.tsx→file:src/components/GlassCard#GlassCard",
+          "detail": "src/screens/HomeScreen.tsx:19 snippet✓"
+        },
+        {
+          "id": "ID11",
+          "ok": true,
+          "claim": "IMPORTS file:src/screens/HomeScreen.tsx→file:src/services/ai#ai",
+          "detail": "src/screens/HomeScreen.tsx:21 snippet✓"
+        },
+        {
+          "id": "ID12",
+          "ok": true,
+          "claim": "IMPORTS file:src/screens/NoteDetailScreen.tsx→file:src/components/Background#Background",
+          "detail": "src/screens/NoteDetailScreen.tsx:16 snippet✓"
+        },
+        {
+          "id": "ID13",
+          "ok": true,
+          "claim": "IMPORTS file:src/screens/RecordScreen.tsx→file:src/components/Background#Background",
+          "detail": "src/screens/RecordScreen.tsx:22 snippet✓"
+        },
+        {
+          "id": "ID14",
+          "ok": true,
+          "claim": "IMPORTS file:src/screens/RecordScreen.tsx→file:src/services/audio#audio",
+          "detail": "src/screens/RecordScreen.tsx:30 file✓"
+        },
+        {
+          "id": "ID15",
+          "ok": true,
+          "claim": "IMPORTS file:src/screens/SettingsScreen.tsx→file:src/components/GlassCard#GlassCard",
+          "detail": "src/screens/SettingsScreen.tsx:18 snippet✓"
+        },
+        {
+          "id": "ID16",
+          "ok": true,
+          "claim": "IMPORTS file:src/screens/SettingsScreen.tsx→file:src/theme#theme",
+          "detail": "src/screens/SettingsScreen.tsx:26 snippet✓"
+        },
+        {
+          "id": "ID17",
+          "ok": true,
+          "claim": "IMPORTS file:src/storage/backup.ts→file:src/types#types",
+          "detail": "src/storage/backup.ts:1 snippet✓"
+        },
+        {
+          "id": "ID18",
+          "ok": true,
+          "claim": "IMPORTS file:src/storage/notes.ts→file:src/storage/seed#seed",
+          "detail": "src/storage/notes.ts:3 snippet✓"
+        },
+        {
+          "id": "ID19",
+          "ok": true,
+          "claim": "IMPORTS file:src/storage/seed.ts→file:src/types#types",
+          "detail": "src/storage/seed.ts:1 snippet✓"
+        },
+        {
+          "id": "ID20",
+          "ok": true,
+          "claim": "IMPORTS file:src/theme/index.ts→file:src/theme/foundation#foundation",
+          "detail": "src/theme/index.ts:2 snippet✓"
+        }
+      ]
+    },
+    "ledger": {
+      "app": "ledgercap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 1377,
+      "edges": 2494,
+      "screens": 58,
+      "routes": 0,
+      "stacks": [
+        "cloudflare-worker",
+        "env-config",
+        "html",
+        "service-worker",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "LE01",
+          "ok": true,
+          "claim": "screen:CRYPTO_BUY",
+          "detail": "js/modules/global.js contains CRYPTO_BUY"
+        },
+        {
+          "id": "LE02",
+          "ok": true,
+          "claim": "screen:USD",
+          "detail": "js/modules/settings.js contains USD"
+        },
+        {
+          "id": "LE03",
+          "ok": true,
+          "claim": "screen:calendar",
+          "detail": "js/ui/navigation.js contains calendar"
+        },
+        {
+          "id": "LE04",
+          "ok": true,
+          "claim": "screen:dark",
+          "detail": "js/modules/settings.js contains dark"
+        },
+        {
+          "id": "LE05",
+          "ok": true,
+          "claim": "screen:funds",
+          "detail": "js/ui/motion-polish.js contains funds"
+        },
+        {
+          "id": "LE06",
+          "ok": true,
+          "claim": "screen:insights",
+          "detail": "js/ui/navigation.js contains insights"
+        },
+        {
+          "id": "LE07",
+          "ok": true,
+          "claim": "screen:market",
+          "detail": "js/modules/hub.js contains market"
+        },
+        {
+          "id": "LE08",
+          "ok": true,
+          "claim": "screen:position_size",
+          "detail": "js/modules/pilot-tools.js contains position_size"
+        },
+        {
+          "id": "LE09",
+          "ok": true,
+          "claim": "screen:settings",
+          "detail": "js/app.js contains settings"
+        },
+        {
+          "id": "LE10",
+          "ok": true,
+          "claim": "screen:tax",
+          "detail": "js/modules/hub.js contains tax"
+        },
+        {
+          "id": "LE11",
+          "ok": true,
+          "claim": "LOADS entry:changelog.html#changelog.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "changelog.html:112 snippet✓"
+        },
+        {
+          "id": "LE12",
+          "ok": true,
+          "claim": "LOADS entry:pitch.html#pitch.html→file:js/capricorn-scene.js#capricorn-scene.js",
+          "detail": "pitch.html:97 snippet✓"
+        },
+        {
+          "id": "LE13",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/modules/dividends.js→screen:dividend",
+          "detail": "js/modules/dividends.js:201 file✓"
+        },
+        {
+          "id": "LE14",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/modules/hub.js→screen:unchanged",
+          "detail": "js/modules/hub.js:59 file✓"
+        },
+        {
+          "id": "LE15",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/modules/performance.js→screen:monthly",
+          "detail": "js/modules/performance.js:46 file✓"
+        },
+        {
+          "id": "LE16",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/modules/research.js→screen:stock",
+          "detail": "js/modules/research.js:52 file✓"
+        },
+        {
+          "id": "LE17",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/modules/signals.js→screen:swing",
+          "detail": "js/modules/signals.js:175 file✓"
+        },
+        {
+          "id": "LE18",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/ui/motion-polish.js→screen:zakat",
+          "detail": "js/ui/motion-polish.js:19 snippet✓"
+        },
+        {
+          "id": "LE19",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/ui/lc-events.js#_call→screen:research",
+          "detail": "js/ui/lc-events.js:70 snippet✓"
+        },
+        {
+          "id": "LE20",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/ui/navigation.js→screen:paper-trade",
+          "detail": "js/ui/navigation.js:11 file✓"
+        }
+      ]
+    },
+    "mastery": {
+      "app": "masterycap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 708,
+      "edges": 1065,
+      "screens": 5,
+      "routes": 0,
+      "stacks": [
+        "env-config",
+        "html",
+        "service-worker",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "MA01",
+          "ok": true,
+          "claim": "screen:campus",
+          "detail": "js/app.js contains campus"
+        },
+        {
+          "id": "MA02",
+          "ok": true,
+          "claim": "screen:learn",
+          "detail": "js/session.js contains learn"
+        },
+        {
+          "id": "MA03",
+          "ok": true,
+          "claim": "screen:practice",
+          "detail": "js/app.js contains practice"
+        },
+        {
+          "id": "MA04",
+          "ok": true,
+          "claim": "screen:records",
+          "detail": "js/app.js contains records"
+        },
+        {
+          "id": "MA05",
+          "ok": true,
+          "claim": "screen:today",
+          "detail": "js/app.js contains today"
+        },
+        {
+          "id": "MA06",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→config:manifest.webmanifest#manifest",
+          "detail": "index.html:14 snippet✓"
+        },
+        {
+          "id": "MA07",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/app.js?v=5192#app.js?v=5192",
+          "detail": "index.html:48 snippet✓"
+        },
+        {
+          "id": "MA08",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/institute/committee.js#showCommitteeApproval→screen:campus",
+          "detail": "js/institute/committee.js:43 snippet✓"
+        },
+        {
+          "id": "MA09",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/session.js#executeStep→screen:learn",
+          "detail": "js/session.js:98 snippet✓"
+        },
+        {
+          "id": "MA10",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/session.js#showDoneSheet→screen:today",
+          "detail": "js/session.js:185 snippet✓"
+        },
+        {
+          "id": "MA11",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/views/course.js#drawHome→screen:campus",
+          "detail": "js/views/course.js:218 snippet✓"
+        },
+        {
+          "id": "MA12",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/views/http-lab.js#renderHttpLab→screen:practice",
+          "detail": "js/views/http-lab.js:91 snippet✓"
+        },
+        {
+          "id": "MA13",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/views/lesson.js#renderFinal→screen:campus",
+          "detail": "js/views/lesson.js:227 snippet✓"
+        },
+        {
+          "id": "MA14",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/views/lesson.js#renderLesson→screen:campus",
+          "detail": "js/views/lesson.js:21 snippet✓"
+        },
+        {
+          "id": "MA15",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/views/records.js#renderRecords→screen:campus",
+          "detail": "js/views/records.js:134 snippet✓"
+        },
+        {
+          "id": "MA16",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/views/today-tab.js#renderToday→screen:practice",
+          "detail": "js/views/today-tab.js:202 snippet✓"
+        },
+        {
+          "id": "MA17",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/views/today-tab.js#renderToday→screen:records",
+          "detail": "js/views/today-tab.js:208 snippet✓"
+        },
+        {
+          "id": "MA18",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/app.js→screen:campus",
+          "detail": "js/app.js:297 file✓"
+        },
+        {
+          "id": "MA19",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/app.js→screen:practice",
+          "detail": "js/app.js:297 file✓"
+        },
+        {
+          "id": "MA20",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/app.js→screen:records",
+          "detail": "js/app.js:297 file✓"
+        }
+      ]
+    },
+    "prism": {
+      "app": "prismcap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 327,
+      "edges": 328,
+      "screens": 3,
+      "routes": 0,
+      "stacks": [
+        "env-config",
+        "es-modules",
+        "html",
+        "service-worker",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "PR01",
+          "ok": true,
+          "claim": "screen:game",
+          "detail": "js/app.js contains game"
+        },
+        {
+          "id": "PR02",
+          "ok": true,
+          "claim": "screen:home",
+          "detail": "js/app.js contains home"
+        },
+        {
+          "id": "PR03",
+          "ok": true,
+          "claim": "screen:library",
+          "detail": "js/app.js contains library"
+        },
+        {
+          "id": "PR04",
+          "ok": true,
+          "claim": "screen:game",
+          "detail": "js/app.js contains game"
+        },
+        {
+          "id": "PR05",
+          "ok": true,
+          "claim": "screen:home",
+          "detail": "js/app.js contains home"
+        },
+        {
+          "id": "PR06",
+          "ok": true,
+          "claim": "screen:library",
+          "detail": "js/app.js contains library"
+        },
+        {
+          "id": "PR07",
+          "ok": true,
+          "claim": "IMPORTS file:src/app/bootstrap.ts→file:src/app/App#App",
+          "detail": "src/app/bootstrap.ts:4 snippet✓"
+        },
+        {
+          "id": "PR08",
+          "ok": true,
+          "claim": "IMPORTS file:src/app/bootstrap.ts→file:src/pwa/registerServiceWorker#registerServiceWorker",
+          "detail": "src/app/bootstrap.ts:2 snippet✓"
+        },
+        {
+          "id": "PR09",
+          "ok": true,
+          "claim": "IMPORTS file:src/main.ts→file:src/styles/app.css#app.css",
+          "detail": "src/main.ts:2 snippet✓"
+        },
+        {
+          "id": "PR10",
+          "ok": true,
+          "claim": "LOADS entry:changelog.html#changelog.html→file:js/capricorn-motion.js#capricorn-motion.js",
+          "detail": "changelog.html:51 snippet✓"
+        },
+        {
+          "id": "PR11",
+          "ok": true,
+          "claim": "LOADS entry:changelog.html#changelog.html→file:js/vendor/gsap.min.js#gsap.min.js",
+          "detail": "changelog.html:48 snippet✓"
+        },
+        {
+          "id": "PR12",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/brand/colors.js#colors.js",
+          "detail": "index.html:373 snippet✓"
+        },
+        {
+          "id": "PR13",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/games/example-game.js#example-game.js",
+          "detail": "index.html:375 snippet✓"
+        },
+        {
+          "id": "PR14",
+          "ok": true,
+          "claim": "LOADS entry:landing.html#landing.html→file:js/capricorn-scene.js#capricorn-scene.js",
+          "detail": "landing.html:105 snippet✓"
+        },
+        {
+          "id": "PR15",
+          "ok": true,
+          "claim": "LOADS entry:pitch.html#pitch.html→file:js/capricorn-pitch.js#capricorn-pitch.js",
+          "detail": "pitch.html:829 snippet✓"
+        },
+        {
+          "id": "PR16",
+          "ok": true,
+          "claim": "LOADS entry:pitch.html#pitch.html→file:js/vendor/ScrollTrigger.min.js#ScrollTrigger.min.js",
+          "detail": "pitch.html:302 snippet✓"
+        },
+        {
+          "id": "PR17",
+          "ok": true,
+          "claim": "LOADS entry:presentation.html#presentation.html→file:js/vendor/ScrollTrigger.min.js#ScrollTrigger.min.js",
+          "detail": "presentation.html:248 snippet✓"
+        },
+        {
+          "id": "PR18",
+          "ok": true,
+          "claim": "LOADS entry:privacy.html#privacy.html→file:js/capricorn-premium-nav.js#capricorn-premium-nav.js",
+          "detail": "privacy.html:66 snippet✓"
+        },
+        {
+          "id": "PR19",
+          "ok": true,
+          "claim": "LOADS entry:privacy.html#privacy.html→file:js/vendor/ScrollTrigger.min.js#ScrollTrigger.min.js",
+          "detail": "privacy.html:63 snippet✓"
+        },
+        {
+          "id": "PR20",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/app.js→screen:home",
+          "detail": "js/app.js:692 file✓"
+        }
+      ]
+    },
+    "soul": {
+      "app": "SoulCap",
+      "precision": 1,
+      "right": 15,
+      "total": 15,
+      "nodes": 453,
+      "edges": 1217,
+      "screens": 5,
+      "routes": 0,
+      "stacks": [
+        "env-config",
+        "html",
+        "service-worker",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "SO01",
+          "ok": true,
+          "claim": "screen:calm",
+          "detail": "index.html contains calm"
+        },
+        {
+          "id": "SO02",
+          "ok": true,
+          "claim": "screen:journal",
+          "detail": "index.html contains journal"
+        },
+        {
+          "id": "SO03",
+          "ok": true,
+          "claim": "screen:map",
+          "detail": "index.html contains map"
+        },
+        {
+          "id": "SO04",
+          "ok": true,
+          "claim": "screen:me",
+          "detail": "index.html contains me"
+        },
+        {
+          "id": "SO05",
+          "ok": true,
+          "claim": "screen:now",
+          "detail": "index.html contains now"
+        },
+        {
+          "id": "SO06",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→config:manifest.json#manifest",
+          "detail": "index.html:14 snippet✓"
+        },
+        {
+          "id": "SO07",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:app.js#app.js",
+          "detail": "index.html:236 snippet✓"
+        },
+        {
+          "id": "SO08",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:brand-palette.js#brand-palette.js",
+          "detail": "index.html:223 snippet✓"
+        },
+        {
+          "id": "SO09",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:data.js#data.js",
+          "detail": "index.html:235 snippet✓"
+        },
+        {
+          "id": "SO10",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:vendor/local-lock.js#local-lock.js",
+          "detail": "index.html:222 snippet✓"
+        },
+        {
+          "id": "SO11",
+          "ok": true,
+          "claim": "NAVIGATES_TO entry:index.html#index.html→screen:calm",
+          "detail": "index.html:97 snippet✓"
+        },
+        {
+          "id": "SO12",
+          "ok": true,
+          "claim": "NAVIGATES_TO entry:index.html#index.html→screen:journal",
+          "detail": "index.html:101 snippet✓"
+        },
+        {
+          "id": "SO13",
+          "ok": true,
+          "claim": "NAVIGATES_TO entry:index.html#index.html→screen:map",
+          "detail": "index.html:105 snippet✓"
+        },
+        {
+          "id": "SO14",
+          "ok": true,
+          "claim": "NAVIGATES_TO entry:index.html#index.html→screen:me",
+          "detail": "index.html:109 snippet✓"
+        },
+        {
+          "id": "SO15",
+          "ok": true,
+          "claim": "NAVIGATES_TO entry:index.html#index.html→screen:now",
+          "detail": "index.html:93 snippet✓"
+        }
+      ]
+    },
+    "steady": {
+      "app": "steadycap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 392,
+      "edges": 703,
+      "screens": 6,
+      "routes": 0,
+      "stacks": [
+        "env-config",
+        "html",
+        "service-worker",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "ST01",
+          "ok": true,
+          "claim": "screen:dashboard",
+          "detail": "js/app.js contains dashboard"
+        },
+        {
+          "id": "ST02",
+          "ok": true,
+          "claim": "screen:emergency",
+          "detail": "js/ui/navigation.js contains emergency"
+        },
+        {
+          "id": "ST03",
+          "ok": true,
+          "claim": "screen:journal",
+          "detail": "js/modules/dashboard.js contains journal"
+        },
+        {
+          "id": "ST04",
+          "ok": true,
+          "claim": "screen:knowledge",
+          "detail": "js/ui/navigation.js contains knowledge"
+        },
+        {
+          "id": "ST05",
+          "ok": true,
+          "claim": "screen:profile",
+          "detail": "js/modules/dashboard.js contains profile"
+        },
+        {
+          "id": "ST06",
+          "ok": true,
+          "claim": "screen:recovery",
+          "detail": "js/ui/navigation.js contains recovery"
+        },
+        {
+          "id": "ST07",
+          "ok": true,
+          "claim": "LOADS entry:changelog.html#changelog.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "changelog.html:78 snippet✓"
+        },
+        {
+          "id": "ST08",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→config:manifest.json#manifest",
+          "detail": "index.html:31 snippet✓"
+        },
+        {
+          "id": "ST09",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/capricorn-motion.js#capricorn-motion.js",
+          "detail": "index.html:123 snippet✓"
+        },
+        {
+          "id": "ST10",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/data/programs.js#programs.js",
+          "detail": "index.html:101 snippet✓"
+        },
+        {
+          "id": "ST11",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/engines/financeEngine.js#financeEngine.js",
+          "detail": "index.html:106 snippet✓"
+        },
+        {
+          "id": "ST12",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/lib/storage-migrate.js#storage-migrate.js",
+          "detail": "index.html:94 snippet✓"
+        },
+        {
+          "id": "ST13",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/modules/knowledge.js#knowledge.js",
+          "detail": "index.html:116 snippet✓"
+        },
+        {
+          "id": "ST14",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/modules/state.js#state.js",
+          "detail": "index.html:110 snippet✓"
+        },
+        {
+          "id": "ST15",
+          "ok": true,
+          "claim": "LOADS entry:landing.html#landing.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "landing.html:124 snippet✓"
+        },
+        {
+          "id": "ST16",
+          "ok": true,
+          "claim": "LOADS entry:pitch.html#pitch.html→file:js/capricorn-pitch.js#capricorn-pitch.js",
+          "detail": "pitch.html:1821 snippet✓"
+        },
+        {
+          "id": "ST17",
+          "ok": true,
+          "claim": "LOADS entry:presentation.html#presentation.html→file:js/capricorn-scene.js#capricorn-scene.js",
+          "detail": "presentation.html:186 snippet✓"
+        },
+        {
+          "id": "ST18",
+          "ok": true,
+          "claim": "LOADS entry:privacy.html#privacy.html→file:js/capricorn-scene.js#capricorn-scene.js",
+          "detail": "privacy.html:61 snippet✓"
+        },
+        {
+          "id": "ST19",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/modules/emergency.js#buildComplete→screen:dashboard",
+          "detail": "js/modules/emergency.js:232 snippet✓"
+        },
+        {
+          "id": "ST20",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/ui/navigation.js→screen:dashboard",
+          "detail": "js/ui/navigation.js:3 file✓"
+        }
+      ]
+    },
+    "travel": {
+      "app": "travelcap",
+      "precision": 1,
+      "right": 13,
+      "total": 13,
+      "nodes": 1143,
+      "edges": 983,
+      "screens": 22,
+      "routes": 22,
+      "stacks": [
+        "env-config",
+        "es-modules",
+        "routes-react",
+        "service-worker"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "TR01",
+          "ok": true,
+          "claim": "route:/",
+          "detail": "src/app/(app)/page.tsx exists (name not required in body)"
+        },
+        {
+          "id": "TR02",
+          "ok": true,
+          "claim": "route:/assistant",
+          "detail": "src/app/(app)/assistant/page.tsx contains assistant"
+        },
+        {
+          "id": "TR03",
+          "ok": true,
+          "claim": "route:/departure",
+          "detail": "src/app/(app)/departure/page.tsx contains departure"
+        },
+        {
+          "id": "TR04",
+          "ok": true,
+          "claim": "route:/emergency",
+          "detail": "src/app/(app)/emergency/page.tsx contains emergency"
+        },
+        {
+          "id": "TR05",
+          "ok": true,
+          "claim": "route:/family",
+          "detail": "src/app/(app)/family/page.tsx contains family"
+        },
+        {
+          "id": "TR06",
+          "ok": true,
+          "claim": "route:/hotels",
+          "detail": "src/app/(app)/hotels/page.tsx contains hotels"
+        },
+        {
+          "id": "TR07",
+          "ok": true,
+          "claim": "route:/more",
+          "detail": "src/app/(app)/more/page.tsx contains more"
+        },
+        {
+          "id": "TR08",
+          "ok": true,
+          "claim": "route:/packing",
+          "detail": "src/app/(app)/packing/page.tsx contains packing"
+        },
+        {
+          "id": "TR09",
+          "ok": true,
+          "claim": "route:/settings",
+          "detail": "src/app/(app)/settings/page.tsx contains settings"
+        },
+        {
+          "id": "TR10",
+          "ok": true,
+          "claim": "route:/trips",
+          "detail": "src/app/(app)/trips/page.tsx contains trips"
+        },
+        {
+          "id": "TR11",
+          "ok": true,
+          "claim": "IMPORTS file:next-env.d.ts→file:.next/types/routes.d.ts#routes.d.ts",
+          "detail": "next-env.d.ts:3 snippet✓"
+        },
+        {
+          "id": "TR12",
+          "ok": true,
+          "claim": "IMPORTS file:src/app/layout.tsx→file:src/app/globals.css#globals.css",
+          "detail": "src/app/layout.tsx:4 snippet✓"
+        },
+        {
+          "id": "TR13",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/map/travel-map.tsx→file:src/components/map/world-map#world-map",
+          "detail": "src/components/map/travel-map.tsx:5 snippet✓"
+        }
+      ]
+    },
+    "vault": {
+      "app": "vaultcap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 577,
+      "edges": 824,
+      "screens": 27,
+      "routes": 0,
+      "stacks": [
+        "cloudflare-worker",
+        "env-config",
+        "html",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "VA01",
+          "ok": true,
+          "claim": "screen:alerts",
+          "detail": "js/core/module-registry.js contains alerts"
+        },
+        {
+          "id": "VA02",
+          "ok": true,
+          "claim": "screen:banks",
+          "detail": "js/core/module-registry.js contains banks"
+        },
+        {
+          "id": "VA03",
+          "ok": true,
+          "claim": "screen:cards",
+          "detail": "js/core/module-registry.js contains cards"
+        },
+        {
+          "id": "VA04",
+          "ok": true,
+          "claim": "screen:currency",
+          "detail": "js/core/module-registry.js contains currency"
+        },
+        {
+          "id": "VA05",
+          "ok": true,
+          "claim": "screen:documents",
+          "detail": "js/core/module-registry.js contains documents"
+        },
+        {
+          "id": "VA06",
+          "ok": true,
+          "claim": "screen:expenses",
+          "detail": "js/core/module-registry.js contains expenses"
+        },
+        {
+          "id": "VA07",
+          "ok": true,
+          "claim": "screen:help",
+          "detail": "js/core/module-registry.js contains help"
+        },
+        {
+          "id": "VA08",
+          "ok": true,
+          "claim": "screen:investments",
+          "detail": "js/core/module-registry.js contains investments"
+        },
+        {
+          "id": "VA09",
+          "ok": true,
+          "claim": "screen:reminders",
+          "detail": "js/core/module-registry.js contains reminders"
+        },
+        {
+          "id": "VA10",
+          "ok": true,
+          "claim": "screen:timeline",
+          "detail": "js/core/module-registry.js contains timeline"
+        },
+        {
+          "id": "VA11",
+          "ok": true,
+          "claim": "LOADS entry:changelog.html#changelog.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "changelog.html:129 snippet✓"
+        },
+        {
+          "id": "VA12",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:dist/vaultcap.bundle.js?v=5.2.2#vaultcap.bundle.js?v=5.2.2",
+          "detail": "index.html:481 snippet✓"
+        },
+        {
+          "id": "VA13",
+          "ok": true,
+          "claim": "LOADS entry:landing.html#landing.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "landing.html:127 snippet✓"
+        },
+        {
+          "id": "VA14",
+          "ok": true,
+          "claim": "LOADS entry:pitch.html#pitch.html→file:js/capricorn-pitch.js#capricorn-pitch.js",
+          "detail": "pitch.html:1923 snippet✓"
+        },
+        {
+          "id": "VA15",
+          "ok": true,
+          "claim": "LOADS entry:presentation.html#presentation.html→file:js/core/icons.js#icons.js",
+          "detail": "presentation.html:892 snippet✓"
+        },
+        {
+          "id": "VA16",
+          "ok": true,
+          "claim": "LOADS entry:widget.html#widget.html→file:js/capricorn-scene.js#capricorn-scene.js",
+          "detail": "widget.html:387 snippet✓"
+        },
+        {
+          "id": "VA17",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/core/module-registry.js→screen:banks",
+          "detail": "js/core/module-registry.js:31 file✓"
+        },
+        {
+          "id": "VA18",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/core/module-registry.js→screen:digital",
+          "detail": "js/core/module-registry.js:31 file✓"
+        },
+        {
+          "id": "VA19",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/core/module-registry.js→screen:friends",
+          "detail": "js/core/module-registry.js:31 file✓"
+        },
+        {
+          "id": "VA20",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/core/module-registry.js→screen:sims",
+          "detail": "js/core/module-registry.js:31 file✓"
+        }
+      ]
+    },
+    "lab": {
+      "app": "capricorn-lab",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 253,
+      "edges": 343,
+      "screens": 0,
+      "routes": 0,
+      "stacks": [
+        "env-config",
+        "es-modules",
+        "html",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "LA01",
+          "ok": true,
+          "claim": "IMPORTS file:js/app-demos.js→file:js/sounds.js#sounds.js",
+          "detail": "js/app-demos.js:1 snippet✓"
+        },
+        {
+          "id": "LA02",
+          "ok": true,
+          "claim": "IMPORTS file:js/command-palette.js→file:js/products.js#products.js",
+          "detail": "js/command-palette.js:1 snippet✓"
+        },
+        {
+          "id": "LA03",
+          "ok": true,
+          "claim": "IMPORTS file:js/control-center.js→file:js/wallpaper.js#wallpaper.js",
+          "detail": "js/control-center.js:3 snippet✓"
+        },
+        {
+          "id": "LA04",
+          "ok": true,
+          "claim": "IMPORTS file:js/desktop-extras.js→file:js/wallpaper.js#wallpaper.js",
+          "detail": "js/desktop-extras.js:3 snippet✓"
+        },
+        {
+          "id": "LA05",
+          "ok": true,
+          "claim": "IMPORTS file:js/dock.js→file:js/sounds.js#sounds.js",
+          "detail": "js/dock.js:2 snippet✓"
+        },
+        {
+          "id": "LA06",
+          "ok": true,
+          "claim": "IMPORTS file:js/lock-screen.js→file:js/sounds.js#sounds.js",
+          "detail": "js/lock-screen.js:3 snippet✓"
+        },
+        {
+          "id": "LA07",
+          "ok": true,
+          "claim": "IMPORTS file:js/main.js→file:js/boot.js#boot.js",
+          "detail": "js/main.js:1 snippet✓"
+        },
+        {
+          "id": "LA08",
+          "ok": true,
+          "claim": "IMPORTS file:js/main.js→file:js/desktop-extras.js#desktop-extras.js",
+          "detail": "js/main.js:14 snippet✓"
+        },
+        {
+          "id": "LA09",
+          "ok": true,
+          "claim": "IMPORTS file:js/main.js→file:js/mobile-ios.js#mobile-ios.js",
+          "detail": "js/main.js:6 snippet✓"
+        },
+        {
+          "id": "LA10",
+          "ok": true,
+          "claim": "IMPORTS file:js/main.js→file:js/social.js#social.js",
+          "detail": "js/main.js:9 snippet✓"
+        },
+        {
+          "id": "LA11",
+          "ok": true,
+          "claim": "IMPORTS file:js/main.js→file:js/wallpaper.js#wallpaper.js",
+          "detail": "js/main.js:3 snippet✓"
+        },
+        {
+          "id": "LA12",
+          "ok": true,
+          "claim": "IMPORTS file:js/main.js→file:js/window-manager.js#window-manager.js",
+          "detail": "js/main.js:4 snippet✓"
+        },
+        {
+          "id": "LA13",
+          "ok": true,
+          "claim": "IMPORTS file:js/mobile-ios.js→file:js/sounds.js#sounds.js",
+          "detail": "js/mobile-ios.js:6 snippet✓"
+        },
+        {
+          "id": "LA14",
+          "ok": true,
+          "claim": "IMPORTS file:js/mobile-ios.js→file:js/ui-helpers.js#ui-helpers.js",
+          "detail": "js/mobile-ios.js:5 snippet✓"
+        },
+        {
+          "id": "LA15",
+          "ok": true,
+          "claim": "IMPORTS file:js/notifications.js→file:js/sounds.js#sounds.js",
+          "detail": "js/notifications.js:1 snippet✓"
+        },
+        {
+          "id": "LA16",
+          "ok": true,
+          "claim": "IMPORTS file:js/social.js→file:js/sounds.js#sounds.js",
+          "detail": "js/social.js:3 snippet✓"
+        },
+        {
+          "id": "LA17",
+          "ok": true,
+          "claim": "IMPORTS file:js/tasks.js→file:js/sounds.js#sounds.js",
+          "detail": "js/tasks.js:2 snippet✓"
+        },
+        {
+          "id": "LA18",
+          "ok": true,
+          "claim": "IMPORTS file:js/widgets.js→file:js/products.js#products.js",
+          "detail": "js/widgets.js:1 snippet✓"
+        },
+        {
+          "id": "LA19",
+          "ok": true,
+          "claim": "IMPORTS file:js/window-manager.js→file:js/app-demos.js#app-demos.js",
+          "detail": "js/window-manager.js:3 snippet✓"
+        },
+        {
+          "id": "LA20",
+          "ok": true,
+          "claim": "IMPORTS file:js/window-manager.js→file:js/sounds.js#sounds.js",
+          "detail": "js/window-manager.js:14 snippet✓"
+        }
+      ]
+    },
+    "hub": {
+      "app": "shamikhahmed.github.io",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 631,
+      "edges": 970,
+      "screens": 0,
+      "routes": 0,
+      "stacks": [
+        "env-config",
+        "html",
+        "service-worker",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "HU01",
+          "ok": true,
+          "claim": "LOADS entry:about.html#about.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "about.html:130 snippet✓"
+        },
+        {
+          "id": "HU02",
+          "ok": true,
+          "claim": "LOADS entry:about.html#about.html→file:js/capricorn-motion.js#capricorn-motion.js",
+          "detail": "about.html:123 snippet✓"
+        },
+        {
+          "id": "HU03",
+          "ok": true,
+          "claim": "LOADS entry:about.html#about.html→file:js/capricorn.js#capricorn.js",
+          "detail": "about.html:122 snippet✓"
+        },
+        {
+          "id": "HU04",
+          "ok": true,
+          "claim": "LOADS entry:about.html#about.html→file:js/products-data.js?v=2#products-data.js?v=2",
+          "detail": "about.html:102 snippet✓"
+        },
+        {
+          "id": "HU05",
+          "ok": true,
+          "claim": "LOADS entry:about.html#about.html→file:js/vendor/gsap.min.js#gsap.min.js",
+          "detail": "about.html:127 snippet✓"
+        },
+        {
+          "id": "HU06",
+          "ok": true,
+          "claim": "LOADS entry:app.html#app.html→file:js/capricorn-scene.js#capricorn-scene.js",
+          "detail": "app.html:22 snippet✓"
+        },
+        {
+          "id": "HU07",
+          "ok": true,
+          "claim": "LOADS entry:app.html#app.html→file:js/vendor/ScrollTrigger.min.js#ScrollTrigger.min.js",
+          "detail": "app.html:21 snippet✓"
+        },
+        {
+          "id": "HU08",
+          "ok": true,
+          "claim": "LOADS entry:enterprise.html#enterprise.html→file:js/capricorn.js#capricorn.js",
+          "detail": "enterprise.html:122 snippet✓"
+        },
+        {
+          "id": "HU09",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:/assets/index-DYhGqgLA.js#index-DYhGqgLA.js",
+          "detail": "index.html:40 snippet✓"
+        },
+        {
+          "id": "HU10",
+          "ok": true,
+          "claim": "LOADS entry:investor.html#investor.html→file:js/products-data.js?v=2#products-data.js?v=2",
+          "detail": "investor.html:140 snippet✓"
+        },
+        {
+          "id": "HU11",
+          "ok": true,
+          "claim": "LOADS entry:product.html#product.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "product.html:47 snippet✓"
+        },
+        {
+          "id": "HU12",
+          "ok": true,
+          "claim": "LOADS entry:product.html#product.html→file:js/capricorn-motion.js#capricorn-motion.js",
+          "detail": "product.html:40 snippet✓"
+        },
+        {
+          "id": "HU13",
+          "ok": true,
+          "claim": "LOADS entry:product.html#product.html→file:js/products-data.js?v=2#products-data.js?v=2",
+          "detail": "product.html:19 snippet✓"
+        },
+        {
+          "id": "HU14",
+          "ok": true,
+          "claim": "LOADS entry:product.html#product.html→file:js/vendor/gsap.min.js#gsap.min.js",
+          "detail": "product.html:44 snippet✓"
+        },
+        {
+          "id": "HU15",
+          "ok": true,
+          "claim": "LOADS entry:solutions.html#solutions.html→file:js/capricorn-motion.js#capricorn-motion.js",
+          "detail": "solutions.html:68 snippet✓"
+        },
+        {
+          "id": "HU16",
+          "ok": true,
+          "claim": "LOADS entry:solutions.html#solutions.html→file:js/capricorn.js#capricorn.js",
+          "detail": "solutions.html:67 snippet✓"
+        },
+        {
+          "id": "HU17",
+          "ok": true,
+          "claim": "LOADS entry:solutions.html#solutions.html→file:js/vendor/ScrollTrigger.min.js#ScrollTrigger.min.js",
+          "detail": "solutions.html:73 snippet✓"
+        },
+        {
+          "id": "HU18",
+          "ok": true,
+          "claim": "LOADS entry:sovereignty.html#sovereignty.html→file:js/capricorn-cinematic.js#capricorn-cinematic.js",
+          "detail": "sovereignty.html:74 snippet✓"
+        },
+        {
+          "id": "HU19",
+          "ok": true,
+          "claim": "LOADS entry:sovereignty.html#sovereignty.html→file:js/capricorn-scene.js#capricorn-scene.js",
+          "detail": "sovereignty.html:73 snippet✓"
+        },
+        {
+          "id": "HU20",
+          "ok": true,
+          "claim": "LOADS entry:sovereignty.html#sovereignty.html→file:js/vendor/ScrollTrigger.min.js#ScrollTrigger.min.js",
+          "detail": "sovereignty.html:72 snippet✓"
+        }
+      ]
+    },
+    "pulse": {
+      "app": "pulsecap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 513,
+      "edges": 915,
+      "screens": 18,
+      "routes": 0,
+      "stacks": [
+        "env-config",
+        "html",
+        "service-worker",
+        "vanilla-globals"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "PU01",
+          "ok": true,
+          "claim": "screen:active",
+          "detail": "js/app.js contains active"
+        },
+        {
+          "id": "PU02",
+          "ok": true,
+          "claim": "screen:briefing",
+          "detail": "js/modules/coach.js contains briefing"
+        },
+        {
+          "id": "PU03",
+          "ok": true,
+          "claim": "screen:dashboard",
+          "detail": "js/engines.js contains dashboard"
+        },
+        {
+          "id": "PU04",
+          "ok": true,
+          "claim": "screen:intro",
+          "detail": "js/modules/onboarding.js contains intro"
+        },
+        {
+          "id": "PU05",
+          "ok": true,
+          "claim": "screen:nutrition",
+          "detail": "js/app.js contains nutrition"
+        },
+        {
+          "id": "PU06",
+          "ok": true,
+          "claim": "screen:photos",
+          "detail": "js/app.js contains photos"
+        },
+        {
+          "id": "PU07",
+          "ok": true,
+          "claim": "screen:plan-import",
+          "detail": "js/app.js contains plan-import"
+        },
+        {
+          "id": "PU08",
+          "ok": true,
+          "claim": "screen:progress",
+          "detail": "js/modules/progress.js contains progress"
+        },
+        {
+          "id": "PU09",
+          "ok": true,
+          "claim": "screen:rehab",
+          "detail": "js/app.js contains rehab"
+        },
+        {
+          "id": "PU10",
+          "ok": true,
+          "claim": "screen:split-builder",
+          "detail": "js/modules/settings.js contains split-builder"
+        },
+        {
+          "id": "PU11",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→config:manifest.json#manifest",
+          "detail": "index.html:47 snippet✓"
+        },
+        {
+          "id": "PU12",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/core/profile.js#profile.js",
+          "detail": "index.html:222 snippet✓"
+        },
+        {
+          "id": "PU13",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/modules/coach.js#coach.js",
+          "detail": "index.html:229 snippet✓"
+        },
+        {
+          "id": "PU14",
+          "ok": true,
+          "claim": "LOADS entry:index.html#index.html→file:js/storage.js#storage.js",
+          "detail": "index.html:208 snippet✓"
+        },
+        {
+          "id": "PU15",
+          "ok": true,
+          "claim": "LOADS screen:my-plan→file:js/modules/my-plan.js#my-plan.js",
+          "detail": "js/app.js:257 file✓"
+        },
+        {
+          "id": "PU16",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/engines.js→screen:dashboard",
+          "detail": "js/engines.js:286 file✓"
+        },
+        {
+          "id": "PU17",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/modules/onboarding.js→screen:onboarding",
+          "detail": "js/modules/onboarding.js:45 file✓"
+        },
+        {
+          "id": "PU18",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:js/modules/workout.js→screen:active",
+          "detail": "js/modules/workout.js:504 file✓"
+        },
+        {
+          "id": "PU19",
+          "ok": true,
+          "claim": "NAVIGATES_TO function:js/modules/settings.js#_tabPrivacy→screen:settings",
+          "detail": "js/modules/settings.js:464 file✓"
+        },
+        {
+          "id": "PU20",
+          "ok": true,
+          "claim": "ROUTES_TO file:js/modules/photos.js→screen:photos",
+          "detail": "js/modules/photos.js:217 file✓"
+        }
+      ]
+    },
+    "scent": {
+      "app": "scentcap",
+      "precision": 1,
+      "right": 20,
+      "total": 20,
+      "nodes": 813,
+      "edges": 722,
+      "screens": 0,
+      "routes": 12,
+      "stacks": [
+        "env-config",
+        "es-modules",
+        "html",
+        "routes-react"
+      ],
+      "backendPresence": {
+        "firebase": false,
+        "sqlite": false,
+        "supabase": false
+      },
+      "results": [
+        {
+          "id": "SC01",
+          "ok": true,
+          "claim": "route:/",
+          "detail": "src/App.tsx exists (name not required in body)"
+        },
+        {
+          "id": "SC02",
+          "ok": true,
+          "claim": "route:/add",
+          "detail": "src/App.tsx contains add"
+        },
+        {
+          "id": "SC03",
+          "ok": true,
+          "claim": "route:/advisor",
+          "detail": "src/App.tsx contains advisor"
+        },
+        {
+          "id": "SC04",
+          "ok": true,
+          "claim": "route:/analytics",
+          "detail": "src/App.tsx contains analytics"
+        },
+        {
+          "id": "SC05",
+          "ok": true,
+          "claim": "route:/calendar",
+          "detail": "src/App.tsx contains calendar"
+        },
+        {
+          "id": "SC06",
+          "ok": true,
+          "claim": "route:/collection",
+          "detail": "src/App.tsx contains collection"
+        },
+        {
+          "id": "SC07",
+          "ok": true,
+          "claim": "route:/fragrance/:id",
+          "detail": "src/App.tsx contains fragrance"
+        },
+        {
+          "id": "SC08",
+          "ok": true,
+          "claim": "route:/layering",
+          "detail": "src/App.tsx contains layering"
+        },
+        {
+          "id": "SC09",
+          "ok": true,
+          "claim": "route:/onboarding",
+          "detail": "src/App.tsx contains onboarding"
+        },
+        {
+          "id": "SC10",
+          "ok": true,
+          "claim": "route:/settings",
+          "detail": "src/App.tsx contains settings"
+        },
+        {
+          "id": "SC11",
+          "ok": true,
+          "claim": "IMPORTS file:src/components/ui/WearRatingModal.tsx→file:src/components/ui/button#button",
+          "detail": "src/components/ui/WearRatingModal.tsx:4 snippet✓"
+        },
+        {
+          "id": "SC12",
+          "ok": true,
+          "claim": "IMPORTS file:src/lib/version.ts→file:VERSION.json#VERSION.json",
+          "detail": "src/lib/version.ts:1 snippet✓"
+        },
+        {
+          "id": "SC13",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:src/App.tsx→route:/onboarding",
+          "detail": "src/App.tsx:64 snippet✓"
+        },
+        {
+          "id": "SC14",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:src/pages/AddFragrance.tsx→route:/collection",
+          "detail": "src/pages/AddFragrance.tsx:174 snippet✓"
+        },
+        {
+          "id": "SC15",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:src/pages/FragranceDetail.tsx→route:/collection",
+          "detail": "src/pages/FragranceDetail.tsx:182 snippet✓"
+        },
+        {
+          "id": "SC16",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:src/pages/Home.tsx→route:/calendar",
+          "detail": "src/pages/Home.tsx:371 snippet✓"
+        },
+        {
+          "id": "SC17",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:src/pages/Onboarding.tsx→route:/",
+          "detail": "src/pages/Onboarding.tsx:75 snippet✓"
+        },
+        {
+          "id": "SC18",
+          "ok": true,
+          "claim": "NAVIGATES_TO file:src/pages/Settings.tsx→route:/onboarding",
+          "detail": "src/pages/Settings.tsx:261 snippet✓"
+        },
+        {
+          "id": "SC19",
+          "ok": true,
+          "claim": "ROUTES_TO route:/add→component:src/pages/AddFragrance.tsx#AddFragrance",
+          "detail": "src/App.tsx:112 snippet✓"
+        },
+        {
+          "id": "SC20",
+          "ok": true,
+          "claim": "ROUTES_TO route:/fragrance/:id→component:src/pages/FragranceDetail.tsx#FragranceDetail",
+          "detail": "src/App.tsx:119 snippet✓"
+        }
+      ]
+    }
+  },
+  "totals": {
+    "right": 314,
+    "total": 314,
+    "precision": 1
+  }
+}

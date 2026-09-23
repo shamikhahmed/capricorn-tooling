@@ -8,16 +8,26 @@ const SKIP_DIRS = new Set([
   'ios', 'android', 'Pods', '.dart_tool',
   // Tests / tooling / minified vendor — not product architecture (ARCH-04)
   'vendor', 'tests', 'e2e', 'qa', 'scripts', 'test-results', 'playwright-report',
+  // Generated / archive trees (ARCH-05)
+  'releases', '_site', 'out',
+  // Hub Pages mirrors of Cap apps (shamikhahmed.github.io) — analyze capricorn-lab instead
+  'CarCap', 'SoulCap', 'TravelCap', 'IdeaCap', 'PrismCap', 'AuraCap', 'CookCap',
+  'DeePonyCap', 'LedgerCap', 'MasteryCap', 'PulseCap', 'ScentCap', 'SteadyCap',
+  'VaultCap', 'DeeFoodieApp',
 ]);
 
 /**
  * @param {string} root
- * @param {{ extensions?: string[], maxFiles?: number }} [opts]
+ * @param {{ extensions?: string[], maxFiles?: number, skipDirs?: string[] }} [opts]
  * @returns {{ abs: string, rel: string }[]}
  */
 export function listFiles(root, opts) {
   const extensions = (opts && opts.extensions) || null;
   const maxFiles = (opts && opts.maxFiles) || 8000;
+  const skip = new Set(SKIP_DIRS);
+  if (opts && Array.isArray(opts.skipDirs)) {
+    for (const d of opts.skipDirs) skip.add(d);
+  }
   const out = [];
   const stack = [root];
   while (stack.length && out.length < maxFiles) {
@@ -29,7 +39,7 @@ export function listFiles(root, opts) {
       continue;
     }
     for (const ent of entries) {
-      if (SKIP_DIRS.has(ent.name)) continue;
+      if (skip.has(ent.name)) continue;
       if (ent.name.startsWith('.') && ent.isDirectory() && ent.name !== '.') continue;
       const abs = path.join(dir, ent.name);
       if (ent.isDirectory()) {
@@ -38,6 +48,8 @@ export function listFiles(root, opts) {
         stack.push(abs);
         continue;
       }
+      // Generated bundles (LedgerCap ledgercap.bundle.js) — map source modules instead
+      if (/\.bundle\.js$/i.test(ent.name)) continue;
       if (extensions) {
         const ok = extensions.some(function (ext) {
           return ent.name.endsWith(ext) || (ext === '.env' && (ent.name === '.env' || ent.name.startsWith('.env.')));

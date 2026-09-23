@@ -1,0 +1,11 @@
+{
+  "app": "shamikhahmed.github.io",
+  "entryPoints": ["index.html"],
+  "excludeStacks": ["es-modules", "routes-react"],
+  "skipDirs": ["investor", "docs"],
+  "features": ["catalog", "marketing", "support"],
+  "primaryJourneys": [
+    { "id": "home", "label": "Open hub home", "steps": ["/"] }
+  ],
+  "dashboardScreens": ["/"]
+}

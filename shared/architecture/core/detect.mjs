@@ -34,7 +34,10 @@ export function detectStacks(root) {
           ent.name === 'e2e' ||
           ent.name === 'qa' ||
           ent.name === 'scripts' ||
-          ent.name === 'test-results'
+          ent.name === 'test-results' ||
+          ent.name === 'releases' ||
+          ent.name === '_site' ||
+          ent.name === 'out'
         ) {
           continue;
         }
@@ -85,12 +88,30 @@ export function detectStacks(root) {
     }
   }
 
+  // Nested package.json (DeeFoodieApp/api, monorepo packages)
+  for (const nested of ['api/package.json', 'server/package.json', 'backend/package.json']) {
+    if (!has(nested)) continue;
+    try {
+      const pkg = JSON.parse(fs.readFileSync(path.join(root, nested), 'utf8'));
+      const deps = Object.assign({}, pkg.dependencies, pkg.devDependencies);
+      if (deps['@nestjs/core'] || deps['@nestjs/common'] || deps.prisma || deps['@prisma/client']) {
+        stacks.add('nest-prisma');
+      }
+    } catch {
+      /* ignore */
+    }
+  }
+
   if (has('app') && (has('app/page.tsx') || has('app/page.jsx') || has('app/page.ts') || has('app/page.js'))) {
     stacks.add('es-modules');
     stacks.add('routes-react');
   }
 
-  if (has('schema.prisma') || has('prisma/schema.prisma')) {
+  if (
+    has('schema.prisma') ||
+    has('prisma/schema.prisma') ||
+    has('api/prisma/schema.prisma')
+  ) {
     stacks.add('nest-prisma');
   }
 

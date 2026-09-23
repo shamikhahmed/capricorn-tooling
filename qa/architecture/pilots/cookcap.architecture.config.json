@@ -1,0 +1,11 @@
+{
+  "app": "CookCap",
+  "entryPoints": ["src/app/page.tsx", "src/app/layout.tsx"],
+  "excludeStacks": ["vanilla-globals"],
+  "features": ["recipes", "cook", "family", "shopping"],
+  "primaryJourneys": [
+    { "id": "home", "label": "Open home", "steps": ["/"] }
+  ],
+  "dashboardScreens": ["/"],
+  "demoSources": ["content"]
+}

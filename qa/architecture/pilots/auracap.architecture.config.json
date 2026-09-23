@@ -1,0 +1,13 @@
+{
+  "app": "AuraCap",
+  "entryPoints": ["index.html", "src/main.tsx", "src/App.tsx"],
+  "excludeStacks": ["vanilla-globals"],
+  "features": ["dashboard", "dna", "import", "apps", "organizer", "designer", "wallpaper", "lockscreen", "widgets", "shortcuts", "cleanse", "routine", "profiles", "settings"],
+  "primaryJourneys": [
+    { "id": "open-dashboard", "label": "Open dashboard", "steps": ["/dashboard"] },
+    { "id": "organize", "label": "Dashboard → Organizer", "steps": ["/dashboard", "/organizer"] },
+    { "id": "settings", "label": "Open settings", "steps": ["/dashboard", "/settings"] }
+  ],
+  "dashboardScreens": ["/dashboard"],
+  "demoSources": ["src/data"]
+}

@@ -1,99 +1,99 @@
-# ARCH-04 — PulseCap + ScentCap precision pilot
+# ARCH-05 — Fleet roll-out (beyond Pulse/Scent)
 
 **Date:** 2026-09-23  
-**Tooling branch:** `finish/arch-04`  
-**Analyzer:** 1.2.0 (was 1.1.0)  
-**Base:** `origin/main` @ `a9f587a` (ARCH-03)
+**Tooling branch:** `finish/arch-05`  
+**Analyzer:** 1.3.0 (was 1.2.0)  
+**Base:** `origin/main` @ `f9cd538` (ARCH-04 merge)
 
-## Commands run
+## Scope
+
+Roll-out `architecture:analyze` + pilot configs for every Cap app and hub sources listed in ARCHITECTURE-FLEET-MAP / master prompt §2.6 ARCH-05. Outputs stay under `qa/architecture/` in capricorn-tooling (large `architecture-data.*` gitignored). Per-app `docs/architecture/` landing remains a follow-up (copy configs into each repo).
+
+## Apps covered (17)
+
+| Slug | Root | Config | Notes |
+|---|---|---|---|
+| pulse | PulseCap | pulsecap.* | ARCH-04 re-run on 1.3.0 |
+| scent | ScentCap | scentcap.* | ARCH-04 re-run on 1.3.0 |
+| aura | AuraCap | auracap.* | React routes |
+| car | CarCap | carcap.* | TABS + go + data-go |
+| cook | CookCap | cookcap.* | Next `src/app` (single page) |
+| deefoodie | DeeFoodieApp | deefoodie.* | Flutter + Nest/Prisma (`api/`) |
+| deepony | DeePonyCap | deeponycap.* | Nav.go; `releases/` skipped |
+| idea | IdeaCap | ideacap.* | Expo Stack.Screen (multiline) |
+| ledger | LedgerCap | ledgercap.* | Navigation + TABS/MORE; `*.bundle.js` skipped |
+| mastery | MasteryCap | masterycap.* | tabs-tuples + navigate |
+| prism | PrismCap | prismcap.* | js/ + src/ |
+| soul | SoulCap/docs | soulcap.* | data-tab; Pages root = docs/ |
+| steady | SteadyCap | steadycap.* | Navigation.go + TABS |
+| travel | TravelCap | travelcap.* | Next `src/app/(app)/**` |
+| vault | VaultCap | vaultcap.* | ALL_MODULES + worker |
+| lab | capricorn-lab | capricorn-lab.* | Hub canonical source |
+| hub | shamikhahmed.github.io | hub-pages.* | Mirrors skipped; marketing shell |
+
+## Commands
 
 ```bash
-git fetch origin
-git checkout -b finish/arch-04 origin/main
+git fetch origin && git checkout -b finish/arch-05 origin/main
+npm run architecture:test   # 27/27
 
-npm run architecture:test   # 24/24
-
+# per-app (example)
 node shared/architecture/analyze.mjs \
-  --root /Users/shamikhahmed/Projects/Cap/Cap-Apps/PulseCap \
-  --config qa/architecture/pilots/pulsecap.architecture.config.json \
-  --out qa/architecture/pilot-pulse
-
-node shared/architecture/analyze.mjs \
-  --root /Users/shamikhahmed/Projects/Cap/Cap-Apps/ScentCap \
-  --config qa/architecture/pilots/scentcap.architecture.config.json \
-  --out qa/architecture/pilot-scent
+  --root ../CarCap \
+  --config qa/architecture/pilots/carcap.architecture.config.json \
+  --out qa/architecture/pilot-car
 ```
 
-## Spot-check (30 edges/nodes per app)
+## Adapter fixes (with tests)
 
-| App | Sample | Precision | Notes |
-|---|---|---|---|
-| PulseCap | 30/30 | **100%** | After MODULE_CHAIN + literal screen-id filter |
-| ScentCap | 30/30 | **100%** | Routes + ROUTES_TO + NAVIGATES_TO |
-| Combined | 60/60 | **100%** | ≥95% gate met |
+1. **Next `src/app/**/page`** — CookCap/TravelCap routes were invisible (`app/` only).  
+   Fix: match `(src/)?app/**/page`. Test: `next-src-app` fixture.
 
-Evidence: `qa/architecture/SPOT-CHECK.json`.
+2. **Multiline `Stack.Screen`** — IdeaCap `name="Record"` on following line.  
+   Fix: multiline name capture. Test: `expo-nav-multiline`.
 
-## Bugs found → fixed (with tests)
+3. **tabs-id / Nav.go / Navigation.go / data-go / data-tab** — Car/Steady/Ledger/DeePony/Soul.  
+   Fix: new dispatch pattern types + HTML data-tab. Test: `vanilla-nav-tabs`.
 
-1. **PulseCap screens missing** — `reg()`/`go()` never extracted.  
-   Fix: `dispatchPatterns: [{ type: 'reg-go' }]` in vanilla extractor; stable `screen:<id>` nodes; `ROUTES_TO` / `NAVIGATES_TO`.  
-   Test: `vanilla-reg-go` fixture.
+4. **tabs-tuples** — MasteryCap `[['today', …], …]`.  
+   Fix: first string of each inner array → screen.
 
-2. **False screen from `console.error('go(' + id + ')')`** — string concat matched as `go('+ id +')`.  
-   Fix: `isLiteralScreenId()` (kebab/alphanumeric only).
+5. **ALL_MODULES** — VaultCap module registry → screens via tabs-id names.
 
-3. **MODULE_SRC empty object** — PulseCap now builds `MODULE_SRC` from `MODULE_CHAIN` arrays (+ const refs like `WORKOUT_CHAIN`).  
-   Fix: parse `MODULE_CHAIN` / array literals / same-file const arrays → `LOADS`.  
-   Test: fixture updated to MODULE_CHAIN shape.
+6. **Skip noise** — `releases`, `_site`, `out`, `*.bundle.js`, hub mirrored Cap folders.
 
-4. **ScentCap routes without ROUTES_TO / NAVIGATES_TO** — route nodes only.  
-   Fix: `element={<Comp}` → `ROUTES_TO` (prefer `pages/`); `navigate()` / `to=` / `<Navigate to=` → `NAVIGATES_TO`; stable `route:<path>` ids.
+7. **Nested Nest detect** — DeeFoodieApp `api/package.json` + `api/prisma/schema.prisma`.
 
-5. **Noise stacks** — PulseCap falsely `es-modules` (tests/scripts); ScentCap falsely `vanilla-globals` (public/js + vendor).  
-   Fix: skip `tests`/`e2e`/`qa`/`scripts`/`vendor` in walk; `config.excludeStacks`; CLI `--config`.
+## Spot-check
 
-## Pilot stats (post-fix)
+Automated structural verification (evidence file exists + snippet/name in source), ≥15 claims/app where graph allows:
 
-| | PulseCap | ScentCap |
-|---|---|---|
-| Stacks | html, vanilla-globals, service-worker, env-config | html, es-modules, routes-react, env-config |
-| Nodes | ~512 | ~813 |
-| Edges | ~912 | ~721 |
-| Screens / routes | 18 screens | 12 routes |
-| Backend presence | supabase/firebase/sqlite **absent** | same |
+| Combined | Precision |
+|---|---|
+| **314/314** | **100%** |
 
-## SPEC §10 answers (pilot)
+Evidence: `qa/architecture/SPOT-CHECK-ARCH05.json`.  
+Pulse/Scent ARCH-04 hand spot-check (60/60) remains in `SPOT-CHECK.json`.
 
-| Question | PulseCap | ScentCap |
-|---|---|---|
-| What files/screens/components/functions exist? | Yes — files + 18 `reg` screens + functions; components N/A (vanilla) | Yes — files, 12 routes, components, functions |
-| Where does data come from / go? | Partial — storage/SW keys + CALLS; display traces incomplete | Partial — Dexie/storage + IMPORTS/RENDERS; full action traces not yet wired from `primaryJourneys` |
-| What does each screen depend on? | ROUTES_TO + MODULE_CHAIN LOADS + go() callers | ROUTES_TO → page component; NAVIGATES_TO inbound |
-| What depends on each service? | Weak — few explicit service nodes | Weak — context/services via IMPORTS only |
-| Primary control → handler? | Partial — data-act + go(); not every onclick template | Partial — Link/navigate; onClick props via es-modules RENDERS/CALLS uneven |
-| Where is data stored? | SW cache names + storage nodes | storage + Dexie when present |
-| APIs / hosts / DB / env? | env keys; no remote API mapped as primary | env; local-first |
-| Disconnected / unused / duplicate / dead? | Findings present (orphans/unused) — need ARCH-07 triage | Same |
-| Hardcoded / mock / demo / no source? | Demo flag on demo files; HARDCODED when matched | Same |
-| Broken / unknown connections? | Some BROKEN HANDLES remain (template string-dispatch noise reduced) | Low BROKEN after excluding vanilla |
-| Impact if I change X? | Viewer impact mode works on extracted graph | Same |
+Backend presence (supabase/firebase/sqlite): **absent** on all 17 AUDIT runs.
 
-**Honest gap:** journey traces from `primaryJourneys` in config are not yet auto-materialized into `traces.actions` (ARCH-05/08 follow-up). Spot-check precision on structural edges is ≥95%.
+## Honest gaps (→ later ARCH)
+
+- Journey traces from `primaryJourneys` still not auto-materialized (`traces.actions`) — ARCH-08.
+- Findings triage → queue items — ARCH-07.
+- Per-app `docs/architecture/` + `architecture:analyze` script in each repo — follow-up.
+- CookCap is a single Next page (accurate); deeper recipe IA is component-graph only.
+- Hub Pages shell has few “screens”; product maps live in lab + each Cap.
+- LedgerCap still has many Navigation.go targets beyond primary tabs (noise screens, structurally true).
 
 ## Remaining ARCH items
 
 | ID | Item | Status |
 |---|---|---|
-| ARCH-01…03 | Core / viewer / adapters | ✅ |
-| ARCH-04 | Pilot PulseCap + ScentCap | ✅ this PR |
-| ARCH-05 | Roll-out all apps + hub | ❌ next |
-| ARCH-06 | Never publish maps (curl 404) | Partial (C-57) |
+| ARCH-01…04 | Core / viewer / adapters / Pulse+Scent pilot | ✅ |
+| ARCH-05 | Roll-out all apps + hub | ✅ this PR |
+| ARCH-06 | Never publish maps (curl 404) | Partial (C-57); curl gate TBD |
 | ARCH-07 | Findings → queue items | ❌ |
 | ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
 | ARCH-09 | Regenerate workflow | ❌ |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |
-
-## App-repo follow-up (not in this PR)
-
-Landing `architecture.config.json` + `docs/architecture/` into PulseCap / ScentCap themselves (copy from `qa/architecture/pilots/`) belongs with ARCH-05 per-app roll-out or a small follow-up commit in each app.

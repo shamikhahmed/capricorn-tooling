@@ -1,0 +1,12 @@
+{
+  "app": "IdeaCap",
+  "entryPoints": ["App.tsx", "index.ts"],
+  "excludeStacks": ["vanilla-globals"],
+  "features": ["home", "record", "notes", "settings"],
+  "primaryJourneys": [
+    { "id": "record", "label": "Home → Record", "steps": ["Home", "Record"] },
+    { "id": "detail", "label": "Home → Note detail", "steps": ["Home", "NoteDetail"] },
+    { "id": "settings", "label": "Open settings", "steps": ["Home", "Settings"] }
+  ],
+  "dashboardScreens": ["Home"]
+}

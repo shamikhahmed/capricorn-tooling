@@ -1,0 +1,9 @@
+{
+  "app": "DeeFoodieApp",
+  "entryPoints": ["mobile/lib/main.dart", "api/src/main.ts"],
+  "features": ["journal", "places", "map", "auth"],
+  "primaryJourneys": [
+    { "id": "home", "label": "Open journal home", "steps": ["home"] }
+  ],
+  "dashboardScreens": ["home"]
+}

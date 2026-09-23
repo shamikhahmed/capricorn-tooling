@@ -1,0 +1,18 @@
+{
+  "app": "MasteryCap",
+  "entryPoints": ["index.html", "js/app.js"],
+  "excludeStacks": ["es-modules"],
+  "dispatchPatterns": [
+    { "type": "tabs-tuples", "names": ["tabs"] },
+    { "type": "data-tab" },
+    { "type": "reg-go", "register": null, "navigate": "navigate" },
+    { "type": "data-act", "dispatcher": "handleAct" }
+  ],
+  "features": ["today", "campus", "practice", "records", "lesson"],
+  "primaryJourneys": [
+    { "id": "today", "label": "Open today", "steps": ["today"] },
+    { "id": "practice", "label": "Today → Practice", "steps": ["today", "practice"] },
+    { "id": "campus", "label": "Open campus", "steps": ["today", "campus"] }
+  ],
+  "dashboardScreens": ["today"]
+}
