@@ -18,12 +18,13 @@
     "tier1": "node shared/testing/tier1.mjs",
     "test:tier1": "node --test shared/testing/__tests__/tier1.test.mjs",
     "architecture:analyze": "node shared/architecture/analyze.mjs",
-    "architecture:test": "node --test shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs shared/architecture/__tests__/pages-unpublished.test.mjs shared/architecture/__tests__/findings-to-queue.test.mjs",
+    "architecture:test": "node --test shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs shared/architecture/__tests__/pages-unpublished.test.mjs shared/architecture/__tests__/findings-to-queue.test.mjs shared/architecture/__tests__/check-staleness.test.mjs",
     "architecture:viewer": "node shared/architecture/prepare-viewer.mjs",
     "architecture:viewer:stress": "node shared/architecture/prepare-viewer.mjs --stress 5000",
     "architecture:pages-404": "node scripts/verify-architecture-unpublished.mjs",
     "architecture:queue": "node scripts/architecture-findings-to-queue.mjs",
-    "test": "node --test shared/testing/__tests__/tier1.test.mjs shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs shared/architecture/__tests__/pages-unpublished.test.mjs shared/architecture/__tests__/findings-to-queue.test.mjs"
+    "architecture:check": "node scripts/architecture-check.mjs",
+    "test": "node --test shared/testing/__tests__/tier1.test.mjs shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs shared/architecture/__tests__/pages-unpublished.test.mjs shared/architecture/__tests__/findings-to-queue.test.mjs shared/architecture/__tests__/check-staleness.test.mjs"
   },
   "engines": {
     "node": ">=20"
