@@ -69,7 +69,7 @@ Apps whose Pages source was the **repo root** published internals: `qa/finish-lo
 - **PulseCap live:** wait for CI `deploy-pages` after merge; re-curl `CLAUDE.md` + `TIER1.json`.
 - **CarCap:** no GitHub Pages API on repo; `/CarCap/` served via hub mirror — already 404 on junk paths; confirm hub stage allowlist covers CarCap tree.
 - **DeeFoodieApp:** `/DeeFoodieApp/` returns 200 HTML stub — confirm no secrets; private app.
-- **ARCH-06:** after maps exist, curl `…/docs/architecture/index.html` (SoulCap `…/architecture/index.html`) must stay 404.
+- **ARCH-06:** after maps exist, curl `…/docs/architecture/index.html` (SoulCap `…/architecture/index.html`) must stay 404 — **done** on `finish/arch-06` (`npm run architecture:pages-404`).
 
 ### ARCH-01
 Fleet topology written: `docs/audit-2026-09-14/ARCHITECTURE-FLEET-MAP.md` (+ `shared/architecture/FLEET.md` pointer). Analyzer core already on main (`c941978` / `c628e40`, 16/16 tests). Next: ARCH-02 viewer.

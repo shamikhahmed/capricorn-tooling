@@ -97,3 +97,55 @@ Backend presence (supabase/firebase/sqlite): **absent** on all 17 AUDIT runs.
 | ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
 | ARCH-09 | Regenerate workflow | ❌ |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |
+
+---
+
+# ARCH-06 — Never publish architecture maps (curl 404)
+
+**Date:** 2026-09-23  
+**Tooling branch:** `finish/arch-06`  
+**Base:** `origin/main` @ `ac4c933` (ARCH-05 merge)
+
+## Scope
+
+Align with C-57 Pages allowlists: architecture map artifacts must never be served on GitHub Pages. Add a **live curl gate** (script + CI) that requires HTTP 404/410 for every fleet map URL.
+
+C-57 already stages allowlisted `_site` / `dist` / `out` / SoulCap `docs/` (maps belong at SoulCap repo-root `architecture/`, outside the Pages root). ARCH-06 closes the verification gap called out in SPEC §1.2 and master prompt §2.6.
+
+## Gate
+
+| Piece | Path |
+|---|---|
+| URL matrix + classifier | `shared/architecture/pages-unpublished.mjs` |
+| Live curl CLI | `scripts/verify-architecture-unpublished.mjs` |
+| npm | `npm run architecture:pages-404` |
+| Offline tests | `shared/architecture/__tests__/pages-unpublished.test.mjs` |
+| CI | `.github/workflows/architecture-pages-404.yml` (unit + live; weekly cron) |
+| Evidence | `qa/architecture/PAGES-404-ARCH06.json` |
+
+**Matrix:** 2 hosts × 16 targets (15 Caps/stubs + hub) × 3 artifacts  
+`index.html`, `architecture-data.json`, `architecture-data.js`  
+SoulCap path: `/SoulCap/architecture/…` (not `/docs/architecture/`).
+
+**Pass:** every URL → HTTP 404 or 410. Status 200 (or architecture payload in body) fails the gate. Network errors fail (no silent skip).
+
+**Verified (this branch):** **96/96** → HTTP 404 (`PAGES-404-ARCH06.json`). Hosts: `shamikhahmed.github.io` (apps live) + `cap-apps.github.io` (currently 404 site-wide; still gated).
+
+## Commands
+
+```bash
+git fetch origin && git checkout -b finish/arch-06 origin/main
+npm run architecture:test          # includes pages-unpublished offline tests
+npm run architecture:pages-404     # live curl; writes PAGES-404-ARCH06.json
+```
+
+## Remaining ARCH items
+
+| ID | Item | Status |
+|---|---|---|
+| ARCH-01…05 | Core / viewer / adapters / pilots / fleet | ✅ |
+| ARCH-06 | Never publish maps (curl 404) | ✅ this PR |
+| ARCH-07 | Findings → queue items | ❌ |
+| ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
+| ARCH-09 | Regenerate workflow | ❌ |
+| ARCH-10 | APP-REPORT Architecture section | ❌ |

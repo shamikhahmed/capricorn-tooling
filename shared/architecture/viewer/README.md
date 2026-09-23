@@ -32,3 +32,11 @@ Default view is **Focus** at depth 2; large graphs cluster by folder and use Can
 ## Never publish
 
 Do not serve `docs/architecture/` (or SoulCap `architecture/`) on GitHub Pages (C-57 / ARCH-06).
+
+Live gate (from capricorn-tooling):
+
+```bash
+npm run architecture:pages-404
+```
+
+Requires HTTP 404/410 for every fleet map URL (`PAGES-404-ARCH06.json`). CI: `.github/workflows/architecture-pages-404.yml`.
