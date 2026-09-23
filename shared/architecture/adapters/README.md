@@ -20,4 +20,7 @@ Adapters never mutate app source. Extraction implementations for mature stacks l
 ```bash
 npm run architecture:test
 node shared/architecture/analyze.mjs --root /path/to/App
+node shared/architecture/analyze.mjs --root /path/to/App --config qa/architecture/pilots/pulsecap.architecture.config.json --out qa/architecture/pilot-pulse
 ```
+
+ARCH-04 precision notes: PulseCap uses `dispatchPatterns: [{ type: 'reg-go' }]` + `lazyModuleMap: MODULE_CHAIN`; ScentCap uses `excludeStacks: ['vanilla-globals']`. See `qa/architecture/LOG.md`.

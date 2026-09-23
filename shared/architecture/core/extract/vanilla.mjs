@@ -155,6 +155,10 @@ export function extractVanilla(root, graph, config) {
 
     // String dispatch: handleAct('name') or handlers[act] / if (act === 'x') handlers
     for (const pat of dispatchPatterns) {
+      if (pat.type === 'reg-go') {
+        extractRegGo(jf, text, graph, globals, pat);
+        continue;
+      }
       if (pat.type === 'data-act' || pat.dispatcher) {
         const disp = pat.dispatcher || 'handleAct';
         // map of act -> handler name:  case 'x': return foo(  OR  'x': foo
@@ -163,6 +167,8 @@ export function extractVanilla(root, graph, config) {
         while ((m = caseRe.exec(text))) {
           const act = m[1] || m[2];
           const handler = m[3];
+          if (!isLiteralScreenId(act)) continue;
+          if (!/^[A-Za-z_$][\w$]*$/.test(handler || '')) continue;
           const line = lineAt(text, m.index);
           const evId = nodeId('event', jf.rel, act);
           graph.addNode({ type: 'event', name: act, file: jf.rel, line });
@@ -197,6 +203,9 @@ export function extractVanilla(root, graph, config) {
         }
       }
     }
+
+    // PulseCap-style lazy module map: MODULE_SRC = { 'screen': 'js/modules/….js' }
+    extractModuleSrc(jf, text, graph, config);
 
     // Hardcoded dashboard numbers: textContent/innerHTML/el(..., '42') style
     const hardRe = /(?:textContent|innerHTML)\s*=\s*['"](\d{1,6})['"]/g;
@@ -257,6 +266,163 @@ export function extractVanilla(root, graph, config) {
 
   void scriptOrder;
   void fs;
+}
+
+/**
+ * PulseCap-style screen registry: reg('screen', fn) + go('screen').
+ * @param {{ rel: string }} jf
+ * @param {string} text
+ * @param {import('../graph.mjs').ArchitectureGraph} graph
+ * @param {Map<string, { id: string }>} globals
+ * @param {{ register?: string, navigate?: string }} pat
+ */
+function extractRegGo(jf, text, graph, globals, pat) {
+  const register = pat.register || 'reg';
+  const navigate = pat.navigate || 'go';
+
+  const regRe = new RegExp(
+    '\\b' + escapeRe(register) + '\\s*\\(\\s*[\'"]([^\'"]+)[\'"]',
+    'g'
+  );
+  let m;
+  while ((m = regRe.exec(text))) {
+    const id = m[1];
+    if (!isLiteralScreenId(id)) continue;
+    const line = lineAt(text, m.index);
+    const screen = graph.addNode({
+      id: 'screen:' + id,
+      type: 'screen',
+      name: id,
+      file: jf.rel,
+      line,
+      layer: 'screen',
+    });
+    const caller = enclosingFunction(text, m.index, jf.rel, globals);
+    // Registration itself is structural evidence from the file
+    graph.addEdge({
+      from: caller || nodeId('file', jf.rel),
+      to: screen.id,
+      type: 'ROUTES_TO',
+      status: EDGE_STATUS.VERIFIED,
+      evidence: [makeEvidence(jf.rel, line, m[0] + '…')],
+      label: register + '(' + id + ')',
+    });
+  }
+
+  const goRe = new RegExp(
+    '\\b' + escapeRe(navigate) + '\\s*\\(\\s*[\'"]([^\'"]+)[\'"]',
+    'g'
+  );
+  while ((m = goRe.exec(text))) {
+    const id = m[1];
+    if (!isLiteralScreenId(id)) continue;
+    const line = lineAt(text, m.index);
+    const screen = graph.addNode({
+      id: 'screen:' + id,
+      type: 'screen',
+      name: id,
+      file: jf.rel,
+      line,
+      layer: 'screen',
+    });
+    const caller = enclosingFunction(text, m.index, jf.rel, globals);
+    graph.addEdge({
+      from: caller || nodeId('file', jf.rel),
+      to: screen.id,
+      type: 'NAVIGATES_TO',
+      status: EDGE_STATUS.VERIFIED,
+      evidence: [makeEvidence(jf.rel, line, m[0] + '…')],
+      label: navigate + '(' + id + ')',
+    });
+  }
+}
+
+/** Reject string-concat false positives like console.error('go(' + id + ')'). */
+function isLiteralScreenId(id) {
+  return typeof id === 'string' && /^[A-Za-z][A-Za-z0-9_-]*$/.test(id);
+}
+
+/**
+ * @param {{ rel: string }} jf
+ * @param {string} text
+ * @param {import('../graph.mjs').ArchitectureGraph} graph
+ * @param {object} [config]
+ */
+function extractModuleSrc(jf, text, graph, config) {
+  const mapNames = [];
+  if (config && config.lazyModuleMap) mapNames.push(config.lazyModuleMap);
+  // PulseCap evolved MODULE_SRC={} filled from MODULE_CHAIN — prefer both.
+  for (const fallback of ['MODULE_CHAIN', 'MODULE_SRC']) {
+    if (!mapNames.includes(fallback)) mapNames.push(fallback);
+  }
+
+  const arrayConsts = Object.create(null);
+  const arrConstRe = /(?:const|var|let)\s+([A-Za-z_$][\w$]*)\s*=\s*\[([^\]]*)\]/g;
+  let am;
+  while ((am = arrConstRe.exec(text))) {
+    arrayConsts[am[1]] = extractStringLiterals(am[2]);
+  }
+
+  for (const mapName of mapNames) {
+    const mapRe = new RegExp(
+      '(?:const|var|let|window\\.)\\s*' + escapeRe(mapName) + '\\s*=\\s*\\{',
+      'm'
+    );
+    const mm = mapRe.exec(text);
+    if (!mm) continue;
+    const openIdx = mm.index + mm[0].length - 1;
+    const body = extractBalanced(text, openIdx);
+    if (!body || !body.trim()) continue;
+
+    // 'screen': 'path.js'  OR  'screen': ['a.js', 'b.js']  OR  screen: OTHER_CONST
+    const pairRe =
+      /(?:['"]([^'"]+)['"]|([A-Za-z_$][\w$]*))\s*:\s*(?:['"]([^'"]+)['"]|\[([^\]]*)\]|([A-Za-z_$][\w$]*))/g;
+    let m;
+    while ((m = pairRe.exec(body))) {
+      const screenId = m[1] || m[2];
+      if (!isLiteralScreenId(screenId)) continue;
+      let srcs = [];
+      if (m[3]) srcs = [m[3]];
+      else if (m[4] != null) srcs = extractStringLiterals(m[4]);
+      else if (m[5] && arrayConsts[m[5]]) srcs = arrayConsts[m[5]].slice();
+      if (!srcs.length) continue;
+
+      const line = lineAt(text, openIdx + m.index);
+      const screen = graph.addNode({
+        id: 'screen:' + screenId,
+        type: 'screen',
+        name: screenId,
+        file: jf.rel,
+        line,
+        layer: 'screen',
+      });
+      for (const raw of srcs) {
+        const src = String(raw).replace(/^\.\//, '');
+        const fileNode = graph.addNode({
+          type: 'file',
+          name: path.basename(src),
+          file: src,
+          layer: 'logic',
+        });
+        graph.addEdge({
+          from: screen.id,
+          to: fileNode.id,
+          type: 'LOADS',
+          status: EDGE_STATUS.VERIFIED,
+          evidence: [makeEvidence(jf.rel, line, mapName + '[' + screenId + ']→' + src)],
+          label: 'lazy ' + screenId,
+        });
+      }
+    }
+  }
+}
+
+function extractStringLiterals(chunk) {
+  const out = [];
+  const re = /['"]([^'"]+)['"]/g;
+  let m;
+  while ((m = re.exec(chunk))) out.push(m[1]);
+  return out;
 }
 
 function escapeRe(s) {

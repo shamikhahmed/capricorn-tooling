@@ -1,0 +1,38 @@
+{
+  "app": "PulseCap",
+  "entryPoints": ["index.html", "js/app.js"],
+  "excludeStacks": ["es-modules"],
+  "dispatchPatterns": [
+    { "type": "reg-go", "register": "reg", "navigate": "go" },
+    { "type": "data-act", "dispatcher": "handleAct" }
+  ],
+  "lazyModuleMap": "MODULE_CHAIN",
+  "features": [
+    "dashboard",
+    "workout",
+    "progress",
+    "nutrition",
+    "recovery",
+    "settings",
+    "onboarding"
+  ],
+  "primaryJourneys": [
+    {
+      "id": "start-workout",
+      "label": "Open workout → start active session",
+      "steps": ["dashboard", "workout", "active"]
+    },
+    {
+      "id": "log-progress",
+      "label": "View progress",
+      "steps": ["dashboard", "progress"]
+    },
+    {
+      "id": "settings",
+      "label": "Open settings",
+      "steps": ["dashboard", "settings"]
+    }
+  ],
+  "dashboardScreens": ["dashboard"],
+  "demoSources": ["js/cap-demo-mode.js"]
+}

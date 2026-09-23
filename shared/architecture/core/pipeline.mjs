@@ -32,6 +32,12 @@ export function analyzeRepo(root, opts) {
   if (config.stacks && Array.isArray(config.stacks)) {
     graph.stacks = Array.from(new Set(graph.stacks.concat(config.stacks))).sort();
   }
+  if (config.excludeStacks && Array.isArray(config.excludeStacks)) {
+    const deny = new Set(config.excludeStacks);
+    graph.stacks = graph.stacks.filter(function (s) {
+      return !deny.has(s);
+    });
+  }
 
   graph.addNode({
     type: 'app',

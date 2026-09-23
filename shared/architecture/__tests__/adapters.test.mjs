@@ -109,3 +109,47 @@ test('runAdapters is idempotent on empty graph stacks for always adapters', () =
   assert.ok(ran.includes('backend-presence'));
   assert.ok(!ran.includes('vanilla-globals'), 'vanilla should not run without stack');
 });
+
+test('ARCH-04 vanilla reg-go: screens + NAVIGATES_TO + MODULE_SRC LOADS', () => {
+  const doc = analyzeFixture('vanilla-reg-go');
+  const screens = doc.nodes.filter(function (n) { return n.type === 'screen'; });
+  assert.ok(screens.some(function (s) { return s.name === 'home'; }), 'home screen');
+  assert.ok(screens.some(function (s) { return s.name === 'settings'; }), 'settings screen');
+  assert.ok(screens.some(function (s) { return s.name === 'lazy-plan'; }), 'lazy-plan screen');
+
+  const nav = doc.edges.filter(function (e) { return e.type === 'NAVIGATES_TO'; });
+  assert.ok(nav.some(function (e) {
+    return e.to === 'screen:home' && e.status === 'VERIFIED';
+  }), 'go(home) NAVIGATES_TO');
+
+  const routes = doc.edges.filter(function (e) { return e.type === 'ROUTES_TO'; });
+  assert.ok(routes.some(function (e) { return e.to === 'screen:home'; }), 'reg(home) ROUTES_TO');
+
+  const loads = doc.edges.filter(function (e) {
+    return e.type === 'LOADS' && e.from === 'screen:lazy-plan';
+  });
+  assert.ok(loads.length >= 1, 'MODULE_CHAIN lazy LOADS');
+  assert.ok(loads.every(function (e) { return e.status === 'VERIFIED'; }));
+
+  const workoutLoads = doc.edges.filter(function (e) {
+    return e.type === 'LOADS' && e.from === 'screen:workout';
+  });
+  assert.ok(workoutLoads.length >= 2, 'WORKOUT_CHAIN const resolved into LOADS');
+});
+
+test('ARCH-04 routes-react: ROUTES_TO element + NAVIGATES_TO Link', () => {
+  const doc = analyzeFixture('react-router');
+  const routeHome = doc.nodes.find(function (n) {
+    return n.type === 'route' && n.name === '/';
+  });
+  assert.ok(routeHome, 'route /');
+  assert.equal(routeHome.id, 'route:/');
+
+  const routeTo = doc.edges.filter(function (e) {
+    return e.type === 'ROUTES_TO' && e.from === 'route:/';
+  });
+  assert.ok(routeTo.length >= 1, 'ROUTES_TO from /');
+  assert.ok(routeTo.some(function (e) {
+    return /Home/.test(e.to) || /Home/.test(e.label || '');
+  }), 'ROUTES_TO targets Home');
+});

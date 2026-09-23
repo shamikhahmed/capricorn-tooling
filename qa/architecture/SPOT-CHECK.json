@@ -1,0 +1,378 @@
+{
+  "pulse": {
+    "precision": 1,
+    "right": 30,
+    "total": 30,
+    "results": [
+      {
+        "id": "P01",
+        "ok": true,
+        "detail": "js/engines.js:286 code✓",
+        "claim": "reg(dashboard)"
+      },
+      {
+        "id": "P02",
+        "ok": true,
+        "detail": "js/app.js:332 code✓",
+        "claim": "reg(workout)"
+      },
+      {
+        "id": "P03",
+        "ok": true,
+        "detail": "js/app.js:260 code✓",
+        "claim": "reg(active)"
+      },
+      {
+        "id": "P04",
+        "ok": true,
+        "detail": "js/app.js:511 code✓",
+        "claim": "reg(settings)"
+      },
+      {
+        "id": "P05",
+        "ok": true,
+        "detail": "js/modules/progress.js:4 code✓",
+        "claim": "reg(progress)"
+      },
+      {
+        "id": "P06",
+        "ok": true,
+        "detail": "js/app.js:262 code✓",
+        "claim": "reg(nutrition)"
+      },
+      {
+        "id": "P07",
+        "ok": true,
+        "detail": "js/modules/recovery.js:36 code✓",
+        "claim": "reg(recovery)"
+      },
+      {
+        "id": "P08",
+        "ok": true,
+        "detail": "js/app.js:492 code✓",
+        "claim": "reg(onboarding)"
+      },
+      {
+        "id": "P09",
+        "ok": true,
+        "detail": "js/app.js:257 code✓",
+        "claim": "screen my-plan"
+      },
+      {
+        "id": "P10",
+        "ok": true,
+        "detail": "screen:my-plan→file:js/modules/my-plan.js#my-plan.js [VERIFIED]",
+        "claim": "MODULE_CHAIN LOADS my-plan"
+      },
+      {
+        "id": "P11",
+        "ok": true,
+        "detail": "screen:equipment-setup→file:js/modules/equipment-setup.js#equipment-setup.js [VERIFIED]",
+        "claim": "MODULE_CHAIN LOADS equipment-setup"
+      },
+      {
+        "id": "P12",
+        "ok": true,
+        "detail": "file:js/modules/workout.js→screen:active [VERIFIED]",
+        "claim": "go(active)"
+      },
+      {
+        "id": "P13",
+        "ok": true,
+        "detail": "file:js/engines.js→screen:dashboard [VERIFIED]",
+        "claim": "go(dashboard)"
+      },
+      {
+        "id": "P14",
+        "ok": true,
+        "detail": "file:js/app.js→screen:workout [VERIFIED]",
+        "claim": "go(workout)"
+      },
+      {
+        "id": "P15",
+        "ok": true,
+        "detail": "file:js/modules/dashboard.js→screen:dashboard [VERIFIED]",
+        "claim": "reg→dashboard"
+      },
+      {
+        "id": "P16",
+        "ok": true,
+        "detail": "file:js/modules/settings.js→screen:settings [VERIFIED]",
+        "claim": "reg→settings"
+      },
+      {
+        "id": "P17",
+        "ok": true,
+        "detail": "function:js/app.js#reg",
+        "claim": "reg fn"
+      },
+      {
+        "id": "P18",
+        "ok": true,
+        "detail": "function:js/app.js#go",
+        "claim": "go fn"
+      },
+      {
+        "id": "P19",
+        "ok": true,
+        "detail": "entry:index.html#index.html→file:js/app.js#app.js [VERIFIED]",
+        "claim": "html LOADS app.js"
+      },
+      {
+        "id": "P20",
+        "ok": true,
+        "detail": "worker:sw.js#sw.js",
+        "claim": "SW node"
+      },
+      {
+        "id": "P21",
+        "ok": true,
+        "detail": "js/app.js:264 code✓",
+        "claim": "reg(photos)"
+      },
+      {
+        "id": "P22",
+        "ok": true,
+        "detail": "js/app.js:263 code✓",
+        "claim": "reg(rehab)"
+      },
+      {
+        "id": "P23",
+        "ok": true,
+        "detail": "js/modules/profiles.js:16 code✓",
+        "claim": "reg(profiles)"
+      },
+      {
+        "id": "P24",
+        "ok": true,
+        "detail": "js/app.js:261 code✓",
+        "claim": "reg(cardio)"
+      },
+      {
+        "id": "P25",
+        "ok": true,
+        "detail": "js/modules/coach.js:12 code✓",
+        "claim": "reg(briefing)"
+      },
+      {
+        "id": "P26",
+        "ok": true,
+        "detail": "count=28",
+        "claim": "SW CACHES"
+      },
+      {
+        "id": "P27",
+        "ok": true,
+        "detail": "function:js/app.js#go→function:js/app.js#_renderScreen [VERIFIED]",
+        "claim": "go CALLS"
+      },
+      {
+        "id": "P28",
+        "ok": true,
+        "detail": "js/modules/settings.js:667 code✓",
+        "claim": "reg(split-builder)"
+      },
+      {
+        "id": "P29",
+        "ok": true,
+        "detail": "file:js/engines.js→screen:settings [VERIFIED]",
+        "claim": "go(settings)"
+      },
+      {
+        "id": "P30",
+        "ok": true,
+        "detail": "screen:workout→file:js/data/exercise-db.js#exercise-db.js [VERIFIED]",
+        "claim": "WORKOUT_CHAIN LOADS exercise-db"
+      }
+    ]
+  },
+  "scent": {
+    "precision": 1,
+    "right": 30,
+    "total": 30,
+    "results": [
+      {
+        "id": "S01",
+        "ok": true,
+        "detail": "route:/ code✓",
+        "claim": "route /"
+      },
+      {
+        "id": "S02",
+        "ok": true,
+        "detail": "route:/collection code✓",
+        "claim": "route /collection"
+      },
+      {
+        "id": "S03",
+        "ok": true,
+        "detail": "route:/add code✓",
+        "claim": "route /add"
+      },
+      {
+        "id": "S04",
+        "ok": true,
+        "detail": "route:/advisor code✓",
+        "claim": "route /advisor"
+      },
+      {
+        "id": "S05",
+        "ok": true,
+        "detail": "route:/calendar code✓",
+        "claim": "route /calendar"
+      },
+      {
+        "id": "S06",
+        "ok": true,
+        "detail": "route:/analytics code✓",
+        "claim": "route /analytics"
+      },
+      {
+        "id": "S07",
+        "ok": true,
+        "detail": "route:/settings code✓",
+        "claim": "route /settings"
+      },
+      {
+        "id": "S08",
+        "ok": true,
+        "detail": "route:/layering code✓",
+        "claim": "route /layering"
+      },
+      {
+        "id": "S09",
+        "ok": true,
+        "detail": "route:/travel code✓",
+        "claim": "route /travel"
+      },
+      {
+        "id": "S10",
+        "ok": true,
+        "detail": "route:/onboarding code✓",
+        "claim": "route /onboarding"
+      },
+      {
+        "id": "S11",
+        "ok": true,
+        "detail": "route:/fragrance/:id code✓",
+        "claim": "route detail"
+      },
+      {
+        "id": "S12",
+        "ok": true,
+        "detail": "route:/→component:src/pages/Home.tsx#Home [VERIFIED]",
+        "claim": "/→Home"
+      },
+      {
+        "id": "S13",
+        "ok": true,
+        "detail": "route:/collection→component:src/pages/Collection.tsx#CollectionPage [VERIFIED]",
+        "claim": "/collection ROUTES_TO"
+      },
+      {
+        "id": "S14",
+        "ok": true,
+        "detail": "route:/onboarding→component:src/pages/Onboarding.tsx#Onboarding [VERIFIED]",
+        "claim": "/onboarding ROUTES_TO"
+      },
+      {
+        "id": "S15",
+        "ok": true,
+        "detail": "route:/fragrance/:id→component:src/pages/FragranceDetail.tsx#FragranceDetail [VERIFIED]",
+        "claim": "detail ROUTES_TO"
+      },
+      {
+        "id": "S16",
+        "ok": true,
+        "detail": "file:src/pages/AddFragrance.tsx→route:/collection [VERIFIED]",
+        "claim": "nav /collection"
+      },
+      {
+        "id": "S17",
+        "ok": true,
+        "detail": "file:src/components/advisor/SprayBodyMap.tsx→route:/advisor [VERIFIED]",
+        "claim": "nav /advisor"
+      },
+      {
+        "id": "S18",
+        "ok": true,
+        "detail": "file:src/pages/Advisor.tsx→route:/settings [VERIFIED]",
+        "claim": "nav /settings"
+      },
+      {
+        "id": "S19",
+        "ok": true,
+        "detail": "file:src/App.tsx→route:/ [VERIFIED]",
+        "claim": "nav /"
+      },
+      {
+        "id": "S20",
+        "ok": true,
+        "detail": "file:src/App.tsx→route:/onboarding [VERIFIED]",
+        "claim": "nav /onboarding"
+      },
+      {
+        "id": "S21",
+        "ok": true,
+        "detail": "file:src/App.tsx→file:@/components/ErrorBoundary#ErrorBoundary [INFERRED]",
+        "claim": "App IMPORTS"
+      },
+      {
+        "id": "S22",
+        "ok": true,
+        "detail": "file:src/main.tsx→file:@/components/ErrorBoundary#ErrorBoundary [INFERRED]",
+        "claim": "main IMPORTS"
+      },
+      {
+        "id": "S23",
+        "ok": true,
+        "detail": "component:src/pages/Home.tsx#Home",
+        "claim": "Home component"
+      },
+      {
+        "id": "S24",
+        "ok": true,
+        "detail": "component:src/components/layout/AppShell.tsx#AppShell",
+        "claim": "AppShell"
+      },
+      {
+        "id": "S25",
+        "ok": true,
+        "detail": "count=221",
+        "claim": "RENDERS"
+      },
+      {
+        "id": "S26",
+        "ok": true,
+        "detail": "route:*",
+        "claim": "catch-all"
+      },
+      {
+        "id": "S27",
+        "ok": true,
+        "detail": "route:/add→component:src/pages/AddFragrance.tsx#AddFragrance [VERIFIED]",
+        "claim": "/add ROUTES_TO"
+      },
+      {
+        "id": "S28",
+        "ok": true,
+        "detail": "route:/travel→component:src/pages/TravelKit.tsx#TravelKit [VERIFIED]",
+        "claim": "/travel ROUTES_TO"
+      },
+      {
+        "id": "S29",
+        "ok": true,
+        "detail": "file:src/pages/CalendarPage.tsx→route:/analytics [VERIFIED]",
+        "claim": "nav /analytics"
+      },
+      {
+        "id": "S30",
+        "ok": true,
+        "detail": "file:src/components/fragrance/FragranceWearGuide.tsx→route:/layering [VERIFIED]",
+        "claim": "nav /layering"
+      }
+    ]
+  },
+  "at": "2026-09-23T05:33:26.305Z",
+  "analyzerVersion": "1.2.0"
+}
