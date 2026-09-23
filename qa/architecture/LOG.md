@@ -80,7 +80,7 @@ Backend presence (supabase/firebase/sqlite): **absent** on all 17 AUDIT runs.
 ## Honest gaps (→ later ARCH)
 
 - Journey traces from `primaryJourneys` still not auto-materialized (`traces.actions`) — ARCH-08.
-- Findings triage → queue items — ARCH-07.
+- Findings triage → queue items — ARCH-07 ✅.
 - Per-app `docs/architecture/` + `architecture:analyze` script in each repo — follow-up.
 - CookCap is a single Next page (accurate); deeper recipe IA is component-graph only.
 - Hub Pages shell has few “screens”; product maps live in lab + each Cap.
@@ -93,7 +93,7 @@ Backend presence (supabase/firebase/sqlite): **absent** on all 17 AUDIT runs.
 | ARCH-01…04 | Core / viewer / adapters / Pulse+Scent pilot | ✅ |
 | ARCH-05 | Roll-out all apps + hub | ✅ this PR |
 | ARCH-06 | Never publish maps (curl 404) | ✅ PR #10 `bc7227c` |
-| ARCH-07 | Findings → queue items | ❌ |
+| ARCH-07 | Findings → queue items | ✅ (see ARCH-07 section below) |
 | ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
 | ARCH-09 | Regenerate workflow | ❌ |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |
@@ -145,7 +145,67 @@ npm run architecture:pages-404     # live curl; writes PAGES-404-ARCH06.json
 |---|---|---|
 | ARCH-01…05 | Core / viewer / adapters / pilots / fleet | ✅ |
 | ARCH-06 | Never publish maps (curl 404) | ✅ this PR |
-| ARCH-07 | Findings → queue items | ❌ |
+| ARCH-07 | Findings → queue items | ✅ (see ARCH-07 section below) |
+| ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
+| ARCH-09 | Regenerate workflow | ❌ |
+| ARCH-10 | APP-REPORT Architecture section | ❌ |
+
+---
+
+# ARCH-07 — Findings → Finish Program queue items
+
+**Date:** 2026-09-23  
+**Tooling branch:** `finish/arch-07`  
+**Base:** `origin/main` @ `402aab6` (post ARCH-06 progress wave)
+
+## Scope
+
+Turn analyzer **findings** into durable, actionable Finish Program items `<APP>-ARCH-<n>` with evidence and "Done when" text. Never auto-delete / auto-fix (SPEC §0.5, DECISIONS G-11, master prompt §2.6 ARCH-07).
+
+## Interpretation (smallest coherent)
+
+| Decision | Choice |
+|---|---|
+| Mapping | **1:1** — every finding → one queue item (stable sort: risk → warn → info, then kind, then finding id) |
+| Pickup path | Tooling `qa/architecture/queue/` + fleet `QUEUE-INDEX.{md,json}` (Finish Program reads here; not a parallel process). Per-app `qa/finish-loop/ARCH-QUEUE.md` copy is deferred — same IDs when apps land maps. |
+| Human MD vs machine JSON | JSON = full register; Markdown = priority slice (risk/warn) + info sample + pointer to JSON |
+| Priority | risk→P0, warn→P1, info→P2 (Finish Program works P0/P1 first) |
+| Proof apps | PulseCap + ScentCap + CarCap + VaultCap (CLI can scan all `pilot-*`) |
+
+## Deliverables
+
+| Piece | Path |
+|---|---|
+| Core | `shared/architecture/findings-to-queue.mjs` |
+| CLI | `scripts/architecture-findings-to-queue.mjs` |
+| npm | `npm run architecture:queue` |
+| Tests | `shared/architecture/__tests__/findings-to-queue.test.mjs` (in `architecture:test`) |
+| Index | `qa/architecture/QUEUE-INDEX.md` + `.json` |
+| Queues | `qa/architecture/queue/<App>-ARCH-QUEUE.{json,md}` |
+
+## Proof generation (committed)
+
+```bash
+npm run architecture:test          # 36/36
+npm run architecture:queue -- --apps PulseCap,ScentCap,CarCap,VaultCap
+```
+
+| App | Items | P0 | P1 | P2 |
+|---|---:|---:|---:|---:|
+| PulseCap | 444 | 0 | 15 | 429 |
+| ScentCap | 935 | 1 | 0 | 934 |
+| CarCap | 14 | 0 | 0 | 14 |
+| VaultCap | 593 | 0 | 153 | 440 |
+| **Total** | **1986** | **1** | **168** | **1817** |
+
+Example IDs: `PulseCap-ARCH-01` (BROKEN), `ScentCap-ARCH-01` (SECURITY / `VITE_FRAGANTY_API_KEY`).
+
+## Remaining ARCH items
+
+| ID | Item | Status |
+|---|---|---|
+| ARCH-01…06 | Core / viewer / adapters / pilots / fleet / Pages 404 | ✅ |
+| ARCH-07 | Findings → queue items | ✅ this PR |
 | ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
 | ARCH-09 | Regenerate workflow | ❌ |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |

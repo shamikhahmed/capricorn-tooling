@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "arch": "ARCH-07",
+  "appId": "CarCap",
+  "generatedAt": "2026-09-23T06:24:23.703Z",
+  "counts": {
+    "total": 14,
+    "bySeverity": {
+      "info": 14
+    },
+    "byKind": {
+      "ORPHAN": 5,
+      "UNUSED": 9
+    },
+    "byPriority": {
+      "P2": 14
+    }
+  },
+  "meta": {
+    "sourceApp": "carcap",
+    "sourceCommit": "234702a5fd72f68364027494532d349d2fd54655",
+    "analyzerVersion": "1.3.0",
+    "architectureGeneratedAt": "2026-09-23T05:45:39.399Z",
+    "sourcePath": "qa/architecture/pilot-car/architecture-data.json",
+    "mapping": "1:1 finding → item (ARCH-07)",
+    "neverAutoDelete": true
+  },
+  "items": [
+    {
+      "id": "CarCap-ARCH-01",
+      "n": 1,
+      "findingId": "F-001-ORPHAN",
+      "kind": "ORPHAN",
+      "severity": "info",
+      "priority": "P2",
+      "title": "ORPHAN: Unreachable from entry points: file:playwright.config.js#playwright.config.js",
+      "explanation": "Unreachable from entry points: file:playwright.config.js#playwright.config.js",
+      "nodes": [
+        "file:playwright.config.js#playwright.config.js"
+      ],
+      "evidence": [
+        "playwright.config.js:1 — playwright.config.js"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire into a real entry path, or remove only with proof it is unreachable (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-02",
+      "n": 2,
+      "findingId": "F-002-ORPHAN",
+      "kind": "ORPHAN",
+      "severity": "info",
+      "priority": "P2",
+      "title": "ORPHAN: Unreachable from entry points: file:sw.js#sw.js",
+      "explanation": "Unreachable from entry points: file:sw.js#sw.js",
+      "nodes": [
+        "file:sw.js#sw.js"
+      ],
+      "evidence": [
+        "sw.js:1 — sw.js"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire into a real entry path, or remove only with proof it is unreachable (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-03",
+      "n": 3,
+      "findingId": "F-003-ORPHAN",
+      "kind": "ORPHAN",
+      "severity": "info",
+      "priority": "P2",
+      "title": "ORPHAN: Unreachable from entry points: worker:sw.js#sw.js",
+      "explanation": "Unreachable from entry points: worker:sw.js#sw.js",
+      "nodes": [
+        "worker:sw.js#sw.js"
+      ],
+      "evidence": [
+        "sw.js:1 — sw.js"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire into a real entry path, or remove only with proof it is unreachable (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-04",
+      "n": 4,
+      "findingId": "F-004-ORPHAN",
+      "kind": "ORPHAN",
+      "severity": "info",
+      "priority": "P2",
+      "title": "ORPHAN: Unreachable from entry points: storage:sw.js#carcap-v8",
+      "explanation": "Unreachable from entry points: storage:sw.js#carcap-v8",
+      "nodes": [
+        "storage:sw.js#carcap-v8"
+      ],
+      "evidence": [
+        "sw.js:3 — carcap-v8"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire into a real entry path, or remove only with proof it is unreachable (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-05",
+      "n": 5,
+      "findingId": "F-005-ORPHAN",
+      "kind": "ORPHAN",
+      "severity": "info",
+      "priority": "P2",
+      "title": "ORPHAN: Unreachable from entry points: file:manifest.json#manifest.json",
+      "explanation": "Unreachable from entry points: file:manifest.json#manifest.json",
+      "nodes": [
+        "file:manifest.json#manifest.json"
+      ],
+      "evidence": [
+        "manifest.json:1 — manifest.json"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire into a real entry path, or remove only with proof it is unreachable (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-06",
+      "n": 6,
+      "findingId": "F-006-UNUSED",
+      "kind": "UNUSED",
+      "severity": "info",
+      "priority": "P2",
+      "title": "UNUSED: Exported/defined with no consumers: renderToday",
+      "explanation": "Exported/defined with no consumers: renderToday",
+      "nodes": [
+        "function:js/app.js#renderToday"
+      ],
+      "evidence": [
+        "js/app.js:147 — renderToday"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire a consumer, or remove only with proof it is unused (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-07",
+      "n": 7,
+      "findingId": "F-007-UNUSED",
+      "kind": "UNUSED",
+      "severity": "info",
+      "priority": "P2",
+      "title": "UNUSED: Exported/defined with no consumers: renderGarage",
+      "explanation": "Exported/defined with no consumers: renderGarage",
+      "nodes": [
+        "function:js/app.js#renderGarage"
+      ],
+      "evidence": [
+        "js/app.js:222 — renderGarage"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire a consumer, or remove only with proof it is unused (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-08",
+      "n": 8,
+      "findingId": "F-008-UNUSED",
+      "kind": "UNUSED",
+      "severity": "info",
+      "priority": "P2",
+      "title": "UNUSED: Exported/defined with no consumers: renderService",
+      "explanation": "Exported/defined with no consumers: renderService",
+      "nodes": [
+        "function:js/app.js#renderService"
+      ],
+      "evidence": [
+        "js/app.js:261 — renderService"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire a consumer, or remove only with proof it is unused (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-09",
+      "n": 9,
+      "findingId": "F-009-UNUSED",
+      "kind": "UNUSED",
+      "severity": "info",
+      "priority": "P2",
+      "title": "UNUSED: Exported/defined with no consumers: renderFuel",
+      "explanation": "Exported/defined with no consumers: renderFuel",
+      "nodes": [
+        "function:js/app.js#renderFuel"
+      ],
+      "evidence": [
+        "js/app.js:305 — renderFuel"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire a consumer, or remove only with proof it is unused (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-10",
+      "n": 10,
+      "findingId": "F-010-UNUSED",
+      "kind": "UNUSED",
+      "severity": "info",
+      "priority": "P2",
+      "title": "UNUSED: Exported/defined with no consumers: renderDocs",
+      "explanation": "Exported/defined with no consumers: renderDocs",
+      "nodes": [
+        "function:js/app.js#renderDocs"
+      ],
+      "evidence": [
+        "js/app.js:351 — renderDocs"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire a consumer, or remove only with proof it is unused (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-11",
+      "n": 11,
+      "findingId": "F-011-UNUSED",
+      "kind": "UNUSED",
+      "severity": "info",
+      "priority": "P2",
+      "title": "UNUSED: Exported/defined with no consumers: renderSettings",
+      "explanation": "Exported/defined with no consumers: renderSettings",
+      "nodes": [
+        "function:js/app.js#renderSettings"
+      ],
+      "evidence": [
+        "js/app.js:410 — renderSettings"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire a consumer, or remove only with proof it is unused (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-12",
+      "n": 12,
+      "findingId": "F-012-UNUSED",
+      "kind": "UNUSED",
+      "severity": "info",
+      "priority": "P2",
+      "title": "UNUSED: Exported/defined with no consumers: onClick",
+      "explanation": "Exported/defined with no consumers: onClick",
+      "nodes": [
+        "function:js/app.js#onClick"
+      ],
+      "evidence": [
+        "js/app.js:828 — onClick"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire a consumer, or remove only with proof it is unused (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-13",
+      "n": 13,
+      "findingId": "F-013-UNUSED",
+      "kind": "UNUSED",
+      "severity": "info",
+      "priority": "P2",
+      "title": "UNUSED: Exported/defined with no consumers: onChange",
+      "explanation": "Exported/defined with no consumers: onChange",
+      "nodes": [
+        "function:js/app.js#onChange"
+      ],
+      "evidence": [
+        "js/app.js:993 — onChange"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire a consumer, or remove only with proof it is unused (§74). Never auto-delete.",
+      "status": "open"
+    },
+    {
+      "id": "CarCap-ARCH-14",
+      "n": 14,
+      "findingId": "F-014-UNUSED",
+      "kind": "UNUSED",
+      "severity": "info",
+      "priority": "P2",
+      "title": "UNUSED: Exported/defined with no consumers: boot",
+      "explanation": "Exported/defined with no consumers: boot",
+      "nodes": [
+        "function:js/app.js#boot"
+      ],
+      "evidence": [
+        "js/app.js:1022 — boot"
+      ],
+      "doneWhen": "Investigate: keep (document why), wire a consumer, or remove only with proof it is unused (§74). Never auto-delete.",
+      "status": "open"
+    }
+  ]
+}
