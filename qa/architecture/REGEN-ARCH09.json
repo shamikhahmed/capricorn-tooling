@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "arch": "ARCH-09",
+  "gate": "architecture:regen",
+  "staleOnly": false,
+  "generatedAt": "2026-09-23T08:20:18.098Z",
+  "finishedAt": "2026-09-23T08:20:29.605Z",
+  "summary": {
+    "attempted": 5,
+    "ok": 5,
+    "failed": 0,
+    "skipped": 0
+  },
+  "coverage": {
+    "regeneratesPilots": true,
+    "requiresCapSiblings": true,
+    "failsOnFindings": false,
+    "ciWithoutSiblings": "dry-run / skip — see workflow architecture-regenerate.yml",
+    "note": "SPEC §9: regenerate after structural change. ARCH-08 check verifies freshness."
+  },
+  "results": [
+    {
+      "slug": "cook",
+      "ok": true,
+      "skipped": false,
+      "reason": null,
+      "error": null,
+      "mapDir": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/capricorn-tooling/qa/architecture/pilot-cook",
+      "analyzeRoot": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/CookCap",
+      "sourceCommit": "ae3075dafbe0e9126d263b077f4f8d323a8413aa",
+      "analyzerVersion": "1.3.0",
+      "nodes": 682,
+      "edges": 515,
+      "findings": 883
+    },
+    {
+      "slug": "ledger",
+      "ok": true,
+      "skipped": false,
+      "reason": null,
+      "error": null,
+      "mapDir": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/capricorn-tooling/qa/architecture/pilot-ledger",
+      "analyzeRoot": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/LedgerCap",
+      "sourceCommit": "f00d7fa7f2ac838bfbab10c963991cb29e33351b",
+      "analyzerVersion": "1.3.0",
+      "nodes": 1377,
+      "edges": 2494,
+      "findings": 1084
+    },
+    {
+      "slug": "pulse",
+      "ok": true,
+      "skipped": false,
+      "reason": null,
+      "error": null,
+      "mapDir": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/capricorn-tooling/qa/architecture/pilot-pulse",
+      "analyzeRoot": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/PulseCap",
+      "sourceCommit": "a1e865a63c64b30717575eb195bad7a55a6adbc6",
+      "analyzerVersion": "1.3.0",
+      "nodes": 517,
+      "edges": 923,
+      "findings": 445
+    },
+    {
+      "slug": "scent",
+      "ok": true,
+      "skipped": false,
+      "reason": null,
+      "error": null,
+      "mapDir": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/capricorn-tooling/qa/architecture/pilot-scent",
+      "analyzeRoot": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/ScentCap",
+      "sourceCommit": "a3b742d271daedd9eae12f978ba95d34d054bb30",
+      "analyzerVersion": "1.3.0",
+      "nodes": 816,
+      "edges": 713,
+      "findings": 937
+    },
+    {
+      "slug": "travel",
+      "ok": true,
+      "skipped": false,
+      "reason": null,
+      "error": null,
+      "mapDir": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/capricorn-tooling/qa/architecture/pilot-travel",
+      "analyzeRoot": "/Users/shamikhahmed/Projects/Cap/Cap-Apps/TravelCap",
+      "sourceCommit": "5758945501455ab7dd1722251b8f5d3fecb6a6a4",
+      "analyzerVersion": "1.3.0",
+      "nodes": 1143,
+      "edges": 983,
+      "findings": 1363
+    }
+  ]
+}

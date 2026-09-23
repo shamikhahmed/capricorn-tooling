@@ -1,0 +1,90 @@
+name: Architecture Regenerate (ARCH-09)
+
+# Regenerate / refresh architecture maps after structural analyzer or pilot-config change.
+# Full regen needs Cap-Apps siblings (local). CI always runs unit tests + dry-run discovery;
+# live regen runs when CAP_APPS_ROOT is set (optional self-hosted / workflow_dispatch secret).
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly — nudge freshness after app structural merges
+    - cron: '27 6 * * 1'
+  push:
+    branches: [main]
+    paths:
+      - 'shared/architecture/**'
+      - 'qa/architecture/pilots/**'
+      - 'scripts/architecture-regenerate.mjs'
+      - 'scripts/architecture-check.mjs'
+      - 'package.json'
+      - '.github/workflows/architecture-regenerate.yml'
+  pull_request:
+    paths:
+      - 'shared/architecture/**'
+      - 'qa/architecture/pilots/**'
+      - 'scripts/architecture-regenerate.mjs'
+      - 'scripts/architecture-check.mjs'
+      - 'package.json'
+      - '.github/workflows/architecture-regenerate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Architecture unit tests (incl. ARCH-09 regen)
+        run: npm run architecture:test
+      - name: Regenerate dry-run (sibling discovery)
+        run: npm run architecture:regen -- --dry-run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: regen-arch09-dry-run
+          path: qa/architecture/REGEN-ARCH09.json
+          retention-days: 30
+
+  regenerate-when-siblings:
+    runs-on: ubuntu-latest
+    needs: [unit]
+    # Only when an absolute Cap-Apps root is provided (local runners / dispatch inputs).
+    if: ${{ vars.CAP_APPS_ROOT != '' || secrets.CAP_APPS_ROOT != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Symlink Cap-Apps siblings (optional)
+        env:
+          CAP_APPS_ROOT: ${{ vars.CAP_APPS_ROOT || secrets.CAP_APPS_ROOT }}
+        run: |
+          set -euo pipefail
+          if [ -z "${CAP_APPS_ROOT}" ] || [ ! -d "${CAP_APPS_ROOT}" ]; then
+            echo "CAP_APPS_ROOT unset or missing — skip live regen"
+            exit 0
+          fi
+          # Expect Cap apps as siblings of this checkout's parent, or CAP_APPS_ROOT itself
+          echo "CAP_APPS_ROOT=${CAP_APPS_ROOT}"
+          parent="$(dirname "$GITHUB_WORKSPACE")"
+          for name in CookCap LedgerCap PulseCap ScentCap TravelCap AuraCap CarCap; do
+            if [ -d "${CAP_APPS_ROOT}/${name}" ] && [ ! -e "${parent}/${name}" ]; then
+              ln -s "${CAP_APPS_ROOT}/${name}" "${parent}/${name}" || true
+            fi
+          done
+          ls -la "${parent}" | head -40
+      - name: Regenerate stale pilots
+        run: npm run architecture:regen -- --stale
+      - name: Architecture check
+        run: npm run architecture:check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: regen-arch09-live
+          path: |
+            qa/architecture/REGEN-ARCH09.json
+            qa/architecture/CHECK-ARCH08.json
+          retention-days: 30
