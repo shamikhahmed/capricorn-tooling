@@ -3,9 +3,9 @@
 ## ⚠️ Owner review 3 (2026-09-16) — read first
 Hardened runner v2 on tooling — `TIER1.json` PASS only when real gates pass. Every app until then: **In progress — not verified.** Review 3 does **not** verify fleet Tier 1.
 
-Updated: 2026-09-23T05:30:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
+Updated: 2026-09-23T05:36:00Z · Prompt: **v2** + Review 3 + Engineering mode + ARCH
 
-Current step: **Step R** — CarCap hardened PASS on record; SoulCap main at v8.3.2; Pulse mobile LH + freshness/gallery gaps; **ARCH-03** landing → ARCH-04 pilot
+Current step: **Step R** — CarCap+SoulCap Tier1 PASS on main; Pulse/Scent/Steady/Vault/Cook evidence loops; ARCH-04 pilot
 
 ## Done
 - **C-29…C-33 ✅** hardened `tier1.mjs` + tests (tooling)
@@ -17,10 +17,11 @@ Current step: **Step R** — CarCap hardened PASS on record; SoulCap main at v8.
 - **C-57 🟡→mostly ✅** allowlisted Pages: Vault `b6f1334`, DeePony `4942677`, Ledger `355e660`, Mastery `f0c8ad2`, Steady `62227f2`, Prism `164b927`; Pulse scripts merge `65a037c`. Aura/Scent/Cook/Soul/hub already non-root artifacts.
 - **C-35 partial** CarCap+ScentCap contrast on main (CI green); SoulCap axe on stepR
 - **CarCap ✅** hardened Tier1 **PASS** on main after stepR merge `dcfa383` (re-verified 2026-09-23; LH+matrix+axe+kill-list green)
+- **SoulCap ✅** hardened Tier1 **PASS** on main via PR #11 (`32c6961`) — v8.3.2 Review 3 gates
 - Real LH historically on Soul/Pulse stepR — refresh required after newer UI (SoulCap main `v8.3.2`)
 
 ## Honest
-Most Caps still **FAIL** hardened tier1 (LH freshness/thresholds, gallery, axe, matrix). C-34 CI green ≠ Tier 1. C-57 ≠ Tier 1. ARCH-03 adapters not yet precision-validated on real Caps (**ARCH-04**). Stale PASS files (ScentCap/Mastery/Idea/DeeFoodie dated ≤2026-09-15) need re-run under current runner.
+CarCap + SoulCap **PASS** on main. Most other Caps still **FAIL** (LH thresholds, gallery, axe, matrix; ScentCap matrix blocked on __APP_READY__). C-34 CI green ≠ Tier 1. C-57 ≠ Tier 1. ARCH-03 adapters not yet precision-validated on real Caps (**ARCH-04**). Stale PASS files (ScentCap/Mastery/Idea/DeeFoodie dated ≤2026-09-15) need re-run under current runner.
 
 BLOCKED-EXTERNAL: Xcode / TestFlight / physical VO-TB (macOS VO+Safari OK for web)
 
