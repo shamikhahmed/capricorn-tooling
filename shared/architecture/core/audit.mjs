@@ -82,8 +82,24 @@ export function writeAuditMarkdown(doc, root) {
   }
   if (!(doc.features || []).length) lines.push('_No features configured._');
   lines.push('');
+  lines.push('## Backend presence (supabase / firebase / sqlite)');
+  lines.push('');
+  const bp = (doc.analyzerCoverage && doc.analyzerCoverage.backendPresence) || {};
+  const anyBackend = !!(bp.supabase || bp.firebase || bp.sqlite);
+  if (!anyBackend) {
+    lines.push('- Verified absence — no Supabase, Firebase, or SQLite usage detected.');
+  } else {
+    lines.push('- supabase: ' + !!bp.supabase);
+    lines.push('- firebase: ' + !!bp.firebase);
+    lines.push('- sqlite: ' + !!bp.sqlite);
+  }
+  lines.push('');
   lines.push('## Analyzer coverage');
   lines.push('');
+  const adaptersRun = (doc.analyzerCoverage && doc.analyzerCoverage.adaptersRun) || [];
+  if (adaptersRun.length) {
+    lines.push('- Adapters run: ' + adaptersRun.join(', '));
+  }
   const unresolved = (doc.analyzerCoverage && doc.analyzerCoverage.unresolved) || [];
   if (unresolved.length) {
     for (const u of unresolved) lines.push('- ' + u);

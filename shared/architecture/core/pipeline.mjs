@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { ArchitectureGraph } from './graph.mjs';
 import { detectStacks } from './detect.mjs';
-import { runExtractors } from './extract/index.mjs';
+import { runAdapters } from '../adapters/index.mjs';
 import { runAnalyses } from './analyses/index.mjs';
 import { computeStats } from './stats.mjs';
 import { canonicalize } from './serialize.mjs';
@@ -41,7 +41,9 @@ export function analyzeRepo(root, opts) {
     meta: { version: appMeta.appVersion },
   });
 
-  runExtractors(absRoot, graph, graph.stacks, config);
+  const adaptersRun = runAdapters(absRoot, graph, graph.stacks, config);
+  // Adapters (e.g. backend-presence) may append stacks
+  graph.stacks = Array.from(new Set(graph.stacks)).sort();
   runAnalyses(graph, { config, root: absRoot });
 
   const generatedAt = options.generatedAt || new Date().toISOString();
@@ -66,6 +68,8 @@ export function analyzeRepo(root, opts) {
     findings: graph.findings,
     analyzerCoverage: {
       unresolved: graph.unresolved.slice(),
+      adaptersRun: (graph.adaptersRun || adaptersRun || []).slice(),
+      backendPresence: graph.backendPresence || { supabase: false, firebase: false, sqlite: false },
     },
   });
 

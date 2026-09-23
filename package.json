@@ -18,10 +18,10 @@
     "tier1": "node shared/testing/tier1.mjs",
     "test:tier1": "node --test shared/testing/__tests__/tier1.test.mjs",
     "architecture:analyze": "node shared/architecture/analyze.mjs",
-    "architecture:test": "node --test shared/architecture/__tests__/architecture.test.mjs",
+    "architecture:test": "node --test shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs",
     "architecture:viewer": "node shared/architecture/prepare-viewer.mjs",
     "architecture:viewer:stress": "node shared/architecture/prepare-viewer.mjs --stress 5000",
-    "test": "node --test shared/testing/__tests__/tier1.test.mjs shared/architecture/__tests__/architecture.test.mjs"
+    "test": "node --test shared/testing/__tests__/tier1.test.mjs shared/architecture/__tests__/architecture.test.mjs shared/architecture/__tests__/adapters.test.mjs"
   },
   "engines": {
     "node": ">=20"

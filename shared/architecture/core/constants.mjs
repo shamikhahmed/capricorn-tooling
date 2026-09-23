@@ -1,6 +1,6 @@
 /** Architecture analyzer constants — SPEC §2 */
 
-export const ANALYZER_VERSION = '1.0.0';
+export const ANALYZER_VERSION = '1.1.0';
 export const SCHEMA_VERSION = 1;
 
 export const NODE_TYPES = Object.freeze([
