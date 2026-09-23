@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-23T06:24:23.796Z",
+  "arch": "ARCH-07",
+  "apps": 4,
+  "totalItems": 1986,
+  "entries": [
+    {
+      "appId": "CarCap",
+      "items": 14,
+      "bySeverity": {
+        "info": 14
+      },
+      "byKind": {
+        "ORPHAN": 5,
+        "UNUSED": 9
+      },
+      "byPriority": {
+        "P2": 14
+      },
+      "queueJson": "qa/architecture/queue/CarCap-ARCH-QUEUE.json",
+      "queueMd": "qa/architecture/queue/CarCap-ARCH-QUEUE.md",
+      "sourcePath": "qa/architecture/pilot-car/architecture-data.json",
+      "sourceCommit": "234702a5fd72f68364027494532d349d2fd54655"
+    },
+    {
+      "appId": "PulseCap",
+      "items": 444,
+      "bySeverity": {
+        "warn": 15,
+        "info": 429
+      },
+      "byKind": {
+        "BROKEN": 15,
+        "DUPLICATE": 7,
+        "ORPHAN": 365,
+        "UNUSED": 57
+      },
+      "byPriority": {
+        "P1": 15,
+        "P2": 429
+      },
+      "queueJson": "qa/architecture/queue/PulseCap-ARCH-QUEUE.json",
+      "queueMd": "qa/architecture/queue/PulseCap-ARCH-QUEUE.md",
+      "sourcePath": "qa/architecture/pilot-pulse/architecture-data.json",
+      "sourceCommit": "38687cb553067cacf87705291d127629e17ebb17"
+    },
+    {
+      "appId": "ScentCap",
+      "items": 935,
+      "bySeverity": {
+        "risk": 1,
+        "info": 934
+      },
+      "byKind": {
+        "SECURITY": 1,
+        "DUPLICATE": 12,
+        "ORPHAN": 726,
+        "UNUSED": 196
+      },
+      "byPriority": {
+        "P0": 1,
+        "P2": 934
+      },
+      "queueJson": "qa/architecture/queue/ScentCap-ARCH-QUEUE.json",
+      "queueMd": "qa/architecture/queue/ScentCap-ARCH-QUEUE.md",
+      "sourcePath": "qa/architecture/pilot-scent/architecture-data.json",
+      "sourceCommit": "5fcd4f88978a55167f04a6d666eb6d6c30fee5ab"
+    },
+    {
+      "appId": "VaultCap",
+      "items": 593,
+      "bySeverity": {
+        "warn": 153,
+        "info": 440
+      },
+      "byKind": {
+        "BROKEN": 153,
+        "DUPLICATE": 12,
+        "ORPHAN": 388,
+        "UNUSED": 40
+      },
+      "byPriority": {
+        "P1": 153,
+        "P2": 440
+      },
+      "queueJson": "qa/architecture/queue/VaultCap-ARCH-QUEUE.json",
+      "queueMd": "qa/architecture/queue/VaultCap-ARCH-QUEUE.md",
+      "sourcePath": "qa/architecture/pilot-vault/architecture-data.json",
+      "sourceCommit": "79284989805c6e7a9618663340d738bad10bab78"
+    }
+  ]
+}

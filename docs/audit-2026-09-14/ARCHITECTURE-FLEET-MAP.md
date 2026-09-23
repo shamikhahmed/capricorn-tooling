@@ -1,6 +1,6 @@
 # Cap Fleet — Architecture Connection Map (fleet level)
 
-**Status:** ARCH-01–06 ✅ (core + viewer + adapters + Pulse/Scent pilot + fleet roll-out + Pages 404 gate). This document is the **fleet topology** map: how apps, hub, tooling, and shared contracts relate. Per-app interactive maps: `qa/architecture/pilot-*` in tooling (land into each repo’s `docs/architecture/` as follow-up).
+**Status:** ARCH-01–07 ✅ (core + viewer + adapters + Pulse/Scent pilot + fleet roll-out + Pages 404 gate + findings→queue). This document is the **fleet topology** map: how apps, hub, tooling, and shared contracts relate. Per-app interactive maps: `qa/architecture/pilot-*` in tooling (land into each repo’s `docs/architecture/` as follow-up).
 
 **Never published** on GitHub Pages (C-57 / ARCH-06 ✅). Lives only in `capricorn-tooling/docs/audit-*` and each app’s private `docs/architecture/` (SoulCap: `architecture/` at repo root). Live proof: `npm run architecture:pages-404` → `qa/architecture/PAGES-404-ARCH06.json`.
 
@@ -131,8 +131,12 @@ architecture.config.json
 shared/architecture/analyze.mjs ── adapters (vanilla / react / nest / dart / SW / env …)
         │
         ├─ architecture-data.json (+ .js for file://)
-        ├─ AUDIT.md (findings → work items ARCH-07)
+        ├─ AUDIT.md (findings → work items ARCH-07 ✅)
         └─ viewer copy under docs/architecture/ (ARCH-02; never Pages)
+                 │
+                 ▼
+        qa/architecture/queue/<App>-ARCH-QUEUE.{json,md}
+        + QUEUE-INDEX.md (Finish Program pickup)
 ```
 
 Pilot order: PulseCap → ScentCap → roll-out (ARCH-04 ✅ / ARCH-05 ✅).
@@ -151,7 +155,7 @@ Outputs (tooling): `qa/architecture/pilot-*/` via `--config qa/architecture/pilo
 | ARCH-04 | Pilot PulseCap + ScentCap | ✅ Done (`finish/arch-04`; analyzer 1.2.0; reg/go + MODULE_CHAIN; routes ROUTES_TO/NAVIGATES_TO; spot-check 60/60; tests 24/24; `qa/architecture/`) |
 | ARCH-05 | Roll-out all apps + hub | ✅ Done (`finish/arch-05`; analyzer 1.3.0; 17 apps; spot-check 314/314; tests 27/27; nest nested detect; Next src/app; tabs-id/tuples) |
 | ARCH-06 | Never publish maps (C-57 curl 404) | ✅ Done (`finish/arch-06`); `npm run architecture:pages-404` + CI workflow; matrix hosts × apps × artifacts → 404/410 |
-| ARCH-07 | Findings → queue items | ❌ |
+| ARCH-07 | Findings → queue items | ✅ Done (`finish/arch-07`); `npm run architecture:queue` → `qa/architecture/queue/` + `QUEUE-INDEX`; proof Pulse+Scent+Car+Vault = **1986** items |
 | ARCH-08 | Staleness + `architecture:check` + G15 | ❌ |
 | ARCH-09 | Regenerate workflow on structural change | ❌ |
 | ARCH-10 | APP-REPORT Architecture section | ❌ |

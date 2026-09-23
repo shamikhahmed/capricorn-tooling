@@ -1,8 +1,9 @@
-# Architecture analyze outputs (ARCH-04 pilot + ARCH-05 roll-out + ARCH-06 gate)
+# Architecture analyze outputs (ARCH-04…07)
 
 Configs: `qa/architecture/pilots/*.architecture.config.json`  
 Spot-checks: `SPOT-CHECK.json` (ARCH-04 Pulse/Scent 60/60), `SPOT-CHECK-ARCH05.json` (fleet 314/314)  
 Pages 404: `PAGES-404-ARCH06.json` (ARCH-06 live curl; regenerate with `npm run architecture:pages-404`)  
+**Findings → queue (ARCH-07):** `QUEUE-INDEX.md` + `queue/<App>-ARCH-QUEUE.{json,md}`  
 Log: `LOG.md`
 
 Regenerate (do not commit large `architecture-data.*` / viewer copies — gitignored under `pilot-*/`):
@@ -11,7 +12,7 @@ Regenerate (do not commit large `architecture-data.*` / viewer copies — gitign
 # from capricorn-tooling/
 npm run architecture:test
 
-# example
+# example analyze
 node shared/architecture/analyze.mjs \
   --root ../CarCap \
   --config qa/architecture/pilots/carcap.architecture.config.json \
@@ -19,6 +20,11 @@ node shared/architecture/analyze.mjs \
 
 # ARCH-06 — maps must not be on GitHub Pages
 npm run architecture:pages-404
+
+# ARCH-07 — findings → Finish Program queue items
+npm run architecture:queue
+# proof set:
+npm run architecture:queue -- --apps PulseCap,ScentCap,CarCap,VaultCap
 ```
 
 Open locally (file://): `qa/architecture/pilot-<slug>/index.html` after regenerate.
@@ -28,3 +34,4 @@ Open locally (file://): `qa/architecture/pilot-<slug>/index.html` after regenera
 | pilot-pulse / pilot-scent | PulseCap / ScentCap (ARCH-04) |
 | pilot-aura … pilot-vault | remaining Caps |
 | pilot-lab / pilot-hub | capricorn-lab / shamikhahmed.github.io |
+| queue/ | `<App>-ARCH-<n>` items (ARCH-07) |
