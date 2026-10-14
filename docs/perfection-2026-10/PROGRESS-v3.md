@@ -51,7 +51,10 @@ Backlog stamped VERIFIED for P0/P1 on released Caps (see per-app `AUDIT-2026-10-
 |---|---|---|
 | CarCap / ScentCap / TravelCap / SoulCap / PulseCap / MasteryCap | light+dark present | high / bridged |
 | CookCap | light-only → capture agent | ~54% |
-| Vault / Ledger / DeePony / Idea | capture agents in flight | pending |
+| VaultCap | **18** shots · light+dark · iphone/ipad/mac · live URL | v3 manifest @ main |
+| LedgerCap | **24** shots · light+dark · iphone/ipad/mac · live URL | v3 manifest @ main |
+| DeePonyCap | **24** shots · light+dark · iphone/ipad/mac · live URL | v3 manifest @ main |
+| IdeaCap | capture agent | pending |
 | Prism / Steady / Aura | partial/legacy | Prism ~51% |
 
 ## Docs (§11)
@@ -70,5 +73,4 @@ audit:truth OK; Brain notes updated; remaining pitch/MONETIZATION gaps → L or 
 7. FINAL-REPORT-v3 — **NOT YET** (blocked on §15.2)
 
 ## In flight
-- Gallery-Vault/Ledger/DeePony
-- Gallery-Idea/Travel/Cook/Pulse
+- Gallery-Idea/Travel/Cook/Pulse (Cook light-only)
