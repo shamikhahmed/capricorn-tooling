@@ -9,6 +9,7 @@ Built once here; every Cap copies the viewer into its repo root.
 | `screen-gallery.js` | Manifest v2 reader, filters, rails, lightbox |
 | `capture-helpers.mjs` | Fixed clock, freeze CSS, viewport map, path helpers |
 | `check-completeness.mjs` | Gate **G17** |
+| `inventory-fleet.mjs` | Fleet-wide G17 summary (all Caps) |
 | `INSTALL.md` | How Builders copy the viewer |
 | `CAPTURE.md` | Capture rules (`CAPTURE_GALLERY=1`) |
 
