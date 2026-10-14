@@ -47,14 +47,14 @@ PW: `PW_CORE=…/MasteryCap/node_modules/playwright-core`, `PLAYWRIGHT_BROWSERS_
 Backlog stamped VERIFIED for P0/P1 on released Caps (see per-app `AUDIT-2026-10-14-*.md`). Gallery items remain OPEN/L where dark/v3 incomplete.
 
 ## Gallery / MATRIX (blocking §15.2)
-Updated: 2026-10-14 Gallery Builder wave (IdeaCap @fbf4151 · TravelCap @fbde183 · CookCap @d7d7fd3 · PulseCap @1e1e0a9)
+Updated: 2026-10-14 Gallery Builder (IdeaCap @fbf4151 · TravelCap @fbde183 · CookCap @1d6969c · PulseCap PLS-V3-3 **L**)
 
 | App | Shots | G17 | Notes |
 |---|---:|---|---|
-| IdeaCap | **24** | ✅ | schema v2 · hub capture · main surfaces × light/dark × iphone/ipad/mac |
-| TravelCap | **78** | ✅ | refresh 2026-10-14 · TRV-V3-7 Lighthouse still OPEN (not gallery) |
-| CookCap | **61** (9 dark) | partial | CK-V3-5 dark book chrome · full dark matrix **L** (recipe step flaky on hub) |
-| PulseCap | **178** | version ✅ | manifest **6.45.0** recaptured · schema-v2 migrate **L** (PLS-V3-3) |
+| IdeaCap | **24** | ✅ | schema v2 · hub capture · 4 surfaces × light/dark × iphone/ipad/mac |
+| TravelCap | **78** | ✅ | refresh 2026-10-14 · G-3 **Passport desk** (no Passport OS) · TRV-V3-7 Lighthouse OPEN |
+| CookCap | **18** (**9** dark) | ✅ | CK-V3-5 hub `/?demo=1` · Cover/Contents/Recipe × light/dark × devices |
+| PulseCap | **176** (manifest **6.43.1**) | **L** | PLS-V3-3 time-box — skipped full refresh vs app **6.45.0** |
 | CarCap / ScentCap / SoulCap / MasteryCap | v3 | partial | legacy INVENTORY table noise on G17 |
 | VaultCap / LedgerCap / DeePonyCap | 18–24 | ✅ | prior Gallery wave |
 | Prism / Steady / Aura | legacy | **L** | stale manifests |
