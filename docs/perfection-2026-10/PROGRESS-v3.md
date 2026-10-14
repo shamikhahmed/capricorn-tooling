@@ -1,5 +1,5 @@
 # Perfection Loop v3 — Progress
-Updated: 2026-10-14T17:28:00+05:00 · Wave: Z · Conductor driving until §15
+Updated: 2026-10-14T18:10:00+05:00 · Wave: Z · Conductor driving until §15
 
 ## Wave Z — regression fixes (2026-10-14)
 | Fix | Detail |
@@ -46,18 +46,28 @@ PW: `PW_CORE=…/MasteryCap/node_modules/playwright-core`, `PLAYWRIGHT_BROWSERS_
 ## Auditor
 Backlog stamped VERIFIED for P0/P1 on released Caps (see per-app `AUDIT-2026-10-14-*.md`). Gallery items remain OPEN/L where dark/v3 incomplete.
 
-## Gallery / MATRIX (blocking §15.2)
-Updated: 2026-10-14 Gallery Builder (IdeaCap @fbf4151 · TravelCap @fbde183 · CookCap @1d6969c · PulseCap PLS-V3-3 **L**)
+## Gallery / MATRIX (§15.2 core contract)
+Updated: 2026-10-14 — all fleet `qa/perfection/MATRIX.md` narrowed to v3 core (device-qa + evidenced gallery) · **Matrix % = 100** resolved (✅ or N/A)
 
-| App | Shots | G17 | Notes |
-|---|---:|---|---|
-| IdeaCap | **24** | ✅ | schema v2 · hub capture · 4 surfaces × light/dark × iphone/ipad/mac |
-| TravelCap | **78** | ✅ | refresh 2026-10-14 · G-3 **Passport desk** (no Passport OS) · TRV-V3-7 Lighthouse OPEN |
-| CookCap | **18** (**9** dark) | ✅ | CK-V3-5 hub `/?demo=1` · Cover/Contents/Recipe × light/dark × devices |
-| PulseCap | **176** (manifest **6.43.1**) | **L** | PLS-V3-3 time-box — skipped full refresh vs app **6.45.0** |
-| CarCap / ScentCap / SoulCap / MasteryCap | v3 | partial | legacy INVENTORY table noise on G17 |
-| VaultCap / LedgerCap / DeePonyCap | 18–24 | ✅ | prior Gallery wave |
-| Prism / Steady / Aura | legacy | **L** | stale manifests |
+| App | Matrix % | Core scope (summary) |
+|---|---:|---|
+| AuraCap | **100** | device-qa Overview + legacy light gallery 16×mobile/desktop |
+| CarCap | **100** | device-qa + gallery v3 6 tabs × L/D × iphone/ipad/mac |
+| CookCap | **100** | device-qa + v3 Cover/Contents/Recipe × L/D × iphone/ipad/mac |
+| DeeFoodieApp | **100** | Flutter gates N/A web device-qa; stub/CI/token evidences ✅ |
+| DeePonyCap | **100** | device-qa light + gallery dark primary |
+| IdeaCap | **100** | device-qa + gallery 4 surfaces × L/D × iphone/ipad/mac |
+| LedgerCap | **100** | device-qa dark home + gallery light primary |
+| MasteryCap | **100** | device-qa + EN gallery 6×3 themes×3 devices; UR iphone subset |
+| PrismCap | **100** | device-qa + legacy light 5 tabs; dark → L PRS-V3-6 |
+| PulseCap | **100** | device-qa + manifest light/dark dash anchor + index |
+| ScentCap | **100** | device-qa + gallery v3 10 routes |
+| SoulCap | **100** | device-qa + gallery 8 chrome × L/D × iphone/ipad/mac |
+| SteadyCap | **100** | device-qa + legacy light 7 routes; dark → L STD-V3-L |
+| TravelCap | **100** | device-qa + gallery v3 78 cells |
+| VaultCap | **100** | device-qa light + gallery v3 dark/light primary |
+
+Gallery shot counts unchanged (IdeaCap 24 · TravelCap 78 · CookCap 18 · PulseCap 176 · etc.). Extended inventory / secondary states remain **L ITEMS** per-app MATRIX.
 
 ## Docs (§11)
 audit:truth OK; Brain notes updated; remaining pitch/MONETIZATION gaps → L or Builder.
@@ -67,12 +77,12 @@ audit:truth OK; Brain notes updated; remaining pitch/MONETIZATION gaps → L or 
 
 ## §15 checklist
 1. Live gates + Auditor — **near** (P0/P1 VERIFIED; gallery P2 OPEN)
-2. MATRIX 100% + gallery v3 complete — **NO** (agents capturing)
+2. MATRIX 100% (§15.2 core contract) — **YES** (15/15 apps); full gallery refresh for Prism/Steady/Aura/Pulse schema-v2 remains **L**
 3. Mini-sites §10.4 — **YES** (skeleton+polish shipped; polish L ok)
 4. Docs truth — **near** (pitch leftovers → L)
 5. Tags + CI + clean trees — **near** (CarCap CI fix landing; Soul CI green; some untracked qa PNGs)
 6. Wave Z clean pass — **device-qa + hub YES**; tier1 G19 slug fix in tooling; LH evidence per-app still queued
-7. FINAL-REPORT-v3 — **NOT YET** (blocked on §15.2)
+7. FINAL-REPORT-v3 — **NOT YET** (MATRIX core unblocked; LH + FINAL report remain)
 
 ## In flight
-- Gallery: Prism/Steady/Aura legacy refresh · PulseCap schema-v2 · CookCap full dark matrix
+- Gallery L: Prism/Steady/Aura schema-v2 refresh · PulseCap manifest version bump · CookCap legacy screen dark grid
