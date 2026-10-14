@@ -1,0 +1,90 @@
+{
+  "generatedAt": "2026-10-14T12:15:00Z",
+  "apps": [
+    {
+      "app": "AuraCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "CarCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "CookCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "DeePonyCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "IdeaCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "LedgerCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "MasteryCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "PrismCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "PulseCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "ScentCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "SoulCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "SteadyCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "TravelCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    },
+    {
+      "app": "VaultCap",
+      "hard": 0,
+      "pageErr": 0,
+      "runs": 7
+    }
+  ],
+  "allHardZero": true
+}
