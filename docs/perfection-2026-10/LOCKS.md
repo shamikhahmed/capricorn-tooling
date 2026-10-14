@@ -18,12 +18,12 @@ Updated: 2026-10-14T12:05:00Z
 | CookCap | Builder-CookCap | 2026-10-14T12:00:00Z | 3.6.1 #418 hotfix · G-8 cookcap-v42 · local+live device-qa |
 | IdeaCap | — | — | free (Phase I 2.1.0 @4a9560c / v2.1.0 · hub b7b835f) |
 | CarCap | — | — | free (Phase I **1.1.0** @b3b2c4e / tag v1.1.0 · hub f1e07bb · **Release-Verifier 7/7** @main) |
-| MasteryCap | — | — | free (Phase I 51.10.0 @a2e801b / v51.10.0 · live 7/7 · APP-REPORT @f82edce) | — | free (51.10.0 / v51.10.0 live · Builder released) | 2026-10-14T11:18:57Z | Wave C perfection/masterycap-v3 · MST-V3-1/2/3 |
+| MasteryCap | — | — | free (Phase I 51.10.0 @a2e801b / v51.10.0 · tip 37d7ec5 · live 7/7 · APP-REPORT @f82edce) |
 | DeePonyCap | — | — | free (Phase I 3.9.0 · tag v3.9.0 · tip bfca914 · APP-REPORT-v3) |
 | capricorn-tooling/shared/gallery | Gallery-Engineer | 2026-10-14T10:52:00Z | v3 viewer |
 | capricorn-tooling/scripts + shared (exc. gallery) | — (released) | 2026-10-14T11:07:19Z | Tooling-Engineer pushed `perfection/tooling-v3` @ 224b76a |
-| capricorn-lab | — | — | released (rsync+Website pushed) |
-| shamikhahmed.github.io | — | — | **Hub:** remove stale `PrismCap/` after own-Pages 4.6.0 confirmed |
+| capricorn-lab | Hub-Engineer | 2026-10-14T12:05:00Z | §10.4 minisites · deploy-hub · catalog sync |
+| shamikhahmed.github.io | Hub-Engineer | 2026-10-14T12:05:00Z | remove stale PrismCap/SoulCap · rsync · hub screenshots |
 | AuraCap | — | — | free (5.5.0 released · tag v5.5.0 · APP-REPORT-v3) |
 | ScentCap | — | — | free (Phase I 2.2.0 @cea2468 / v2.2.0 · live 7/7 · SCN-V3-4 gallery OPEN) |
 

@@ -11,7 +11,7 @@ Updated: 2026-10-14T12:05:00Z · Wave: D→Z · Conductor driving until §15
 | DeePonyCap | **3.9.0** | live 7/7 |
 | SteadyCap | **2.6.0** | live 7/7 |
 | VaultCap | **5.3.0** | merge `ea8b773` · tip `740b7bd` · tag `v5.3.0` · `vaultcap-v93` · live 7/7 tap=0 · VLT-V3-3/4 OPEN · `VaultCap/` soft-tap = false positive (VLT-V3-6) |
-| MasteryCap | **51.10.0** | live 7/7 |
+| MasteryCap | **51.10.0** | merge `a2e801b` · tip `37d7ec5` · tag `v51.10.0` · SW `masterycap-v51100` · live 7/7 · APP-REPORT-v3 @`f82edce` |
 | ScentCap | **2.2.0** | live 7/7 · SCN-V3-4 gallery OPEN |
 | AuraCap | **5.5.0** | live 7/7 · AUR-V3-4 L |
 | CarCap | **1.1.0** | hub f1e07bb · live 7/7 hard=0 · tag v1.1.0 @b3b2c4e · Release-Verifier ✅ |
