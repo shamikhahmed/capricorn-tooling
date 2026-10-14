@@ -1,7 +1,7 @@
 # Locks — Perfection Loop v3
 Format: `repo → agent → since → purpose`
 
-Updated: 2026-10-14T11:06:35Z
+Updated: 2026-10-14T11:07:19Z
 
 | Repo | Agent | Since | Purpose |
 |---|---|---|---|
@@ -12,7 +12,7 @@ Updated: 2026-10-14T11:06:35Z
 | CookCap | Builder-CookCap | pending | Wave A P0 CK-V3-1 |
 | IdeaCap | Builder-IdeaCap | 2026-10-14T10:53:00Z | Wave A perfection/ideacap-v3 · IDA-V3-1/2 FIXED → Auditor |
 | capricorn-tooling/shared/gallery | Gallery-Engineer | 2026-10-14T10:52:00Z | v3 viewer |
-| capricorn-tooling/scripts + shared (exc. gallery) | Tooling-Engineer | pending | Wave A G16–G19 |
+| capricorn-tooling/scripts + shared (exc. gallery) | — (released) | 2026-10-14T11:07:19Z | Tooling-Engineer pushed `perfection/tooling-v3` @ 224b76a |
 | capricorn-lab | Hub-Engineer | 2026-10-14T11:06:00Z | Wave A mini-site expand |
 | shamikhahmed.github.io | Hub-Engineer | 2026-10-14T11:06:00Z | Wave A mini-site expand |
 

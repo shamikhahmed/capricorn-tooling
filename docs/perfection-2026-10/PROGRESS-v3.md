@@ -26,7 +26,7 @@ Updated: 2026-10-14T11:06:57Z · Wave: B · Agents: Builder-PrismCap (locked)
 ## Hand-off — Tooling Engineer (G16–G19)
 - **When:** 2026-10-14T11:06:35Z
 - **Repo:** capricorn-tooling
-- **Branch:** `perfection/tooling-v3`
+- **Branch:** `perfection/tooling-v3` @ `224b76a`
 - **Items closed:** G16 device-qa · G17 gallery v3 · G18 docs truth · G19 mini-site LH wired into `shared/testing/tier1.mjs` (`npm run tier1`)
 - **Evidence:** `npm test -- shared/testing/__tests__/tier1*.mjs` → 20/20 pass; device-qa CarCap smoke with `PW_CORE=…/MasteryCap/node_modules/playwright-core` → 7/7 clean, summary JSON shape for G16
 - **How invoked:** app `npm run tier1` → `node ../capricorn-tooling/shared/testing/tier1.mjs` runs G1–G15 then G16–G19
