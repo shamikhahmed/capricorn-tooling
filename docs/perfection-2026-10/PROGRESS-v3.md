@@ -34,7 +34,15 @@ Updated: 2026-10-14T11:12:00Z · Wave: A · Hub mini-sites expanded + pushed
 - **Open:** none for tooling Wave A; release lock after push
 - **Next:** Conductor merge/review; Builders produce `qa/perfection/device/device-qa.json` + inventory/gallery for G16/G17
 
+## Hand-off — Builder-CookCap (Auditor)
+- **When:** 2026-10-14T11:15:00Z
+- **Branch:** `perfection/cookcap-v3`
+- **FIXED (Builder):** CK-V3-1 (hydration #418), CK-V3-2 (INPUT targets), CK-V3-3 (`public/VERSION.json`), CK-V3-4 (already on main), CK-V3-5 (gallery viewer + dark prep)
+- **Evidence:** `CookCap/qa/perfection/{baseline,device}/device-qa.json` — hard=0, pageErr=0, tap&lt;32=0 (baseline); STATE + commands in `CookCap/qa/perfection/STATE.md`
+- **Auditor:** re-run from clean checkout; only Auditor marks ✅ VERIFIED
+
 ## Done (newest first)
+- **Builder-CookCap Wave A:** CK-V3-1..5 FIXED on `perfection/cookcap-v3`; device-qa 7/7 hard-clean, 0 pageerrors; hand-off Auditor. — 2026-10-14T11:15:00Z
 - **Hub-Engineer Wave A expand:** regenerated all 15 `/apps/<slug>/` + `apps/index.html`; legacy `<slug>.html` → mini-sites (N-1); DeeFoodie private-beta (no install); `?app=<slug>` confirmed (Playwright: `vaultcap` window after boot with `?nolock=1&app=vaultcap&view=desktop`). lab tip `e334cf5`, hub tip `979020e`. PrismCap/SoulCap hub copies retained (Wave D). — 2026-10-14T11:12:00Z
 - Tooling Engineer: G16–G19 gates on `perfection/tooling-v3` (see hand-off).
 - Phase 0 finish/* → main pushed: Travel, Cook, Idea, Vault, Steady, Ledger, Aura, Prism, DeePony; Car+Soul on main.

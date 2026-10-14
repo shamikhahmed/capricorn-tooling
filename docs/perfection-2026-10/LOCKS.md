@@ -10,7 +10,7 @@ Updated: 2026-10-14T11:07:49Z
 | TravelCap | Builder-TravelCap | 2026-10-14T11:06:35Z | phases G–H gallery+docs |
 | VaultCap | Builder-VaultCap | 2026-10-14T11:05:50Z | Wave B perfection/vaultcap-v3 · VLT-V3-1 + wip review |
 | SteadyCap | Builder-SteadyCap | 2026-10-14T11:07:49Z | Wave B perfection/steadycap-v3 · STD-V3-1/2/3/4 |
-| CookCap | Builder-CookCap | pending | Wave A P0 CK-V3-1 |
+| CookCap | Builder-CookCap | 2026-10-14T11:10:00Z | Wave A CK-V3-1..5 FIXED → Auditor |
 | IdeaCap | Builder-IdeaCap | 2026-10-14T10:53:00Z | Wave A perfection/ideacap-v3 · IDA-V3-1/2 FIXED → Auditor |
 | DeePonyCap | Builder-DeePonyCap | 2026-10-14T11:10:00Z | Wave B perfection/deeponycap-v3 · DPY-V3-1/2 |
 | capricorn-tooling/shared/gallery | Gallery-Engineer | 2026-10-14T10:52:00Z | v3 viewer |
