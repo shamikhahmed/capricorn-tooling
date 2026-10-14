@@ -47,15 +47,17 @@ PW: `PW_CORE=…/MasteryCap/node_modules/playwright-core`, `PLAYWRIGHT_BROWSERS_
 Backlog stamped VERIFIED for P0/P1 on released Caps (see per-app `AUDIT-2026-10-14-*.md`). Gallery items remain OPEN/L where dark/v3 incomplete.
 
 ## Gallery / MATRIX (blocking §15.2)
-| App | Gallery | MATRIX |
-|---|---|---|
-| CarCap / ScentCap / TravelCap / SoulCap / PulseCap / MasteryCap | light+dark present | high / bridged |
-| CookCap | light-only → capture agent | ~54% |
-| VaultCap | **18** shots · light+dark · iphone/ipad/mac · live URL | v3 manifest @ main |
-| LedgerCap | **24** shots · light+dark · iphone/ipad/mac · live URL | v3 manifest @ main |
-| DeePonyCap | **24** shots · light+dark · iphone/ipad/mac · live URL | v3 manifest @ main |
-| IdeaCap | capture agent | pending |
-| Prism / Steady / Aura | partial/legacy | Prism ~51% |
+Updated: 2026-10-14 Gallery Builder wave (IdeaCap @fbf4151 · TravelCap @fbde183 · CookCap @d7d7fd3 · PulseCap @1e1e0a9)
+
+| App | Shots | G17 | Notes |
+|---|---:|---|---|
+| IdeaCap | **24** | ✅ | schema v2 · hub capture · main surfaces × light/dark × iphone/ipad/mac |
+| TravelCap | **78** | ✅ | refresh 2026-10-14 · TRV-V3-7 Lighthouse still OPEN (not gallery) |
+| CookCap | **61** (9 dark) | partial | CK-V3-5 dark book chrome · full dark matrix **L** (recipe step flaky on hub) |
+| PulseCap | **178** | version ✅ | manifest **6.45.0** recaptured · schema-v2 migrate **L** (PLS-V3-3) |
+| CarCap / ScentCap / SoulCap / MasteryCap | v3 | partial | legacy INVENTORY table noise on G17 |
+| VaultCap / LedgerCap / DeePonyCap | 18–24 | ✅ | prior Gallery wave |
+| Prism / Steady / Aura | legacy | **L** | stale manifests |
 
 ## Docs (§11)
 audit:truth OK; Brain notes updated; remaining pitch/MONETIZATION gaps → L or Builder.
@@ -73,4 +75,4 @@ audit:truth OK; Brain notes updated; remaining pitch/MONETIZATION gaps → L or 
 7. FINAL-REPORT-v3 — **NOT YET** (blocked on §15.2)
 
 ## In flight
-- Gallery-Idea/Travel/Cook/Pulse (Cook light-only)
+- Gallery: Prism/Steady/Aura legacy refresh · PulseCap schema-v2 · CookCap full dark matrix

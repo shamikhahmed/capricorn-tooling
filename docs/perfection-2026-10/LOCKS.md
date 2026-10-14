@@ -15,7 +15,7 @@ Updated: 2026-10-14T12:28:00Z
 | PrismCap | — | — | free (MATRIX @09e31b2 · 51% · PRS-V3-4/5/6 OPEN) |
 | VaultCap | — (released) | 2026-10-14T12:45:00Z | Gallery-Builder pushed v3 gallery @ main |
 | SteadyCap | — | — | free (Phase I 2.6.0 @c6c8f23 / v2.6.0 · live verified) |
-| CookCap | Gallery-Builder | 2026-10-14T12:38:00Z | CK-V3-5 dark gallery capture |
+| CookCap | — | — | free (3.6.1 @d7d7fd3 · CK-V3-5 dark partial 9 shots) |
 | IdeaCap | — | — | free (2.1.0 @fbf4151 · gallery 24 shots G17 ✅) |
 | CarCap | — | — | free (Phase I **1.1.0** @d31c666 · CI fix gallery helpers · tag v1.1.0 · hub f1e07bb · live 7/7) |
 | MasteryCap | — | — | free (Phase I 51.10.0 @a2e801b / v51.10.0 · tip 37d7ec5 · live 7/7 · APP-REPORT @f82edce) |
