@@ -4,8 +4,8 @@ Updated: 2026-10-14T17:28:00+05:00 · Wave: Z · Conductor driving until §15
 ## Wave Z — regression fixes (2026-10-14)
 | Fix | Detail |
 |---|---|
-| **CarCap CI** | Run [38563020939](https://github.com/shamikhahmed/CarCap/actions/runs/38563020939) failed: Playwright loaded `tests/gallery.spec.mjs` which imported missing sibling `capricorn-tooling/…/capture-helpers.mjs`. Vendored `tests/helpers/gallery-capture-helpers.mjs` (TravelCap/SoulCap pattern). |
-| **G19 mini-site probe** | Tier1 probed `/apps/PulseCap/` (404); live mini-sites are lowercase catalog slugs (`/apps/pulsecap/` → 200). `minisite-lh-gate.mjs` now lowercases hub slug (+ optional `minisiteSlug` / `hubSlug` in VERSION.json). |
+| **CarCap CI** | Run [38563020939](https://github.com/shamikhahmed/CarCap/actions/runs/38563020939) failed: Playwright loaded `tests/gallery.spec.mjs` which imported missing sibling `capricorn-tooling/…/capture-helpers.mjs`. Fix **CarCap @d31c666** — vendored `tests/helpers/gallery-capture-helpers.mjs`; CI [38563759579](https://github.com/shamikhahmed/CarCap/actions/runs/38563759579) **success**. |
+| **G19 mini-site probe** | Tier1 probed `/apps/PulseCap/` (404); live mini-sites are lowercase catalog slugs (`/apps/pulsecap/` → 200). Fix **capricorn-tooling @fe6a550** — `minisite-lh-gate.mjs` lowercases hub slug (+ optional `minisiteSlug` / `hubSlug` in VERSION.json). |
 
 ## Wave Z — device-qa LIVE (14/14 hard=0 pageErr=0)
 Evidence: `capricorn-tooling/docs/perfection-2026-10/wave-z-regression/SUMMARY.json`
