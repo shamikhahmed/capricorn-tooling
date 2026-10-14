@@ -34,3 +34,14 @@ ScentCap ✅ → AuraCap → PulseCap → SteadyCap → PrismCap → DeePonyCap 
 - Regenerate gallery on every release, in the release commit.
 - CI must be green before tag.
 - Bump swCache with any asset change or users get stale builds.
+
+## Perfection Loop v3 additions (2026-10-14)
+
+| # | Item | Definition of done |
+|---|------|--------------------|
+| 8 | **Gallery v3** | Manifest schema v2; light **and** dark (MasteryCap: +sepia); shared viewer from `capricorn-tooling/shared/gallery/` copied as `screen-gallery.html` + assets; completeness gate G17 |
+| 9 | **device-qa gate (G16)** | `npm run tier1` enforces 0 hard failures, 0 `tap<32px`, 0 `text<11px`, 0 page errors on local prod build. Always set `PW_CORE` + `PLAYWRIGHT_BROWSERS_PATH=$HOME/Library/Caches/ms-playwright` (N-2) |
+| 10 | **Mini-site** | Hub page at `https://shamikhahmed.github.io/apps/<slug>/` (N-1); legacy `<slug>.html` redirects to mini-site; primary CTA opens the app |
+| 11 | **Docs truth (G18)** | Versions in docs = `VERSION.json` = `package.json` = SW cache; every fenced npm script exists; no “…OS” product names for Caps; no stale fleet counts |
+
+Program: `capricorn-tooling/docs/perfection-2026-10/CURSOR-PERFECTION-LOOP.md`.

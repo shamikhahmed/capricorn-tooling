@@ -13,10 +13,25 @@ import test from 'node:test';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const TIER1 = path.join(HERE, '..', 'tier1.mjs');
 
-function runTier1(fixtureRoot) {
+/** Skip v3 gates in legacy fixtures — G1–G15 behaviour under test. */
+const SKIP_V3 = {
+  TIER1_SKIP_G16: '1',
+  TIER1_SKIP_G17: '1',
+  TIER1_SKIP_G18: '1',
+  TIER1_SKIP_G19: '1',
+};
+
+function runTier1(fixtureRoot, extraEnv = {}) {
   return spawnSync(process.execPath, [TIER1], {
     cwd: fixtureRoot,
-    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_LH: '0', TIER1_SKIP_MATRIX: '0' },
+    env: {
+      ...process.env,
+      TIER1_SKIP_CI: '1',
+      TIER1_SKIP_LH: '0',
+      TIER1_SKIP_MATRIX: '0',
+      ...SKIP_V3,
+      ...extraEnv,
+    },
     encoding: 'utf8',
   });
 }
@@ -93,7 +108,7 @@ test('C-32: missing axe dir fails', () => {
   });
   const r = spawnSync(process.execPath, [TIER1], {
     cwd: root,
-    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_LH: '1', TIER1_SKIP_GALLERY: '1' },
+    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_LH: '1', TIER1_SKIP_GALLERY: '1', ...SKIP_V3 },
     encoding: 'utf8',
   });
   assert.notEqual(r.status, 0);
@@ -120,6 +135,7 @@ test('C-32: __APP_READY__ only in tests fails', () => {
       TIER1_SKIP_MATRIX: '1',
       TIER1_SKIP_AXE: '1',
       TIER1_SKIP_GALLERY: '1',
+      ...SKIP_V3,
     },
     encoding: 'utf8',
   });
@@ -148,6 +164,7 @@ test('C-32: test.skip without gallery allowlist fails', () => {
       TIER1_SKIP_MATRIX: '1',
       TIER1_SKIP_AXE: '1',
       TIER1_SKIP_GALLERY: '1',
+      ...SKIP_V3,
     },
     encoding: 'utf8',
   });
@@ -178,7 +195,7 @@ test('C-30: null LCP/TBT/CLS fails', () => {
   });
   const r = spawnSync(process.execPath, [TIER1], {
     cwd: root,
-    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_MATRIX: '1', TIER1_SKIP_AXE: '1', TIER1_SKIP_GALLERY: '1' },
+    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_MATRIX: '1', TIER1_SKIP_AXE: '1', TIER1_SKIP_GALLERY: '1', ...SKIP_V3 },
     encoding: 'utf8',
   });
   assert.notEqual(r.status, 0);
@@ -208,6 +225,7 @@ test('C-29: rem font-size below 0.6875rem counts as sub-11', () => {
       TIER1_SKIP_MATRIX: '1',
       TIER1_SKIP_AXE: '1',
       TIER1_SKIP_GALLERY: '1',
+      ...SKIP_V3,
     },
     encoding: 'utf8',
   });
@@ -229,7 +247,7 @@ test('C-31: missing matrix-results.json fails', () => {
   });
   const r = spawnSync(process.execPath, [TIER1], {
     cwd: root,
-    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_LH: '1', TIER1_SKIP_AXE: '1', TIER1_SKIP_GALLERY: '1' },
+    env: { ...process.env, TIER1_SKIP_CI: '1', TIER1_SKIP_LH: '1', TIER1_SKIP_AXE: '1', TIER1_SKIP_GALLERY: '1', ...SKIP_V3 },
     encoding: 'utf8',
   });
   assert.notEqual(r.status, 0);

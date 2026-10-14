@@ -17,8 +17,16 @@
  *   TIER1_SKIP_AXE — set to 1 to skip axe JSON gate
  *   TIER1_SKIP_GALLERY — set to 1 to skip gallery freshness
  *   TIER1_SKIP_ARCH — set to 1 to skip G15 architecture map check (ARCH-08)
+ *   TIER1_SKIP_G16 / TIER1_SKIP_DEVICE_QA — skip G16 device-qa thresholds
+ *   TIER1_SKIP_G17 / TIER1_SKIP_GALLERY_V3 — skip G17 gallery v3 completeness
+ *   TIER1_SKIP_G18 / TIER1_SKIP_DOCS_TRUTH — skip G18 docs truth
+ *   TIER1_SKIP_G19 / TIER1_SKIP_MINISITE_LH — skip G19 mini-site Lighthouse
+ *   TIER1_SKIP_LIVE_MINISITE — skip live /apps/<slug>/ probe inside G19
  *   TIER1_CI_WORKFLOW — exact Actions workflow name (or qa/finish-loop/CI-WORKFLOW.txt)
  *   TIER1_LIVE_VERSION — "warn" (default) or "fail" for live VERSION.json
+ *
+ * v3 gates (Perfection Loop §8.3): G16 device-qa · G17 gallery v3 · G18 docs truth · G19 mini-site LH
+ * Invoked automatically by `npm run tier1` (this file). G1–G15 behaviour unchanged.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -28,6 +36,10 @@ import {
   checkArchitectureMap,
   resolveMapDir,
 } from '../architecture/check-staleness.mjs';
+import { checkDeviceQaGate } from './v3/device-qa-gate.mjs';
+import { checkGalleryV3Gate } from './v3/gallery-v3-gate.mjs';
+import { checkDocsTruthGate } from './v3/docs-truth-gate.mjs';
+import { checkMinisiteLhGate } from './v3/minisite-lh-gate.mjs';
 
 const ROOT = process.cwd();
 const OUT_DIR = path.join(ROOT, 'qa', 'finish-loop');
@@ -748,6 +760,47 @@ function checkArchitectureG15() {
   add(false, 'g15:architecture', detail);
 }
 
+/** G16 — device-qa thresholds (Perfection Loop §8.2). */
+function checkG16DeviceQa() {
+  if (process.env.TIER1_SKIP_G16 === '1' || process.env.TIER1_SKIP_DEVICE_QA === '1') {
+    warn('g16:device-qa', 'skipped');
+    return;
+  }
+  const r = checkDeviceQaGate(ROOT);
+  add(r.ok, r.id, r.detail);
+}
+
+/** G17 — gallery v3 completeness (§9.6); delegates to shared/gallery when present. */
+function checkG17GalleryV3() {
+  if (process.env.TIER1_SKIP_G17 === '1' || process.env.TIER1_SKIP_GALLERY_V3 === '1') {
+    warn('g17:gallery-v3', 'skipped');
+    return;
+  }
+  const r = checkGalleryV3Gate(ROOT);
+  add(r.ok, r.id, r.detail);
+}
+
+/** G18 — docs truth (§11.4). */
+function checkG18DocsTruth() {
+  if (process.env.TIER1_SKIP_G18 === '1' || process.env.TIER1_SKIP_DOCS_TRUTH === '1') {
+    warn('g18:docs-truth', 'skipped');
+    return;
+  }
+  const r = checkDocsTruthGate(ROOT);
+  add(r.ok, r.id, r.detail);
+}
+
+/** G19 — mini-site Lighthouse; N/A when mini-site missing. */
+function checkG19MinisiteLh() {
+  if (process.env.TIER1_SKIP_G19 === '1' || process.env.TIER1_SKIP_MINISITE_LH === '1') {
+    warn('g19:minisite-lh', 'skipped');
+    return;
+  }
+  const r = checkMinisiteLhGate(ROOT);
+  if (r.na) warn(r.id, r.detail);
+  else add(r.ok, r.id, r.detail);
+}
+
 function checkPackageScripts() {
   const pkg = tryRead('package.json');
   if (!pkg) {
@@ -779,6 +832,10 @@ function main() {
   checkLiveVersion(ver);
   checkSinks();
   checkArchitectureG15();
+  checkG16DeviceQa();
+  checkG17GalleryV3();
+  checkG18DocsTruth();
+  checkG19MinisiteLh();
 
   const kills = killListScan();
   add(kills.rawHex === 0, 'kill:raw-hex', String(kills.rawHex));

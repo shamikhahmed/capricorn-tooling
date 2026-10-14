@@ -1,0 +1,2248 @@
+[
+  {
+    "app": "VaultCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/VaultCap/?demo=1",
+    "file": "VaultCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [
+      "Skip to content"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "VaultCap — Everything you own. Encrypted. · Capricorn Systems",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "VaultCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/VaultCap/?demo=1",
+    "file": "VaultCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [
+      "Skip to content"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "VaultCap — Everything you own. Encrypted. · Capricorn Systems",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "VaultCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/VaultCap/?demo=1",
+    "file": "VaultCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [
+      "Skip to content"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "VaultCap — Everything you own. Encrypted. · Capricorn Systems",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "VaultCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/VaultCap/?demo=1",
+    "file": "VaultCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [
+      "Skip to content"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "VaultCap — Everything you own. Encrypted. · Capricorn Systems",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "VaultCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/VaultCap/?demo=1",
+    "file": "VaultCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "VaultCap — Everything you own. Encrypted. · Capricorn Systems",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "VaultCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/VaultCap/?demo=1",
+    "file": "VaultCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "VaultCap — Everything you own. Encrypted. · Capricorn Systems",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "VaultCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/VaultCap/?demo=1",
+    "file": "VaultCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [
+      "Skip to content"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "VaultCap — Everything you own. Encrypted. · Capricorn Systems",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "PulseCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/PulseCap/?demo=1",
+    "file": "PulseCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — PulseCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "PulseCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/PulseCap/?demo=1",
+    "file": "PulseCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — PulseCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "PulseCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/PulseCap/?demo=1",
+    "file": "PulseCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — PulseCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "PulseCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/PulseCap/?demo=1",
+    "file": "PulseCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — PulseCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "PulseCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/PulseCap/?demo=1",
+    "file": "PulseCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — PulseCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "PulseCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/PulseCap/?demo=1",
+    "file": "PulseCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — PulseCap",
+    "errors": [
+      "Blocked call to navigator.vibrate because user hasn't tapped on the frame or any embedded frame yet: https://www.chromestatus.com/feature/5644273861001216."
+    ],
+    "bad": [],
+    "soft": [
+      "1 console err"
+    ]
+  },
+  {
+    "app": "PulseCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/PulseCap/?demo=1",
+    "file": "PulseCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — PulseCap",
+    "errors": [
+      "Blocked call to navigator.vibrate because user hasn't tapped on the frame or any embedded frame yet: https://www.chromestatus.com/feature/5644273861001216."
+    ],
+    "bad": [],
+    "soft": [
+      "1 console err"
+    ]
+  },
+  {
+    "app": "PrismCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/PrismCap/",
+    "file": "PrismCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [
+      "INPUT"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "PrismCap",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 503 ()"
+    ],
+    "bad": [],
+    "soft": [
+      "1 tap<32px",
+      "1 console err"
+    ]
+  },
+  {
+    "app": "PrismCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/PrismCap/",
+    "file": "PrismCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [
+      "Favorite Tic-Tac-Toe",
+      "Favorite Shadow Protocol",
+      "Favorite Hot Device",
+      "Change",
+      "+ Add"
+    ],
+    "smallCount": 5,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "PrismCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "5 tap<32px"
+    ]
+  },
+  {
+    "app": "PrismCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/PrismCap/",
+    "file": "PrismCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [
+      "Change",
+      "+ Add"
+    ],
+    "smallCount": 2,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "PrismCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "2 tap<32px"
+    ]
+  },
+  {
+    "app": "PrismCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/PrismCap/",
+    "file": "PrismCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [
+      "Change"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "PrismCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "PrismCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/PrismCap/",
+    "file": "PrismCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "PrismCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "PrismCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/PrismCap/",
+    "file": "PrismCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "PrismCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "PrismCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/PrismCap/",
+    "file": "PrismCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [
+      "Favorite Tic-Tac-Toe",
+      "Favorite Shadow Protocol",
+      "Favorite Hot Device",
+      "Change",
+      "+ Add"
+    ],
+    "smallCount": 5,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "PrismCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "5 tap<32px"
+    ]
+  },
+  {
+    "app": "SteadyCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/SteadyCap/?demo=1",
+    "file": "SteadyCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — SteadyCap",
+    "errors": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "bad": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "soft": []
+  },
+  {
+    "app": "SteadyCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/SteadyCap/?demo=1",
+    "file": "SteadyCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — SteadyCap",
+    "errors": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "bad": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "soft": []
+  },
+  {
+    "app": "SteadyCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/SteadyCap/?demo=1",
+    "file": "SteadyCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — SteadyCap",
+    "errors": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "bad": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "soft": []
+  },
+  {
+    "app": "SteadyCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/SteadyCap/?demo=1",
+    "file": "SteadyCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — SteadyCap",
+    "errors": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "bad": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "soft": []
+  },
+  {
+    "app": "SteadyCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/SteadyCap/?demo=1",
+    "file": "SteadyCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — SteadyCap",
+    "errors": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "bad": [
+      "pageerror: Unexpected identifier 's'. Expected '}' to end an object literal."
+    ],
+    "soft": []
+  },
+  {
+    "app": "SteadyCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/SteadyCap/?demo=1",
+    "file": "SteadyCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — SteadyCap",
+    "errors": [
+      "pageerror: Unexpected identifier 's'",
+      "Failed to load resource: the server responded with a status of 503 ()"
+    ],
+    "bad": [
+      "pageerror: Unexpected identifier 's'"
+    ],
+    "soft": [
+      "1 console err"
+    ]
+  },
+  {
+    "app": "SteadyCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/SteadyCap/?demo=1",
+    "file": "SteadyCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Dashboard — SteadyCap",
+    "errors": [
+      "pageerror: Unexpected identifier 's'"
+    ],
+    "bad": [
+      "pageerror: Unexpected identifier 's'"
+    ],
+    "soft": []
+  },
+  {
+    "app": "LedgerCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/LedgerCap/?demo=1",
+    "file": "LedgerCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [
+      "Dismiss",
+      "KSE-100\n      —\n      \n ",
+      "Dismiss",
+      "Txs",
+      "Txs",
+      "Txs",
+      "Txs"
+    ],
+    "smallCount": 7,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home — LedgerCap",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [],
+    "soft": [
+      "7 tap<32px",
+      "3 console err"
+    ]
+  },
+  {
+    "app": "LedgerCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/LedgerCap/?demo=1",
+    "file": "LedgerCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [
+      "Dismiss",
+      "KSE-100\n      —\n      \n ",
+      "Dismiss",
+      "Txs",
+      "Txs",
+      "Txs",
+      "Txs"
+    ],
+    "smallCount": 7,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home — LedgerCap",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [],
+    "soft": [
+      "7 tap<32px",
+      "3 console err"
+    ]
+  },
+  {
+    "app": "LedgerCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/LedgerCap/?demo=1",
+    "file": "LedgerCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [
+      "Dismiss",
+      "KSE-100\n      —\n      \n ",
+      "Dismiss",
+      "Txs",
+      "Txs",
+      "Txs",
+      "Txs"
+    ],
+    "smallCount": 7,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home — LedgerCap",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [],
+    "soft": [
+      "7 tap<32px",
+      "3 console err"
+    ]
+  },
+  {
+    "app": "LedgerCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/LedgerCap/?demo=1",
+    "file": "LedgerCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [
+      "Dismiss",
+      "KSE-100\n      —\n      \n ",
+      "Dismiss",
+      "Txs",
+      "Txs",
+      "Txs",
+      "Txs"
+    ],
+    "smallCount": 7,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home — LedgerCap",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [],
+    "soft": [
+      "7 tap<32px",
+      "3 console err"
+    ]
+  },
+  {
+    "app": "LedgerCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/LedgerCap/?demo=1",
+    "file": "LedgerCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home — LedgerCap",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [],
+    "soft": [
+      "3 console err"
+    ]
+  },
+  {
+    "app": "LedgerCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/LedgerCap/?demo=1",
+    "file": "LedgerCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home — LedgerCap",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [],
+    "soft": [
+      "3 console err"
+    ]
+  },
+  {
+    "app": "LedgerCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/LedgerCap/?demo=1",
+    "file": "LedgerCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [
+      "Dismiss",
+      "KSE-100\n      —\n      \n ",
+      "Dismiss",
+      "Txs",
+      "Txs",
+      "Txs",
+      "Txs"
+    ],
+    "smallCount": 7,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home — LedgerCap",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [],
+    "soft": [
+      "7 tap<32px",
+      "3 console err"
+    ]
+  },
+  {
+    "app": "DeePonyCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/DeePonyCap/?demo=1",
+    "file": "DeePonyCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Stable — DeePonyCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "DeePonyCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/DeePonyCap/?demo=1",
+    "file": "DeePonyCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Stable — DeePonyCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "DeePonyCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/DeePonyCap/?demo=1",
+    "file": "DeePonyCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Stable — DeePonyCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "DeePonyCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/DeePonyCap/?demo=1",
+    "file": "DeePonyCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Stable — DeePonyCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "DeePonyCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/DeePonyCap/?demo=1",
+    "file": "DeePonyCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Stable — DeePonyCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "DeePonyCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/DeePonyCap/?demo=1",
+    "file": "DeePonyCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Stable — DeePonyCap",
+    "errors": [
+      "Blocked call to navigator.vibrate because user hasn't tapped on the frame or any embedded frame yet: https://www.chromestatus.com/feature/5644273861001216.",
+      "Blocked call to navigator.vibrate because user hasn't tapped on the frame or any embedded frame yet: https://www.chromestatus.com/feature/5644273861001216."
+    ],
+    "bad": [],
+    "soft": [
+      "2 console err"
+    ]
+  },
+  {
+    "app": "DeePonyCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/DeePonyCap/?demo=1",
+    "file": "DeePonyCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Stable — DeePonyCap",
+    "errors": [
+      "Blocked call to navigator.vibrate because user hasn't tapped on the frame or any embedded frame yet: https://www.chromestatus.com/feature/5644273861001216.",
+      "Blocked call to navigator.vibrate because user hasn't tapped on the frame or any embedded frame yet: https://www.chromestatus.com/feature/5644273861001216."
+    ],
+    "bad": [],
+    "soft": [
+      "2 console err"
+    ]
+  },
+  {
+    "app": "ScentCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/ScentCap/?demo=1",
+    "file": "ScentCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [
+      "Use my collection"
+    ],
+    "smallCount": 1,
+    "tinyCount": 4,
+    "tinySample": [
+      "DOLCE & GABBA…",
+      "Prada",
+      "Giorgio Armani",
+      "Chanel"
+    ],
+    "title": "Home — ScentCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px",
+      "4 text<11px"
+    ]
+  },
+  {
+    "app": "ScentCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/ScentCap/?demo=1",
+    "file": "ScentCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [
+      "Use my collection"
+    ],
+    "smallCount": 1,
+    "tinyCount": 4,
+    "tinySample": [
+      "DOLCE & GABBA…",
+      "Prada",
+      "Giorgio Armani",
+      "Chanel"
+    ],
+    "title": "Home — ScentCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px",
+      "4 text<11px"
+    ]
+  },
+  {
+    "app": "ScentCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/ScentCap/?demo=1",
+    "file": "ScentCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [
+      "Use my collection"
+    ],
+    "smallCount": 1,
+    "tinyCount": 4,
+    "tinySample": [
+      "DOLCE & GABBA…",
+      "Prada",
+      "Giorgio Armani",
+      "Chanel"
+    ],
+    "title": "Home — ScentCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px",
+      "4 text<11px"
+    ]
+  },
+  {
+    "app": "ScentCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/ScentCap/?demo=1",
+    "file": "ScentCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [
+      "Use my collection"
+    ],
+    "smallCount": 1,
+    "tinyCount": 4,
+    "tinySample": [
+      "DOLCE & GABBA…",
+      "Prada",
+      "Giorgio Armani",
+      "Chanel"
+    ],
+    "title": "Home — ScentCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px",
+      "4 text<11px"
+    ]
+  },
+  {
+    "app": "ScentCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/ScentCap/?demo=1",
+    "file": "ScentCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 4,
+    "tinySample": [
+      "DOLCE & GABBA…",
+      "Prada",
+      "Giorgio Armani",
+      "Chanel"
+    ],
+    "title": "Home — ScentCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "4 text<11px"
+    ]
+  },
+  {
+    "app": "ScentCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/ScentCap/?demo=1",
+    "file": "ScentCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 4,
+    "tinySample": [
+      "DOLCE & GABBA…",
+      "Prada",
+      "Giorgio Armani",
+      "Chanel"
+    ],
+    "title": "Home — ScentCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "4 text<11px"
+    ]
+  },
+  {
+    "app": "ScentCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/ScentCap/?demo=1",
+    "file": "ScentCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [
+      "Use my collection"
+    ],
+    "smallCount": 1,
+    "tinyCount": 4,
+    "tinySample": [
+      "DOLCE & GABBA…",
+      "Prada",
+      "Giorgio Armani",
+      "Chanel"
+    ],
+    "title": "Home — ScentCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "1 tap<32px",
+      "4 text<11px"
+    ]
+  },
+  {
+    "app": "SoulCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/SoulCap/?demo=1",
+    "file": "SoulCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "SoulCap — a quiet place to steady yourself",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "SoulCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/SoulCap/?demo=1",
+    "file": "SoulCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "SoulCap — a quiet place to steady yourself",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "SoulCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/SoulCap/?demo=1",
+    "file": "SoulCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "SoulCap — a quiet place to steady yourself",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "SoulCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/SoulCap/?demo=1",
+    "file": "SoulCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "SoulCap — a quiet place to steady yourself",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "SoulCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/SoulCap/?demo=1",
+    "file": "SoulCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "SoulCap — a quiet place to steady yourself",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "SoulCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/SoulCap/?demo=1",
+    "file": "SoulCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "SoulCap — a quiet place to steady yourself",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "SoulCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/SoulCap/?demo=1",
+    "file": "SoulCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "SoulCap — a quiet place to steady yourself",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "TravelCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/TravelCap/trips",
+    "file": "TravelCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 8,
+    "tinySample": [
+      "Capricorn Systems",
+      "Official document",
+      "Travel document",
+      "TravelCap",
+      "Trips",
+      "Explore"
+    ],
+    "title": "TravelCap",
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')"
+    ],
+    "bad": [
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')"
+    ],
+    "soft": [
+      "8 text<11px",
+      "1 console err"
+    ]
+  },
+  {
+    "app": "TravelCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/TravelCap/trips",
+    "file": "TravelCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 8,
+    "tinySample": [
+      "Capricorn Systems",
+      "Official document",
+      "Travel document",
+      "TravelCap",
+      "Trips",
+      "Explore"
+    ],
+    "title": "TravelCap",
+    "errors": [
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')"
+    ],
+    "soft": [
+      "8 text<11px",
+      "1 console err"
+    ]
+  },
+  {
+    "app": "TravelCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/TravelCap/trips",
+    "file": "TravelCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [
+      "Collapse sidebar"
+    ],
+    "smallCount": 1,
+    "tinyCount": 6,
+    "tinySample": [
+      "Capricorn Systems",
+      "Official document",
+      "Travel document",
+      "Passport OS",
+      "TravelCap",
+      "TravelCap"
+    ],
+    "title": "TravelCap",
+    "errors": [
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')"
+    ],
+    "soft": [
+      "1 tap<32px",
+      "6 text<11px",
+      "1 console err"
+    ]
+  },
+  {
+    "app": "TravelCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/TravelCap/trips",
+    "file": "TravelCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [
+      "Collapse sidebar"
+    ],
+    "smallCount": 1,
+    "tinyCount": 6,
+    "tinySample": [
+      "Capricorn Systems",
+      "Official document",
+      "Travel document",
+      "Passport OS",
+      "TravelCap",
+      "TravelCap"
+    ],
+    "title": "TravelCap",
+    "errors": [
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')"
+    ],
+    "soft": [
+      "1 tap<32px",
+      "6 text<11px",
+      "1 console err"
+    ]
+  },
+  {
+    "app": "TravelCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/TravelCap/trips",
+    "file": "TravelCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 6,
+    "tinySample": [
+      "Capricorn Systems",
+      "Official document",
+      "Travel document",
+      "Passport OS",
+      "TravelCap",
+      "TravelCap"
+    ],
+    "title": "TravelCap",
+    "errors": [
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [
+      "pageerror: TypeError: undefined is not an object (evaluating 's.fn.waiting')"
+    ],
+    "soft": [
+      "6 text<11px",
+      "1 console err"
+    ]
+  },
+  {
+    "app": "TravelCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/TravelCap/trips",
+    "file": "TravelCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 6,
+    "tinySample": [
+      "Capricorn Systems",
+      "Official document",
+      "Travel document",
+      "Passport OS",
+      "TravelCap",
+      "TravelCap"
+    ],
+    "title": "TravelCap",
+    "errors": [
+      "pageerror: Cannot read properties of undefined (reading 'waiting')",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [
+      "pageerror: Cannot read properties of undefined (reading 'waiting')"
+    ],
+    "soft": [
+      "6 text<11px",
+      "1 console err"
+    ]
+  },
+  {
+    "app": "TravelCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/TravelCap/trips",
+    "file": "TravelCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 8,
+    "tinySample": [
+      "Capricorn Systems",
+      "Official document",
+      "Travel document",
+      "TravelCap",
+      "Trips",
+      "Explore"
+    ],
+    "title": "TravelCap",
+    "errors": [
+      "pageerror: Cannot read properties of undefined (reading 'waiting')",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "bad": [
+      "pageerror: Cannot read properties of undefined (reading 'waiting')"
+    ],
+    "soft": [
+      "8 text<11px",
+      "1 console err"
+    ]
+  },
+  {
+    "app": "AuraCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/AuraCap/?demo=1",
+    "file": "AuraCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [
+      "Device: iPhone. Tap to s",
+      "More",
+      "Full setup report",
+      "What is Aura Score?",
+      "Region: Pakistan"
+    ],
+    "smallCount": 5,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Overview — AuraCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "5 tap<32px"
+    ]
+  },
+  {
+    "app": "AuraCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/AuraCap/?demo=1",
+    "file": "AuraCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [
+      "Device: iPhone. Tap to s",
+      "More",
+      "Full setup report",
+      "What is Aura Score?",
+      "Region: Pakistan"
+    ],
+    "smallCount": 5,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Overview — AuraCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "5 tap<32px"
+    ]
+  },
+  {
+    "app": "AuraCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/AuraCap/?demo=1",
+    "file": "AuraCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [
+      "Device: iPhone. Tap to s",
+      "More",
+      "Full setup report",
+      "What is Aura Score?",
+      "Region: Pakistan"
+    ],
+    "smallCount": 5,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Overview — AuraCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "5 tap<32px"
+    ]
+  },
+  {
+    "app": "AuraCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/AuraCap/?demo=1",
+    "file": "AuraCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [
+      "Device: iPhone. Tap to s",
+      "More",
+      "Full setup report",
+      "What is Aura Score?",
+      "Region: Pakistan"
+    ],
+    "smallCount": 5,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Overview — AuraCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "5 tap<32px"
+    ]
+  },
+  {
+    "app": "AuraCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/AuraCap/?demo=1",
+    "file": "AuraCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1437,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Overview — AuraCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "AuraCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/AuraCap/?demo=1",
+    "file": "AuraCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Overview — AuraCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "AuraCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/AuraCap/?demo=1",
+    "file": "AuraCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [
+      "Device: iPhone. Tap to s",
+      "More",
+      "Full setup report",
+      "What is Aura Score?",
+      "Region: Pakistan"
+    ],
+    "smallCount": 5,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Overview — AuraCap",
+    "errors": [],
+    "bad": [],
+    "soft": [
+      "5 tap<32px"
+    ]
+  },
+  {
+    "app": "MasteryCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/MasteryCap/",
+    "file": "MasteryCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "MasteryCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "MasteryCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/MasteryCap/",
+    "file": "MasteryCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "MasteryCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "MasteryCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/MasteryCap/",
+    "file": "MasteryCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "MasteryCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "MasteryCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/MasteryCap/",
+    "file": "MasteryCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "MasteryCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "MasteryCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/MasteryCap/",
+    "file": "MasteryCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "MasteryCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "MasteryCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/MasteryCap/",
+    "file": "MasteryCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "MasteryCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "MasteryCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/MasteryCap/",
+    "file": "MasteryCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "MasteryCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "IdeaCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/IdeaCap/?demo=1",
+    "file": "IdeaCap-webkit-iphone-se.png",
+    "overflowX": true,
+    "scrollWidth": 392,
+    "offscreen": [
+      "div.css-g5y9jx:17px"
+    ],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home",
+    "errors": [],
+    "bad": [
+      "overflow-x 392px",
+      "off-screen: div.css-g5y9jx:17px"
+    ],
+    "soft": []
+  },
+  {
+    "app": "IdeaCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/IdeaCap/?demo=1",
+    "file": "IdeaCap-webkit-iphone.png",
+    "overflowX": true,
+    "scrollWidth": 407,
+    "offscreen": [
+      "div.css-g5y9jx:17px"
+    ],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home",
+    "errors": [],
+    "bad": [
+      "overflow-x 407px",
+      "off-screen: div.css-g5y9jx:17px"
+    ],
+    "soft": []
+  },
+  {
+    "app": "IdeaCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/IdeaCap/?demo=1",
+    "file": "IdeaCap-webkit-ipad-portrait.png",
+    "overflowX": true,
+    "scrollWidth": 837,
+    "offscreen": [
+      "div.css-g5y9jx:17px"
+    ],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home",
+    "errors": [],
+    "bad": [
+      "overflow-x 837px",
+      "off-screen: div.css-g5y9jx:17px"
+    ],
+    "soft": []
+  },
+  {
+    "app": "IdeaCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/IdeaCap/?demo=1",
+    "file": "IdeaCap-webkit-ipad-landscape.png",
+    "overflowX": true,
+    "scrollWidth": 1197,
+    "offscreen": [
+      "div.css-g5y9jx:17px"
+    ],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home",
+    "errors": [],
+    "bad": [
+      "overflow-x 1197px",
+      "off-screen: div.css-g5y9jx:17px"
+    ],
+    "soft": []
+  },
+  {
+    "app": "IdeaCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/IdeaCap/?demo=1",
+    "file": "IdeaCap-webkit-macbook.png",
+    "overflowX": true,
+    "scrollWidth": 1457,
+    "offscreen": [
+      "div.css-g5y9jx:17px"
+    ],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home",
+    "errors": [],
+    "bad": [
+      "overflow-x 1457px",
+      "off-screen: div.css-g5y9jx:17px"
+    ],
+    "soft": []
+  },
+  {
+    "app": "IdeaCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/IdeaCap/?demo=1",
+    "file": "IdeaCap-chromium-macbook.png",
+    "overflowX": true,
+    "scrollWidth": 1457,
+    "offscreen": [
+      "div.css-g5y9jx:17px"
+    ],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home",
+    "errors": [],
+    "bad": [
+      "overflow-x 1457px",
+      "off-screen: div.css-g5y9jx:17px"
+    ],
+    "soft": []
+  },
+  {
+    "app": "IdeaCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/IdeaCap/?demo=1",
+    "file": "IdeaCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 429,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "Home",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "CarCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/CarCap/?demo=1&tab=today",
+    "file": "CarCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CarCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "CarCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/CarCap/?demo=1&tab=today",
+    "file": "CarCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CarCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "CarCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/CarCap/?demo=1&tab=today",
+    "file": "CarCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CarCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "CarCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/CarCap/?demo=1&tab=today",
+    "file": "CarCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CarCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "CarCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/CarCap/?demo=1&tab=today",
+    "file": "CarCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CarCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "CarCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/CarCap/?demo=1&tab=today",
+    "file": "CarCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CarCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "CarCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/CarCap/?demo=1&tab=today",
+    "file": "CarCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CarCap",
+    "errors": [],
+    "bad": [],
+    "soft": []
+  },
+  {
+    "app": "CookCap",
+    "engine": "webkit",
+    "device": "iphone-se",
+    "url": "https://shamikhahmed.github.io/CookCap/?demo=1",
+    "file": "CookCap-webkit-iphone-se.png",
+    "overflowX": false,
+    "scrollWidth": 375,
+    "offscreen": [],
+    "smallTargets": [
+      "INPUT"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CookCap — A Family Cookbook",
+    "errors": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "bad": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "CookCap",
+    "engine": "webkit",
+    "device": "iphone",
+    "url": "https://shamikhahmed.github.io/CookCap/?demo=1",
+    "file": "CookCap-webkit-iphone.png",
+    "overflowX": false,
+    "scrollWidth": 390,
+    "offscreen": [],
+    "smallTargets": [
+      "INPUT"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CookCap — A Family Cookbook",
+    "errors": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "bad": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "CookCap",
+    "engine": "webkit",
+    "device": "ipad-portrait",
+    "url": "https://shamikhahmed.github.io/CookCap/?demo=1",
+    "file": "CookCap-webkit-ipad-portrait.png",
+    "overflowX": false,
+    "scrollWidth": 820,
+    "offscreen": [],
+    "smallTargets": [
+      "INPUT"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CookCap — A Family Cookbook",
+    "errors": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "bad": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "CookCap",
+    "engine": "webkit",
+    "device": "ipad-landscape",
+    "url": "https://shamikhahmed.github.io/CookCap/?demo=1",
+    "file": "CookCap-webkit-ipad-landscape.png",
+    "overflowX": false,
+    "scrollWidth": 1180,
+    "offscreen": [],
+    "smallTargets": [
+      "INPUT"
+    ],
+    "smallCount": 1,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CookCap — A Family Cookbook",
+    "errors": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "bad": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "soft": [
+      "1 tap<32px"
+    ]
+  },
+  {
+    "app": "CookCap",
+    "engine": "webkit",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/CookCap/?demo=1",
+    "file": "CookCap-webkit-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CookCap — A Family Cookbook",
+    "errors": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "bad": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "soft": []
+  },
+  {
+    "app": "CookCap",
+    "engine": "chromium",
+    "device": "macbook",
+    "url": "https://shamikhahmed.github.io/CookCap/?demo=1",
+    "file": "CookCap-chromium-macbook.png",
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "offscreen": [],
+    "smallTargets": [],
+    "smallCount": 0,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CookCap — A Family Cookbook",
+    "errors": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "bad": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "soft": []
+  },
+  {
+    "app": "CookCap",
+    "engine": "chromium",
+    "device": "android",
+    "url": "https://shamikhahmed.github.io/CookCap/?demo=1",
+    "file": "CookCap-chromium-android.png",
+    "overflowX": false,
+    "scrollWidth": 412,
+    "offscreen": [],
+    "smallTargets": [
+      "INPUT",
+      "INPUT"
+    ],
+    "smallCount": 2,
+    "tinyCount": 0,
+    "tinySample": [],
+    "title": "CookCap — A Family Cookbook",
+    "errors": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "bad": [
+      "pageerror: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
+    "soft": [
+      "2 tap<32px"
+    ]
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "app": "FixtureCap",
+  "version": "1.0.0",
+  "capturedAt": "2026-10-14T09:41:00Z",
+  "accent": "#0a84ff",
+  "shots": [
+    {
+      "id": "home--dashboard--filled",
+      "group": "Home",
+      "screen": "Dashboard",
+      "state": "filled",
+      "theme": "light",
+      "device": "iphone",
+      "w": 1170,
+      "h": 2532,
+      "file": "light/iphone/home--dashboard--filled.webp",
+      "route": "#/home",
+      "caption": "Today at a glance."
+    },
+    {
+      "id": "home--dashboard--filled",
+      "group": "Home",
+      "screen": "Dashboard",
+      "state": "filled",
+      "theme": "dark",
+      "device": "iphone",
+      "w": 1170,
+      "h": 2532,
+      "file": "dark/iphone/home--dashboard--filled.webp",
+      "route": "#/home",
+      "caption": "Today at a glance."
+    }
+  ]
+}
