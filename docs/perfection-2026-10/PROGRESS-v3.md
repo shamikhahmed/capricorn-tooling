@@ -13,7 +13,7 @@ Updated: 2026-10-14T11:31:59Z · Wave: B/C · Builder-MasteryCap hand-off
 | SoulCap | F | perfection/soulcap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 8.3.2 | pending Auditor |
 | TravelCap | I | perfection/travelcap-v3 | 0 | 0 | 1 | 0 | — | — | — | — | 1.0.2 | TRV-V3-1..6+8 ✅ · V3-7 OPEN |
 | AuraCap | F | perfection/auracap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 5.4.2 | AUR-V3-1/2/3 ✅ |
-| MasteryCap | F (hand Auditor) | perfection/masterycap-v3 @4ad26cb | 0 | MST-V3-1/2 FIXED | V3-4/10 L | V3-5/6/7/9 L | theme×lang scaffold | 63 L/S/D | — | qa/perfection | 51.9.2 | **re-verify tip** (prior stamp was main) |
+| MasteryCap | F (hand Auditor) | perfection/masterycap-v3 @571984c | 0 | MST-V3-1/2 FIXED | V3-4/10 L | V3-5/6/7/9 L | theme×lang scaffold | 63 L/S/D | — | qa/perfection | 51.9.2 | **re-verify tip** (prior stamp was main) |
 | IdeaCap | F | perfection/ideacap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 2.0.1 | IDA-V3-1/2 ✅ |
 | CarCap | G | perfection/carcap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 1.0.1 | pending Auditor |
 | CookCap | F | perfection/cookcap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 3.5.1 | CK-V3-1/2/3/4 ✅ |
@@ -26,14 +26,14 @@ Updated: 2026-10-14T11:31:59Z · Wave: B/C · Builder-MasteryCap hand-off
 - Already VERIFIED retained: IdeaCap IDA-V3-1/2; TravelCap TRV-V3-1..6
 
 ## Done (newest first)
-- **MasteryCap Wave C:** MST-V3-1/2/3 ✅ FIXED · tip `4ad26cb` (scaffold `266deb1`) · base main `f0c8ad2` · post-fix device-qa **7/7** tap=0 text=0 pageErr=0 hubConsole=0 · gallery **63** schema-v2 Light/Sepia/Dark · `qa/perfection/{STATE,ITEMS,INVENTORY,MATRIX}` · hand Auditor re-verify (AUDIT on main predates tip). L: V3-4 SW soft, V3-8 BLOCKED-EXTERNAL Urdu, V3-5/6/7/9 content, V3-10 LH. — 2026-10-14T11:31:59Z
+- **MasteryCap Wave C:** MST-V3-1/2/3 ✅ FIXED · tip `571984c` (scaffold `266deb1`) · base main `f0c8ad2` · post-fix device-qa **7/7** tap=0 text=0 pageErr=0 hubConsole=0 · gallery **63** schema-v2 Light/Sepia/Dark · `qa/perfection/{STATE,ITEMS,INVENTORY,MATRIX}` · hand Auditor re-verify (AUDIT on main predates tip). L: V3-4 SW soft, V3-8 BLOCKED-EXTERNAL Urdu, V3-5/6/7/9 content, V3-10 LH. — 2026-10-14T11:31:59Z
 - **SteadyCap Builder Wave B:** STD-V3-1..4 ✅ FIXED · tip `645d6c7` / fixes `3b6e681` · ver 2.5.6 / SW v56 · baseline 7/7 hard-clean · SOS untouched · → Auditor. — 2026-10-14T11:35:00Z
 - Auditor stamp 2026-10-14T11:30:00Z: TRV-V3-8 ✅; CK-V3-2 ✅; DPY-V3-1/2/3 ✅; LDG-V3-1..4 ✅; PRS-V3-1/2/3 ✅; VLT-V3-1/2 ✅ / VLT-V3-5 ❌; AUR-V3-1/2/3 ✅; MST-V3-1/2/3 ✅; DFD-V3-1 ❌ (live Flutter) — **superseded**: Pages stub live @`dde482a`.
 - Builder-DeeFoodie: DFD-V3-1 FIXED (`4790774` + gh-pages `dde482a`) · tip `9ee5656` · hand Auditor re-verify.
 - Prior: Wave A local Travel/Idea/Cook P0s.
 
 ## In flight
-- MasteryCap MST-V3-1/2 → Auditor re-verify on `perfection/masterycap-v3` @4ad26cb
+- MasteryCap MST-V3-1/2 → Auditor re-verify on `perfection/masterycap-v3` @571984c
 - CookCap CK-V3-2 re-hand closed.
 - VaultCap VLT-V3-5 return to Builder (android residual taps).
 - DeeFoodie DFD-V3-1 → Auditor re-verify (live Private beta stub; no flutter_bootstrap).
