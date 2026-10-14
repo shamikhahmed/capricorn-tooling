@@ -1,5 +1,16 @@
 # Perfection Loop v3 — Progress
-Updated: 2026-10-14T17:20:00Z · Wave: D→Z · Conductor driving until §15
+Updated: 2026-10-14T12:30:00Z · Wave: D→Z · Conductor driving until §15
+
+## Matrix coverage (§5.2C · Matrix-Builder 2026-10-14)
+
+Rollup from each repo `qa/perfection/MATRIX.md` coverage table (✅+N/A)/(✅+N/A+⏳).
+
+| App | Matrix % | Commit | Open P2 matrix items |
+|---|---:|---|---|
+| ScentCap | **94%** | `61dafb2` | SCN-V3-5 extended routes/states |
+| TravelCap | **93%** | `eb9cb78` | TRV-V3-9 remaining inventory |
+| CookCap | **54%** | `8220895` | CK-V3-5 dark gallery · CK-V3-7 extended |
+| PrismCap | **51%** | `09e31b2` | PRS-V3-4 game · PRS-V3-5/6 dark v3 |
 
 ## Auditor hand-off (2026-10-14)
 Independent live device-qa (PW_CORE + `PLAYWRIGHT_BROWSERS_PATH` per N-2). Per app: `qa/perfection/auditor-2026-10-14/` + `AUDIT-2026-10-14-<App>.md`. **New VERIFIED flips:** VaultCap VLT-V3-5, ScentCap SCN-V3-1/2/3, IdeaCap IDA-V3-4, CookCap CK-V3-1 (live 3.6.1). Remaining released Caps re-confirmed 7/7.
