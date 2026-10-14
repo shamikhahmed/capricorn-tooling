@@ -1,0 +1,158 @@
+[
+  {
+    "name": "desktop: dock opens VaultCap window",
+    "ok": true
+  },
+  {
+    "name": "desktop: window drag via pointer",
+    "ok": true
+  },
+  {
+    "name": "desktop: Run here loads live app iframe",
+    "ok": true
+  },
+  {
+    "name": "desktop: runner back restores info panel",
+    "ok": true
+  },
+  {
+    "name": "desktop: Appearance window + pick Synthwave",
+    "ok": true
+  },
+  {
+    "name": "desktop: Spotlight → Theme: Terminal",
+    "ok": true
+  },
+  {
+    "name": "desktop: Privacy Monitor shows 0 third-party",
+    "ok": true
+  },
+  {
+    "name": "desktop: Control Center theme row",
+    "ok": true
+  },
+  {
+    "name": "desktop: no runtime errors",
+    "ok": true
+  },
+  {
+    "name": "iphone: widget tap opens app sheet",
+    "ok": true
+  },
+  {
+    "name": "iphone: Try it here → live iframe",
+    "ok": true
+  },
+  {
+    "name": "iphone: runner Info → back to sheet → Done",
+    "ok": true
+  },
+  {
+    "name": "iphone: Themes sheet + pick Truck Art",
+    "ok": true
+  },
+  {
+    "name": "iphone: Apps page → Library + Privacy",
+    "ok": true
+  },
+  {
+    "name": "iphone: no runtime errors",
+    "ok": true
+  },
+  {
+    "name": "ipad: widget tap opens app sheet",
+    "ok": true
+  },
+  {
+    "name": "ipad: Try it here → live iframe",
+    "ok": true
+  },
+  {
+    "name": "ipad: runner Info → back to sheet → Done",
+    "ok": true
+  },
+  {
+    "name": "ipad: Themes sheet + pick Truck Art",
+    "ok": true
+  },
+  {
+    "name": "ipad: Apps page → Library + Privacy",
+    "ok": true
+  },
+  {
+    "name": "ipad: no runtime errors",
+    "ok": true
+  },
+  {
+    "name": "lock mac capricorn-light",
+    "ok": true
+  },
+  {
+    "name": "lock mac aurora",
+    "ok": true
+  },
+  {
+    "name": "lock mac synthwave",
+    "ok": true
+  },
+  {
+    "name": "lock mac terminal",
+    "ok": true
+  },
+  {
+    "name": "lock mac truckart",
+    "ok": true
+  },
+  {
+    "name": "lock mac mughal",
+    "ok": true
+  },
+  {
+    "name": "lock mac paper",
+    "ok": true
+  },
+  {
+    "name": "lock mac pixel",
+    "ok": true
+  },
+  {
+    "name": "lock mac brutal",
+    "ok": true
+  },
+  {
+    "name": "lock phone capricorn-light",
+    "ok": true
+  },
+  {
+    "name": "lock phone aurora",
+    "ok": true
+  },
+  {
+    "name": "lock phone synthwave",
+    "ok": true
+  },
+  {
+    "name": "lock phone terminal",
+    "ok": true
+  },
+  {
+    "name": "lock phone truckart",
+    "ok": true
+  },
+  {
+    "name": "lock phone mughal",
+    "ok": true
+  },
+  {
+    "name": "lock phone paper",
+    "ok": true
+  },
+  {
+    "name": "lock phone pixel",
+    "ok": true
+  },
+  {
+    "name": "lock phone brutal",
+    "ok": true
+  }
+]

@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4321/?nolock=1&theme=capricorn-light
+Call log:
+  - navigating to "http://localhost:4321/?nolock=1&theme=capricorn-light", waiting until "load"
+
+    at /Users/shamikhahmed/Projects/Cap/Cap-Apps/capricorn-lab/scripts/qa-flows.mjs:55:14 {
+  log: [
+    '  - navigating to "http://localhost:4321/?nolock=1&theme=capricorn-light", waiting until "load"'
+  ],
+  name: 'Error'
+}
+
+Node.js v26.0.0

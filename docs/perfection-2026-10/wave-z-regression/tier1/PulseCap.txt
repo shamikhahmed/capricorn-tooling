@@ -1,0 +1,25 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> tier1
+> node ../capricorn-tooling/shared/testing/tier1.mjs
+
+TIER1 FAIL — 23 pass, 11 fail, 3 warn
+Wrote qa/finish-loop/TIER1.json
+
+Failures:
+  ✗ matrix:freshness: matrix 2026-09-23T06:27:22.661Z before last UI commit 2026-10-14T17:16:07+05:00
+  ✗ lighthouse:home-demo-desktop.json: fetchTime 2026-09-23T06:26:46.289Z before last UI commit 2026-10-14T17:16:07+05:00
+  ✗ lighthouse:home-demo-mobile.json: fetchTime 2026-09-23T06:26:25.660Z before last UI commit 2026-10-14T17:16:07+05:00
+  ✗ lighthouse:passing: 0/2 files meet thresholds
+  ✗ gallery:freshness: gallery 2026-09-23T11:28:58+05:00 before last UI commit 2026-10-14T17:16:07+05:00
+  ✗ g16:device-qa: qa/perfection/device/device-qa.json: hubOriginConsoleErrors=1 (7 runs)
+  ✗ g17:gallery-v3: FAIL via check-completeness.mjs: Manifest version 6.43.1 !== app VERSION.json 6.45.0; Manifest capturedAt 2026-09-23T06:28:37.736Z is older than VERSION.json updated 2026-10-14; Shot older than version: dark-desktop-001-dashboard.png (mtime 2026-09-23T06:30:26.776Z < VERSION updated); Shot older than version: dark-desktop-002-workout-scroll.png (mtime 2026-09-23T06:30:26.778Z < VERSION updated); Shot older than version: dark-desktop-002-workout.png (mtime 2026-09-23T06:30:26.779Z < VERSION updated); Shot older than version: dark-desktop-003-cardio-scroll.png (mtime 2026-09-23T06:30:26.779Z < VERSION updated); Shot older than version: dark-desktop-003-cardio.png (mtime 2026-09-23T06:30:26.780Z < VERSION updated); Shot older than version: dark-desktop-004-progress-scroll.png (mtime 2026-09-23T06:30:26.781Z < VERSION updated)
+  ✗ g18:docs-truth: changelog.html: stale:300-exercises; qa/perfection/ITEMS.md: stale:300-exercises
+  ✗ kill:raw-hex: 14
+  ✗ kill:important: 2
+  ✗ kill:outline-none: 1
+
+Warnings:
+  ! ci:main: latest still in_progress: docs(pitch): Cap portfolio wording instead of OS (G-3)
+  ! g15:architecture: map not present (docs/architecture or architecture/) — soft until per-app map lands; tooling pilots use npm run architecture:check
+  ! g19:minisite-lh: N/A — mini-site not present (https://shamikhahmed.github.io/apps/PulseCap/ → 404)

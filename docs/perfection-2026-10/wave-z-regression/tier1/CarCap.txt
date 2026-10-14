@@ -1,0 +1,21 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> carcap@1.1.0 tier1
+> node ../capricorn-tooling/shared/testing/tier1.mjs
+
+TIER1 FAIL — 27 pass, 8 fail, 2 warn
+Wrote qa/finish-loop/TIER1.json
+
+Failures:
+  ✗ ci:main: CarCap CI @ 93d8264 → failure https://github.com/shamikhahmed/CarCap/actions/runs/38563020939
+  ✗ matrix:freshness: matrix 2026-09-16T11:00:12.780Z before last UI commit 2026-10-14T16:55:00+05:00
+  ✗ lighthouse:home-demo-desktop.json: fetchTime 2026-09-16T11:04:39.325Z before last UI commit 2026-10-14T16:55:00+05:00
+  ✗ lighthouse:home-demo-mobile.json: fetchTime 2026-09-16T11:00:34.553Z before last UI commit 2026-10-14T16:55:00+05:00
+  ✗ lighthouse:passing: 0/2 files meet thresholds
+  ✗ kill:raw-hex: 34
+  ✗ kill:sub-11px: 2
+  ✗ kill:outline-none: 1
+
+Warnings:
+  ! g15:architecture: map not present (docs/architecture or architecture/) — soft until per-app map lands; tooling pilots use npm run architecture:check
+  ! g19:minisite-lh: N/A — mini-site not present (https://shamikhahmed.github.io/apps/CarCap/ → 404)

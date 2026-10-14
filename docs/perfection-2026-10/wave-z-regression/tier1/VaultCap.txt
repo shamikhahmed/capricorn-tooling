@@ -1,0 +1,27 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> vaultcap@5.3.0 tier1
+> node ../capricorn-tooling/shared/testing/tier1.mjs
+
+TIER1 FAIL — 22 pass, 12 fail, 3 warn
+Wrote qa/finish-loop/TIER1.json
+
+Failures:
+  ✗ test-skip: 1 hits (allowlist: qa/finish-loop/skip-allowlist.json)
+tests/gallery-v3.spec.mjs:122: test.skip(!isGalleryCapture(), 'Run via CAPTURE_GALLERY=1 (npm run gallery:v3)');
+  ✗ matrix:freshness: matrix 2026-09-23T05:30:41.763Z before last UI commit 2026-10-14T17:16:07+05:00
+  ✗ lighthouse:home-demo-desktop.json: fetchTime 2026-09-23T05:31:48.072Z before last UI commit 2026-10-14T17:16:07+05:00
+  ✗ lighthouse:home-demo-mobile.json: fetchTime 2026-09-23T05:31:27.396Z before last UI commit 2026-10-14T17:16:07+05:00
+  ✗ lighthouse:passing: 0/2 files meet thresholds
+  ✗ gallery:freshness: gallery 2026-09-23T10:30:10+05:00 before last UI commit 2026-10-14T17:16:07+05:00
+  ✗ g16:device-qa: qa/perfection/baseline/device-qa.json: hubOriginConsoleErrors=3 (7 runs)
+  ✗ g17:gallery-v3: FAIL via check-completeness.mjs: Missing gallery-manifest.json at /Users/shamikhahmed/Projects/Cap/Cap-Apps/VaultCap/docs/screenshots/gallery/gallery-manifest.json
+  ✗ g18:docs-truth: docs/APP_STORE.md: npm run cap:init not in package.json; docs/APP_STORE.md: npm run cap:ios not in package.json; docs/UI_AUDIT_250.md: npm run cap:init not in package.json
+  ✗ kill:raw-hex: 39
+  ✗ kill:sub-11px: 2
+  ✗ kill:outline-none: 1
+
+Warnings:
+  ! ci:main: latest still in_progress: docs(pitch): VaultCap naming in deck section comments (G-3)
+  ! g15:architecture: map not present (docs/architecture or architecture/) — soft until per-app map lands; tooling pilots use npm run architecture:check
+  ! g19:minisite-lh: N/A — mini-site not present (https://shamikhahmed.github.io/apps/VaultCap/ → 404)

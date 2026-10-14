@@ -1,0 +1,59 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> capricorn-lab@1.1.0 test
+> node scripts/smoke-hub.mjs
+
+ok   catalog vaultcap 5.3.0
+ok   catalog pulsecap 6.45.0
+ok   catalog prismcap 4.6.0
+ok   catalog steadycap 2.6.0
+ok   catalog ledgercap 3.58.0
+ok   catalog deeponycap 3.9.0
+ok   catalog scentcap 2.2.0
+ok   catalog soulcap 8.4.0
+ok   catalog travelcap 1.1.1
+ok   catalog auracap 5.5.0
+ok   catalog masterycap 51.10.0
+ok   catalog ideacap 2.1.0
+ok   catalog carcap 1.1.0
+ok   catalog cookcap 3.6.1
+ok   catalog deefoodie 1.0.0+3
+ok   DeeFoodie is private beta
+ok   theme registry has 10 skins (capricorn-light, capricorn-dark, aurora, synthwave, terminal, truckart, mughal, paper, pixel, brutal)
+ok   painter for capricorn-light
+ok   CSS tokens for capricorn-light
+ok   inline boot map knows capricorn-light
+ok   painter for capricorn-dark
+ok   CSS tokens for capricorn-dark
+ok   inline boot map knows capricorn-dark
+ok   painter for aurora
+ok   CSS tokens for aurora
+ok   inline boot map knows aurora
+ok   painter for synthwave
+ok   CSS tokens for synthwave
+ok   inline boot map knows synthwave
+ok   painter for terminal
+ok   CSS tokens for terminal
+ok   inline boot map knows terminal
+ok   painter for truckart
+ok   CSS tokens for truckart
+ok   inline boot map knows truckart
+ok   painter for mughal
+ok   CSS tokens for mughal
+ok   inline boot map knows mughal
+ok   painter for paper
+ok   CSS tokens for paper
+ok   inline boot map knows paper
+ok   painter for pixel
+ok   CSS tokens for pixel
+ok   inline boot map knows pixel
+ok   painter for brutal
+ok   CSS tokens for brutal
+ok   inline boot map knows brutal
+ok   no third-party loads
+ok   no Google Fonts (G-9)
+ok   no "Living Mind" / LMM overclaim (SoulCap)
+ok   no unmeasured "0 bytes sent" claims (Privacy Monitor measures instead)
+ok   deploy-hub.mjs present
+
+smoke-hub: all checks passed
