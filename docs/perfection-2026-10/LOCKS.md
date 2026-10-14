@@ -1,12 +1,12 @@
 # Locks — Perfection Loop v3
 Format: `repo → agent → since → purpose`
 
-Updated: 2026-10-14T12:04:30Z
+Updated: 2026-10-14T12:04:56Z
 
 | Repo | Agent | Since | Purpose |
 |---|---|---|---|
 | DeeFoodieApp | — | — | free (Phase I **1.1.0+4** · tag v1.1.0 · DFD-V3-1 FIXED live verified → Auditor · DFD-V3-2 EXTERNAL) |
-| SoulCap | Release-Builder | 2026-10-14T11:56:56Z | Phase I G-8 8.4.0 merge/tag/push + live QA | — | free (Builder pushed perfection/soulcap-v3 @8b7cee9 · SOL-V3-1 FIXED → Auditor; SOL-V3-3 Hub) |
+| SoulCap | — | — | free (8.4.0 @d05c3f9 · CI green · live 7/7 · gallery helpers vendored) |
 | capricorn-tooling/docs/perfection-2026-10 | Conductor | 2026-10-14T10:50:00Z | PROGRESS/LOCKS ownership |
 | capricorn-tooling/docs/audit-2026-09-14/DECISIONS.md | Conductor | 2026-10-14T10:50:00Z | N-1 append |
 | TravelCap | — | — | free (1.1.1 CI fix) |

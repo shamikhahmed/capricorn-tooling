@@ -1,5 +1,8 @@
 # Perfection Loop v3 — Progress
-Updated: 2026-10-14T12:05:00Z · Wave: D→Z · Conductor driving until §15
+Updated: 2026-10-14T17:09:00Z · Wave: D→Z · Conductor driving until §15
+
+## Auditor hand-off (2026-10-14)
+Independent live device-qa (PW_CORE + `PLAYWRIGHT_BROWSERS_PATH` per N-2). Per app: `qa/perfection/auditor-2026-10-14/` + `AUDIT-2026-10-14-<App>.md`. **New VERIFIED flips:** VaultCap VLT-V3-5, ScentCap SCN-V3-1/2/3, IdeaCap IDA-V3-4, CookCap CK-V3-1 (live 3.6.1). Remaining released Caps re-confirmed 7/7.
 
 ## LIVE CLEAN (device-qa 7/7 hard=0 pageErr=0)
 | App | Live ver | Notes |
@@ -11,21 +14,20 @@ Updated: 2026-10-14T12:05:00Z · Wave: D→Z · Conductor driving until §15
 | DeePonyCap | **3.9.0** | |
 | SteadyCap | **2.6.0** | |
 | VaultCap | **5.3.0** | |
-| MasteryCap | **51.10.0** | |
+| MasteryCap | **51.10.0** | merge `a2e801b` · tag `v51.10.0` · tip `37d7ec5` · live 7/7 · APP-REPORT |
 | ScentCap | **2.2.0** | SCN-V3-4 gallery OPEN |
 | AuraCap | **5.5.0** | AUR-V3-4 L |
-| CarCap | **1.1.0** | live-verify-wave/CarCap |
-| SoulCap | **8.4.0** | live clean · **CI verify red** (gallery helpers missing in Actions) → fix in flight |
+| CarCap | **1.1.0** | merge `b3b2c4e` · tag `v1.1.0` · hub `f1e07bb` · live 7/7 · APP-REPORT |
+| SoulCap | **8.4.0** | main @d05c3f9 · tag `v8.4.0` · CI green [38560893479](https://github.com/shamikhahmed/SoulCap/actions/runs/38560893479) · live 7/7 · Help unchanged · gallery helpers vendored in `e2e/helpers/` |
 | PulseCap | **6.45.0** | pulsecap-v127 · live-verify-wave/PulseCap-645 |
 | CookCap | **3.6.1** | **#418 FIXED live** · cookcap-v42 · live-verify-wave/CookCap-361 |
 
 ## IN FLIGHT
 | Unit | Agent | Purpose |
 |---|---|---|
-| SoulCap CI | Builder | Vendor gallery helpers (TravelCap pattern) → CI green |
 | DeeFoodieApp | Builder | Wave D |
 | Hub | Hub-Engineer | Remove stale Prism/Soul; mini-site §10.4; screenshots |
-| Auditor | Auditor | VERIFIED backlog on FIXED items |
+| Auditor | — | Released backlog stamped (see hand-off above) |
 | Gallery | Gallery-Engineer | v3 completeness gaps |
 | Docs | Docs-Editor | §11 truth + Brain vault |
 
@@ -39,7 +41,7 @@ Updated: 2026-10-14T12:05:00Z · Wave: D→Z · Conductor driving until §15
 2. MATRIX/gallery all — **partial** (Gallery agent)
 3. Mini-sites §10.4 — **Hub agent**
 4. Docs truth — **Docs agent**
-5. Tags + CI green + clean trees — **SoulCap CI red**; CookCap dirty untracked qa dirs
+5. Tags + CI green + clean trees — **SoulCap CI green @d05c3f9**; CookCap dirty untracked qa dirs
 6. Wave Z regression — **NOT STARTED** (start when Hub+Soul CI+Auditor catch up)
 7. FINAL-REPORT-v3 — **NOT STARTED**
 
