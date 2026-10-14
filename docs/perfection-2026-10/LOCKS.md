@@ -1,7 +1,7 @@
 # Locks — Perfection Loop v3
 Format: `repo → agent → since → purpose`
 
-Updated: 2026-10-14T12:40:00Z
+Updated: 2026-10-14T12:04:30Z
 
 | Repo | Agent | Since | Purpose |
 |---|---|---|---|
@@ -11,7 +11,7 @@ Updated: 2026-10-14T12:40:00Z
 | capricorn-tooling/docs/audit-2026-09-14/DECISIONS.md | Conductor | 2026-10-14T10:50:00Z | N-1 append |
 | TravelCap | — | — | free (1.1.1 CI fix) |
 | LedgerCap | — | — | free (Phase I 3.58.0 @a8fc996 / v3.58.0 · live verified) |
-| PulseCap | — | — | free (Phase I **6.45.0** @836437f / tag v6.45.0 · live 7/7 · Release-Verifier ✅) |
+| PulseCap | — | — | free (released v6.45.0 @4ce8e2e · live 7/7 → Hub PLS-V3-2 / Gallery PLS-V3-3) |
 | PrismCap | — | — | free (Phase I 4.6.0 @4b21059 / tag v4.6.0@4014458 · own-Pages live · hub PrismCap/ STALE → Hub) |
 | VaultCap | — | — | free (Phase I 5.3.0 @740b7bd / tag v5.3.0@ea8b773 · live verified) |
 | SteadyCap | — | — | free (Phase I 2.6.0 @c6c8f23 / v2.6.0 · live verified) |
