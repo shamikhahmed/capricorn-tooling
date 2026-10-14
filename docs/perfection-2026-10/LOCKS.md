@@ -5,7 +5,7 @@ Updated: 2026-10-14T11:29:29Z
 
 | Repo | Agent | Since | Purpose |
 |---|---|---|---|
-| DeeFoodieApp | Builder-DeeFoodie | 2026-10-14T11:20:00Z | Wave D early · perfection/deefoodie-v3 @a799ec7 · DFD-V3-1 FIXED → Auditor |
+| DeeFoodieApp | Builder-DeeFoodie | 2026-10-14T11:20:00Z | Wave D early · perfection/deefoodie-v3 @9ee5656 · DFD-V3-1 FIXED → Auditor |
 | SoulCap | Builder-SoulCap | 2026-10-14T11:25:00Z | Wave C perfection/soulcap-v3 · SOL-V3-1/3 · gallery v3 |
 | capricorn-tooling/docs/perfection-2026-10 | Conductor | 2026-10-14T10:50:00Z | PROGRESS/LOCKS ownership |
 | capricorn-tooling/docs/audit-2026-09-14/DECISIONS.md | Conductor | 2026-10-14T10:50:00Z | N-1 append |
@@ -14,7 +14,7 @@ Updated: 2026-10-14T11:29:29Z
 | PulseCap | — | — | free (Builder pushed perfection/pulsecap-v3 · PLS-V3-1 FIXED @a5c4b8f → Auditor) |
 | PrismCap | — | — | free (Docs-Editor §11 pushed @29d9266 → Auditor) |
 | VaultCap | Builder-VaultCap | 2026-10-14T11:13:33Z | Wave B perfection/vaultcap-v3 · P0/P1 FIXED → Auditor |
-| SteadyCap | — | — | free (Builder pushed perfection/steadycap-v3 tip `ba70bb7` · STD-V3-1..4 FIXED → Auditor) |
+| SteadyCap | — | — | free (Builder pushed perfection/steadycap-v3 tip `ad1bf71` · STD-V3-1..4 FIXED → Auditor) |
 | CookCap | Builder-CookCap | 2026-10-14T11:10:00Z | Wave A CK-V3-1..5 FIXED → Auditor |
 | IdeaCap | — | — | free (Phase I 2.1.0 @4a9560c / v2.1.0 · hub b7b835f) |
 | CarCap | Builder-CarCap | 2026-10-14T11:17:00Z | Wave D perfection/carcap-v3 · CAR-V3-1 gallery · CAR-V3-3 hub note |

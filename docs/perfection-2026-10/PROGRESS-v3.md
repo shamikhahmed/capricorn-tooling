@@ -1,46 +1,43 @@
 # Perfection Loop v3 — Progress
-Updated: 2026-10-14T11:30:00Z · Conductor active · TravelCap+IdeaCap **LIVE CLEAN** · IdeaCap **2.1.0 released**
+Updated: 2026-10-14T11:30:00Z · Wave: B/C · Agents: Auditor stamping Wave A–C hand-offs
 
-## Live wins
-| App | Live device-qa | Hub |
-|---|---|---|
-| TravelCap | **I/J DONE** | main @8daf58c · v1.1.0 | live 7/7 | VERIFIED | hub 42bfd10 · APP-REPORT-v3 |
-| IdeaCap | **7/7 hard=0** (overflow gone) | main `b7b835f` · **2.1.0** tagged `v2.1.0` @4a9560c |
+| App | Phase (A–J) | Branch | P0 | P1 | P2 | P3 | Matrix % | Gallery L/D | Mini-site | Docs | Live ver | Auditor |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| VaultCap | F | perfection/vaultcap-v3 | 0 | 1 | 0 | 0 | — | — | — | — | 5.2.2 | VLT-V3-1/2 ✅ · VLT-V3-5 ❌ |
+| PulseCap | — | — | 0 | 1 | 0 | 0 | 0 | — | — | — | 6.44.0 | — |
+| PrismCap | F | perfection/prismcap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 4.5.3 | PRS-V3-1/2/3 ✅ |
+| SteadyCap | — | — | 0 | 2 | 0 | 0 | 0 | — | — | — | 2.5.4 | — |
+| LedgerCap | F | perfection/ledgercap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 3.57.2 | LDG-V3-1..4 ✅ |
+| DeePonyCap | F | perfection/deeponycap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 3.8.3 | DPY-V3-1/2/3 ✅ |
+| ScentCap | — | — | 0 | 3 | 0 | 0 | 0 | — | — | — | 2.1.4 | — |
+| SoulCap | F | perfection/soulcap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 8.3.2 | pending Auditor |
+| TravelCap | I | perfection/travelcap-v3 | 0 | 0 | 1 | 0 | — | — | — | — | 1.0.2 | TRV-V3-1..6+8 ✅ · V3-7 OPEN |
+| AuraCap | F | perfection/auracap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 5.4.2 | AUR-V3-1/2/3 ✅ |
+| MasteryCap | F | perfection/masterycap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 51.9.2 | MST-V3-1/2/3 ✅ |
+| IdeaCap | F | perfection/ideacap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 2.0.1 | IDA-V3-1/2 ✅ |
+| CarCap | G | perfection/carcap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 1.0.1 | pending Auditor |
+| CookCap | F | perfection/cookcap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 3.5.1 | CK-V3-1/2/3/4 ✅ |
+| DeeFoodie | F | perfection/deefoodie-v3 | 1 | 0 | 0 | 0 | — | — | — | — | 1.0.0+3 | DFD-V3-1 ❌ live still Flutter |
+| Hub / Capricorn OS | A | — | 0 | 0 | 0 | 0 | 0 | — | skeleton | — | OS 1.1.0 / hub 1.4.0 | Travel hub rsync ✅ |
 
-## Auditor VERIFIED (local unless noted)
-- TravelCap TRV-V3-1..6 ✅ · TRV-V3-8 live ✅ (pending Auditor stamp)
-- IdeaCap IDA-V3-1/2 ✅ · Phase I **2.1.0** released (main `4a9560c`, hub VERSION+catalog `b7b835f`, IDA-V3-4 FIXED)
-- CookCap CK-V3-1/3/4 ✅ · CK-V3-2 re-fixed (auditor-ck2 7/7 tap=0) awaiting VERIFIED stamp
+## Auditor counts (this stamp)
+- ✅ VERIFIED this batch: **20** items
+- ❌ REJECTED: **2** items (VaultCap/VLT-V3-5, DeeFoodieApp/DFD-V3-1)
+- Already VERIFIED retained: IdeaCap IDA-V3-1/2; TravelCap TRV-V3-1..6
 
-## Builder fleet (STATE present)
-VaultCap · DeePonyCap · LedgerCap · PrismCap · AuraCap · MasteryCap · CarCap · SoulCap · **DeeFoodie** (`perfection/deefoodie-v3` @`a799ec7` · live stub `dde482a` · DFD-V3-1 FIXED → Auditor · DFD-V3-2 ⛔ BLOCKED-EXTERNAL) · CookCap · TravelCap · IdeaCap
+## Done (newest first)
+- Auditor stamp 2026-10-14T11:30:00Z: TRV-V3-8 ✅; CK-V3-2 ✅; DPY-V3-1/2/3 ✅; LDG-V3-1..4 ✅; PRS-V3-1/2/3 ✅; VLT-V3-1/2 ✅ / VLT-V3-5 ❌; AUR-V3-1/2/3 ✅; MST-V3-1/2/3 ✅; DFD-V3-1 ❌ (live Flutter).
+- Prior: Wave A local Travel/Idea/Cook P0s.
 
-## Still finishing STATE
-PulseCap · ScentCap
-
-## SteadyCap Wave B (Builder hand-off)
-- Branch `perfection/steadycap-v3` tip `ba70bb7` / fixes `3b6e681` (from main `b9d31a4`) · ver **2.5.6** / SW `steadycap-v56`
-- **FIXED:** STD-V3-1 mood ≥11px · STD-V3-2 Open journal ≥44px · STD-V3-3 wip demo-seed+G-8 (MODULE_CHAIN deferred — SOS eager) · STD-V3-4 G-10 fixture · insights.js pageerror
-- Evidence: `qa/perfection/baseline/` **7/7 hard=0** tap=0 text=0 pageErr=0 · SOS copy untouched
-- Docs: STATE · ITEMS · INVENTORY · MATRIX · → **Auditor**
+## In flight
+- CookCap CK-V3-2 re-hand closed.
+- VaultCap VLT-V3-5 return to Builder (android residual taps).
+- DeeFoodie DFD-V3-1 needs Pages redeploy of private-beta stub.
+- CarCap / SoulCap / SteadyCap / PulseCap / ScentCap Auditor queue.
 
 ## Blocked-external
-- DeeFoodie **DFD-V3-2** TestFlight upload (pack ready · `docs/store/TESTFLIGHT.md`)
+- MST-V3-8 Urdu native review
+- DFD-V3-2 TestFlight upload
 
-## Infrastructure
-- Phase 0 finish/* → main ✅
-- Tooling G16–G19 + gallery viewer on `perfection/tooling-v3`
-- Mini-sites `/apps/*` live on hub main
-- N-1 / N-2 in DECISIONS; CAP-STANDARD v3
-- DeeFoodie live Pages = Private beta stub @`dde482a` (Flutter web-deploy disabled)
-
-## §15 (honest — NOT complete)
-1 Live gates all 15+hub — **2/15 live clean**; others in progress
-2 MATRIX/gallery complete all — **partial** (Travel 78 shots)
-3 Mini-sites §10.4 polish — **skeleton live**; LH/polish remaining
-4 Docs truth all — **partial**
-5 finish merged ✅; all releases tagged — **Travel/Idea release in flight**
-6 Final regression clean — **NOT STARTED**
-7 FINAL-REPORT-v3 — **NOT STARTED**
-
-Loop continues — no early stop.
+## Decisions taken (N-…)
+- N-1 · Mini-sites → `/apps/<slug>/` — v3, 2026-10-14
