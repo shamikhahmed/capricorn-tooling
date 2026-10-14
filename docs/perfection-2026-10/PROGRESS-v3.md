@@ -6,7 +6,7 @@ Updated: 2026-10-14T11:30:00Z · Wave: B/C · Agents: Auditor stamping Wave A–
 | VaultCap | F | perfection/vaultcap-v3 | 0 | 1 | 0 | 0 | — | — | — | — | 5.2.2 | VLT-V3-1/2 ✅ · VLT-V3-5 ❌ |
 | PulseCap | — | — | 0 | 1 | 0 | 0 | 0 | — | — | — | 6.44.0 | — |
 | PrismCap | F | perfection/prismcap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 4.5.3 | PRS-V3-1/2/3 ✅ |
-| SteadyCap | — | — | 0 | 2 | 0 | 0 | 0 | — | — | — | 2.5.4 | — |
+| SteadyCap | F | perfection/steadycap-v3 | 0 | 0 open (4 FIXED) | 2 | 0 | baseline | — | — | STATE+INV+MATRIX+ITEMS | 2.5.6 (branch) | **HANDOFF** |
 | LedgerCap | F | perfection/ledgercap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 3.57.2 | LDG-V3-1..4 ✅ |
 | DeePonyCap | F | perfection/deeponycap-v3 | 0 | 0 | 0 | 0 | — | — | — | — | 3.8.3 | DPY-V3-1/2/3 ✅ |
 | ScentCap | — | — | 0 | 3 | 0 | 0 | 0 | — | — | — | 2.1.4 | — |
@@ -26,6 +26,7 @@ Updated: 2026-10-14T11:30:00Z · Wave: B/C · Agents: Auditor stamping Wave A–
 - Already VERIFIED retained: IdeaCap IDA-V3-1/2; TravelCap TRV-V3-1..6
 
 ## Done (newest first)
+- **SteadyCap Builder Wave B:** STD-V3-1..4 ✅ FIXED · tip `645d6c7` / fixes `3b6e681` · ver 2.5.6 / SW v56 · baseline 7/7 hard-clean · SOS untouched · → Auditor. — 2026-10-14T11:35:00Z
 - Auditor stamp 2026-10-14T11:30:00Z: TRV-V3-8 ✅; CK-V3-2 ✅; DPY-V3-1/2/3 ✅; LDG-V3-1..4 ✅; PRS-V3-1/2/3 ✅; VLT-V3-1/2 ✅ / VLT-V3-5 ❌; AUR-V3-1/2/3 ✅; MST-V3-1/2/3 ✅; DFD-V3-1 ❌ (live Flutter) — **superseded**: Pages stub live @`dde482a`.
 - Builder-DeeFoodie: DFD-V3-1 FIXED (`4790774` + gh-pages `dde482a`) · tip `9ee5656` · hand Auditor re-verify.
 - Prior: Wave A local Travel/Idea/Cook P0s.

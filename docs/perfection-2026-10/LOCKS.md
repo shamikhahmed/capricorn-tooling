@@ -14,7 +14,7 @@ Updated: 2026-10-14T11:29:29Z
 | PulseCap | — | — | free (Builder pushed perfection/pulsecap-v3 · PLS-V3-1 FIXED @a5c4b8f → Auditor) |
 | PrismCap | — | — | free (Docs-Editor §11 pushed @29d9266 → Auditor) |
 | VaultCap | Builder-VaultCap | 2026-10-14T11:13:33Z | Wave B perfection/vaultcap-v3 · P0/P1 FIXED → Auditor |
-| SteadyCap | — | — | free (Builder pushed perfection/steadycap-v3 tip `090db78` · STD-V3-1..4 FIXED → Auditor) |
+| SteadyCap | — | — | free (Builder pushed perfection/steadycap-v3 tip `645d6c7` · STD-V3-1..4 FIXED → Auditor) |
 | CookCap | Builder-CookCap | 2026-10-14T11:10:00Z | Wave A CK-V3-1..5 FIXED → Auditor |
 | IdeaCap | — | — | free (Phase I 2.1.0 @4a9560c / v2.1.0 · hub b7b835f) |
 | CarCap | Builder-CarCap | 2026-10-14T11:17:00Z | Wave D perfection/carcap-v3 · CAR-V3-1 gallery · CAR-V3-3 hub note |
