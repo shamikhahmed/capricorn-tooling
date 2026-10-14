@@ -1,5 +1,5 @@
 # Perfection Loop v3 — Progress
-Updated: 2026-10-14T11:06:57Z · Wave: B · Agents: Builder-PrismCap (locked)
+Updated: 2026-10-14T11:12:00Z · Wave: A · Hub mini-sites expanded + pushed
 
 | App | Phase (A–J) | Branch | P0 | P1 | P2 | P3 | Matrix % | Gallery L/D | Mini-site | Docs | Live ver | Auditor |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -35,6 +35,7 @@ Updated: 2026-10-14T11:06:57Z · Wave: B · Agents: Builder-PrismCap (locked)
 - **Next:** Conductor merge/review; Builders produce `qa/perfection/device/device-qa.json` + inventory/gallery for G16/G17
 
 ## Done (newest first)
+- **Hub-Engineer Wave A expand:** regenerated all 15 `/apps/<slug>/` + `apps/index.html`; legacy `<slug>.html` → mini-sites (N-1); DeeFoodie private-beta (no install); `?app=<slug>` confirmed (Playwright: `vaultcap` window after boot with `?nolock=1&app=vaultcap&view=desktop`). lab tip `e334cf5`, hub tip `979020e`. PrismCap/SoulCap hub copies retained (Wave D). — 2026-10-14T11:12:00Z
 - Tooling Engineer: G16–G19 gates on `perfection/tooling-v3` (see hand-off).
 - Phase 0 finish/* → main pushed: Travel, Cook, Idea, Vault, Steady, Ledger, Aura, Prism, DeePony; Car+Soul on main.
 - Baseline device-qa: 71/98 hard-clean; JSON+SUMMARY in `docs/perfection-2026-10/baseline/` (N-2 browsers path).
