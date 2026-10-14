@@ -12,7 +12,7 @@ Updated: 2026-10-14T12:35:00Z · Wave: D→Z · Conductor driving until §15
 | SteadyCap | **2.6.0** | live 7/7 |
 | VaultCap | **5.3.0** | merge `ea8b773` · tip `740b7bd` · tag `v5.3.0` · `vaultcap-v93` · live 7/7 tap=0 · VLT-V3-3/4 OPEN · `VaultCap/` soft-tap = false positive (VLT-V3-6) |
 | MasteryCap | **51.10.0** | merge `a2e801b` · tip `37d7ec5` · tag `v51.10.0` · SW `masterycap-v51100` · live 7/7 · APP-REPORT-v3 @`f82edce` |
-| ScentCap | **2.2.0** | live 7/7 · SCN-V3-4 gallery OPEN |
+| ScentCap | **2.2.0** | live 7/7 · **G17 ✅** v3 gallery 60 shots @`b3111db` (push pending) |
 | AuraCap | **5.5.0** | live 7/7 · AUR-V3-4 L |
 | CarCap | **1.1.0** | hub f1e07bb · live 7/7 hard=0 · tag v1.1.0 @b3b2c4e · Release-Verifier ✅ |
 | PulseCap | **6.45.0** | merge `836437f` · tag `v6.45.0` · SW `pulsecap-v127` · live 7/7 · PLS-V3-1 live clean · APP-REPORT-v3 |
@@ -30,8 +30,19 @@ Updated: 2026-10-14T12:35:00Z · Wave: D→Z · Conductor driving until §15
 |---|---|---|
 | CookCap | v3.6.0 | **LIVE REGRESSION #418** → 3.6.1 hotfix |
 
+## Gallery (G17) — Gallery-Engineer 2026-10-14
+| Item | SHA / evidence |
+|---|---|
+| Shared viewer (`screen-gallery.{html,css,js}`) | blob `ba1a078` · introduced @`38fed65` · filters (light/dark/both, device, scroll rails) verified on CarCap |
+| Tooling | `capricorn-tooling` @`209ec86` — `inventory-fleet.mjs` + README |
+| **G17 complete** | **CarCap**, **ScentCap** (`b3111db` — 60 WebP, schema v2) |
+| **Blocked (locks / release)** | CookCap, SoulCap, PulseCap, DeeFoodieApp, Hub — no capture |
+| **Gapped (Builders)** | VaultCap, LedgerCap, DeePonyCap, IdeaCap — no v2 manifest · AuraCap (legacy mobile/desktop PNG) · PrismCap, SteadyCap, TravelCap, MasteryCap, SoulCap — partial/stale · CookCap — light-only legacy · PulseCap — 176 shots stale vs 6.45.0 |
+
+Run fleet summary: `node capricorn-tooling/shared/gallery/inventory-fleet.mjs --fleet-root=Cap-Apps`
+
 ## INFRA
-- Tooling: G16–G19, gallery viewer, N-1/N-2, baseline
+- Tooling: G16–G19, gallery viewer, `inventory-fleet.mjs`, N-1/N-2, baseline
 - Hub: mini-sites `/apps/*` §10.4 (galleries + support); Travel/Idea/Car rsync; stale PrismCap/SoulCap removed
 - Phase 0 finish merges ✅
 
