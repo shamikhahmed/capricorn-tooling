@@ -1,61 +1,46 @@
 # Perfection Loop v3 — Progress
-Updated: 2026-10-14T11:26:05Z · Wave: B+C+D · Conductor driving until §15
+Updated: 2026-10-14T11:30:00Z · Conductor active · TravelCap+IdeaCap **LIVE CLEAN** · IdeaCap **2.1.0 released**
 
-| App | Phase | Branch | Hard local | Live | Auditor |
-|---|---|---|---|---|---|
-| TravelCap | I (release next) | perfection/travelcap-v3 | 7/7 | **7/7 hard=0** | ✅ TRV-V3-1..6; TRV-V3-8 FIXED live |
-| IdeaCap | I prep | perfection/ideacap-v3 | 7/7 | hub rsynced | ✅ IDA-V3-1/2 |
-| CookCap | F re-fix | perfection/cookcap-v3 | pageErr=0 | — | ✅ 1/3/4 · ❌ 2 INPUT |
-| VaultCap | F | perfection/vaultcap-v3 | 7/7 | — | verifying |
-| DeePonyCap | F | perfection/deeponycap-v3 | 7/7 | — | verifying |
-| LedgerCap | F | perfection/ledgercap-v3 | 7/7 | — | verifying |
-| PrismCap | F | perfection/prismcap-v3 | 7/7 | — | verifying |
-| SteadyCap | A–E | perfection/steadycap-v3 | — | — | Builder |
-| PulseCap | F (hand Auditor) | perfection/pulsecap-v3 @a5c4b8f | **7/7 hard=0** · vibrate=0 | — | **HANDOFF** PLS-V3-1 |
-| ScentCap | A–E | perfection/scentcap-v3 | — | — | Builder |
-| SoulCap | A | perfection/soulcap-v3 | — | — | Builder |
-| AuraCap | F (hand Auditor) | perfection/auracap-v3 @c1ec7bb | **7/7 hard=0** tap=0 | — | **HANDOFF** AUR-V3-1/2/3 |
-| MasteryCap | A | perfection/masterycap-v3 | — | — | Builder |
-| CarCap | G–H · await Auditor | perfection/carcap-v3 @e12521a | **7/7 hard=0** | pending hub | CAR-V3-1 ✅ 36 shots · CAR-V3-3 ⏳ Hub rsync |
-| DeeFoodie | A | perfection/deefoodie-v3 | — | — | Builder DFD-V3-1 |
-| Hub | deployed | main @72981b7 | mini-sites+rsync | Pages live | — |
-| Tooling | A done | perfection/tooling-v3 | G16–19+gallery | — | — |
+## Live wins
+| App | Live device-qa | Hub |
+|---|---|---|
+| TravelCap | **I/J DONE** | main @8daf58c · v1.1.0 | live 7/7 | VERIFIED | hub 42bfd10 · APP-REPORT-v3 |
+| IdeaCap | **7/7 hard=0** (overflow gone) | main `b7b835f` · **2.1.0** tagged `v2.1.0` @4a9560c |
 
-## Hand-off — Builder-PulseCap (Auditor)
-- **When:** 2026-10-14T11:24:47Z
-- **Branch:** `perfection/pulsecap-v3` @ `a5c4b8f` (fix `a3fe47c`)
-- **FIXED (Builder):** PLS-V3-1 (`canVibrate` / userActivation gate on haptic + celebrate)
-- **Evidence:** `PulseCap/qa/perfection/{baseline,device}/device-qa.json` — hard=0; baseline Chromium vibrate×2 → post-fix vibrate **0**; STATE + commands in `PulseCap/qa/perfection/STATE.md`
-- **Open (Hub/Gallery phases):** PLS-V3-2 hub screenshot stale; PLS-V3-3 gallery extend + v3 viewer
-- **Auditor:** re-run from clean checkout; only Auditor marks ✅ VERIFIED
+## Auditor VERIFIED (local unless noted)
+- TravelCap TRV-V3-1..6 ✅ · TRV-V3-8 live ✅ (pending Auditor stamp)
+- IdeaCap IDA-V3-1/2 ✅ · Phase I **2.1.0** released (main `4a9560c`, hub VERSION+catalog `b7b835f`, IDA-V3-4 FIXED)
+- CookCap CK-V3-1/3/4 ✅ · CK-V3-2 re-fixed (auditor-ck2 7/7 tap=0) awaiting VERIFIED stamp
 
-## Hand-off — Builder-AuraCap (Auditor)
-- **When:** 2026-10-14T11:27:00Z
-- **Branch:** `perfection/auracap-v3` @ `c1ec7bb41747dfadbf8769282deb8317ce6e5dd4`
-- **FIXED (Builder):** AUR-V3-1 tap≥44; AUR-V3-2 VERSION.json CI/`ensure:version` + matrix build-before-preview; AUR-V3-3 WIP CSS motion / no cold-load Notification.requestPermission / `#main`
-- **Evidence:** `AuraCap/qa/perfection/{baseline,post-fix}/device-qa.json` — hard=0 tap=0 text=0; STATE commands in `qa/perfection/STATE.md`
-- **Open (later):** AUR-V3-4 gallery v3 both themes; live VERSION.json after Phase I merge→main
-- **Auditor:** re-run from clean checkout; only Auditor marks ✅ VERIFIED
+## Builder fleet (STATE present)
+VaultCap · DeePonyCap · LedgerCap · PrismCap · AuraCap · MasteryCap · CarCap · SoulCap · **DeeFoodie** (`perfection/deefoodie-v3` @`a799ec7` · live stub `dde482a` · DFD-V3-1 FIXED → Auditor · DFD-V3-2 ⛔ BLOCKED-EXTERNAL) · CookCap · TravelCap · IdeaCap
 
+## Still finishing STATE
+PulseCap · ScentCap
 
-## Done (newest)
-- **AuraCap Builder Wave C:** AUR-V3-1/2/3 ✅ FIXED · baseline fleet tap=5 → post-fix 7/7 tap=0 · `perfection/auracap-v3` @c1ec7bb → Auditor. Open: AUR-V3-4 gallery. — 2026-10-14T11:26Z
-- **PulseCap Builder Wave C:** PLS-V3-1 ✅ FIXED · baseline 7/7 · post-fix 7/7 + 0 vibrate · `perfection/pulsecap-v3` tip `a5c4b8f` (fix `a3fe47c`) → Auditor. Open: PLS-V3-2/3 Hub/Gallery. — 2026-10-14T11:24:47Z
-- **CarCap Wave D:** CAR-V3-1 ✅ FIXED (36 schema-v2 L/D × iphone/ipad/mac + shared viewer) · CAR-V3-2 ✅ `main` `8cd0c11` · CAR-V3-3 ⏳ Hub Engineer rsync · baseline device-qa 7/7 · tip `e12521a` / gallery `f8b4e7b` · `qa/perfection/*` · hand Auditor. — 2026-10-14T11:25Z
-- **Docs Editor §11 (free locks):** PrismCap `29d9266` · DeePonyCap `957d868` · TravelCap `8704e93` (README §4.1 only) · LedgerCap `5e19190` — README §4.1, HANDOVER/CHANGELOG cite perfection-v3, privacy network honesty; Brain notes `ce91f6d`. — 2026-10-14T11:26Z
-- **LIVE TravelCap device-qa 7/7 hard=0** after hub main merge `72981b7` (Passport desk; no waiting pageerror).
-- Hub: mini-sites `/apps/*` + TravelCap/IdeaCap rsync on main.
-- Auditor: TravelCap TRV-V3-1..6 ✅; IdeaCap IDA-V3-1/2 ✅; CookCap CK-V3-1/3/4 ✅.
-- Phase 0 finish merges; baseline JSON; gallery viewer; G16–G19; N-1/N-2; CAP-STANDARD v3.
+## SteadyCap Wave B (Builder hand-off)
+- Branch `perfection/steadycap-v3` tip `ba70bb7` / fixes `3b6e681` (from main `b9d31a4`) · ver **2.5.6** / SW `steadycap-v56`
+- **FIXED:** STD-V3-1 mood ≥11px · STD-V3-2 Open journal ≥44px · STD-V3-3 wip demo-seed+G-8 (MODULE_CHAIN deferred — SOS eager) · STD-V3-4 G-10 fixture · insights.js pageerror
+- Evidence: `qa/perfection/baseline/` **7/7 hard=0** tap=0 text=0 pageErr=0 · SOS copy untouched
+- Docs: STATE · ITEMS · INVENTORY · MATRIX · → **Auditor**
 
-## In flight
-- CookCap CK-V3-2 re-fix; Auditor Wave B (Vault/DeePony/Ledger/Prism); Wave C/D Builders; Phase I releases; Docs Editor next free (e.g. ScentCap).
+## Blocked-external
+- DeeFoodie **DFD-V3-2** TestFlight upload (pack ready · `docs/store/TESTFLIGHT.md`)
 
-## §15 checklist
-1 Live gates all apps — **TravelCap ✅ partial**; rest IN PROGRESS
-2 MATRIX/gallery all — IN PROGRESS (Travel 78 · CarCap 36)
-3 Mini-sites live — **YES skeleton on main** (`/apps/`); polish remaining
-4 Docs truth — **IN PROGRESS** (Prism/DeePony/Travel/Ledger §11 done; remaining Caps when locks free)
-5 finish merged ✅; releases/tags — IN PROGRESS
-6 Final regression — NOT STARTED
-7 FINAL-REPORT-v3 — NOT STARTED
+## Infrastructure
+- Phase 0 finish/* → main ✅
+- Tooling G16–G19 + gallery viewer on `perfection/tooling-v3`
+- Mini-sites `/apps/*` live on hub main
+- N-1 / N-2 in DECISIONS; CAP-STANDARD v3
+- DeeFoodie live Pages = Private beta stub @`dde482a` (Flutter web-deploy disabled)
+
+## §15 (honest — NOT complete)
+1 Live gates all 15+hub — **2/15 live clean**; others in progress
+2 MATRIX/gallery complete all — **partial** (Travel 78 shots)
+3 Mini-sites §10.4 polish — **skeleton live**; LH/polish remaining
+4 Docs truth all — **partial**
+5 finish merged ✅; all releases tagged — **Travel/Idea release in flight**
+6 Final regression clean — **NOT STARTED**
+7 FINAL-REPORT-v3 — **NOT STARTED**
+
+Loop continues — no early stop.

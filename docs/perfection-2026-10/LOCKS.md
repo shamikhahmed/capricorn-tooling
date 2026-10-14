@@ -1,31 +1,31 @@
 # Locks — Perfection Loop v3
 Format: `repo → agent → since → purpose`
 
-Updated: 2026-10-14T11:26:05Z
+Updated: 2026-10-14T11:29:29Z
 
 | Repo | Agent | Since | Purpose |
 |---|---|---|---|
-| DeeFoodieApp | Builder-DeeFoodie | 2026-10-14T11:20:00Z | Wave D early · perfection/deefoodie-v3 · DFD-V3-1 P0 → Auditor |
+| DeeFoodieApp | Builder-DeeFoodie | 2026-10-14T11:20:00Z | Wave D early · perfection/deefoodie-v3 @a799ec7 · DFD-V3-1 FIXED → Auditor |
 | SoulCap | Builder-SoulCap | 2026-10-14T11:25:00Z | Wave C perfection/soulcap-v3 · SOL-V3-1/3 · gallery v3 |
 | capricorn-tooling/docs/perfection-2026-10 | Conductor | 2026-10-14T10:50:00Z | PROGRESS/LOCKS ownership |
 | capricorn-tooling/docs/audit-2026-09-14/DECISIONS.md | Conductor | 2026-10-14T10:50:00Z | N-1 append |
-| TravelCap | Builder-TravelCap | 2026-10-14T11:22:36Z | Phase I release 1.1.0 |
+| TravelCap | — | — | free (1.1.0 released) |
 | LedgerCap | — | — | free (Docs-Editor §11 pushed @5e19190 → Auditor) |
 | PulseCap | — | — | free (Builder pushed perfection/pulsecap-v3 · PLS-V3-1 FIXED @a5c4b8f → Auditor) |
 | PrismCap | — | — | free (Docs-Editor §11 pushed @29d9266 → Auditor) |
 | VaultCap | Builder-VaultCap | 2026-10-14T11:13:33Z | Wave B perfection/vaultcap-v3 · P0/P1 FIXED → Auditor |
-| SteadyCap | Builder-SteadyCap | 2026-10-14T11:07:49Z | Wave B perfection/steadycap-v3 · STD-V3-1/2/3/4 |
+| SteadyCap | — | — | free (Builder pushed perfection/steadycap-v3 tip `ba70bb7` · STD-V3-1..4 FIXED → Auditor) |
 | CookCap | Builder-CookCap | 2026-10-14T11:10:00Z | Wave A CK-V3-1..5 FIXED → Auditor |
-| IdeaCap | Builder-IdeaCap | 2026-10-14T10:53:00Z | Wave A perfection/ideacap-v3 · IDA-V3-1/2 FIXED → Auditor |
+| IdeaCap | — | — | free (Phase I 2.1.0 @4a9560c / v2.1.0 · hub b7b835f) |
 | CarCap | Builder-CarCap | 2026-10-14T11:17:00Z | Wave D perfection/carcap-v3 · CAR-V3-1 gallery · CAR-V3-3 hub note |
 | MasteryCap | Builder-MasteryCap | 2026-10-14T11:18:57Z | Wave C perfection/masterycap-v3 · MST-V3-1/2/3 |
 | DeePonyCap | — | — | free (Docs-Editor §11 pushed @957d868 → Auditor) |
 | capricorn-tooling/shared/gallery | Gallery-Engineer | 2026-10-14T10:52:00Z | v3 viewer |
 | capricorn-tooling/scripts + shared (exc. gallery) | — (released) | 2026-10-14T11:07:19Z | Tooling-Engineer pushed `perfection/tooling-v3` @ 224b76a |
 | capricorn-lab | — | — | released (rsync+Website pushed) |
-| shamikhahmed.github.io | — | — | released (merged main 72981b7) |
+| shamikhahmed.github.io | — | — | released (IdeaCap 2.1.0 @b7b835f) |
 | AuraCap | — | — | free (Builder pushed perfection/auracap-v3 · AUR-V3-1/2/3 FIXED → Auditor) |
-| ScentCap | — | — | free (Builder pushed perfection/scentcap-v3 · SCN-V3-1/2 FIXED → Auditor) |
+| ScentCap | — | — | free (Builder pushed perfection/scentcap-v3 · SCN-V3-1/2/3 FIXED @62244bd → Auditor) |
 
 ## Rules
 - Take a lock before writing; release after push.
