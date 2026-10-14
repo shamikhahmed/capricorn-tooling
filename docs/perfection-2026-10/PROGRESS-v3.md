@@ -1,5 +1,5 @@
 # Perfection Loop v3 — Progress
-Updated: 2026-10-14T11:35:00Z · Wave: B+C+D · **TravelCap LIVE CLEAN**
+Updated: 2026-10-14T11:26:00Z · Wave: B+C+D · Conductor driving until §15
 
 | App | Phase | Branch | Hard local | Live | Auditor |
 |---|---|---|---|---|---|
@@ -16,25 +16,27 @@ Updated: 2026-10-14T11:35:00Z · Wave: B+C+D · **TravelCap LIVE CLEAN**
 | SoulCap | A | perfection/soulcap-v3 | — | — | Builder |
 | AuraCap | A | perfection/auracap-v3 | — | — | Builder |
 | MasteryCap | A | perfection/masterycap-v3 | — | — | Builder |
-| CarCap | A | perfection/carcap-v3 | — | — | Builder |
+| CarCap | G–H · await Auditor | perfection/carcap-v3 @ace70cf | **7/7 hard=0** | pending hub | CAR-V3-1 ✅ 36 shots · CAR-V3-3 ⏳ Hub rsync |
 | DeeFoodie | A | perfection/deefoodie-v3 | — | — | Builder DFD-V3-1 |
 | Hub | deployed | main @72981b7 | mini-sites+rsync | Pages live | — |
 | Tooling | A done | perfection/tooling-v3 | G16–19+gallery | — | — |
 
 ## Done (newest)
+- **CarCap Wave D:** CAR-V3-1 ✅ FIXED (36 schema-v2 L/D × iphone/ipad/mac + shared viewer) · CAR-V3-2 ✅ `main` `8cd0c11` · CAR-V3-3 ⏳ Hub Engineer rsync · baseline device-qa 7/7 · tip `ace70cf` / gallery `f8b4e7b` · `qa/perfection/*` · hand Auditor. — 2026-10-14T11:25Z
+- **Docs Editor §11 (free locks):** PrismCap `29d9266` · DeePonyCap `957d868` · TravelCap `8704e93` (README §4.1 only) · LedgerCap `5e19190` — README §4.1, HANDOVER/CHANGELOG cite perfection-v3, privacy network honesty; Brain notes `ce91f6d`. — 2026-10-14T11:26Z
 - **LIVE TravelCap device-qa 7/7 hard=0** after hub main merge `72981b7` (Passport desk; no waiting pageerror).
 - Hub: mini-sites `/apps/*` + TravelCap/IdeaCap rsync on main.
 - Auditor: TravelCap TRV-V3-1..6 ✅; IdeaCap IDA-V3-1/2 ✅; CookCap CK-V3-1/3/4 ✅.
 - Phase 0 finish merges; baseline JSON; gallery viewer; G16–G19; N-1/N-2; CAP-STANDARD v3.
 
 ## In flight
-- CookCap CK-V3-2 re-fix; Auditor Wave B (Vault/DeePony/Ledger/Prism); Wave C/D Builders; Docs Editor; Phase I releases.
+- CookCap CK-V3-2 re-fix; Auditor Wave B (Vault/DeePony/Ledger/Prism); Wave C/D Builders; Phase I releases; Docs Editor next free (e.g. ScentCap).
 
 ## §15 checklist
 1 Live gates all apps — **TravelCap ✅ partial**; rest IN PROGRESS
-2 MATRIX/gallery all — IN PROGRESS (Travel gallery 78 shots)
+2 MATRIX/gallery all — IN PROGRESS (Travel 78 · CarCap 36)
 3 Mini-sites live — **YES skeleton on main** (`/apps/`); polish remaining
-4 Docs truth — IN PROGRESS
+4 Docs truth — **IN PROGRESS** (Prism/DeePony/Travel/Ledger §11 done; remaining Caps when locks free)
 5 finish merged ✅; releases/tags — IN PROGRESS
 6 Final regression — NOT STARTED
 7 FINAL-REPORT-v3 — NOT STARTED
