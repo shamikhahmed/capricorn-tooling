@@ -6,7 +6,7 @@ Updated: 2026-10-14T11:29:29Z
 | Repo | Agent | Since | Purpose |
 |---|---|---|---|
 | DeeFoodieApp | Builder-DeeFoodie | 2026-10-14T11:20:00Z | Wave D early · perfection/deefoodie-v3 @9ee5656 · DFD-V3-1 FIXED → Auditor |
-| SoulCap | — | — | free (Builder pushed perfection/soulcap-v3 @30dadd3 · SOL-V3-1 FIXED → Auditor; SOL-V3-3 Hub) |
+| SoulCap | — | — | free (Builder pushed perfection/soulcap-v3 @8b7cee9 · SOL-V3-1 FIXED → Auditor; SOL-V3-3 Hub) |
 | capricorn-tooling/docs/perfection-2026-10 | Conductor | 2026-10-14T10:50:00Z | PROGRESS/LOCKS ownership |
 | capricorn-tooling/docs/audit-2026-09-14/DECISIONS.md | Conductor | 2026-10-14T10:50:00Z | N-1 append |
 | TravelCap | — | — | free (1.1.0 released) |
