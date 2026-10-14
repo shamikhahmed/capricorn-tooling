@@ -1,7 +1,7 @@
 # Locks — Perfection Loop v3
 Format: `repo → agent → since → purpose`
 
-Updated: 2026-10-14T12:06:00Z
+Updated: 2026-10-14T12:40:00Z
 
 | Repo | Agent | Since | Purpose |
 |---|---|---|---|
@@ -15,7 +15,7 @@ Updated: 2026-10-14T12:06:00Z
 | PrismCap | — | — | free (Phase I 4.6.0 @4b21059 / tag v4.6.0@4014458 · own-Pages live · hub PrismCap/ STALE → Hub) |
 | VaultCap | — | — | free (Phase I 5.3.0 @740b7bd / tag v5.3.0@ea8b773 · live verified) |
 | SteadyCap | — | — | free (Phase I 2.6.0 @c6c8f23 / v2.6.0 · live verified) |
-| CookCap | Builder-CookCap | 2026-10-14T12:00:00Z | 3.6.1 #418 hotfix · G-8 cookcap-v42 · local+live device-qa |
+| CookCap | — | — | free (3.6.1 @e435bba / v3.6.1 · live 7/7 · CK-V3-1 FIXED → Auditor) |
 | IdeaCap | — | — | free (Phase I 2.1.0 @4a9560c / v2.1.0 · hub b7b835f) |
 | CarCap | — | — | free (Phase I **1.1.0** @b3b2c4e / tag v1.1.0 · hub f1e07bb · **Release-Verifier 7/7** @main) |
 | MasteryCap | — | — | free (Phase I 51.10.0 @a2e801b / v51.10.0 · tip 37d7ec5 · live 7/7 · APP-REPORT @f82edce) |

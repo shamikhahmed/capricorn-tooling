@@ -1,5 +1,5 @@
 # Perfection Loop v3 — Progress
-Updated: 2026-10-14T12:35:00Z · Wave: D→Z · Conductor driving until §15
+Updated: 2026-10-14T12:06:00Z · Wave: D→Z · Conductor driving until §15
 
 ## LIVE CLEAN (device-qa 7/7 hard=0)
 | App | Live ver | Notes |
@@ -17,18 +17,18 @@ Updated: 2026-10-14T12:35:00Z · Wave: D→Z · Conductor driving until §15
 | CarCap | **1.1.0** | hub f1e07bb · live 7/7 hard=0 · tag v1.1.0 @b3b2c4e · Release-Verifier ✅ |
 | PulseCap | **6.45.0** | merge `836437f` · tag `v6.45.0` · SW `pulsecap-v127` · live 7/7 · PLS-V3-1 live clean · APP-REPORT-v3 |
 | DeeFoodie | **1.1.0+4** | private beta · Pages stub live · TestFlight upload EXTERNAL · DFD-V3-3 OPEN |
+| CookCap | **3.6.1** | main `e435bba` · tag `v3.6.1` · SW `cookcap-v42` · live 7/7 pageErr=0 · CK-V3-1 FIXED |
 
 ## IN FLIGHT
 | App | Agent | Purpose |
 |---|---|---|
-| CookCap | Builder-CookCap | **P0** 3.6.1 #418 hotfix (staged on main) → live clean |
 | SoulCap | Builder-SoulCap | Phase I 8.4.0 release |
 | Hub | — | **done** @78b212c — mini-sites §10.4; Prism/Soul mirrors removed; rsync T/I/C; hub shots |
 
 ## RELEASED / TAGGED (await confirm)
 | App | Tag | Status |
 |---|---|---|
-| CookCap | v3.6.0 | **LIVE REGRESSION #418** → 3.6.1 hotfix |
+| — | — | — |
 
 ## Gallery (G17) — Gallery-Engineer 2026-10-14
 | Item | SHA / evidence |
@@ -69,11 +69,17 @@ Run fleet summary: `node capricorn-tooling/shared/gallery/inventory-fleet.mjs --
 | `PulseCap-matrix/` README 6.41 | MATRIX | Copy drift |
 | AuraCap `docs/MONETIZATION.md` Pro tier | Builder-AuraCap | G-2 |
 | SoulCap HANDOVER 8.3.0 vs 8.4.0 | Builder-SoulCap | **LOCK** |
-| CookCap README 3.6.0 vs 3.6.1 hotfix | Builder-CookCap | **LOCK** until live |
+| CookCap README 3.6.0 vs 3.6.1 | Builder-CookCap | sync README on next docs pass |
 | Investor `_workspace/*` gmail | Wave Z | G-4 non-shipped decks |
 
+## Hand-off — Builder-CookCap @ 2026-10-14T12:06:00Z
+- **Shipped:** CookCap **3.6.1** (`e435bba`, tag `v3.6.1`, SW `cookcap-v42`) — hydration #418 hotfix on Cover/Title/Contents/Shell TopBar.
+- **CI:** Pages deploy run **38560545459** success.
+- **QA:** local + live device-qa 7/7 hard=0 pageErr=0 → `CookCap/qa/perfection/{local,live}-v3.6.1/` (JSON committed).
+- **Items:** CK-V3-1 **FIXED** live; CK-V3-5/6 still OPEN.
+- **→ Auditor:** re-verify CK-V3-1 on live 3.6.1; gallery/hub L items unchanged.
+
 ## Next (Conductor)
-1. Land CookCap 3.6.1 live clean
-2. Confirm Pulse/Soul/DeeFoodie
+1. Confirm Pulse/Soul/DeeFoodie
 3. Gallery + remaining pitch/hub truth
 4. Wave Z → FINAL-REPORT-v3
