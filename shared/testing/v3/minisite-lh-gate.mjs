@@ -13,8 +13,12 @@ const LH_DIRS = [
 ];
 
 function appSlug(root, ver, pkg) {
-  const raw = ver?.slug || ver?.app || pkg?.name || path.basename(root);
-  return String(raw).replace(/^@.*\//, '').replace(/[^A-Za-z0-9-]/g, '');
+  const raw = ver?.minisiteSlug || ver?.hubSlug || ver?.slug || ver?.app || pkg?.name || path.basename(root);
+  // Hub mini-sites live at /apps/<catalog-slug>/ (lowercase, e.g. pulsecap not PulseCap).
+  return String(raw)
+    .replace(/^@.*\//, '')
+    .replace(/[^A-Za-z0-9-]/g, '')
+    .toLowerCase();
 }
 
 function readJson(p) {

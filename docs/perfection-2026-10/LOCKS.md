@@ -1,12 +1,12 @@
 # Locks — Perfection Loop v3
 Format: `repo → agent → since → purpose`
 
-Updated: 2026-10-14T12:30:00Z
+Updated: 2026-10-14T12:28:00Z
 
 | Repo | Agent | Since | Purpose |
 |---|---|---|---|
 | DeeFoodieApp | — | — | free (Phase I **1.1.0+4** · tag v1.1.0 · DFD-V3-1 FIXED live verified → Auditor · DFD-V3-2 EXTERNAL) |
-| SoulCap | — | — | free (8.4.0 @d05c3f9 · CI green · live 7/7 · gallery helpers vendored) |
+| SoulCap | — | — | free (Phase I **8.4.0** merge `c214447` / tag `v8.4.0` · tip `fe4e86d` · CI green · live 7/7 · Help unchanged) |
 | capricorn-tooling/docs/perfection-2026-10 | Conductor | 2026-10-14T10:50:00Z | PROGRESS/LOCKS ownership |
 | capricorn-tooling/docs/audit-2026-09-14/DECISIONS.md | Conductor | 2026-10-14T10:50:00Z | N-1 append |
 | TravelCap | — | — | free (MATRIX @eb9cb78 · 93% · TRV-V3-9 OPEN) |
@@ -17,7 +17,7 @@ Updated: 2026-10-14T12:30:00Z
 | SteadyCap | — | — | free (Phase I 2.6.0 @c6c8f23 / v2.6.0 · live verified) |
 | CookCap | — | — | free (MATRIX @8220895 · 54% · CK-V3-5/7 OPEN) |
 | IdeaCap | Gallery-Builder | 2026-10-14T12:20:00Z | v3 gallery manifest + capture |
-| CarCap | — | — | free (Phase I **1.1.0** @b3b2c4e / tag v1.1.0 · hub f1e07bb · **Release-Verifier 7/7** @main) |
+| CarCap | Wave-Z | 2026-10-14T12:28:00Z | CI red @93d8264 — vendoring gallery helpers (run 38563020939) |
 | MasteryCap | — | — | free (Phase I 51.10.0 @a2e801b / v51.10.0 · tip 37d7ec5 · live 7/7 · APP-REPORT @f82edce) |
 | DeePonyCap | — | — | free (Phase I 3.9.0 · tag v3.9.0 · tip bfca914 · APP-REPORT-v3) |
 | capricorn-tooling/shared/gallery | — (released) | 2026-10-14T12:40:00Z | Gallery-Engineer pushed @209ec86 · ScentCap v3 @b3111db |
