@@ -262,4 +262,5 @@ DeeFoodie variant adds: "Your visits, photos and collections are stored on DeeFo
 ---
 
 ## 6. New questions (Cursor appends here; must apply its recommendation immediately)
-_None yet._
+
+N-1 · Mini-sites → every Cap gets https://shamikhahmed.github.io/apps/<slug>/ (DeeFoodie: private-beta page without install). The legacy <slug>.html redirect now points to the mini-site instead of the app (amends P-HUB-1; the mini-site's primary CTA opens the app). — v3, 2026-10-14
