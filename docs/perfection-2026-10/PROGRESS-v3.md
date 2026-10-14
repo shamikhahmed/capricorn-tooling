@@ -1,5 +1,5 @@
 # Perfection Loop v3 — Progress
-Updated: 2026-10-14T11:24:47Z · Wave: B+C+D · Conductor driving until §15
+Updated: 2026-10-14T11:25:49Z · Wave: B+C+D · Conductor driving until §15
 
 | App | Phase | Branch | Hard local | Live | Auditor |
 |---|---|---|---|---|---|
@@ -11,10 +11,10 @@ Updated: 2026-10-14T11:24:47Z · Wave: B+C+D · Conductor driving until §15
 | LedgerCap | F | perfection/ledgercap-v3 | 7/7 | — | verifying |
 | PrismCap | F | perfection/prismcap-v3 | 7/7 | — | verifying |
 | SteadyCap | A–E | perfection/steadycap-v3 | — | — | Builder |
-| PulseCap | F (hand Auditor) | perfection/pulsecap-v3 @a3fe47c | **7/7 hard=0** · vibrate=0 | — | **HANDOFF** PLS-V3-1 |
+| PulseCap | F (hand Auditor) | perfection/pulsecap-v3 @92c735b | **7/7 hard=0** · vibrate=0 | — | **HANDOFF** PLS-V3-1 |
 | ScentCap | A–E | perfection/scentcap-v3 | — | — | Builder |
 | SoulCap | A | perfection/soulcap-v3 | — | — | Builder |
-| AuraCap | A | perfection/auracap-v3 | — | — | Builder |
+| AuraCap | F (hand Auditor) | perfection/auracap-v3 @87cd3c2 | **7/7 hard=0** tap=0 | — | **HANDOFF** AUR-V3-1/2/3 |
 | MasteryCap | A | perfection/masterycap-v3 | — | — | Builder |
 | CarCap | G–H · await Auditor | perfection/carcap-v3 @20d8dcd | **7/7 hard=0** | pending hub | CAR-V3-1 ✅ 36 shots · CAR-V3-3 ⏳ Hub rsync |
 | DeeFoodie | A | perfection/deefoodie-v3 | — | — | Builder DFD-V3-1 |
@@ -23,15 +23,24 @@ Updated: 2026-10-14T11:24:47Z · Wave: B+C+D · Conductor driving until §15
 
 ## Hand-off — Builder-PulseCap (Auditor)
 - **When:** 2026-10-14T11:24:47Z
-- **Branch:** `perfection/pulsecap-v3` @ `a3fe47c`
+- **Branch:** `perfection/pulsecap-v3` @ `92c735b` (fix `a3fe47c`)
 - **FIXED (Builder):** PLS-V3-1 (`canVibrate` / userActivation gate on haptic + celebrate)
 - **Evidence:** `PulseCap/qa/perfection/{baseline,device}/device-qa.json` — hard=0; baseline Chromium vibrate×2 → post-fix vibrate **0**; STATE + commands in `PulseCap/qa/perfection/STATE.md`
 - **Open (Hub/Gallery phases):** PLS-V3-2 hub screenshot stale; PLS-V3-3 gallery extend + v3 viewer
 - **Auditor:** re-run from clean checkout; only Auditor marks ✅ VERIFIED
 
+## Hand-off — Builder-AuraCap (Auditor)
+- **When:** 2026-10-14T11:26:00Z
+- **Branch:** `perfection/auracap-v3` @ `87cd3c2` (docs tip sync; fix commit `91bc4c7`)
+- **FIXED (Builder):** AUR-V3-1 tap≥44; AUR-V3-2 VERSION.json CI/`ensure:version` + matrix build; AUR-V3-3 WIP CSS motion / no cold-load Notification.requestPermission / `#main`
+- **Evidence:** `AuraCap/qa/perfection/{baseline,post-fix}/device-qa.json` — hard=0 tap=0 text=0; STATE commands in `qa/perfection/STATE.md`
+- **Open (later):** AUR-V3-4 gallery v3 both themes; live VERSION.json after Phase I merge→main
+- **Auditor:** re-run from clean checkout; only Auditor marks ✅ VERIFIED
+
 ## Done (newest)
-- **PulseCap Builder Wave C:** PLS-V3-1 ✅ FIXED · baseline 7/7 · post-fix 7/7 + 0 vibrate · `perfection/pulsecap-v3` @a3fe47c → Auditor. Open: PLS-V3-2/3 Hub/Gallery. — 2026-10-14T11:24:47Z
-- **CarCap Wave D:** CAR-V3-1 ✅ FIXED (36 schema-v2 L/D × iphone/ipad/mac + shared viewer) · CAR-V3-2 ✅ `main` `8cd0c11` · CAR-V3-3 ⏳ Hub Engineer rsync · baseline device-qa 7/7 · tip `ace70cf` / gallery `f8b4e7b` · `qa/perfection/*` · hand Auditor. — 2026-10-14T11:25Z
+- **AuraCap Builder Wave C:** AUR-V3-1/2/3 ✅ FIXED · baseline fleet tap=5 → post-fix 7/7 tap=0 · `perfection/auracap-v3` @87cd3c2 → Auditor. Open: AUR-V3-4 gallery. — 2026-10-14T11:26Z
+- **PulseCap Builder Wave C:** PLS-V3-1 ✅ FIXED · baseline 7/7 · post-fix 7/7 + 0 vibrate · `perfection/pulsecap-v3` tip `92c735b` (fix `a3fe47c`) → Auditor. Open: PLS-V3-2/3 Hub/Gallery. — 2026-10-14T11:24:47Z
+- **CarCap Wave D:** CAR-V3-1 ✅ FIXED (36 schema-v2 L/D × iphone/ipad/mac + shared viewer) · CAR-V3-2 ✅ `main` `8cd0c11` · CAR-V3-3 ⏳ Hub Engineer rsync · baseline device-qa 7/7 · tip `20d8dcd` / gallery `f8b4e7b` · `qa/perfection/*` · hand Auditor. — 2026-10-14T11:25Z
 - **Docs Editor §11 (free locks):** PrismCap `29d9266` · DeePonyCap `957d868` · TravelCap `8704e93` (README §4.1 only) · LedgerCap `5e19190` — README §4.1, HANDOVER/CHANGELOG cite perfection-v3, privacy network honesty; Brain notes `ce91f6d`. — 2026-10-14T11:26Z
 - **LIVE TravelCap device-qa 7/7 hard=0** after hub main merge `72981b7` (Passport desk; no waiting pageerror).
 - Hub: mini-sites `/apps/*` + TravelCap/IdeaCap rsync on main.

@@ -1,7 +1,7 @@
 # Locks — Perfection Loop v3
 Format: `repo → agent → since → purpose`
 
-Updated: 2026-10-14T11:26:00Z
+Updated: 2026-10-14T11:25:49Z
 
 | Repo | Agent | Since | Purpose |
 |---|---|---|---|
@@ -11,7 +11,7 @@ Updated: 2026-10-14T11:26:00Z
 | capricorn-tooling/docs/audit-2026-09-14/DECISIONS.md | Conductor | 2026-10-14T10:50:00Z | N-1 append |
 | TravelCap | Builder-TravelCap | 2026-10-14T11:22:36Z | Phase I release 1.1.0 |
 | LedgerCap | — | — | free (Docs-Editor §11 pushed @5e19190 → Auditor) |
-| PulseCap | Builder-PulseCap | 2026-10-14T11:17:02Z | Wave C perfection/pulsecap-v3 · PLS-V3-1 |
+| PulseCap | — | — | free (Builder pushed perfection/pulsecap-v3 · PLS-V3-1 FIXED @92c735b → Auditor) |
 | PrismCap | — | — | free (Docs-Editor §11 pushed @29d9266 → Auditor) |
 | VaultCap | Builder-VaultCap | 2026-10-14T11:13:33Z | Wave B perfection/vaultcap-v3 · P0/P1 FIXED → Auditor |
 | SteadyCap | Builder-SteadyCap | 2026-10-14T11:07:49Z | Wave B perfection/steadycap-v3 · STD-V3-1/2/3/4 |
@@ -24,7 +24,7 @@ Updated: 2026-10-14T11:26:00Z
 | capricorn-tooling/scripts + shared (exc. gallery) | — (released) | 2026-10-14T11:07:19Z | Tooling-Engineer pushed `perfection/tooling-v3` @ 224b76a |
 | capricorn-lab | — | — | released (rsync+Website pushed) |
 | shamikhahmed.github.io | — | — | released (merged main 72981b7) |
-| AuraCap | Builder-AuraCap | 2026-10-14T11:18:00Z | Wave C perfection/auracap-v3 · AUR-V3-1/2/3 |
+| AuraCap | — | — | free (Builder pushed perfection/auracap-v3 · AUR-V3-1/2/3 FIXED → Auditor) |
 | ScentCap | — | — | free (Builder pushed perfection/scentcap-v3 · SCN-V3-1/2 FIXED → Auditor) |
 
 ## Rules
