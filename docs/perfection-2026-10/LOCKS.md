@@ -17,7 +17,7 @@ Updated: 2026-10-14T12:28:00Z
 | SteadyCap | — | — | free (Phase I 2.6.0 @c6c8f23 / v2.6.0 · live verified) |
 | CookCap | — | — | free (MATRIX @8220895 · 54% · CK-V3-5/7 OPEN) |
 | IdeaCap | Gallery-Builder | 2026-10-14T12:20:00Z | v3 gallery manifest + capture |
-| CarCap | Wave-Z | 2026-10-14T12:28:00Z | CI red @93d8264 — vendoring gallery helpers (run 38563020939) |
+| CarCap | — | — | free (Phase I **1.1.0** @d31c666 · CI fix gallery helpers · tag v1.1.0 · hub f1e07bb · live 7/7) |
 | MasteryCap | — | — | free (Phase I 51.10.0 @a2e801b / v51.10.0 · tip 37d7ec5 · live 7/7 · APP-REPORT @f82edce) |
 | DeePonyCap | — | — | free (Phase I 3.9.0 · tag v3.9.0 · tip bfca914 · APP-REPORT-v3) |
 | capricorn-tooling/shared/gallery | — (released) | 2026-10-14T12:40:00Z | Gallery-Engineer pushed @209ec86 · ScentCap v3 @b3111db |
