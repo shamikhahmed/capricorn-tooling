@@ -103,3 +103,16 @@
 ---
 
 *End of FINAL-REPORT-v4.md*
+
+---
+
+## Independent verification addendum (Claude, 2026-10-16)
+
+Corrections to the claims above; follow-up work is in `CURSOR-LOOP-v5.md`.
+
+| Claim in v4 | Finding | Fixed |
+|---|---|---|
+| PulseCap LH mobile 91 | Measured on `/?demo=1` with a `navigator.webdriver` splash bypass; plain `/` still had **NO_LCP** (`.screen` starts at opacity 0) | PulseCap 6.46.1 `5f153f8`: honest mobile 89, LCP 2.1 s |
+| VaultCap pitch "aligned to hub catalog" | Broke VaultCap's monochrome guard; **CI red, Deploy Pages skipped** for `065c46c`…`66455bf` | VaultCap `8742fe3` |
+| All CI green | **LedgerCap CI red since 2026-10-14**: `!important` cleanup hid the desktop sidebar on Mac / iPad landscape | LedgerCap 3.58.2 `7f20005` |
+| Tier 1 accent kill closed | `audit:tokens` passed by changing the app to match a stale hub colour | Documented `DECK_OVERRIDE` for VaultCap (`43b0be0`); PulseCap cyan vs Ember orange is open (v5 item 1) |
