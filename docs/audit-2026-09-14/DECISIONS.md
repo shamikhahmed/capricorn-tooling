@@ -267,3 +267,42 @@ N-1 · Mini-sites → every Cap gets https://shamikhahmed.github.io/apps/<slug>/
 
 N-2 · Playwright browsers path → always set `PLAYWRIGHT_BROWSERS_PATH=$HOME/Library/Caches/ms-playwright` with `PW_CORE=…/MasteryCap/node_modules/playwright-core` for device-qa / qa-matrix / tier1. Cursor sandbox cache paths are empty; do not rely on them. — v3, 2026-10-14
 
+---
+
+## 7. Perfection Loop v5 decisions (LOCKED — 2026-10-16)
+
+Source: `docs/perfection-2026-10/CURSOR-LOOP-v5.md`. Cursor executes; do not re-open.
+
+### V5-1 · VaultCap is midnight & gold
+App UI already uses dark `--accent:#D4A017`, light `--accent:#0a1220`. Hub tile/icon/catalog were still blue `#5b8dee`.
+- Family icon: 512 tile, `rx112`; midnight diagonal `#121a2a` → `#04070d`; shield gold gradient `#F3D27A` → `#D4A017` → `#9A7410` (`userSpaceOnUse` x1=96 y1=140 x2=416 y2=420); ivory keyhole `#f4f0e8`; gold flick `M380 96 L420 108 L408 148` + `circle(408,118,r6)` `#c9a227`.
+- Replace everywhere: app SVGs/PNGs, Capacitor iOS set, lab `assets/icons/vaultcap.*`.
+- Catalog (lab + hub): `accent:'#d4a017'`, `accent2:'#9a7410'`. Decks: gold in dark, `#0a1220` in light. Remove `vaultcap` from `DECK_OVERRIDE` in `audit-design-tokens.mjs`. Release **5.3.1**.
+
+### V5-2 · PulseCap is Ember orange everywhere
+App/icon/`theme-color` already `#FF7A1A` / press `#E86A0E`. Hub catalog/icon/decks were cyan.
+- Hub icon: warm near-black `#2a1206` → `#0b0503`; pulse glyph `#FFB066` → `#FF7A1A` → `#E86A0E`; gold flick. Regenerate PNGs.
+- Catalog (lab + hub): `accent:'#ff7a1a'`, `accent2:'#e86a0e'`. Recolour pitch + presentation: every cyan → Ember.
+
+### V5-3 · Search engines see canonical pages only
+CookCap stays `noindex, nofollow` (public face `/apps/cookcap/`).
+- Remove from `sitemap.xml` all 14 legacy `<slug>.html` redirects and `/CookCap/`. `build-minisites.mjs` must prune redirects and noindex URLs from the sitemap on every build.
+- Keep `/`, support/privacy/about/sovereignty/investor/pitch, indexable app URLs, `/apps/`, `/apps/<slug>/`.
+
+### V5-4 · Restore designed cascade values (no `!important`)
+Use specificity only. Keep 11→12 px text bumps.
+- VaultCap `@media (min-width:700px) body .page.on > .pb { padding-bottom:24px }`
+- PrismCap `.lcard` dual box-shadow; `#app` max-width `min(520px,100vw)` at desktop hover/fine; `.sec { letter-spacing:.04em }`
+- SteadyCap `@media (min-width:769px) and (hover:hover) and (pointer:fine) .screen { padding-bottom:24px }`
+Prove with `audit-important-loss.mjs` exit 0.
+
+### V5-5 · Status messages speak to people
+LedgerCap market banner: **"Prices are from the last close on {date}. Live prices aren't available right now."** (date from snapshot); only on market screens while true; dismissible. Home KSE-100: last close + date or "Unavailable" — never endless "Loading…". Fleet sweep: no worker/origin/proxy/EOD/seed/stack wording in user-facing banners/toasts/empty states.
+
+### V5 hard rules
+1. Never special-case measurement (`navigator.webdriver` / headless / Lighthouse UA). Use `lighthouse-honest.mjs`.
+2. CI green on `main` for every touched repo before claiming done (`gh run list`).
+3. Guard tests encode decisions; hub follows apps.
+4. Removing `!important` requires `audit-important-loss.mjs` pass.
+5. Every report ✅ needs a command output or file path.
+
