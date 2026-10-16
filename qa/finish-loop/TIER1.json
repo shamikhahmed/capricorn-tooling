@@ -1,0 +1,147 @@
+{
+  "app": "capricorn-tooling",
+  "version": "1.0.0",
+  "swCache": null,
+  "generatedAt": "2026-10-15T10:24:54.819Z",
+  "status": "FAIL",
+  "pass": [
+    {
+      "id": "records:LOG.md",
+      "detail": "present"
+    },
+    {
+      "id": "app-ready",
+      "detail": "window.__APP_READY__ assigned in product code"
+    },
+    {
+      "id": "tag",
+      "detail": "found v1.0.0"
+    },
+    {
+      "id": "kill:google-fonts",
+      "detail": "0"
+    }
+  ],
+  "fail": [
+    {
+      "id": "version:VERSION.json",
+      "detail": "missing"
+    },
+    {
+      "id": "records:BASELINE.md",
+      "detail": "missing qa/finish-loop/BASELINE.md"
+    },
+    {
+      "id": "records:STATES.md",
+      "detail": "missing qa/finish-loop/STATES.md"
+    },
+    {
+      "id": "records:APP-REPORT.md",
+      "detail": "missing qa/finish-loop/APP-REPORT.md"
+    },
+    {
+      "id": "records:DOCS-INVENTORY.md",
+      "detail": "missing qa/finish-loop/DOCS-INVENTORY.md"
+    },
+    {
+      "id": "suppressions",
+      "detail": "shared/testing/tier1.mjs:327: // Word-bound xit/fit — bare xit( matches process.exit( (false positive on Nest/Prisma CLI).\nshared/testing/tier1.mjs:329: /eslint-disable|@ts-ignore|@ts-expect-error|\\.skip\\(|\\.only\\(|\\bxit\\(|\\bxdescribe\\(|\\bfit\\(|\\bfdescribe\\(/;"
+    },
+    {
+      "id": "test-skip",
+      "detail": "2 hits (allowlist: none)\nshared/testing/__tests__/tier1.test.mjs:146: test('C-32: test.skip without gallery allowlist fails', () => {\nshared/testing/__tests__/tier1.test.mjs:151: 'e2e/x.spec.js': \"test.skip('nope', () => {});\\n\","
+    },
+    {
+      "id": "ci:workflow-name",
+      "detail": "set TIER1_CI_WORKFLOW or qa/finish-loop/CI-WORKFLOW.txt to the exact workflow name"
+    },
+    {
+      "id": "matrix:spec",
+      "detail": "no finish-matrix spec"
+    },
+    {
+      "id": "matrix:results",
+      "detail": "missing qa/finish-loop/matrix-results.json (CI must set FINISH_MATRIX=1)"
+    },
+    {
+      "id": "lighthouse:dir",
+      "detail": "missing qa/finish-loop/lighthouse/"
+    },
+    {
+      "id": "axe:dir",
+      "detail": "missing qa/finish-loop/axe/ (JSON per route×theme)"
+    },
+    {
+      "id": "gallery:manifest",
+      "detail": "gallery-manifest.json not found"
+    },
+    {
+      "id": "g16:device-qa",
+      "detail": "missing device-qa.json (looked in qa/perfection/device/device-qa.json, qa/perfection/baseline/device-qa.json, qa/finish-loop/device-qa.json, qa/finish-loop/device/device-qa.json)"
+    },
+    {
+      "id": "g17:gallery-v3",
+      "detail": "FAIL via check-completeness.mjs: Missing gallery-manifest.json at /Users/shamikhahmed/Projects/Cap/Cap-Apps/capricorn-tooling/docs/screenshots/gallery/gallery-manifest.json"
+    },
+    {
+      "id": "g18:docs-truth",
+      "detail": "VERSION.json missing; cap-agents/skills/agent-09-ledgercap-qa.md: legacy app-as-OS (StundsOS); cap-agents/skills/agent-11-pulsecap-qa.md: legacy app-as-OS (FitnessOS); cap-agents/skills/agent-12-prismcap-qa.md: legacy app-as-OS (PrismOS); cap-agents/skills/agent-13-steadycap-qa.md: legacy app-as-OS (DisciplineOS); cap-agents/skills/agent-14-deeponycap-qa.md: legacy app-as-OS (DeePonyOS); docs/audit-2026-09-14/CURSOR-MASTER-PROMPT.md: legacy app-as-OS (TravelOS); docs/audit-2026-09-14/DECISIONS.md: legacy app-as-OS (TravelOS); docs/audit-2026-09-14/FLEET-AUDIT.md: legacy app-as-OS (TravelOS); docs/audit-2026-09-14/PrismCap-APP-REPORT.md: legacy app-as-OS (PrismOS); docs/audit-2026-09-14/TravelCap-APP-REPORT.md: legacy app-as-OS (TravelOS); docs/perfection-2026-10/CURSOR-PERFECTION-LOOP.md: npm run verify not in package.json; docs/perfection-2026-10/CURSOR-PERFECTION-LOOP.md: npm run axe not in package.json; docs/perfection-2026-10/CURSOR-PERFECTION-LOOP.md: npm run gallery not in package.json; docs/perfection-2026-10/CURSOR-PERFECTION-LOOP.md: npm run gallery:view not in package.json; docs/perfection-2026-10/CURSOR-PERFECTION-LOOP.md: legacy app-as-OS (TravelOS); docs/perfection-2026-10/CURSOR-PERFECTION-LOOP.md: stale:ten-apps; docs/perfection-2026-10/CURSOR-PERFECTION-LOOP.md: stale:thirteen-caps; docs/perfection-2026-10/CURSOR-PERFECTION-LOOP.md: stale:300-exercises; qa/architecture/pilot-hub/AUDIT.md: broken link ${j(e)} (+4 more)"
+    },
+    {
+      "id": "kill:raw-hex",
+      "detail": "121"
+    },
+    {
+      "id": "kill:sub-11px",
+      "detail": "5"
+    },
+    {
+      "id": "kill:important",
+      "detail": "38"
+    },
+    {
+      "id": "kill:native-dialogs",
+      "detail": "2"
+    },
+    {
+      "id": "kill:outline-none",
+      "detail": "3"
+    },
+    {
+      "id": "kill:console.log",
+      "detail": "21"
+    },
+    {
+      "id": "kill:innerHTML-classified",
+      "detail": "16 sinks; SINKS.md MISSING"
+    }
+  ],
+  "warn": [
+    {
+      "id": "live:VERSION.json",
+      "detail": "https://shamikhahmed.github.io/capricorn-tooling/VERSION.json → unreachable"
+    },
+    {
+      "id": "sinks",
+      "detail": "SINKS.md missing — required when innerHTML > 0"
+    },
+    {
+      "id": "g15:architecture",
+      "detail": "map not present (docs/architecture or architecture/) — soft until per-app map lands; tooling pilots use npm run architecture:check"
+    },
+    {
+      "id": "g19:minisite-lh",
+      "detail": "N/A — mini-site not present (https://shamikhahmed.github.io/apps/capricorn-tooling/ → unreachable)"
+    }
+  ],
+  "killList": {
+    "rawHex": 121,
+    "sub11": 5,
+    "important": 38,
+    "nativeDialog": 2,
+    "outlineNone": 3,
+    "consoleLog": 21,
+    "googleFonts": 0,
+    "innerHTML": 16
+  }
+}

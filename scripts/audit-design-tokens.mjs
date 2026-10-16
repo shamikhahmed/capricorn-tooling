@@ -17,6 +17,11 @@ const paths = {
   auracap: 'AuraCap/public/pitch.html',
 };
 
+// Documented exceptions: the deck follows the app's own brand, not the hub tile colour.
+const DECK_OVERRIDE = {
+  vaultcap: '#ffffff', // VaultCap is monochrome by decision (CHANGELOG 5.1.x; tests/satellite-pages.spec.js forbids blue)
+};
+
 let issues = 0;
 for (const [slug, rel] of Object.entries(paths)) {
   const p = catalog[slug];
@@ -25,7 +30,7 @@ for (const [slug, rel] of Object.entries(paths)) {
   const html = readFileSync(path, 'utf8');
   const m = html.match(/--accent:\s*([^;}\s]+)/);
   const deck = m?.[1]?.toLowerCase();
-  const cat = p.accent.toLowerCase();
+  const cat = (DECK_OVERRIDE[slug] || p.accent).toLowerCase();
   const ok = deck === cat;
   console.log(`${ok ? '✓' : '✗'} ${slug}: deck=${deck || 'missing'} catalog=${cat}`);
   if (!ok) issues += 1;
