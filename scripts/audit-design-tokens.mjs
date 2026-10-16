@@ -18,9 +18,7 @@ const paths = {
 };
 
 // Documented exceptions: the deck follows the app's own brand, not the hub tile colour.
-const DECK_OVERRIDE = {
-  vaultcap: '#ffffff', // VaultCap is monochrome by decision (CHANGELOG 5.1.x; tests/satellite-pages.spec.js forbids blue)
-};
+const DECK_OVERRIDE = {};
 
 let issues = 0;
 for (const [slug, rel] of Object.entries(paths)) {
