@@ -261,6 +261,13 @@ DeeFoodie variant adds: "Your visits, photos and collections are stored on DeeFo
 
 ---
 
+### G-11 · Architecture connection map (owner request 2026-09-16) — LOCKED
+- Every app gets a living architecture map per `capricorn-tooling/shared/architecture/SPEC.md`: shared analyzer + static zero-dependency viewer in capricorn-tooling; per repo `docs/architecture/` (SoulCap: `architecture/` at repo root because `docs/` is its Pages root) and `architecture.config.json`; script `npm run architecture:analyze`.
+- Approved dev-only dependencies for this tool: `typescript` (compiler API, in capricorn-tooling only) and Dart `analyzer` as a dev dependency in DeeFoodieApp `mobile/` for `tool/arch_dump.dart`. No graph libraries unless a measured need is documented here first.
+- The map is internal: never published by GitHub Pages (C-57 allowlist); verify 404 live.
+- The analyzer observes and reports only; findings become `<APP>-ARCH-<n>` items; nothing is deleted or refactored automatically.
+- Gate G15 (map current for HEAD, analyzer tests pass, no unexplained BROKEN paths or NO_VERIFIED_SOURCE displays on primary screens, AUDIT.md reviewed) is part of Tier 1.
+
 ## 6. New questions (Cursor appends here; must apply its recommendation immediately)
 
 ### D-IDEA-LH-1 · IdeaCap honest LH a11y (2026-10-19) → **Theme-aware Home styles + hub publish 2.1.2**
@@ -283,40 +290,36 @@ DeeFoodie variant adds: "Your visits, photos and collections are stored on DeeFo
 
 ---
 
-## 7. Perfection Loop v5 decisions (LOCKED — 2026-10-16)
+## 7. Perfection Loop v5 decisions (2026-10-16 — LOCKED)
 
-Source: `docs/perfection-2026-10/CURSOR-LOOP-v5.md`. Cursor executes; do not re-open.
+Applied from `capricorn-tooling/docs/perfection-2026-10/CURSOR-LOOP-v5.md`. Do not reopen.
 
-### V5-1 · VaultCap is midnight & gold
-App UI already uses dark `--accent:#D4A017`, light `--accent:#0a1220`. Hub tile/icon/catalog were still blue `#5b8dee`.
-- Family icon: 512 tile, `rx112`; midnight diagonal `#121a2a` → `#04070d`; shield gold gradient `#F3D27A` → `#D4A017` → `#9A7410` (`userSpaceOnUse` x1=96 y1=140 x2=416 y2=420); ivory keyhole `#f4f0e8`; gold flick `M380 96 L420 108 L408 148` + `circle(408,118,r6)` `#c9a227`.
-- Replace everywhere: app SVGs/PNGs, Capacitor iOS set, lab `assets/icons/vaultcap.*`.
-- Catalog (lab + hub): `accent:'#d4a017'`, `accent2:'#9a7410'`. Decks: gold in dark, `#0a1220` in light. Remove `vaultcap` from `DECK_OVERRIDE` in `audit-design-tokens.mjs`. Release **5.3.1**.
+| ID | Decision |
+|---|---|
+| V5-1 | VaultCap brand = midnight + gold (`#D4A017` / `#9A7410`); icon + hub + decks; remove `DECK_OVERRIDE` vaultcap once decks agree. |
+| V5-2 | PulseCap brand = Ember orange (`#FF7A1A` / `#E86A0E`) everywhere including hub + decks; no cyan leftovers. |
+| V5-3 | Sitemap = canonical pages only; CookCap stays noindex; prune legacy redirect URLs from sitemap on every mini-site build. |
+| V5-4 | Restore designed cascade values lost in `!important` cleanup via specificity (Vault/Prism/Steady listed in CURSOR-LOOP-v5); keep 12 px text floor. |
+| V5-5 | LedgerCap market status = plain language + dismissible; never endless “Loading…”; no developer jargon in banners. Worker deploy remains owner-gated when wrangler unauthenticated. |
 
-### V5-2 · PulseCap is Ember orange everywhere
-App/icon/`theme-color` already `#FF7A1A` / press `#E86A0E`. Hub catalog/icon/decks were cyan.
-- Hub icon: warm near-black `#2a1206` → `#0b0503`; pulse glyph `#FFB066` → `#FF7A1A` → `#E86A0E`; gold flick. Regenerate PNGs.
-- Catalog (lab + hub): `accent:'#ff7a1a'`, `accent2:'#e86a0e'`. Recolour pitch + presentation: every cyan → Ember.
+**Measurement:** honest Lighthouse only (`lighthouse-honest.mjs`); no webdriver/UA/headless special-cases in apps.
 
-### V5-3 · Search engines see canonical pages only
-CookCap stays `noindex, nofollow` (public face `/apps/cookcap/`).
-- Remove from `sitemap.xml` all 14 legacy `<slug>.html` redirects and `/CookCap/`. `build-minisites.mjs` must prune redirects and noindex URLs from the sitemap on every build.
-- Keep `/`, support/privacy/about/sovereignty/investor/pitch, indexable app URLs, `/apps/`, `/apps/<slug>/`.
+**Report:** `capricorn-tooling/docs/perfection-2026-10/FINAL-REPORT-v5.md` (2026-10-19).
 
-### V5-4 · Restore designed cascade values (no `!important`)
-Use specificity only. Keep 11→12 px text bumps.
-- VaultCap `@media (min-width:700px) body .page.on > .pb { padding-bottom:24px }`
-- PrismCap `.lcard` dual box-shadow; `#app` max-width `min(520px,100vw)` at desktop hover/fine; `.sec { letter-spacing:.04em }`
-- SteadyCap `@media (min-width:769px) and (hover:hover) and (pointer:fine) .screen { padding-bottom:24px }`
-Prove with `audit-important-loss.mjs` exit 0.
+---
 
-### V5-5 · Status messages speak to people
-LedgerCap market banner: **"Prices are from the last close on {date}. Live prices aren't available right now."** (date from snapshot); only on market screens while true; dismissible. Home KSE-100: last close + date or "Unavailable" — never endless "Loading…". Fleet sweep: no worker/origin/proxy/EOD/seed/stack wording in user-facing banners/toasts/empty states.
+## 7. Perfection Loop v5 decisions (2026-10-16 — LOCKED)
 
-### V5 hard rules
-1. Never special-case measurement (`navigator.webdriver` / headless / Lighthouse UA). Use `lighthouse-honest.mjs`.
-2. CI green on `main` for every touched repo before claiming done (`gh run list`).
-3. Guard tests encode decisions; hub follows apps.
-4. Removing `!important` requires `audit-important-loss.mjs` pass.
-5. Every report ✅ needs a command output or file path.
+Applied from `capricorn-tooling/docs/perfection-2026-10/CURSOR-LOOP-v5.md`. Do not reopen.
 
+| ID | Decision |
+|---|---|
+| V5-1 | VaultCap brand = midnight + gold (`#D4A017` / `#9A7410`); icon + hub + decks; remove `DECK_OVERRIDE` vaultcap once decks agree. |
+| V5-2 | PulseCap brand = Ember orange (`#FF7A1A` / `#E86A0E`) everywhere including hub + decks; no cyan leftovers. |
+| V5-3 | Sitemap = canonical pages only; CookCap stays noindex; prune legacy redirect URLs from sitemap on every mini-site build. |
+| V5-4 | Restore designed cascade values lost in `!important` cleanup via specificity (Vault/Prism/Steady listed in CURSOR-LOOP-v5); keep 12 px text floor. |
+| V5-5 | LedgerCap market status = plain language + dismissible; never endless “Loading…”; no developer jargon in banners. Worker deploy remains owner-gated when wrangler unauthenticated. |
+
+**Measurement:** honest Lighthouse only (`lighthouse-honest.mjs`); no webdriver/UA/headless special-cases in apps.
+
+**Report:** `capricorn-tooling/docs/perfection-2026-10/FINAL-REPORT-v5.md` (2026-10-19).
