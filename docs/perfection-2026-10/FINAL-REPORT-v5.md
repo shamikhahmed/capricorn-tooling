@@ -3,7 +3,8 @@
 **Program:** `CURSOR-LOOP-v5.md`  
 **Completed (conductor close):** 2026-10-19  
 **Binding:** `docs/audit-2026-09-14/DECISIONS.md` + v5 brand/perf decisions below  
-**Evidence dir:** `capricorn-tooling/docs/perfection-2026-10/live-v5/`
+**Evidence dir:** `capricorn-tooling/docs/perfection-2026-10/live-v5/`  
+**Close note:** Autoresume sealed §7 + Pulse/Ledger/Prism CI greens. Deferred eng debt listed under “Not done” — do not claim fleet 100% a11y/perf/CI until those rows clear.
 
 ---
 
