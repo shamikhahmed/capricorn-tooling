@@ -1,0 +1,24 @@
+ok   PulseCap    webkit   iphone-se       
+ok   PulseCap    webkit   iphone          
+ok   PulseCap    webkit   ipad-portrait   
+ok   PulseCap    webkit   ipad-landscape  
+ok   PulseCap    webkit   macbook         
+ok   PulseCap    chromium macbook         
+ok   PulseCap    chromium android         
+ok   VaultCap    webkit   iphone-se       
+ok   VaultCap    webkit   iphone          
+ok   VaultCap    webkit   ipad-portrait   
+ok   VaultCap    webkit   ipad-landscape  
+ok   VaultCap    webkit   macbook         
+ok   VaultCap    chromium macbook         
+ok   VaultCap    chromium android         
+warn LedgerCap   webkit   iphone-se       1 console err | 1 hub-console
+warn LedgerCap   webkit   iphone          1 console err | 1 hub-console
+warn LedgerCap   webkit   ipad-portrait   1 console err | 1 hub-console
+warn LedgerCap   webkit   ipad-landscape  1 console err | 1 hub-console
+warn LedgerCap   webkit   macbook         1 console err | 1 hub-console
+warn LedgerCap   chromium macbook         1 console err | 1 hub-console
+warn LedgerCap   chromium android         1 console err | 1 hub-console
+
+21/21 without hard failures → capricorn-tooling/docs/perfection-2026-10/live-v5/device-qa
+summary: hard=0 tap<32=0 text<11=0 pageErr=0 hubConsole=7

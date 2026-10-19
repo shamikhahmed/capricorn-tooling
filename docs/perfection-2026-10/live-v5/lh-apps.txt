@@ -1,0 +1,51 @@
+mobile  perf 94 a11y 100 bp 100 seo 100 | LCP 3.0 s CLS 0 TBT 80 ms  https://shamikhahmed.github.io/VaultCap/
+desktop perf 98 a11y 100 bp 100 seo 100 | LCP 0.8 s CLS 0 TBT 10 ms  https://shamikhahmed.github.io/VaultCap/
+mobile  perf 89 a11y 100 bp 100 seo 100 | LCP 2.0 s CLS 0 TBT 90 ms  https://shamikhahmed.github.io/PulseCap/
+desktop perf 93 a11y 100 bp 100 seo 100 | LCP 0.4 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/PulseCap/
+mobile  perf 96 a11y 100 bp 100 seo 100 | LCP 1.5 s CLS 0.004 TBT 220 ms  https://shamikhahmed.github.io/PrismCap/
+desktop perf 100 a11y 100 bp 100 seo 100 | LCP 0.3 s CLS 0.001 TBT 0 ms  https://shamikhahmed.github.io/PrismCap/
+mobile  perf 91 a11y 100 bp 100 seo 100 | LCP 1.5 s CLS 0.001 TBT 0 ms  https://shamikhahmed.github.io/SteadyCap/
+desktop perf 97 a11y 100 bp 100 seo 100 | LCP 0.3 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/SteadyCap/
+mobile  perf 99 a11y 100 bp 89 seo 100 | LCP 1.2 s CLS 0.005 TBT 20 ms  https://shamikhahmed.github.io/LedgerCap/
+         best-practices:font-size  | 
+         best-practices:errors-in-console  | 
+         best-practices:inspector-issues 
+desktop perf 97 a11y 100 bp 93 seo 100 | LCP 0.3 s CLS 0.097 TBT 0 ms  https://shamikhahmed.github.io/LedgerCap/
+         best-practices:errors-in-console  | 
+         best-practices:inspector-issues 
+mobile  perf 97 a11y 100 bp 100 seo 100 | LCP 1.7 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/DeePonyCap/
+desktop perf 100 a11y 100 bp 100 seo 100 | LCP 0.4 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/DeePonyCap/
+mobile  perf 99 a11y 100 bp 100 seo 100 | LCP 1.2 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/ScentCap/
+desktop perf 100 a11y 100 bp 100 seo 100 | LCP 0.4 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/ScentCap/
+mobile  perf 92 a11y 100 bp 100 seo 100 | LCP 2.2 s CLS 0 TBT 200 ms  https://shamikhahmed.github.io/SoulCap/
+desktop perf 99 a11y 100 bp 100 seo 100 | LCP 0.5 s CLS 0.006 TBT 0 ms  https://shamikhahmed.github.io/SoulCap/
+mobile  perf 89 a11y 100 bp 100 seo 100 | LCP 3.1 s CLS 0 TBT 170 ms  https://shamikhahmed.github.io/TravelCap/
+desktop perf 98 a11y 100 bp 100 seo 100 | LCP 0.7 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/TravelCap/
+mobile  perf 100 a11y 100 bp 100 seo 100 | LCP 1.3 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/AuraCap/
+desktop perf 100 a11y 100 bp 100 seo 100 | LCP 0.3 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/AuraCap/
+mobile  perf 85 a11y 94 bp 100 seo 100 | LCP 3.5 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/MasteryCap/
+         accessibility:color-contrast <div class="onb-eyebrow">
+desktop perf 99 a11y 94 bp 100 seo 100 | LCP 0.3 s CLS 0.073 TBT 0 ms  https://shamikhahmed.github.io/MasteryCap/
+         accessibility:color-contrast <div class="onb-eyebrow">
+mobile  perf 97 a11y 89 bp 100 seo 91 | LCP 2.2 s CLS 0.013 TBT 130 ms  https://shamikhahmed.github.io/IdeaCap/
+         accessibility:aria-allowed-role <input placeholder="Search ideas" autocapitalize="sentences" autocomplete="on" a
+         accessibility:aria-required-children <div role="tablist" class="css-g5y9jx r-150rngu r-18u37iz r-16y2uox r-1wbh5a2 r-
+         accessibility:color-contrast <div dir="auto" class="css-146c3p1 r-1bmwzmo r-n6v787 r-b88u0q r-19qrga8"> | <div dir="auto" class="css-146c3p1 r-8y998g r-1enofrn">
+         seo:meta-description 
+desktop perf 100 a11y 89 bp 100 seo 91 | LCP 0.5 s CLS 0.007 TBT 0 ms  https://shamikhahmed.github.io/IdeaCap/
+         accessibility:aria-allowed-role <input placeholder="Search ideas" autocapitalize="sentences" autocomplete="on" a
+         accessibility:aria-required-children <div role="tablist" class="css-g5y9jx r-150rngu r-18u37iz r-16y2uox r-1wbh5a2 r-
+         accessibility:color-contrast <div dir="auto" class="css-146c3p1 r-1bmwzmo r-n6v787 r-b88u0q r-19qrga8"> | <div dir="auto" class="css-146c3p1 r-8y998g r-1enofrn">
+         seo:meta-description 
+mobile  perf 98 a11y 96 bp 100 seo 100 | LCP 1.1 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/CarCap/
+         accessibility:color-contrast <button type="button" class="btn btn-primary" data-go="garage"> | <button type="button" class="btn btn-primary" data-action="first-add">
+desktop perf 100 a11y 96 bp 100 seo 100 | LCP 0.2 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/CarCap/
+         accessibility:color-contrast <button type="button" class="btn btn-primary" data-go="garage"> | <button type="button" class="btn btn-primary" data-action="first-add">
+mobile  perf 99 a11y 96 bp 96 seo 63 | LCP 1.2 s CLS 0 TBT 110 ms  https://shamikhahmed.github.io/CookCap/
+         accessibility:color-contrast <p class="font-serif text-sm font-semibold italic text-[color:var(--cc-1a120e)]" | <p class="text-[0.75rem] font-semibold tabular-nums text-[color:var(--cc-1a120e)
+         best-practices:errors-in-console  | 
+         seo:is-crawlable 
+desktop perf 97 a11y 96 bp 96 seo 63 | LCP 1.2 s CLS 0 TBT 0 ms  https://shamikhahmed.github.io/CookCap/
+         accessibility:color-contrast <p class="font-serif text-sm font-semibold italic text-[color:var(--cc-1a120e)]" | <p class="text-[0.75rem] font-semibold tabular-nums text-[color:var(--cc-1a120e)
+         best-practices:errors-in-console  | 
+         seo:is-crawlable 
