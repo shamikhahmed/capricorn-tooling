@@ -263,9 +263,23 @@ DeeFoodie variant adds: "Your visits, photos and collections are stored on DeeFo
 
 ## 6. New questions (Cursor appends here; must apply its recommendation immediately)
 
-N-1 · Mini-sites → every Cap gets https://shamikhahmed.github.io/apps/<slug>/ (DeeFoodie: private-beta page without install). The legacy <slug>.html redirect now points to the mini-site instead of the app (amends P-HUB-1; the mini-site's primary CTA opens the app). — v3, 2026-10-14
+### D-IDEA-LH-1 · IdeaCap honest LH a11y (2026-10-19) → **Theme-aware Home styles + hub publish 2.1.2**
 
-N-2 · Playwright browsers path → always set `PLAYWRIGHT_BROWSERS_PATH=$HOME/Library/Caches/ms-playwright` with `PW_CORE=…/MasteryCap/node_modules/playwright-core` for device-qa / qa-matrix / tier1. Cursor sandbox cache paths are empty; do not rely on them. — v3, 2026-10-14
+**Context:** Live hub was still **2.1.0** while `main` had 2.1.1 ARIA/meta fixes undeployed. Honest LH: a11y **89**, SEO **91** (search `aria-allowed-role`, tablist children, contrast, missing meta description). Static StyleSheet used the dark palette while `Background` followed system light → cream/white muted text on cork wash failed contrast under Chrome’s light default.
+
+**Decision (applied):** Patch **2.1.2** — `HomeScreen` builds styles from `useAppTheme()`; dark-glass chips/search/inspector keep `getColors('dark')` inks; Capture/empty CTA stay ink-on-pink; light `textDim`/`textMuted` raised for ≥4.5:1 on `#F4EFE6`. Export + rsync to `shamikhahmed.github.io/IdeaCap/`. Reversible; no schema/auth change.
+
+### D-COOK-LH-1 · CookCap copper contrast everywhere (2026-10-19) → **Darken light copper to `#8f4520` (3.7.3)**
+
+**Context:** Light Editorial `--cc-c2683c` at `#a9542c` gave white-on-solid **~5.26:1** (AA) but still failed color-contrast “everywhere” that mattered: `.dresser-wood-btn` 88% white mix (~**4.18:1**) and copper text on parchment (`#ece1d1` / `#efe4d0` ~**4.07–4.18:1**).
+
+**Decision (applied):** Patch **3.7.3** — map `--cc-c2683c` / `--cc-a9542c` to `#8f4520` (already the night-paper accent; solid ~6.9, grad88 ~5.3, text-on-paper ≥4.5). SW `cookcap-v46`. Reversible token-only; no schema/auth change.
+
+### D-MST-LH-1 · MasteryCap honest LH a11y 100 + mobile perf ≥90 (2026-10-19) → **51.10.9 eyebrow + boot LCP**
+
+**Context:** Live **51.10.8** honest LH mobile: perf **85** / a11y **94** / LCP **3.5s**. Fail: `.onb-eyebrow` hardcoded `#C4A574` (2.07:1 on light paper `#F5F1E8` after default light theme). LCP delayed by Fraunces/IBM font discovery in blocking `app.css` + post-IDB first paint.
+
+**Decision (applied):** Patch **51.10.9** — `--onb-eyebrow` token (`#9A3412` light/sepia ≈6.5:1, `#C4A574` dark); head appearance sync; `mc-booting` system/Georgia + no entry animation; wire static welcome before `store.hydrate()`; move `@font-face` into async `institute.css`. SW `masterycap-v51109`. Reversible; no schema/auth change.
 
 ---
 
