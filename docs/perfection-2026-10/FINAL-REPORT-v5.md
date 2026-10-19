@@ -80,7 +80,7 @@ node scripts/device-qa.mjs …/live-v5/device-qa --apps=PulseCap,VaultCap,Ledger
 | LedgerCap | `39233819939` (`9849e68`) | ✅ verify + Deploy Pages |
 | shamikhahmed.github.io | `39234291333` / `18013d9` | ✅ Hub CI |
 | VaultCap / Steady / Travel / Aura / Mastery / Soul / Scent / Car / Cook | tip green (2026-10-16+) | ✅ |
-| PrismCap | tip CI **failure** (`38909832390`) — game.setup / timeouts after idle packs | ⚠️ still red |
+| PrismCap | `a2c2ffa` **4.6.10** — CI green (lazy pack registers factories/v5 games) | ✅ |
 | DeePonyCap | tip CI **failure** (`38909251503`) after idle-load | ⚠️ still red |
 | IdeaCap | tip CI green after expo-doctor align | ✅ |
 
@@ -91,7 +91,8 @@ node scripts/device-qa.mjs …/live-v5/device-qa --apps=PulseCap,VaultCap,Ledger
 | Item | Why |
 |---|---|
 | Ledger Worker deploy | Owner: `npx wrangler login` then deploy; live news/EOD still fail → LH bp + device-qa console warns |
-| PrismCap / DeePonyCap CI green | Perf idle-load broke verify (game.setup / timeouts); Pages still deploy; needs follow-up release |
+| DeePonyCap CI green | Perf idle-load broke verify; Pages still deploy; needs follow-up |
+| Idea/Car/Cook/Mastery a11y 100 | Honest LH still flags contrast/ARIA (listed above) |
 | IdeaCap / CarCap / CookCap / MasteryCap a11y 100 | Honest LH still flags contrast/ARIA/meta; prior §2 patches incomplete or not on Live first screen |
 | TravelCap / MasteryCap mobile perf ≥90 | LCP still high on honest first visit |
 | Full fleet device-qa 98/98 + hub qa-matrix/flows | Targeted 21/21 done this close; full matrix not re-run in this resume |
