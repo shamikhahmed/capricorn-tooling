@@ -274,13 +274,19 @@ DeeFoodie variant adds: "Your visits, photos and collections are stored on DeeFo
 
 **Context:** Live hub was still **2.1.0** while `main` had 2.1.1 ARIA/meta fixes undeployed. Honest LH: a11y **89**, SEO **91** (search `aria-allowed-role`, tablist children, contrast, missing meta description). Static StyleSheet used the dark palette while `Background` followed system light → cream/white muted text on cork wash failed contrast under Chrome’s light default.
 
-**Decision (applied):** Patch **2.1.2** — `HomeScreen` builds styles from `useAppTheme()`; dark-glass chips/search/inspector keep `getColors('dark')` inks; Capture/empty CTA stay ink-on-pink; light `textDim`/`textMuted` raised for ≥4.5:1 on `#F4EFE6`. Export + rsync to `shamikhahmed.github.io/IdeaCap/`. Reversible; no schema/auth change.
+**Decision (applied):** Patches **2.1.2–2.1.3** — `HomeScreen` builds styles from `useAppTheme()`; dark-glass chips/search/inspector keep `getColors('dark')` inks; Capture/empty CTA stay ink-on-pink; light `textDim`/`textMuted` raised for ≥4.5:1 on `#F4EFE6`. Export + rsync to `shamikhahmed.github.io/IdeaCap/`. **2.1.3:** NoteCard duration/date/folder inks on sticky paper (pink `#FF2A6D` was 3.3:1). Reversible; no schema/auth change.
 
 ### D-COOK-LH-1 · CookCap copper contrast everywhere (2026-10-19) → **Darken light copper to `#8f4520` (3.7.3)**
 
 **Context:** Light Editorial `--cc-c2683c` at `#a9542c` gave white-on-solid **~5.26:1** (AA) but still failed color-contrast “everywhere” that mattered: `.dresser-wood-btn` 88% white mix (~**4.18:1**) and copper text on parchment (`#ece1d1` / `#efe4d0` ~**4.07–4.18:1**).
 
 **Decision (applied):** Patch **3.7.3** — map `--cc-c2683c` / `--cc-a9542c` to `#8f4520` (already the night-paper accent; solid ~6.9, grad88 ~5.3, text-on-paper ≥4.5). SW `cookcap-v46`. Reversible token-only; no schema/auth change.
+
+### D-TRVL-LH-1 · TravelCap honest mobile LCP ≥90 (2026-10-19) → **SSR home=Trips (1.1.9)**
+
+**Context:** Live **1.1.8** honest LH mobile perf **89** / LCP **~3.1s** on `https://shamikhahmed.github.io/TravelCap/`. Static export of `redirect("/trips")` produced a client-only `NEXT_REDIRECT` shell (`html#__next_error__`) with no contentful HTML until JS — LCP paid the redirect. Trips also held “Loading trips…” until deferred Dexie hydrate.
+
+**Decision (applied):** Patch **1.1.9** — `/` SSR-renders `TripsPageClient` (same as `/trips`); paint `WelcomeHero` before hydrate; lazy FAB `CreateTripSheet` + shell `prefetch={false}`. SW `travelcap-v319`. Reversible; no schema/auth change. E2e home assertion = Trips heading (no URL wait). Local honest export: mobile perf **99** / LCP **1.9s**.
 
 ### D-MST-LH-1 · MasteryCap honest LH a11y 100 + mobile perf ≥90 (2026-10-19) → **51.10.9 eyebrow + boot LCP**
 
