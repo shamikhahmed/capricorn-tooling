@@ -286,7 +286,7 @@ DeeFoodie variant adds: "Your visits, photos and collections are stored on DeeFo
 
 **Context:** Live **1.1.8** honest LH mobile perf **89** / LCP **~3.1s** on `https://shamikhahmed.github.io/TravelCap/`. Static export of `redirect("/trips")` produced a client-only `NEXT_REDIRECT` shell (`html#__next_error__`) with no contentful HTML until JS — LCP paid the redirect. Trips also held “Loading trips…” until deferred Dexie hydrate.
 
-**Decision (applied):** Patch **1.1.9** — `/` SSR-renders `TripsPageClient` (same as `/trips`); paint `WelcomeHero` before hydrate; lazy FAB `CreateTripSheet` + shell `prefetch={false}`. SW `travelcap-v319`. Reversible; no schema/auth change. E2e home assertion = Trips heading (no URL wait). Local honest export: mobile perf **99** / LCP **1.9s**.
+**Decision (applied):** Patch **1.1.9** — `/` SSR-renders `TripsPageClient` (same as `/trips`); paint `WelcomeHero` before hydrate; lazy FAB `CreateTripSheet` + shell `prefetch={false}`. SW `travelcap-v319`. Follow-up **1.1.10** — defer SW register to `load`+idle (119-URL precache was stealing TBT); lean WelcomeHero (no Sparkles/foil anim); `optimizePackageImports` lucide. SW `travelcap-v320`. Reversible; no schema/auth change.
 
 ### D-MST-LH-1 · MasteryCap honest LH a11y 100 + mobile perf ≥90 (2026-10-19) → **51.10.9 eyebrow + boot LCP**
 
