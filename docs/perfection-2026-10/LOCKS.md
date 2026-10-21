@@ -15,7 +15,7 @@ Updated: 2026-10-14T12:28:00Z
 | PrismCap | — | 2026-10-21 | REMOVED from fleet (website + GitHub) |
 | SteadyCap | Gallery-Builder | 2026-10-14T13:20:00Z | G17 live-gallery-v3 |
 | PrismCap | — | 2026-10-21 | REMOVED from fleet (website + GitHub) |
-| VaultCap | Cursor v7 | 2026-10-21T10:18Z | HIG+stories |
+| VaultCap | — | 2026-10-21 | free (v7 HIG+stories **v5.4.0** merged · FINAL-REPORT-v7) |
 | SteadyCap | — | — | free (Phase I 2.6.0 @c6c8f23 / v2.6.0 · live verified) |
 | CookCap | — | — | free (3.6.1 @1d6969c · gallery 18 G17 ✅ · CK-V3-5 FIXED) |
 | IdeaCap | — | — | free (2.1.0 @fbf4151 · gallery 24 shots G17 ✅) |
