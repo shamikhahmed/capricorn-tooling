@@ -18,16 +18,16 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 | App | v6 A–K | HIG audit | HIG fixes | Personas | Capture | Stories live | Tests ×2 | Live verify | Version/tag | Status |
 |---|---|---|---|---|---|---|---|---|---|---|
 | VaultCap | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v5.4.0 | **READY** |
-| SteadyCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v2.6.6 | **READY** |
-| PulseCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v6.46.10 | **READY** |
+| SteadyCap | ✅ | ✅ ~72 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v2.6.6 | **v7-fix** |
+| PulseCap | ✅ | ✅ ~70 | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v6.46.11 | **v7-fix** |
 | SoulCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v8.4.1 | **READY** |
-| DeePonyCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v3.9.10 | **READY** |
+| DeePonyCap | ✅ | ✅ ~70 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v3.9.13 | **v7-fix** |
 | LedgerCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v3.58.10 | **READY** |
 | PrismCap | — | — | — | — | — | — | — | — | — | **REMOVED** |
-| ScentCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v2.2.1 | **READY** |
+| ScentCap | ✅ | ✅ ~71 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v2.2.2 | **v7-fix** |
 | AuraCap | — | — | — | — | — | — | — | — | — | **REMOVED** |
-| CarCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v1.1.3 | **READY** |
-| MasteryCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v51.10.11 | **READY** |
+| CarCap | ✅ | ✅ ~67 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v1.1.4 | **v7-fix** |
+| MasteryCap | ✅ | ✅ ~68 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v51.10.12 | **v7-fix** |
 | TravelCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v1.1.11 | **READY** |
 | CookCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v3.7.4 | **READY** |
 | IdeaCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v2.1.4 | **READY** |
@@ -61,3 +61,5 @@ _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 - **2026-10-21 — Decks + docs fleet sync:** All 13 apps pitch/presentation/README/CHANGELOG bumped to ship versions + Example stories links; hub pitch Thirteen Caps + /stories/ CTA.
 
 - **2026-10-21 — Reviewer:** AuraCap + PrismCap retirement confirmed by owner to Claude Code. Fix round: `CURSOR-ORDERS-v7-FIX.md`.
+
+- **2026-10-21/22 — v7-fix in progress:** Tests×2 green for Steady/DeePony/Ledger/Scent/Car/Mastery; disclaimer live; VaultCap LH honest <90 documented. See `v7-fix-logs/SUMMARY.md`.
