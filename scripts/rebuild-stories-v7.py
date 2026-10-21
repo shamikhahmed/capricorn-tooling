@@ -904,7 +904,7 @@ def main() -> None:
         bundle = {
             "slug": slug,
             "fictional": True,
-            "disclaimer": "Illustrative story. People and data are fictional.",
+            "disclaimer": "Fictional example. People, screenshots, and numbers are made up — not a real customer story.",
             "personas": bundle_personas,
         }
         # For soulcap keep gentle tone already in copy

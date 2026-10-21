@@ -19,3 +19,4 @@ docs/perfection-2026-10/**/*.webp
 
 # HIG raw JSON (large); digest committed
 docs/perfection-2026-10/hig-raw/
+scripts/__pycache__/

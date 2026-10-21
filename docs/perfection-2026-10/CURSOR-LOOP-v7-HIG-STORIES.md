@@ -223,7 +223,7 @@ Validate with a JSON schema (`capricorn-lab/content/stories/schema.json`) in `np
   5. **Features <Name> uses**: chips linking to the app page's feature tour anchors.
   6. Next/previous persona + "Try <App>" CTA (existing install guide link).
 - `/stories/` — index of all 45 stories, filter chips by app and by need (family, health, money, travel, learning, fun), search field. Linked from hub nav and every mini-site footer.
-- Hub (capricorn-lab app launcher): when someone opens an app card/window, show a "Real stories" tab or button that opens that app's stories. Use existing `app-demos.js` / `window-manager.js` patterns; on mobile (`mobile-ios.js`) it is a sheet with medium/large detents.
+- Hub (capricorn-lab app launcher): when someone opens an app card/window, show a "Example stories" tab or button that opens that app's stories. Use existing `app-demos.js` / `window-manager.js` patterns; on mobile (`mobile-ios.js`) it is a sheet with medium/large detents.
 
 ### 6.3 Website design bar (HIG applied to web)
 Same tokens as §2.2 (type ramp, contrast, 44 pt targets, safe areas, Dark Mode via `prefers-color-scheme` + manual toggle, Reduce Motion, Reduce Transparency, readable width ≤ 672 px for body text, 16/20 px gutters, sentence case). Each app page uses that app's accent (already contrast-checked in builder — extend check to new components). Looks premium: generous whitespace, real screenshots, restrained motion (fade/translate ≤ 12 px, ≤ 250 ms).

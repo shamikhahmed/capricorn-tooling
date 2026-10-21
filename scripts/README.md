@@ -9,6 +9,8 @@ npm run release:marketing            # same, from capricorn-tooling/
 
 | Script | Purpose |
 |--------|---------|
+| `capture-story.mjs` | Persona story shots from `qa/v7/personas/*.steps.json`; overlays story display name; soft-hides DEMO banner |
+| `recapture-stories-v7.mjs` | Batch capture (concurrency 3) + `make-story-videos.py`; start with `vaultcap`, then other slugs |
 | `device-qa.mjs` | Fleet device QA (overflow, tap&lt;32, text&lt;11, page/hub console) → `device-qa.json` for **G16** |
 | `release-marketing.mjs` | Full pipeline: patches → catalog → versions → copy → decks |
 | `apply-copy-patches.mjs` | Apply JSON search/replace copy patches |
@@ -21,6 +23,20 @@ npm run release:marketing            # same, from capricorn-tooling/
 | `sync-sw-cinematic.mjs` | GSAP cinematic precache in service workers |
 | `truth-audit.mjs` | Flag legacy branding / marketing drift |
 | `generate-capricorn-icons.mjs` | PNG icons for hub + apps |
+
+## Story recapture (persona-aligned screenshots)
+
+Gallery recycle in `rebuild-stories-v7.py` left Alex Khan / DEMO banners in VaultCap story shots. Prefer live capture:
+
+```bash
+export PW_CORE=/Users/shamikhahmed/Projects/Cap/Cap-Apps/MasteryCap/node_modules/playwright-core
+# Proof (3 personas) — ~few minutes
+CONCURRENCY=3 node scripts/recapture-stories-v7.mjs vaultcap
+# Rest of fleet when idle (39 personas × 3 devices; slow)
+CONCURRENCY=3 node scripts/recapture-stories-v7.mjs
+```
+
+`capture-story.mjs` loads the persona name from `*.steps.json` / `*.seed.json` / `capricorn-lab/content/stories/<slug>.json`, then `page.evaluate` overwrites visible demo names (VaultCap: `S.user.name`, `holderName`, family head) and hides `#demoBanner` for the shot. Product demo seeders stay unchanged.
 
 ## Device QA + Playwright (`PW_CORE`)
 
