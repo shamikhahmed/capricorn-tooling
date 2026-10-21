@@ -129,6 +129,12 @@ const metrics = await page.evaluate(() => {
     if (!(el instanceof HTMLElement)) return;
     const r = el.getBoundingClientRect();
     if (r.width < 1 || r.height < 1) return;
+    // Skip links are intentionally clipped until :focus — do not treat as hit failures.
+    const cls = typeof el.className === 'string' ? el.className : '';
+    const label = (el.getAttribute('aria-label') || el.textContent || '').trim();
+    if (/skip/i.test(cls) || /^skip to /i.test(label)) return;
+    const st = getComputedStyle(el);
+    if (st.visibility === 'hidden' || st.display === 'none' || Number(st.opacity) === 0) return;
     const dense = el.hasAttribute('data-hit-dense');
     const min = dense ? 28 : 44;
     if (r.width < min || r.height < min) {
@@ -137,7 +143,7 @@ const metrics = await page.evaluate(() => {
         w: Math.round(r.width),
         h: Math.round(r.height),
         dense,
-        label: (el.getAttribute('aria-label') || el.textContent || '').slice(0, 40),
+        label: label.slice(0, 40),
       });
     }
   });
