@@ -28,10 +28,10 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 | AuraCap | — | — | — | — | — | — | — | — | — | **REMOVED** |
 | CarCap | ✅ | ✅ ~67 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v1.1.4 | **v7-fix** |
 | MasteryCap | ✅ | ✅ ~68 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v51.10.12 | **v7-fix** |
-| TravelCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v1.1.11 | **READY** |
-| CookCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v3.7.4 | **READY** |
-| IdeaCap | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v2.1.5 | **v7-fix** |
-| DeeFoodieApp | ✅ | ✅ stub | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v1.1.2 | **v7-fix** |
+| TravelCap | ✅ | ✅ ~79 | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v1.1.11 | **v7-fix** |
+| CookCap | ✅ | ✅ ~73 | ✅ | ✅ | ✅ | ✅ | ◐ | ✅ | v3.7.4 | **READY** |
+| IdeaCap | ✅ | ✅ ~72 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v2.1.5 | **v7-fix** |
+| DeeFoodieApp | ✅ | ✅ ~77 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v1.1.2 | **v7-fix** |
 | Website | ✅ | ◐ spot | ✅ stories | — | — | ✅ 39 | ✅ smoke | ✅ | hub `90ff10f` | **v7-fix** |
 | Wave Z | ✅ | — | — | — | — | — | — | ✅ spot | — | **READY** |
 
