@@ -18,7 +18,7 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 
 | App | v6 A–K | HIG audit | HIG fixes | Personas | Capture | Stories live | Tests ×2 | Live verify | Version/tag | Status |
 |---|---|---|---|---|---|---|---|---|---|---|
-| VaultCap | ✅ (v6 row) | | | | | | | | | |
+| VaultCap | ✅ | ✅ | ✅ | ✅ | ✅ canonical | ◐ live | smoke+a11y ✅ | ◐ | 5.4.0 branch | HIG+stories on `perfection/v7-hig-stories`; videos/VTT still open |
 | SteadyCap | | | | | | | | | | |
 | PulseCap | | | | | | | | | | |
 | SoulCap | | | | | | | | | | |
@@ -57,4 +57,6 @@ _(none yet)_
 
 ## Blockers
 
-_(none yet)_
+- VaultCap story **videos** (20–40s MP4/WebM + VTT) not captured yet — screenshots shipped.
+- Full `npm run verify` ×2 pending clean host (prior run: 14 timeouts from dead webserver under dual Playwright).
+
