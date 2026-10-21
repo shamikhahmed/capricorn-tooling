@@ -48,6 +48,8 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 
 - App Store Connect / TestFlight / signing / provisioning / DNS / Cloudflare secrets / GitHub repo settings (per §9).
 - VaultCap LH mobile ≥90 remaining after honest split (documented in PROGRESS-v6).
+- **Hard-delete AuraCap + PrismCap GitHub repos:** token lacks `delete_repo` scope. Repos are **archived** with retired description; Pages disabled. Run:
+  `gh auth refresh -h github.com -s delete_repo && gh repo delete shamikhahmed/AuraCap --yes && gh repo delete shamikhahmed/PrismCap --yes`
 
 ## Reviewer defects
 
