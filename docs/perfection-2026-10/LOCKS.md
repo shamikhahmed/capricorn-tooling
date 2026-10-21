@@ -15,7 +15,7 @@ Updated: 2026-10-14T12:28:00Z
 | PrismCap | — (released) | 2026-10-14T13:20:00Z | Gallery-Builder pushed v3 @ 2467651 · 18 shots G17 ✅ |
 | SteadyCap | Gallery-Builder | 2026-10-14T13:20:00Z | G17 live-gallery-v3 |
 | PrismCap | — | — | free (MATRIX @09e31b2 · 51% · PRS-V3-4/5/6 OPEN) |
-| VaultCap | — (released) | 2026-10-14T12:45:00Z | Gallery-Builder pushed v3 gallery @ main |
+| VaultCap | Cursor v7 | 2026-10-21T10:18Z | HIG+stories |
 | SteadyCap | — | — | free (Phase I 2.6.0 @c6c8f23 / v2.6.0 · live verified) |
 | CookCap | — | — | free (3.6.1 @1d6969c · gallery 18 G17 ✅ · CK-V3-5 FIXED) |
 | IdeaCap | — | — | free (2.1.0 @fbf4151 · gallery 24 shots G17 ✅) |
