@@ -142,6 +142,10 @@ async function unlockVaultSample(page, baseUrl) {
 }
 
 async function runStep(page, step) {
+  if (step.action === 'wait') {
+    await page.waitForTimeout(step.ms || 500);
+    return;
+  }
   if (step.action === 'nav' && step.page) {
     await page.evaluate((pg) => {
       try {
@@ -184,9 +188,15 @@ const { chromium } = await import(pathToFileURL(join(pwCore, 'index.mjs')).href)
 const { server, baseUrl } = await startStatic(appInfo.root);
 const manifest = { personaId, app: appInfo.slug, gitSha: gitSha(appInfo.root), capturedAt: new Date().toISOString(), files: [] };
 
+const canonicalOnly = process.env.CANONICAL_ONLY === '1';
+const themes = canonicalOnly ? ['light'] : ['light', 'dark'];
+const viewports = canonicalOnly
+  ? VIEWPORTS.filter(([n]) => n === 'iphone-16-pro')
+  : VIEWPORTS;
+
 try {
-  for (const theme of ['light', 'dark']) {
-    for (const [deviceName, viewport] of VIEWPORTS) {
+  for (const theme of themes) {
+    for (const [deviceName, viewport] of viewports) {
       const browser = await chromium.launch();
       const context = await browser.newContext({ ...viewport, colorScheme: theme, baseURL: baseUrl });
       const page = await context.newPage();
@@ -194,6 +204,10 @@ try {
       else await runPrep(page, baseUrl, script.prep);
       for (const step of script.steps || []) {
         await runStep(page, step);
+        if (step.action === 'wait' || step.action === 'click' || step.action === 'nav') {
+          if (step.action !== 'screenshot' && !step.screenshot) continue;
+        }
+        if (step.action && step.action !== 'screenshot' && !step.screenshot) continue;
         const id = step.id || 'shot';
         const base = `${id}-${deviceName}-${theme}`;
         const png = join(outDir, `${base}.png`);

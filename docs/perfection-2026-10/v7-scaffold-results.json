@@ -1,0 +1,89 @@
+{
+  "apps": [
+    {
+      "app": "SteadyCap",
+      "sha": "15f80542327ecdc10fef786215ad893154681518",
+      "version": "2.6.6",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "PulseCap",
+      "sha": "a8f6da8804d27cd4b69b36fb65f75b27c762b568",
+      "version": "6.46.10",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "SoulCap",
+      "sha": "5250a0f1cf9d871a4207249af9633aec2d7b4791",
+      "version": "8.4.1",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "DeePonyCap",
+      "sha": "33992f56d5adfd8f713a4d077c9f16d96b32502f",
+      "version": "3.9.10",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "LedgerCap",
+      "sha": "c944275ceb66754b7b907486e0130abef9979548",
+      "version": "3.58.10",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "ScentCap",
+      "sha": "13070ef586e0945f80db5133b6c410b6216967b1",
+      "version": "2.2.1",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "CarCap",
+      "sha": "f48007f1555d71baa5735794ad15b7f3d9aecc2e",
+      "version": "1.1.3",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "MasteryCap",
+      "sha": "3c4c32912e3caa5891697237cff809f62c411dfc",
+      "version": "51.10.11",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "TravelCap",
+      "sha": "434fe792b07cfaac612190ab855062da854ec791",
+      "version": "1.1.11",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "CookCap",
+      "sha": "6bd9df6373de1f9910701750500cfd4c45dc07ae",
+      "version": "3.7.4",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "IdeaCap",
+      "sha": "dd9986c24fc608de3b84052e48143761aabd9f9d",
+      "version": "2.1.4",
+      "push": true,
+      "push_err": ""
+    },
+    {
+      "app": "DeeFoodieApp",
+      "sha": "1cfce77961a5a1de9592f2018dfdab161a8b9abe",
+      "version": "1.1.1+4",
+      "push": true,
+      "push_err": ""
+    }
+  ],
+  "lab_sha": "41b91cd291909f459c16ed812607c6fa64b9e359"
+}
