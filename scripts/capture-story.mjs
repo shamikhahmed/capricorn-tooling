@@ -27,10 +27,26 @@ const REPO_BY_SLUG = {
   ideacap: 'IdeaCap', deefoodie: 'DeeFoodieApp', deefoodieapp: 'DeeFoodieApp',
 };
 
+/** Playwright requires `viewport: { width, height }` — top-level width/height are ignored (defaults to 1280×720). */
 const VIEWPORTS = [
-  ['iphone-16-pro', { width: 402, height: 874, deviceScaleFactor: 3, isMobile: true, hasTouch: true }],
-  ['ipad-air', { width: 820, height: 1180, deviceScaleFactor: 2, isMobile: true, hasTouch: true }],
-  ['macbook-14', { width: 1512, height: 982, deviceScaleFactor: 2 }],
+  ['iphone-16-pro', {
+    viewport: { width: 402, height: 874 },
+    deviceScaleFactor: 3,
+    isMobile: true,
+    hasTouch: true,
+  }],
+  ['ipad-air', {
+    viewport: { width: 820, height: 1180 },
+    deviceScaleFactor: 2,
+    isMobile: true,
+    hasTouch: true,
+  }],
+  ['macbook-14', {
+    viewport: { width: 1512, height: 982 },
+    deviceScaleFactor: 2,
+    isMobile: false,
+    hasTouch: false,
+  }],
 ];
 
 function resolvePwCore() {
@@ -226,24 +242,59 @@ async function applyPersonaOverlay(page, personaName, opts = {}) {
         window.user.name = name;
       }
 
+      if (typeof buildNav === 'function') buildNav();
       const pg = (typeof S !== 'undefined' && S.currentPage) || 'dashboard';
       if (typeof R !== 'undefined' && R.goto) R.goto(pg);
       else if (typeof Dash !== 'undefined' && Dash.render) Dash.render();
       else if (typeof Dashboard !== 'undefined' && Dashboard.render) Dashboard.render();
       else if (typeof render === 'function') render();
+
+      /* DOM force — survives partial re-renders that miss S.user */
+      const ver = typeof VER !== 'undefined' ? VER : '';
+      const sbLabel = ver ? `${name} · v${ver}` : name;
+      const paintName = () => {
+        const greet = document.getElementById('dashGreet');
+        if (greet) {
+          const hour = new Date().getHours();
+          const hi = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+          greet.innerHTML = `<div class="dg-greet">${hi}</div><div class="dg-name">${name}</div>`;
+        }
+        document.querySelectorAll('.dg-name').forEach((el) => { el.textContent = name; });
+        const sbUser = document.getElementById('sbUser');
+        if (sbUser) sbUser.textContent = sbLabel;
+        document.querySelectorAll('#navUserName, .nav-user-name, .set-user-name, [data-nav-user]').forEach((navName) => {
+          navName.textContent = sbLabel;
+        });
+        document.body.querySelectorAll('*').forEach((el) => {
+          if (el.children.length && el.id !== 'sbUser') return;
+          const t = (el.textContent || '').trim();
+          if (!t) return;
+          if (/Alex Khan/i.test(t) || t === 'ALEX KHAN' || /Alex \(Demo\)/i.test(t) || t === 'Alex Demo') {
+            el.textContent = /Alex Khan/i.test(t)
+              ? t.replace(/Alex Khan/gi, name)
+              : (t.includes('·') || t.includes('•') ? sbLabel : (/^ALEX KHAN$/.test(t) ? upper : name));
+          }
+        });
+      };
+      paintName();
+      setTimeout(paintName, 50);
+      setTimeout(paintName, 200);
+      if (typeof NavUI !== 'undefined' && NavUI.renderUser) NavUI.renderUser();
+      if (typeof updateNavUser === 'function') updateNavUser();
     } catch (_) { /* best-effort overlay */ }
   }, { name: personaName, largeText: !!opts.largeText });
-  await page.waitForTimeout(450);
+  await page.waitForTimeout(550);
 }
 
 function loadPersonaMeta(slug, personaId, appRoot, script) {
-  let name = script.personaName || PERSONA_SEED[personaId] || null;
   let day = [];
+  let storyName = null;
+  let seedName = null;
   const seedPath = join(appRoot, 'qa', 'v7', 'personas', `${personaId}.seed.json`);
   if (existsSync(seedPath)) {
     try {
       const seed = JSON.parse(readFileSync(seedPath, 'utf8'));
-      name = seed.profile?.displayName || seed.displayName || name;
+      seedName = seed.profile?.displayName || seed.displayName || null;
     } catch { /* ignore */ }
   }
   const storyPath = join(LAB, 'content', 'stories', `${slug}.json`);
@@ -252,12 +303,38 @@ function loadPersonaMeta(slug, personaId, appRoot, script) {
       const bundle = JSON.parse(readFileSync(storyPath, 'utf8'));
       const p = (bundle.personas || []).find((x) => x.id === personaId);
       if (p) {
-        name = name || p.name || null;
+        storyName = p.name || null;
         day = p.day || [];
       }
     } catch { /* ignore */ }
   }
+  /* Prefer steps → story narrative → seed → map (story beats stale seed nicknames) */
+  const name = script.personaName || storyName || seedName || PERSONA_SEED[personaId] || null;
   return { name, day, largeText: !!script.largeText, demoSeedNote: DEMO_DISPLAY_NAMES[slug] || '' };
+}
+
+async function dismissVaultChrome(page) {
+  await page.evaluate(() => {
+    if (window.VER) localStorage.setItem('vos_wn_ver', window.VER);
+    localStorage.removeItem('vo_demo_guide_pending');
+    localStorage.setItem('vo_demo_guide_seen', '1');
+    document.getElementById('splashScreen')?.remove();
+    if (typeof Modal !== 'undefined') Modal.close();
+    const overlay = document.getElementById('overlay');
+    if (overlay) overlay.classList.remove('on');
+    document.querySelectorAll('.modal-overlay.on, .overlay.on').forEach((el) => el.classList.remove('on'));
+    const tw = document.getElementById('toastWrap');
+    if (tw) tw.innerHTML = '';
+    ['moneySheet', 'assetsSheet', 'identitySheet', 'moreOverlay', 'vaultInstallBanner'].forEach((id) => {
+      document.getElementById(id)?.remove();
+    });
+    const moreSheet = document.getElementById('moreSheet');
+    if (moreSheet) moreSheet.style.display = 'none';
+    if (typeof closeMore === 'function') closeMore();
+    if (typeof CMD !== 'undefined') CMD.close();
+    if (typeof FAB !== 'undefined') FAB.close();
+  });
+  await page.locator('#overlay.on, .modal-overlay.on').waitFor({ state: 'hidden', timeout: 3000 }).catch(() => {});
 }
 
 async function unlockVaultSample(page, baseUrl, personaName, opts = {}) {
@@ -266,28 +343,59 @@ async function unlockVaultSample(page, baseUrl, personaName, opts = {}) {
     localStorage.setItem('vo_used_demo', '1');
     localStorage.removeItem('vo_demo_guide_pending');
     localStorage.setItem('vo_demo_guide_seen', '1');
-    localStorage.setItem('vos_wn_ver', '5.4.0');
+    localStorage.removeItem('vc_lockout_v1_demo');
+    /* Stamp early; corrected to window.VER after load so WhatsNew stays closed */
+    localStorage.setItem('vos_wn_ver', '99.0.0');
   });
   const q = opts.largeText ? '/?demo=1&dt=1.6' : '/?demo=1';
   await page.goto(`${baseUrl}${q}`, { waitUntil: 'load', timeout: 60000 });
-  await page.waitForFunction(() => typeof window.loadDemoProfile === 'function', { timeout: 20000 }).catch(() => {});
+  await page.waitForFunction(
+    () => typeof window.loadDemoProfile === 'function' && typeof window.R !== 'undefined' && typeof window.Store !== 'undefined',
+    { timeout: 30000 },
+  );
   await page.evaluate(() => {
-    try {
-      if (typeof loadDemoProfile === 'function') loadDemoProfile('business');
-      if (typeof S !== 'undefined') {
-        S.user.onboardingComplete = true;
-        S.pin = '123456';
-        if (typeof Store !== 'undefined') Store.save();
-      }
-      document.getElementById('pgOnboard') && (document.getElementById('pgOnboard').style.display = 'none');
-      document.getElementById('splashScreen')?.remove();
-      if (typeof R !== 'undefined' && R.unlock) R.unlock();
-      if (typeof WhatsNew !== 'undefined' && window.VER) localStorage.setItem('vos_wn_ver', window.VER);
-      if (typeof Modal !== 'undefined') Modal.close();
-    } catch (_) { /* continue */ }
+    if (window.VER) localStorage.setItem('vos_wn_ver', window.VER);
   });
-  await page.waitForTimeout(500);
+  await dismissVaultChrome(page);
+  await page.evaluate(() => {
+    loadDemoProfile('business');
+    S.user.onboardingComplete = true;
+    if (S.modules) S.modules.family = true;
+    S.pin = '123456';
+    Store.save();
+    localStorage.removeItem('vo_demo_guide_pending');
+    localStorage.setItem('vo_demo_guide_seen', '1');
+    if (window.VER) localStorage.setItem('vos_wn_ver', window.VER);
+    document.getElementById('splashScreen')?.remove();
+    ['pgHome', 'pgLock', 'pgOnboard', 'pgProfilePicker'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    R.unlock();
+  });
+  await page.waitForFunction(
+    () => document.getElementById('app')?.style.display === 'flex',
+    { timeout: 20000 },
+  ).catch(() => {});
+  await page.waitForFunction(
+    () => (document.getElementById('dashGreet')?.textContent || '').trim().length > 0,
+    { timeout: 20000 },
+  ).catch(() => {});
+  await dismissVaultChrome(page);
+  await page.waitForTimeout(400);
   await applyPersonaOverlay(page, personaName, opts);
+  if (personaName) {
+    await page.waitForFunction(
+      (name) => {
+        const first = String(name).split(/\s+/)[0];
+        const body = document.body?.innerText || '';
+        const greet = document.getElementById('dashGreet')?.innerText || '';
+        return (greet.includes(first) || body.includes(first)) && !body.includes('Alex Khan');
+      },
+      personaName,
+      { timeout: 12000 },
+    ).catch(() => {});
+  }
 }
 
 async function runStep(page, step) {
@@ -370,7 +478,15 @@ try {
       const page = await context.newPage();
       if (appInfo.slug === 'vaultcap') await unlockVaultSample(page, baseUrl, personaName, overlayOpts);
       else {
-        await runPrep(page, baseUrl, script.prep);
+        const prep = (script.prep && script.prep.length)
+          ? script.prep
+          : [{ action: 'goto', path: '/?demo=1' }, { action: 'wait', ms: 1000 }];
+        /* Ensure demo seed path even when steps.json forgot ?demo=1 */
+        const hasDemo = prep.some((s) => s.action === 'goto' && String(s.path || '').includes('demo=1'));
+        const prep2 = hasDemo
+          ? prep
+          : [{ action: 'goto', path: appInfo.slug === 'cookcap' && personaName ? `/?demo=1&for=${encodeURIComponent(personaName.split(' ')[0])}` : '/?demo=1' }, { action: 'wait', ms: 1200 }, ...prep];
+        await runPrep(page, baseUrl, prep2);
         await applyPersonaOverlay(page, personaName, overlayOpts);
       }
       let stepIndex = 0;
@@ -380,6 +496,7 @@ try {
           if (step.action !== 'screenshot' && !step.screenshot) continue;
         }
         if (step.action && step.action !== 'screenshot' && !step.screenshot) continue;
+        if (appInfo.slug === 'vaultcap') await dismissVaultChrome(page);
         await applyPersonaOverlay(page, personaName, overlayOpts);
         const id = step.id || 'shot';
         const base = `${id}-${deviceName}-${theme}`;
