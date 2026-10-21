@@ -286,13 +286,31 @@ DeeFoodie variant adds: "Your visits, photos and collections are stored on DeeFo
 
 **Context:** Live **1.1.8** honest LH mobile perf **89** / LCP **~3.1s** on `https://shamikhahmed.github.io/TravelCap/`. Static export of `redirect("/trips")` produced a client-only `NEXT_REDIRECT` shell (`html#__next_error__`) with no contentful HTML until JS — LCP paid the redirect. Trips also held “Loading trips…” until deferred Dexie hydrate.
 
-**Decision (applied):** Patch **1.1.9** — `/` SSR-renders `TripsPageClient` (same as `/trips`); paint `WelcomeHero` before hydrate; lazy FAB `CreateTripSheet` + shell `prefetch={false}`. SW `travelcap-v319`. Follow-up **1.1.10** — defer SW register to `load`+idle (119-URL precache was stealing TBT); lean WelcomeHero (no Sparkles/foil anim); `optimizePackageImports` lucide. SW `travelcap-v320`. Reversible; no schema/auth change.
+**Decision (applied):** Patch **1.1.9** — `/` SSR-renders `TripsPageClient` (same as `/trips`); paint `WelcomeHero` before hydrate; lazy FAB `CreateTripSheet` + shell `prefetch={false}`. SW `travelcap-v319`. Reversible; no schema/auth change. E2e home assertion = Trips heading (no URL wait).
 
-### D-MST-LH-1 · MasteryCap honest LH a11y 100 + mobile perf ≥90 (2026-10-19) → **51.10.9 eyebrow + boot LCP**
+### D-MST-LH-1 · MasteryCap honest LH a11y 100 + mobile perf ≥90 (2026-10-19) → **51.10.10 async CSS + eyebrow**
 
-**Context:** Live **51.10.8** honest LH mobile: perf **85** / a11y **94** / LCP **3.5s**. Fail: `.onb-eyebrow` hardcoded `#C4A574` (2.07:1 on light paper `#F5F1E8` after default light theme). LCP delayed by Fraunces/IBM font discovery in blocking `app.css` + post-IDB first paint.
+**Context:** Live **51.10.8** honest LH mobile: perf **85** / a11y **94** / LCP **3.5s**. Fail: `.onb-eyebrow` hardcoded `#C4A574` (2.07:1 on light paper `#F5F1E8` after default light theme). LCP delayed by Fraunces/IBM font discovery in blocking `app.css` + post-IDB first paint. **51.10.9** fixed a11y 100 and improved LCP, but honest mobile perf still oscillated ~89–93 with blocking `app.css`.
 
-**Decision (applied):** Patch **51.10.9** — `--onb-eyebrow` token (`#9A3412` light/sepia ≈6.5:1, `#C4A574` dark); head appearance sync; `mc-booting` system/Georgia + no entry animation; wire static welcome before `store.hydrate()`; move `@font-face` into async `institute.css`. SW `masterycap-v51109`. Reversible; no schema/auth change.
+**Decision (applied):** **51.10.9** eyebrow/boot + **51.10.10** async `app.css` (safe now that welcome is fully inlined + `mc-booting`; unlike 51.10.6). `@font-face` stays in async `institute.css`. Critical `.btn.accent`/skip-link in head. SW `masterycap-v51110`. Reversible; no schema/auth change.
+
+---
+
+## 7. Perfection Loop v5 decisions (2026-10-16 — LOCKED)
+
+Applied from `capricorn-tooling/docs/perfection-2026-10/CURSOR-LOOP-v5.md`. Do not reopen.
+
+| ID | Decision |
+|---|---|
+| V5-1 | VaultCap brand = midnight + gold (`#D4A017` / `#9A7410`); icon + hub + decks; remove `DECK_OVERRIDE` vaultcap once decks agree. |
+| V5-2 | PulseCap brand = Ember orange (`#FF7A1A` / `#E86A0E`) everywhere including hub + decks; no cyan leftovers. |
+| V5-3 | Sitemap = canonical pages only; CookCap stays noindex; prune legacy redirect URLs from sitemap on every mini-site build. |
+| V5-4 | Restore designed cascade values lost in `!important` cleanup via specificity (Vault/Prism/Steady listed in CURSOR-LOOP-v5); keep 12 px text floor. |
+| V5-5 | LedgerCap market status = plain language + dismissible; never endless “Loading…”; no developer jargon in banners. Worker deploy remains owner-gated when wrangler unauthenticated. |
+
+**Measurement:** honest Lighthouse only (`lighthouse-honest.mjs`); no webdriver/UA/headless special-cases in apps.
+
+**Report:** `capricorn-tooling/docs/perfection-2026-10/FINAL-REPORT-v5.md` (2026-10-19).
 
 ---
 
@@ -312,20 +330,14 @@ Applied from `capricorn-tooling/docs/perfection-2026-10/CURSOR-LOOP-v5.md`. Do n
 
 **Report:** `capricorn-tooling/docs/perfection-2026-10/FINAL-REPORT-v5.md` (2026-10-19).
 
+
 ---
 
-## 7. Perfection Loop v5 decisions (2026-10-16 — LOCKED)
+## 6. Appended decisions (after lock)
 
-Applied from `capricorn-tooling/docs/perfection-2026-10/CURSOR-LOOP-v5.md`. Do not reopen.
-
-| ID | Decision |
-|---|---|
-| V5-1 | VaultCap brand = midnight + gold (`#D4A017` / `#9A7410`); icon + hub + decks; remove `DECK_OVERRIDE` vaultcap once decks agree. |
-| V5-2 | PulseCap brand = Ember orange (`#FF7A1A` / `#E86A0E`) everywhere including hub + decks; no cyan leftovers. |
-| V5-3 | Sitemap = canonical pages only; CookCap stays noindex; prune legacy redirect URLs from sitemap on every mini-site build. |
-| V5-4 | Restore designed cascade values lost in `!important` cleanup via specificity (Vault/Prism/Steady listed in CURSOR-LOOP-v5); keep 12 px text floor. |
-| V5-5 | LedgerCap market status = plain language + dismissible; never endless “Loading…”; no developer jargon in banners. Worker deploy remains owner-gated when wrangler unauthenticated. |
-
-**Measurement:** honest Lighthouse only (`lighthouse-honest.mjs`); no webdriver/UA/headless special-cases in apps.
-
-**Report:** `capricorn-tooling/docs/perfection-2026-10/FINAL-REPORT-v5.md` (2026-10-19).
+### D-RETIRE-AURA-PRISM · 2026-10-21 (owner)
+**AuraCap and PrismCap are retired from the Cap fleet.**
+- Skip all remaining perfection / v6 / v7 work for both apps.
+- Remove from Capricorn website catalog, mini-sites, hub launcher, docks, demos, and sitemap.
+- Delete the public GitHub repositories `shamikhahmed/AuraCap` and `shamikhahmed/PrismCap` (Pages sites go with them).
+- Do not restore without a new owner decision.

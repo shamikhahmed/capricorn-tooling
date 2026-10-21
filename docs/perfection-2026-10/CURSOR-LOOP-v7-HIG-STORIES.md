@@ -131,7 +131,9 @@ for app in ORDER:
 ```
 
 **ORDER:** first, in `capricorn-tooling` on `main`: commit the program docs (`CURSOR-LOOP-v6-*.md`, `CURSOR-ORDERS-v6-NEXT.md`, this file) as `docs(perfection): v6 + v7 programs`, and finish-or-revert the two modified files there (`CURSOR-LOOP-v5.md`, `shared/design-system/marks/pulsecap.svg`). Then finish `CURSOR-ORDERS-v6-NEXT.md` Orders 1–2 (dirty trees, VaultCap J/K). Then:
-VaultCap → SteadyCap → PulseCap → SoulCap → DeePonyCap → LedgerCap → PrismCap → ScentCap → AuraCap → CarCap → MasteryCap → TravelCap → CookCap → IdeaCap → DeeFoodieApp → **Website (Capricorn hub, §6.4)** → Wave Z (fleet regression).
+VaultCap → SteadyCap → PulseCap → SoulCap → DeePonyCap → LedgerCap → ScentCap → CarCap → MasteryCap → TravelCap → CookCap → IdeaCap → DeeFoodieApp → **Website (Capricorn hub, §6.4)** → Wave Z (fleet regression).
+
+**Retired (2026-10-21 owner):** PrismCap and AuraCap — removed from website catalog and GitHub; skip all v7 work for them.
 For apps after VaultCap, run the v6 A–K pass and this v7 pass **together in one iteration** (one branch, one release).
 
 Machine rules (8 GB Mac): one simulator at a time; never run two Playwright suites at once; QA artifacts go to `build/qa/` (Playwright wipes `test-results/`); `build/` in `.gitignore` as the first commit if missing; kill dev servers and simulators when an iteration ends.

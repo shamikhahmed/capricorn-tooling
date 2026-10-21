@@ -12,9 +12,9 @@ Updated: 2026-10-14T12:28:00Z
 | TravelCap | — | — | free (1.1.1 @fbde183 · gallery 78 G17 ✅) |
 | LedgerCap | — (released) | 2026-10-14T12:45:00Z | Gallery-Builder pushed v3 gallery @ main |
 | PulseCap | — (released) | 2026-10-14T13:15:00Z | Gallery-Builder pushed v3 @ d22cd3a · 30 shots G17 ✅ |
-| PrismCap | — (released) | 2026-10-14T13:20:00Z | Gallery-Builder pushed v3 @ 2467651 · 18 shots G17 ✅ |
+| PrismCap | — | 2026-10-21 | REMOVED from fleet (website + GitHub) |
 | SteadyCap | Gallery-Builder | 2026-10-14T13:20:00Z | G17 live-gallery-v3 |
-| PrismCap | — | — | free (MATRIX @09e31b2 · 51% · PRS-V3-4/5/6 OPEN) |
+| PrismCap | — | 2026-10-21 | REMOVED from fleet (website + GitHub) |
 | VaultCap | Cursor v7 | 2026-10-21T10:18Z | HIG+stories |
 | SteadyCap | — | — | free (Phase I 2.6.0 @c6c8f23 / v2.6.0 · live verified) |
 | CookCap | — | — | free (3.6.1 @1d6969c · gallery 18 G17 ✅ · CK-V3-5 FIXED) |
@@ -26,7 +26,7 @@ Updated: 2026-10-14T12:28:00Z
 | capricorn-tooling/scripts + shared (exc. gallery) | — (released) | 2026-10-14T11:07:19Z | Tooling-Engineer pushed `perfection/tooling-v3` @ 224b76a |
 | capricorn-lab | — | — | released @da066e3 (perfection/hub-minisites-v3) |
 | shamikhahmed.github.io | — | — | released @78b212c |
-| AuraCap | — (released) | 2026-10-14T13:25:00Z | Gallery-Builder pushed v3 gallery · 18 shots G17 ✅ · AUR-V3-4 FIXED |
+| AuraCap | — | 2026-10-21 | REMOVED from fleet (website + GitHub) |
 | ScentCap | — | — | free (MATRIX @61dafb2 · 94% · SCN-V3-5 OPEN) |
 
 ## Rules

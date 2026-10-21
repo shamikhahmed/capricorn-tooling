@@ -21,9 +21,7 @@ const LAB = join(FLEET, 'capricorn-lab');
 const DEFAULT_PW_CORE = join(FLEET, 'MasteryCap', 'node_modules', 'playwright-core');
 
 const REPO_BY_SLUG = {
-  vaultcap: 'VaultCap', pulsecap: 'PulseCap', prismcap: 'PrismCap', steadycap: 'SteadyCap',
   ledgercap: 'LedgerCap', deeponycap: 'DeePonyCap', scentcap: 'ScentCap', soulcap: 'SoulCap',
-  travelcap: 'TravelCap', auracap: 'AuraCap', masterycap: 'MasteryCap', ideacap: 'IdeaCap',
   carcap: 'CarCap', cookcap: 'CookCap', deefoodie: 'DeeFoodieApp',
 };
 

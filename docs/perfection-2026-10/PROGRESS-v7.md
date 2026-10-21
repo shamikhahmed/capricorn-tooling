@@ -24,9 +24,9 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 | SoulCap | | | | | | | | | | |
 | DeePonyCap | | | | | | | | | | |
 | LedgerCap | | | | | | | | | | |
-| PrismCap | | | | | | | | | | |
+| PrismCap | — | — | — | — | — | — | — | — | — | **REMOVED** from fleet/website/GitHub (owner 2026-10-21) |
 | ScentCap | | | | | | | | | | |
-| AuraCap | | | | | | | | | | |
+| AuraCap | — | — | — | — | — | — | — | — | — | **REMOVED** from fleet/website/GitHub (owner 2026-10-21) |
 | CarCap | | | | | | | | | | |
 | MasteryCap | | | | | | | | | | |
 | TravelCap | | | | | | | | | | |
@@ -37,6 +37,9 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 | Wave Z | | | | | | | | | | |
 
 ## Decisions
+
+- **2026-10-21 — AuraCap + PrismCap retired:** Owner directed skip of v7 work and removal from Capricorn website + GitHub repos. Catalog entries deleted; hub redeployed; repos deleted. Local Cap-Apps folders may remain as archive until owner deletes disk copies.
+
 
 - **2026-10-21** — Finish (not revert) `CURSOR-LOOP-v5.md` rewrite and `pulsecap.svg` Ember recolour; both match locked V5-1/V5-2 decisions already applied in apps.
 - **2026-10-21** — Orders 1–2 treated closed per PROGRESS-v6 evidence; dirty-tree check this session: DeePonyCap/MasteryCap/IdeaCap/github.io all `porcelain` empty on `main`.

@@ -6,8 +6,8 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { WORKSPACE_ROOT as ROOT } from './lib/workspace-root.mjs';
 
+/** Active fleet only — AuraCap + PrismCap retired 2026-10-21 (D-RETIRE-AURA-PRISM). */
 const DESCRIPTIONS = {
-  AuraCap: 'Organize your iPhone, iPad and Mac setup.',
   CarCap: 'Service, fuel and documents for your cars.',
   CookCap: 'Your family cookbook, kept like a real book.',
   DeeFoodie: 'A private journal of where you eat in Karachi.',
@@ -15,7 +15,6 @@ const DESCRIPTIONS = {
   IdeaCap: 'Capture ideas by voice or text. They stay on your device.',
   LedgerCap: 'Track your PSX stocks and mutual funds in one place.',
   MasteryCap: 'Learn trading and software step by step, in English or Roman Urdu.',
-  PrismCap: 'Party games for one phone, passed around the room.',
   PulseCap: 'Plan, log and track your training. Works offline.',
   ScentCap: 'Your fragrance collection, and what to wear today.',
   SoulCap: 'Quiet tools to steady yourself. Not therapy.',
@@ -27,12 +26,10 @@ const DESCRIPTIONS = {
 const APPS = [
   ['VaultCap', 'vaultcap'],
   ['PulseCap', 'pulsecap'],
-  ['PrismCap', 'prismcap'],
   ['SteadyCap', 'steadycap'],
   ['LedgerCap', 'ledgercap'],
   ['DeePonyCap', 'deeponycap'],
   ['ScentCap', 'scentcap'],
-  ['AuraCap', 'auracap'],
   ['TravelCap', 'travelcap'],
   ['IdeaCap', 'ideacap'],
   ['MasteryCap', 'masterycap'],
