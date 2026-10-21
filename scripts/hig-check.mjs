@@ -110,7 +110,7 @@ const page = await context.newPage();
 const issues = [];
 
 try {
-  await page.goto(opts.url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  await page.goto(opts.url, { waitUntil: 'domcontentloaded', timeout: 120000 });
   await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
   await new Promise((r) => setTimeout(r, 500));
 } catch (e) {
