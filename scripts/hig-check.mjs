@@ -110,47 +110,56 @@ const page = await context.newPage();
 const issues = [];
 
 try {
-  await page.goto(opts.url, { waitUntil: 'networkidle', timeout: 45000 });
+  await page.goto(opts.url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+  await new Promise((r) => setTimeout(r, 500));
 } catch (e) {
   issues.push({ rule: 'navigation', detail: e.message.split('\n')[0] });
 }
 
-const metrics = await page.evaluate(() => {
-  const bodyFs = parseFloat(getComputedStyle(document.body).fontSize) || 0;
-  const overflow = document.documentElement.scrollWidth > document.documentElement.clientWidth + 1;
-  const smallFonts = [];
-  document.querySelectorAll('*').forEach((el) => {
-    if (!(el instanceof HTMLElement)) return;
-    const fs = parseFloat(getComputedStyle(el).fontSize);
-    if (fs && fs < 11) smallFonts.push({ tag: el.tagName, fs, text: (el.textContent || '').slice(0, 40) });
-  });
-  const targets = [];
-  document.querySelectorAll('a, button, input, select, textarea, summary, [role="button"]').forEach((el) => {
-    if (!(el instanceof HTMLElement)) return;
-    const r = el.getBoundingClientRect();
-    if (r.width < 1 || r.height < 1) return;
-    // Skip links are intentionally clipped until :focus — do not treat as hit failures.
-    const cls = typeof el.className === 'string' ? el.className : '';
-    const label = (el.getAttribute('aria-label') || el.textContent || '').trim();
-    if (/skip/i.test(cls) || /^skip to /i.test(label)) return;
-    const st = getComputedStyle(el);
-    if (st.visibility === 'hidden' || st.display === 'none' || Number(st.opacity) === 0) return;
-    const dense = el.hasAttribute('data-hit-dense');
-    const min = dense ? 28 : 44;
-    if (r.width < min || r.height < min) {
-      targets.push({
-        tag: el.tagName,
-        w: Math.round(r.width),
-        h: Math.round(r.height),
-        dense,
-        label: label.slice(0, 40),
+let metrics = { bodyFs: 0, overflow: false, smallFonts: [], targets: [] };
+if (!issues.some((i) => i.rule === 'navigation')) {
+  try {
+    metrics = await page.evaluate(() => {
+      const bodyFs = parseFloat(getComputedStyle(document.body).fontSize) || 0;
+      const overflow = document.documentElement.scrollWidth > document.documentElement.clientWidth + 1;
+      const smallFonts = [];
+      document.querySelectorAll('*').forEach((el) => {
+        if (!(el instanceof HTMLElement)) return;
+        const fs = parseFloat(getComputedStyle(el).fontSize);
+        if (fs && fs < 11) smallFonts.push({ tag: el.tagName, fs, text: (el.textContent || '').slice(0, 40) });
       });
-    }
-  });
-  return { bodyFs, overflow, smallFonts: smallFonts.slice(0, 20), targets: targets.slice(0, 40) };
-});
+      const targets = [];
+      document.querySelectorAll('a, button, input, select, textarea, summary, [role="button"]').forEach((el) => {
+        if (!(el instanceof HTMLElement)) return;
+        const r = el.getBoundingClientRect();
+        if (r.width < 1 || r.height < 1) return;
+        // Skip links are intentionally clipped until :focus — do not treat as hit failures.
+        const cls = typeof el.className === 'string' ? el.className : '';
+        const label = (el.getAttribute('aria-label') || el.textContent || '').trim();
+        if (/skip/i.test(cls) || /^skip to /i.test(label)) return;
+        const st = getComputedStyle(el);
+        if (st.visibility === 'hidden' || st.display === 'none' || Number(st.opacity) === 0) return;
+        const dense = el.hasAttribute('data-hit-dense');
+        const min = dense ? 28 : 44;
+        if (r.width < min || r.height < min) {
+          targets.push({
+            tag: el.tagName,
+            w: Math.round(r.width),
+            h: Math.round(r.height),
+            dense,
+            label: label.slice(0, 40),
+          });
+        }
+      });
+      return { bodyFs, overflow, smallFonts: smallFonts.slice(0, 20), targets: targets.slice(0, 40) };
+    });
+  } catch (e) {
+    issues.push({ rule: 'navigation', detail: e.message.split('\n')[0] });
+  }
+}
 
-if (metrics.bodyFs < 17) issues.push({ rule: 'body-font', detail: `body ${metrics.bodyFs}px < 17px` });
+if (metrics.bodyFs && metrics.bodyFs < 17) issues.push({ rule: 'body-font', detail: `body ${metrics.bodyFs}px < 17px` });
 if (metrics.overflow) issues.push({ rule: 'horizontal-overflow', detail: 'document wider than viewport' });
 if (metrics.smallFonts.length) {
   issues.push({ rule: 'min-font', detail: `${metrics.smallFonts.length} elements < 11px`, sample: metrics.smallFonts[0] });
@@ -161,19 +170,24 @@ if (metrics.targets.length) {
 
 let axe = { serious: 0, critical: 0, skipped: !axePath };
 if (axePath && !issues.some((i) => i.rule === 'navigation')) {
-  await page.addScriptTag({ content: readFileSync(axePath, 'utf8') });
-  axe = await page.evaluate(async () => {
-    // @ts-expect-error axe injected
-    const res = await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa'] } });
-    const v = res.violations.filter((x) => x.impact === 'serious' || x.impact === 'critical');
-    return {
-      serious: v.filter((x) => x.impact === 'serious').length,
-      critical: v.filter((x) => x.impact === 'critical').length,
-      ids: v.map((x) => x.id),
-    };
-  });
-  if (axe.critical || axe.serious) {
-    issues.push({ rule: 'axe', detail: `critical=${axe.critical} serious=${axe.serious}`, ids: axe.ids });
+  try {
+    // Prefer path injection so CSP script-src 'self' apps (e.g. LedgerCap) can load axe.
+    await page.addScriptTag({ path: axePath });
+    axe = await page.evaluate(async () => {
+      // @ts-expect-error axe injected
+      const res = await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa'] } });
+      const v = res.violations.filter((x) => x.impact === 'serious' || x.impact === 'critical');
+      return {
+        serious: v.filter((x) => x.impact === 'serious').length,
+        critical: v.filter((x) => x.impact === 'critical').length,
+        ids: v.map((x) => x.id),
+      };
+    });
+    if (axe.critical || axe.serious) {
+      issues.push({ rule: 'axe', detail: `critical=${axe.critical} serious=${axe.serious}`, ids: axe.ids });
+    }
+  } catch (e) {
+    axe = { serious: 0, critical: 0, skipped: true, detail: e.message.split('\n')[0] };
   }
 }
 
