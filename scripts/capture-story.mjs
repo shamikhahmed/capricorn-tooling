@@ -21,8 +21,10 @@ const LAB = join(FLEET, 'capricorn-lab');
 const DEFAULT_PW_CORE = join(FLEET, 'MasteryCap', 'node_modules', 'playwright-core');
 
 const REPO_BY_SLUG = {
-  ledgercap: 'LedgerCap', deeponycap: 'DeePonyCap', scentcap: 'ScentCap', soulcap: 'SoulCap',
-  carcap: 'CarCap', cookcap: 'CookCap', deefoodie: 'DeeFoodieApp',
+  vaultcap: 'VaultCap', steadycap: 'SteadyCap', pulsecap: 'PulseCap', soulcap: 'SoulCap',
+  deeponycap: 'DeePonyCap', ledgercap: 'LedgerCap', scentcap: 'ScentCap',
+  carcap: 'CarCap', masterycap: 'MasteryCap', travelcap: 'TravelCap', cookcap: 'CookCap',
+  ideacap: 'IdeaCap', deefoodie: 'DeeFoodieApp', deefoodieapp: 'DeeFoodieApp',
 };
 
 const VIEWPORTS = [
@@ -112,10 +114,42 @@ async function runPrep(page, baseUrl, prep) {
   }
 }
 
+async function unlockVaultSample(page, baseUrl) {
+  await page.addInitScript(() => {
+    localStorage.setItem('vo_active_profile', 'demo');
+    localStorage.setItem('vo_used_demo', '1');
+    localStorage.removeItem('vo_demo_guide_pending');
+    localStorage.setItem('vos_wn_ver', '5.4.0');
+  });
+  await page.goto(`${baseUrl}/?demo=1`, { waitUntil: 'load', timeout: 60000 });
+  await page.waitForFunction(() => typeof window.loadDemoProfile === 'function', { timeout: 20000 }).catch(() => {});
+  await page.evaluate(() => {
+    try {
+      if (typeof loadDemoProfile === 'function') loadDemoProfile('business');
+      if (typeof S !== 'undefined') {
+        S.user.onboardingComplete = true;
+        S.pin = '123456';
+        if (typeof Store !== 'undefined') Store.save();
+      }
+      document.getElementById('pgOnboard') && (document.getElementById('pgOnboard').style.display = 'none');
+      document.getElementById('splashScreen')?.remove();
+      if (typeof R !== 'undefined' && R.unlock) R.unlock();
+      if (typeof WhatsNew !== 'undefined' && window.VER) localStorage.setItem('vos_wn_ver', window.VER);
+      if (typeof Modal !== 'undefined') Modal.close();
+    } catch (_) { /* continue */ }
+  });
+  await page.waitForTimeout(800);
+}
+
 async function runStep(page, step) {
   if (step.action === 'nav' && step.page) {
     await page.evaluate((pg) => {
-      if (typeof R !== 'undefined' && R.goto) R.goto(pg);
+      try {
+        if (typeof R !== 'undefined' && R.goto) R.goto(pg);
+        else if (typeof window.go === 'function') window.go(pg);
+      } catch (e) {
+        console.warn('nav failed', pg, e && e.message);
+      }
     }, step.page);
     await page.waitForTimeout(900);
   }
@@ -156,7 +190,8 @@ try {
       const browser = await chromium.launch();
       const context = await browser.newContext({ ...viewport, colorScheme: theme, baseURL: baseUrl });
       const page = await context.newPage();
-      await runPrep(page, baseUrl, script.prep);
+      if (appInfo.slug === 'vaultcap') await unlockVaultSample(page, baseUrl);
+      else await runPrep(page, baseUrl, script.prep);
       for (const step of script.steps || []) {
         await runStep(page, step);
         const id = step.id || 'shot';
