@@ -1,90 +1,127 @@
-# Cursor — Perfection Loop v5 (after independent verify, 2026-10-16)
+# Cursor — Perfection Loop v5 (final)
 
-Work autonomously with multiple agents. No questions. Stop only when every item below is done, verified **live**, committed, pushed, and **every GitHub Actions workflow on `main` is green in every repo you touched**. Then write `docs/perfection-2026-10/FINAL-REPORT-v5.md`.
+Work autonomously with multiple agents. No questions: every design decision you need is made below. Stop only when every item is done, verified **live**, committed, pushed, and **every GitHub Actions workflow on `main` is green in every repo you touched**. Then write `docs/perfection-2026-10/FINAL-REPORT-v5.md`.
 
-Binding: `docs/audit-2026-09-14/DECISIONS.md` (G-1…G-10, D-*, P-*, §4.1 copy, §4.2 disclaimers). No "OS" for apps (G-3). No "zero servers" where a network call exists. No third-party requests or Google Fonts (G-9). Everything free (G-2).
+Binding: `docs/audit-2026-09-14/DECISIONS.md` (G-1…G-10, D-*, P-*, §4.1 copy, §4.2 disclaimers) **plus the v5 decisions below**. Add the v5 decisions to DECISIONS.md as a dated section first. No "OS" for apps (G-3). No "zero servers" where a network call exists. No third-party requests or Google Fonts (G-9). Everything free (G-2).
 
-Tooling: `PW_CORE=/Users/shamikhahmed/Projects/Cap/Cap-Apps/MasteryCap/node_modules/playwright-core`. Hub source of truth is **capricorn-lab** (D-13): change lab → `node scripts/deploy-hub.mjs` → in `shamikhahmed.github.io`: `npm test`, `node scripts/check-links.mjs`, `bash scripts/stage-site.sh`, commit, push, watch Hub CI. Never hand-edit hub `apps/` or `assets/`. When an app version changes, bump it in **both** `capricorn-lab/js/products.js` and hub `js/products-data.js` (hub `npm test` enforces this).
+Tooling: `PW_CORE=/Users/shamikhahmed/Projects/Cap/Cap-Apps/MasteryCap/node_modules/playwright-core`. The hub's source of truth is **capricorn-lab** (D-13). Change lab, run `node scripts/deploy-hub.mjs`, then in `shamikhahmed.github.io` run `npm test`, `node scripts/check-links.mjs` and `bash scripts/stage-site.sh`, then commit, push and watch Hub CI. Never hand-edit hub `apps/` or `assets/`. When an app version changes, bump it in **both** `capricorn-lab/js/products.js` and hub `js/products-data.js`; hub `npm test` enforces this.
 
-## New hard rules (learned from v4)
+Every app change is a release: VERSION.json, package.json (+ lock), SW cache name + register query, CHANGELOG.md + changelog.html, in-app version string, README/HANDOVER/CLAUDE.md `Version:` lines, the full test suite green, and a git tag.
 
-1. **Never special-case measurement.** No `navigator.webdriver`, user-agent, headless or Lighthouse checks that change what the app does. v4 shipped a webdriver splash bypass in PulseCap to get "mobile 91"; it was removed in 6.46.1. Measure with `capricorn-tooling/scripts/lighthouse-honest.mjs` (fresh Chrome per run, automation flag hidden).
-2. **CI is part of "done".** Before claiming an item, run `gh run list -R shamikhahmed/<Repo> --branch main --limit 5` and confirm every workflow passed on your last commit. v4 reported success while VaultCap CI was red (so Deploy Pages was skipped for 4 commits) and LedgerCap CI had been red since 2026-10-14.
-3. **A guard test is a decision, not an obstacle.** If a test forbids something (e.g. VaultCap's `tests/satellite-pages.spec.js` forbids blue on its decks), follow it or record a decision change in DECISIONS.md first. Do not "align" the app to the hub catalog when the app's own brand differs. The hub follows the apps.
-4. **Removing `!important` means proving the cascade still wins.** After any `!important` cleanup run:
-   `node scripts/audit-important-loss.mjs <Repo> <revBeforeCleanup> <liveUrl> [navJS…]`
-   Exit code 1 means a removed declaration no longer wins on a visible element. Fix it with specificity, not by putting `!important` back. In v4 this cleanup silently removed LedgerCap's desktop sidebar (fixed in 3.58.2).
+---
 
-## Already verified or fixed on 2026-10-16 (do not redo)
+## Hard rules (learned from v4 — breaking any of these means the item is not done)
 
-- **VaultCap** `8742fe3`: pitch deck back to monochrome (`--accent:#ffffff`); `ios/App/App/public/index.html` untracked (already gitignored). CI and Deploy Pages green again. `audit-design-tokens.mjs` records the VaultCap deck exception.
-- **PulseCap 6.46.1** `5f153f8`: first screen paints without its `.screen` entry fade (`html.pc-booting`), so Chrome records LCP. Webdriver bypass removed. Honest live numbers: mobile 89 (LCP 2.1 s), desktop FCP 0.5 s / LCP 0.6 s.
-- **LedgerCap 3.58.2** `7f20005`: desktop sidebar restored at ≥900 px, tab bar hidden. CI green for the first time since 2026-09-16.
-- Hub `4fa276c`: catalog Pulse 6.46.1 / Ledger 3.58.2; OG cards regenerated.
-- Verified good: VaultCap gallery 204 frames without the install banner; CookCap Editorial night paper (system Dark switches it); LedgerCap Commodities empty state; DeeFoodie web still gated (`main.dart.js` 404).
-- Live gates: fleet device-qa 98/98 (hard 0, tap<32 0, text<11 0); mini-sites axe 0 on 64 page-views; mini-site QA 96 page-views clean.
+1. **Never special-case measurement.** No `navigator.webdriver`, user-agent, headless or Lighthouse checks that change app behaviour. Measure with `capricorn-tooling/scripts/lighthouse-honest.mjs`, which uses a fresh Chrome per run with the automation flag hidden. v4's PulseCap "mobile 91" came from a webdriver bypass; it was removed in 6.46.1.
+2. **CI is part of "done".** Before claiming anything, run `gh run list -R shamikhahmed/<Repo> --branch main --limit 5` and confirm every workflow passed on your last commit. In v4, VaultCap CI was red (Deploy Pages skipped for 4 commits) and LedgerCap CI had been red since 2026-10-14, and neither was reported.
+3. **Guard tests encode decisions.** Follow them, or change the decision in DECISIONS.md first. The hub follows the apps; never repaint an app to match a stale hub colour.
+4. **Removing `!important` means proving the cascade still wins.** Run `node scripts/audit-important-loss.mjs <Repo> <revBeforeCleanup> <liveUrl> [navJS…]`. Exit 1 means a removed rule no longer wins on a visible element. Fix it with specificity, never by restoring `!important`. v4's cleanup silently removed LedgerCap's desktop sidebar.
+5. **Numbers before claims.** Every "✅" in the report needs a command output or a file path beside it.
+
+---
+
+## v5 design decisions (made — apply them, don't revisit)
+
+**V5-1 · VaultCap is midnight & gold.** The app UI already is: dark `--accent:#D4A017`, light `--accent:#0a1220`. Only the icon, the hub tile and the hub colours are still the old blue `#5b8dee`.
+- New icon (family spec): 512 tile, `rx112`. Midnight diagonal gradient `#121a2a` → `#04070d`. Shield glyph with a gold gradient `#F3D27A` → `#D4A017` → `#9A7410` (`gradientUnits="userSpaceOnUse" x1="96" y1="140" x2="416" y2="420"`). Ivory keyhole `#f4f0e8`. Standard gold flick `M380 96 L420 108 L408 148` + `circle(408,118,r6)` `#c9a227`.
+- Replace it everywhere: `VaultCap/icon.svg`, `favicon.svg`, every PNG (`apple-touch-icon*`, `icon-1024/512/192`, maskable with a safe zone), the Capacitor iOS app icon set, `capricorn-lab/assets/icons/vaultcap.svg` + PNGs.
+- Catalog in both hubs: `accent:'#d4a017'`, `accent2:'#9a7410'`. Decks (`pitch.html`, `presentation.html`, `landing.html`): `--accent:#D4A017` in dark sections, `#0a1220` in light ones; the satellite-pages guard stays (still no blue). README badges become midnight/gold.
+- Remove the `vaultcap` entry from `DECK_OVERRIDE` in `scripts/audit-design-tokens.mjs`; the deck and catalog now agree. Release VaultCap 5.3.1.
+
+**V5-2 · PulseCap is Ember orange everywhere.** The app, icon and `theme-color` are already `#FF7A1A` (press `#E86A0E`). The hub catalog (`#00f2ff`/`#0e7bff`), hub icon, mini-site and both decks are still pre-Ember cyan.
+- Hub icon in the family spec: warm near-black tile `#2a1206` → `#0b0503`, pulse glyph gradient `#FFB066` → `#FF7A1A` → `#E86A0E` (`userSpaceOnUse`), standard gold flick. Regenerate the PNGs.
+- Catalog in both hubs: `accent:'#ff7a1a'`, `accent2:'#e86a0e'`. Recolour `PulseCap/pitch.html` and `presentation.html` completely: every cyan, not just `--accent`.
+
+**V5-3 · Search engines see canonical pages only.** CookCap stays `noindex, nofollow` (a private family book; its public face is `/apps/cookcap/`).
+- `sitemap.xml` currently lists 14 legacy `<slug>.html` redirect pages and `/CookCap/`. Remove all 15 and make `build-minisites.mjs` prune them on every build: redirects and noindex URLs never belong in a sitemap.
+- Keep `/`, `/support.html`, `/privacy.html`, `/about.html`, `/sovereignty.html`, `/investor.html`, `/pitch.html`, every indexable app URL, `/apps/` and `/apps/<slug>/`.
+
+**V5-4 · Restore every designed value lost in the `!important` cleanup, except the 12 px text minimum.** Use specificity for each:
+- VaultCap `@media (min-width:700px) body .page.on > .pb { padding-bottom:24px }` (now 68 px on `#dashBody`).
+- PrismCap `.lcard { box-shadow: 0 10px 24px rgba(16,7,38,.45), inset 0 1px 0 rgba(255,255,255,.12) }`.
+- PrismCap `@media (min-width:1024px) and (hover:hover) and (pointer:fine) #app { max-width:min(520px,100vw) }` (now 560 px).
+- PrismCap `.sec { letter-spacing:.04em }`.
+- SteadyCap `@media (min-width:769px) and (hover:hover) and (pointer:fine) .screen { padding-bottom:24px }` (now 0 on onboarding).
+Keep the 11 → 12 px bumps (LedgerCap `.lc-portfolio-pnl`, PrismCap `.sec` / `#home-greeting`).
+
+**V5-5 · Status messages speak to people, not developers.** LedgerCap shows this on every screen: "PSX origin (dps.psx.com.pk) flakes — 100% on EOD snapshot (2026-07-01). Paid feed needed for terminal-grade live."
+- Replace it with one calm, dismissible line, shown only on market screens and only while it's true: **"Prices are from the last close on 1 Jul. Live prices aren't available right now."** The date is computed from the snapshot.
+- The Home KSE-100 tile that stays on "Loading…" shows the last close with its date, or "Unavailable". Never an endless spinner.
+- Sweep every Cap for the same kind of internal wording in banners, toasts and empty states (worker names, "origin", "proxy", "EOD", "seed", stack-ish errors) and rewrite it in plain language.
+
+---
+
+## Already done and verified on 2026-10-16 (don't redo)
+- VaultCap `8742fe3`: monochrome deck restored (this becomes gold under V5-1); generated `ios/App/App/public/index.html` untracked. CI and Deploy green.
+- PulseCap 6.46.1 `5f153f8`: honest first paint (`html.pc-booting`), webdriver bypass removed. Live mobile 89, desktop LCP 0.6 s.
+- LedgerCap 3.58.2 `7f20005`: desktop sidebar back. CI green for the first time since 2026-09-16.
+- Hub `4fa276c`: Pulse 6.46.1 / Ledger 3.58.2; OG cards regenerated.
+- Verified: VaultCap gallery 204 frames, no install banner; CookCap night paper follows system Dark; Commodities empty state; DeeFoodie web gated (`main.dart.js` 404); fleet device-qa 98/98; mini-sites axe 0 on 64 page-views.
+
+---
 
 ## Do now (in order)
 
-### 1 · PulseCap brand: hub and decks still show the pre-Ember cyan
-App icon, `theme-color` and `css/tokens.css` are Ember orange (`--accent:#FF7A1A`, press `#E86A0E`). The hub catalog (`accent:'#00f2ff'`, `accent2:'#0e7bff'`), hub family icon `capricorn-lab/assets/icons/pulsecap.svg` (+ PNG sizes), mini-site palette and `PulseCap/pitch.html` / `presentation.html` are still cyan.
-- Recolour the hub icon in the family spec: keep the 512 tile, `rx112`, dark diagonal gradient, gold flick `M380 96 L420 108 L408 148` + `circle(408,118,r6)` `#c9a227`. Glyph gradient becomes orange: `#FFB066` → `#FF7A1A` → `#E86A0E`, `gradientUnits="userSpaceOnUse"`. Tile gradient becomes warm near-black (`#2a1206` → `#0b0503`). Regenerate the PNGs.
-- Set catalog `accent:'#ff7a1a'`, `accent2:'#e86a0e'` in both catalogs, recolour both decks (all cyan, not just `--accent`), and run `npm run audit:tokens` in tooling.
-- Redeploy the hub. Check `/apps/pulsecap/` in light and dark (axe 0) and the PulseCap window in Capricorn OS.
+### 1 · Apply V5-1 … V5-5
+Order: brand (V5-1, V5-2), then sitemap (V5-3), cascade (V5-4), copy (V5-5). After V5-1/V5-2, redeploy the hub. Then check the VaultCap and PulseCap tiles in Capricorn OS (light, dark and every skin), `/apps/vaultcap/` and `/apps/pulsecap/` (axe 0, light and dark), the app icons on an iPhone home-screen-size render (60/120/180 px), and the OG cards.
 
-### 2 · Accessibility — Lighthouse a11y must be 100, axe 0 serious/critical, light **and** dark
-From `lighthouse-honest.mjs` / axe on 2026-10-16:
-- **CookCap** (a11y 96 mobile): light-mode primary CTA white on `#c2683c` = 3.93:1 (onboarding "Begin" and every copper button). Also `p.font-serif.text-sm.font-semibold.italic` and `p.text-[0.75rem].tabular-nums`. Darken the copper fill to ≥4.5:1 with white, in the Editorial light skin only. v4 checked dark only.
+### 2 · Accessibility: Lighthouse a11y 100 and axe 0 serious/critical, light **and** dark, phone and desktop
+- **CookCap** (96): in light Editorial, white on `#c2683c` is 3.93:1 (onboarding "Begin" and every copper button). Darken the light-skin copper fill until white text passes 4.5:1 (about `#a9542c`); dark night paper is already fine. Also fix `p.font-serif.text-sm.font-semibold.italic` and `p.text-[0.75rem].tabular-nums`.
 - **CarCap** (96): `.btn.btn-primary` text contrast (`data-go="garage"`, `data-action="first-add"`).
-- **LedgerCap** (95–96): a `<label>` colour-contrast fail.
+- **LedgerCap** (95–96): a `<label>` contrast fail.
 - **MasteryCap** (94): `.onb-eyebrow` contrast.
-- **IdeaCap** (89): `aria-allowed-role` on the "Search ideas" input; `aria-required-children` on the tablist (tabs need `role="tab"`); two text-contrast fails (`r-1bmwzmo`, `r-8y998g` styles); SEO `meta-description` missing on web.
-- **AuraCap** (96): the `.cap-skip-link` target `#main` is missing or not focusable on the landing route.
-- **TravelCap** (SEO 91): `link-text` — links with non-descriptive text.
-Each fix is an app release: VERSION.json, package.json, SW cache bump, CHANGELOG.md / changelog.html, in-app version, README/HANDOVER, tests green.
+- **IdeaCap** (89):
+  - `aria-allowed-role` on the "Search ideas" input.
+  - `aria-required-children` on the tablist (children need `role="tab"` + `aria-selected`).
+  - Two text-contrast styles (`r-1bmwzmo`, `r-8y998g`).
+  - Web `<meta name="description">` missing.
+- **AuraCap** (96): `.cap-skip-link` targets `#main`, which is missing or not focusable on the landing route.
+- **TravelCap** (SEO 91): `link-text` — give every link descriptive text.
 
-### 3 · Performance — mobile ≥ 90 on a real first visit (`lighthouse-honest.mjs`), no bypasses
-| App | Mobile now | Culprit |
+### 3 · Performance: mobile ≥ 90 and desktop ≥ 90 on a real first visit (`lighthouse-honest.mjs`), no bypasses
+| App | Mobile now | Culprit → fix |
 |---|---|---|
-| LedgerCap | 40–43 | TBT 1.7 s, main thread 13.9 s, bootup 2.4 s, 866 KB bundle. LCP is the count-up hero `.lc-dash-hero-val` at 5.6 s. Defer non-home modules, don't animate the LCP number from 0, split the bundle. |
-| PrismCap | 63–70 | CLS 0.396: `#feat` (`GL.launchFeat`) 0.263 and `aside.home-cab-rail` 0.114 shift after load. Reserve their space. TBT 510 ms. |
-| MasteryCap | 78–83 | LCP 3.7 s on `.onb-sub`; render-blocking CSS ~400 ms. |
-| TravelCap | 80–83 | LCP 3.6 s on the hero paragraph; unused JS 43 KiB. |
+| LedgerCap | 40–43 | TBT 1.7 s, main thread 13.9 s, 866 KB bundle. LCP is the count-up hero `.lc-dash-hero-val` at 5.6 s. Render the real number first (no count-up from 0 on load), defer non-Home modules, split the bundle. |
+| PrismCap | 63–70 | CLS 0.396: `#feat` (0.263) and `aside.home-cab-rail` (0.114) shift after load. Reserve their size before data arrives. TBT 510 ms. |
+| MasteryCap | 78–83 | LCP 3.7 s on `.onb-sub`; render-blocking CSS ~400 ms. Inline critical CSS, defer the rest. |
+| TravelCap | 80–83 | LCP 3.6 s on the hero paragraph; ~43 KiB unused JS. |
 | PulseCap | 89 | 7 render-blocking stylesheets; ~200 KiB unused JS (engines.js, settings.js, progress.js). |
-| DeePonyCap | 89 | LCP 2.2 s; check render-blocking. |
-| AuraCap | NO_LCP (perf unmeasurable) | Probably the same pattern as PulseCap: first content starts at `opacity:0`. Make the first paint contentful. |
-Desktop targets ≥ 90 as well (SteadyCap 91, MasteryCap 90, TravelCap 91 are borderline).
+| DeePonyCap | 89 | LCP 2.2 s; render-blocking resources. |
+| AuraCap | NO_LCP | First content starts at `opacity:0` (same pattern PulseCap had). Make the first paint contentful. |
+Desktop borderline: SteadyCap 91, MasteryCap 90, TravelCap 91. Lift them to ≥ 95.
 
-### 4 · LedgerCap Worker errors on every load
-`ledgercap-psx-proxy.shamikhahmed.workers.dev`:
-- `/news/google?q=…` returns **502** on every call.
-- `/timeseries/eod/{HINO,LUCK,PIBTL,PICT}` return **404**.
-The console shows errors (Lighthouse best-practices 96). Fix the Worker if it's in `LedgerCap/worker/`; otherwise stop requesting news on first load and treat 404 series as "no history" without a network error. Owner deploys Workers: if a Worker deploy is needed, prepare it and list it under owner actions.
+### 4 · LedgerCap Worker (`LedgerCap/worker/`, `ledgercap-psx-proxy.shamikhahmed.workers.dev`)
+- `/news/google?q=…` returns **502** on every call. `/timeseries/eod/{HINO,LUCK,PIBTL,PICT}` return **404**. The EOD snapshot is from **2026-07-01**, more than 3 months old: the refresh (cron) isn't running.
+- Fix the Worker. In the app, a missing series means "no history" with no console error, and news isn't requested on first load.
+- If `npx wrangler whoami` shows the owner is logged in, deploy the Worker and verify live. Otherwise leave it ready and list it under owner actions.
+- Target: zero console errors on load (Lighthouse best-practices 100).
 
-### 5 · `!important` cleanup review (run `audit-important-loss.mjs`, base = last commit before the cleanup)
-Live deltas still worth a decision. Fix by specificity if they're regressions; record them as intended if not:
-- VaultCap `@media (min-width:700px) body .page.on > .pb { padding-bottom:24px }` → now 68 px on `#dashBody` (desktop).
-- PrismCap `.lcard` box-shadow lost; `@media (min-width:1024px) and (hover:hover) and (pointer:fine) #app { max-width:min(520px,100vw) }` → now 560 px; `.sec` letter-spacing.
-- SteadyCap `@media (min-width:769px) and (hover:hover) and (pointer:fine) .screen { padding-bottom:24px }` → 0 on onboarding.
-- The 11 → 12 px text bumps (LedgerCap `.lc-portfolio-pnl`, PrismCap `.sec`, `#home-greeting`) are intended (12 px minimum). Leave them.
-Then add a **layout contract test** to every app that has a desktop layout, like `LedgerCap/tests/viewport.spec.js`: desktop navigation visible and phone tab bar hidden at 1280 px; the reverse at 375 px. This makes the next cascade regression fail CI.
+### 5 · Layout contract tests in every app with a desktop layout
+Copy the pattern of `LedgerCap/tests/viewport.spec.js`: at 1280 px the desktop navigation is visible and the phone tab bar hidden; at 375 px the reverse; and nothing is clipped behind the tab bar. Wire it into each repo's CI. The next cascade regression must fail CI, not users.
 
-### 6 · Small gallery fix
-CookCap dark `cook--plate-view--default` (iPhone + Mac) is byte-identical to `cook--recipe--default`: the capture didn't switch to plate view in dark. Recapture, then check with the md5 dupe check and confirm the mini-site shows Plate view in dark.
+### 6 · CookCap dark gallery
+Dark `cook--plate-view--default` (iPhone + Mac) is byte-identical to `cook--recipe--default`: the capture never switched to plate view in dark. Recapture, check with an md5 dupe check, and confirm `/apps/cookcap/` shows Plate view in dark.
 
-### 7 · Re-verify everything, live
+### 7 · Re-verify everything, live, and write the report
 - `gh run list` green for every touched repo.
-- `lighthouse-honest.mjs` on all 14 apps + hub `/`, `/apps/`, 3 mini-sites.
-- axe light + dark on each app's first screen and the mini-sites.
+- `lighthouse-honest.mjs` on all 14 apps, plus hub `/`, `/apps/` and 3 mini-sites.
+- axe light + dark on each app's first screen and every mini-site.
 - `scripts/device-qa.mjs` 98/98.
 - Hub `qa-matrix.mjs` 140/140 and `qa-flows.mjs` 39/39 against production.
-- Docs scan: every `**Version:**` line matches VERSION.json; no retired claims.
+- `audit-important-loss.mjs` exit 0 for each repo you touched.
+- `npm run audit:tokens` 8/8 with no overrides.
+- Docs scan: every `Version:` line matches VERSION.json; no retired claims.
 
-## Owner decisions / actions (list them in the report; don't decide)
-- **VaultCap brand:** the hub tile and app icon are blue `#5b8dee`, but the app UI and decks are monochrome by decision (gold accent in dark). Pick one.
-- **CookCap is `noindex, nofollow`** by design ("intentional private book"), yet it has a public mini-site and sitemap entry. Confirm both.
-- Xcode 26 install, native archives and TestFlight upload (ScentCap, VaultCap, DeeFoodie). Physical VoiceOver pass on iPhone and Mac.
-- Any Cloudflare Worker deploy from item 4.
+`FINAL-REPORT-v5.md` must contain:
+- Before/after Lighthouse (mobile + desktop) per app.
+- axe, device-qa, matrix and flows results.
+- CI status per repo, with commit SHAs.
+- Screenshots of the new VaultCap and PulseCap icons.
+- Anything not done, and why.
 
-## Report
-Write `FINAL-REPORT-v5.md`: per repo commits (SHA), honest live numbers before/after (Lighthouse mobile/desktop per app, axe, device-qa, matrix, flows), CI status per repo, and anything not done and why. Put measurements first and claims second.
+---
+
+## Owner-only (list them in the report; don't attempt)
+- Install Xcode 26, archive and upload TestFlight builds (ScentCap, VaultCap, DeeFoodie). Do not submit for review.
+- Physical VoiceOver pass on an iPhone and a Mac.
+- A Cloudflare login, if item 4 needs a deploy and wrangler isn't authenticated.

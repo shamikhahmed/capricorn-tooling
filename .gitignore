@@ -16,3 +16,6 @@ shamikhahmed.github.io/
 # Perfection v3 evidence screenshots stay local (reports + JSON are committed)
 docs/perfection-2026-10/**/*.png
 docs/perfection-2026-10/**/*.webp
+
+# HIG raw JSON (large); digest committed
+docs/perfection-2026-10/hig-raw/
