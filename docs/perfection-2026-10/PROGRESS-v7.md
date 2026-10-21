@@ -57,3 +57,5 @@ _(none yet)_
 _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 
 - **2026-10-21 — Scaffold follow-up:** Removed CookCap accidental LH JSON; SteadyCap VERSION note deduped; MasteryCap noscript + ios-tokens.
+
+- **2026-10-21 — Decks + docs fleet sync:** All 13 apps pitch/presentation/README/CHANGELOG bumped to ship versions + Real stories links; hub pitch Thirteen Caps + /stories/ CTA.
