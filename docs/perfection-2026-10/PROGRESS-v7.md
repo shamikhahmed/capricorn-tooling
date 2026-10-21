@@ -63,3 +63,4 @@ _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 - **2026-10-21 — Reviewer:** AuraCap + PrismCap retirement confirmed by owner to Claude Code. Fix round: `CURSOR-ORDERS-v7-FIX.md`.
 
 - **2026-10-21/22 — v7-fix in progress:** Tests×2 green for Steady/DeePony/Ledger/Scent/Car/Mastery; disclaimer live; VaultCap LH honest <90 documented. See `v7-fix-logs/SUMMARY.md`.
+- **2026-10-22 — v7-fix parallel closeout:** Agents on (1) Tests×2 Pulse/Travel/Cook/Idea/DeeFoodie/Soul (2) persona recapture Cook/Idea/DeeFoodie/Soul (3) HIG+sim (4) VaultCap LH+hub. TravelCap stories already recaptured. Disclaimer ✅. Aura/Prism stay removed.
