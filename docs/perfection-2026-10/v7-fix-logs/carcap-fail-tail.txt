@@ -1,0 +1,30 @@
+  ✓  10 tests/smoke.spec.js:164:3 › CarCap P1 › privacy page loads (69ms)
+  ✘  11 tests/smoke.spec.js:171:3 › CarCap P1 › version and SW cache are 1.1.2 / carcap-v11 (963ms)
+(node:70719) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  12 tests/viewport.spec.js:10:3 › CarCap viewport contract › 375px — bottom tab bar (phone chrome) (1.2s)
+  ✓  13 tests/viewport.spec.js:33:3 › CarCap viewport contract › 1280px — left sidebar tab rail (desktop chrome) (1.2s)
+  ✓  14 tests/viewport.spec.js:61:3 › CarCap viewport contract › 375px — no content clipped behind tab bar on primary tabs (3.2s)
+
+
+  1) tests/smoke.spec.js:171:3 › CarCap P1 › version and SW cache are 1.1.2 / carcap-v11 ───────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "1.1.2"
+    Received: "1.1.3"
+
+      179 |     expect(meta.sw).toBe(true);
+      180 |     const version = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'VERSION.json'), 'utf8'));
+    > 181 |     expect(version.version).toBe('1.1.2');
+          |                             ^
+      182 |     expect(version.swCache).toBe('carcap-v11');
+      183 |   });
+      184 | });
+        at /Users/shamikhahmed/Projects/Cap/Cap-Apps/CarCap/tests/smoke.spec.js:181:29
+
+    Error Context: test-results/smoke-CarCap-P1-version-and-SW-cache-are-1-1-2-carcap-v11/error-context.md
+
+  1 failed
+    tests/smoke.spec.js:171:3 › CarCap P1 › version and SW cache are 1.1.2 / carcap-v11 ────────────
+  13 passed (15.7s)

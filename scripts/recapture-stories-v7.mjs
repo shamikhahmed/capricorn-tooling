@@ -2,8 +2,8 @@
 /**
  * Recapture story screenshots with persona-name overlays, then rebuild videos.
  *
- * Uses STORY_DEVICES=1 + CANONICAL_ONLY=0 so each persona gets iphone + ipad + mac
- * light captures; capture-story.mjs writes NN-<device>.png matching content/stories/*.json.
+ * Uses STORY_DEVICES=1 so each persona gets iphone + ipad + mac × light + dark
+ * (spec §5). capture-story.mjs writes NN-<device>.png matching content/stories/*.json.
  *
  *   node recapture-stories-v7.mjs              # all 39
  *   node recapture-stories-v7.mjs vaultcap     # one app (3 personas)
@@ -32,7 +32,8 @@ const LAB = join(FLEET, 'capricorn-lab');
 const CAPTURE = join(TOOLING, 'capture-story.mjs');
 const MAKE_VIDEO = join(TOOLING, 'make-story-videos.py');
 const PW_CORE = process.env.PW_CORE || join(FLEET, 'MasteryCap', 'node_modules', 'playwright-core');
-const CONCURRENCY = Math.max(1, Number(process.env.CONCURRENCY || 3));
+/* Default 1: never run parallel Playwright captures (machine rule). */
+const CONCURRENCY = Math.max(1, Number(process.env.CONCURRENCY || 1));
 const SKIP_VIDEO = process.env.SKIP_VIDEO === '1';
 
 const REPO = {

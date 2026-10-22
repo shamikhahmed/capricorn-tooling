@@ -1,0 +1,30 @@
+      168 |   await expect(page).not.toHaveURL(/onboarding/, { timeout: 60_000 });
+        at loadDemoWardrobe (/Users/shamikhahmed/Projects/Cap/Cap-Apps/ScentCap/e2e/helpers.ts:165:87)
+        at /Users/shamikhahmed/Projects/Cap/Cap-Apps/ScentCap/e2e/viewport.spec.ts:51:5
+
+    Error Context: test-results/viewport-ScentCap-viewport-1e0f7-ting-tabs-on-primary-routes-chromium/error-context.md
+
+  22 failed
+    [chromium] › e2e/a11y.spec.ts:17:3 › Accessibility smoke › core screens: main landmark + no critical/serious axe 
+    [chromium] › e2e/app.spec.ts:16:3 › ScentCap PWA › onboarding flow completes ───────────────────
+    [chromium] › e2e/app.spec.ts:21:3 › ScentCap PWA › demo flow loads sample wardrobe on home ─────
+    [chromium] › e2e/app.spec.ts:27:3 › ScentCap PWA › add fragrance via search and home shows content 
+    [chromium] › e2e/app.spec.ts:36:3 › ScentCap PWA › delete bottle removes it from wardrobe ──────
+    [chromium] › e2e/app.spec.ts:51:3 › ScentCap PWA › travel kit persists trip name after reload ──
+    [chromium] › e2e/app.spec.ts:64:3 › ScentCap PWA › navigate to advisor and get recommendation ──
+    [chromium] › e2e/app.spec.ts:74:3 › ScentCap PWA › calendar month prev/next navigation ─────────
+    [chromium] › e2e/app.spec.ts:90:3 › ScentCap PWA › share card export does not throw ────────────
+    [chromium] › e2e/app.spec.ts:110:3 › ScentCap PWA features › Analytics and Travel Kit open for all users 
+    [chromium] › e2e/app.spec.ts:122:3 › ScentCap PWA features › Settings IA groups and theme toggle 
+    [chromium] › e2e/app.spec.ts:137:3 › ScentCap PWA features › import rejects invalid JSON backup 
+    [chromium] › e2e/app.spec.ts:154:3 › ScentCap PWA features › import rejects future backup version 
+    [chromium] › e2e/app.spec.ts:171:3 › ScentCap PWA features › home still works offline after load 
+    [chromium] › e2e/app.spec.ts:183:3 › ScentCap PWA features › demo wardrobe ships baked bottle art offline (no Fraganty) 
+    [chromium] › e2e/screenshots.spec.ts:36:3 › App Store screenshots › capture 6 iPhone 15 Pro screenshots 
+    [chromium] › e2e/viewport.spec.ts:11:3 › ScentCap viewport contract › 375px — floating tabs, desktop sidebar hidden 
+    [chromium] › e2e/viewport.spec.ts:19:3 › ScentCap viewport contract › 699px — just under Cap BP — tabs, no sidebar 
+    [chromium] › e2e/viewport.spec.ts:26:3 › ScentCap viewport contract › 700px — Cap BP — sidebar, tabs hidden (iPad mini trap) 
+    [chromium] › e2e/viewport.spec.ts:34:3 › ScentCap viewport contract › 744px — iPad mini width — sidebar 
+    [chromium] › e2e/viewport.spec.ts:41:3 › ScentCap viewport contract › 1280px — desktop sidebar, floating tabs hidden 
+    [chromium] › e2e/viewport.spec.ts:49:3 › ScentCap viewport contract › 375px — no content clipped behind floating tabs on primary routes 
+  13 skipped

@@ -1,0 +1,30 @@
+    [firefox] › tests/ux-integrity.spec.js:181:3 › UX integrity — gutters and tab bar › Settings tab bar is one row at 390px 
+    [firefox] › tests/ux-integrity.spec.js:197:3 › UX integrity — gutters and tab bar › no interactive control hugs the 390px edge unless marked full-bleed 
+    [firefox] › tests/ux-integrity.spec.js:270:3 › Phase 27 — QA sweep › 375 / 390 / 430 — no overflow, both themes, main tabs + Settings 
+    [firefox] › tests/ux-integrity.spec.js:309:3 › Phase 27 — QA sweep › body text tokens meet WCAG AA 4.5:1 in both themes 
+    [firefox] › tests/ux-integrity.spec.js:337:3 › Phase 27 — QA sweep › fresh user reaches intro with no page error 
+    [firefox] › tests/ux-integrity.spec.js:355:3 › Phase 27 — QA sweep › one session and 500 sessions do not overflow Progress 
+    [firefox] › tests/ux-integrity.spec.js:381:3 › Phase 27 — QA sweep › longest exercise and food names stay inside the viewport 
+    [firefox] › tests/ux-integrity.spec.js:427:3 › Phase 27 — QA sweep › Settings tabs: tap a control, no console error, scroll holds 
+    [firefox] › tests/ux-integrity.spec.js:478:3 › Phase 28 — accent contrast + computed audit › light --accent-text meets 4.5:1 on page background; dark keeps bright accent 
+    [firefox] › tests/ux-integrity.spec.js:521:3 › Phase 28 — accent contrast + computed audit › every visible text vs computed background on all screens, both themes 
+    [firefox] › tests/ux-integrity.spec.js:676:3 › Phase 28 — accent contrast + computed audit › select.field matches design system at 390px both themes 
+    [firefox] › tests/ux-integrity.spec.js:723:3 › Phase 29 — selected-chip on-accent contrast › --on-accent meets 4.5:1 on --accent in both themes 
+    [firefox] › tests/ux-integrity.spec.js:740:3 › Phase 29 — selected-chip on-accent contrast › mesocycle selected chip (W1) passes contrast at 375/390/430 both themes 
+    [firefox] › tests/ux-integrity.spec.js:800:3 › Manifest shortcuts resolve to real screens › every shortcut url lands on the screen its label promises 
+    [firefox] › tests/v6-kernel.spec.js:5:3 › v6 Coach Kernel › kernel + foods + food engine online after demo boot 
+    [firefox] › tests/v61-gym-tools.spec.js:5:3 › v6.1 gym tools › WakeLock / VoiceLogger / MobilityFlow / PainFlag / BarcodeFood online 
+    [firefox] › tests/v61-gym-tools.spec.js:46:3 › v6.1 gym tools › recovery shows mobility + nutrition has barcode section 
+    [firefox] › tests/viewport.spec.js:16:3 › PulseCap viewport contract › 320px — small phone shell 
+    [firefox] › tests/viewport.spec.js:23:3 › PulseCap viewport contract › 390px — iPhone 12/13 shell, no horizontal overflow 
+    [firefox] › tests/viewport.spec.js:33:3 › PulseCap viewport contract › 393px — iPhone 14/15 shell + safe-area padding 
+    [firefox] › tests/viewport.spec.js:56:3 › PulseCap viewport contract › 430px — large phone shell 
+    [firefox] › tests/viewport.spec.js:61:3 › PulseCap viewport contract › light theme — secondary text contrast tokens 
+    [firefox] › tests/viewport.spec.js:77:3 › PulseCap viewport contract › 768px — tablet mid breakpoint 
+    [firefox] › tests/viewport.spec.js:83:3 › PulseCap viewport contract › 375px — phone shell and bottom nav 
+    [firefox] › tests/viewport.spec.js:88:3 › PulseCap viewport contract › 744px — centered column shell (Ember; no Cap sidebar) 
+    [firefox] › tests/viewport.spec.js:96:3 › PulseCap viewport contract › 699px — phone tabs stay visible 
+    [firefox] › tests/viewport.spec.js:104:3 › PulseCap viewport contract › 1280px — phone tab bar still visible (no Cap desktop sidebar) 
+    [firefox] › tests/viewport.spec.js:111:3 › PulseCap viewport contract › 375px — no content clipped behind bottom nav on primary tabs 
+  3 skipped
+  317 passed (5.7m)

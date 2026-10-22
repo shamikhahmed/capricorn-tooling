@@ -1,0 +1,5 @@
+FAIL PulseCap
+FAIL DeePonyCap
+FAIL ScentCap
+FAIL CarCap
+FAIL MasteryCap

@@ -1,0 +1,30 @@
+  runtime asset not in ASSETS: js/hig-dt.js
+
+══ audit-behavior.mjs ══
+(node:71006) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/shamikhahmed/Projects/Cap/Cap-Apps/MasteryCap/js/data/tracks.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/shamikhahmed/Projects/Cap/Cap-Apps/MasteryCap/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+P2 hand-check samples: [{"type":"sizing_crypto","seed":1013,"answer":200,"parsed":200,"match":true},{"type":"sizing_crypto","seed":1030,"answer":5000,"parsed":5000,"match":true},{"type":"sizing_forex","seed":1012,"answer":0.07,"parsed":0.07,"match":true},{"type":"sizing_forex","seed":1029,"answer":0.04,"parsed":0.04,"match":true}]
+P3 expectancy: {"n":9,"avgWin":11.666666666666666,"avgLoss":-20,"winRate":0.3333333333333333,"expectancy":-9.444444444444446}
+P3 flagged: {"n":6,"pl":-110,"label":"revenge+greed"}
+P3 worstCost: Flagged trades (revenge/greed): 6 trades, −$110.00 net
+
+PASS 34 · FAIL 0
+PASS: behavior unit suite
+
+══ audit-sim.mjs ══
+(node:71007) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/shamikhahmed/Projects/Cap/Cap-Apps/MasteryCap/js/sim/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/shamikhahmed/Projects/Cap/Cap-Apps/MasteryCap/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS: sim audit (25 checks)
+
+══ audit-ur-length.mjs ══
+PASS audit-ur-length
+(node:71014) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/shamikhahmed/Projects/Cap/Cap-Apps/MasteryCap/js/data/greeks.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/shamikhahmed/Projects/Cap/Cap-Apps/MasteryCap/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+1/8 audits FAILED

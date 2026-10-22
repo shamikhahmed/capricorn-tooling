@@ -1,0 +1,4 @@
+DeePonyCap|1|1
+CarCap|1|1
+MasteryCap|0|0
+ScentCap|0|0

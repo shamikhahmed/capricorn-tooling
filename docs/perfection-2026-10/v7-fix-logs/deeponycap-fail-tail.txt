@@ -1,0 +1,18 @@
+=== DeePonyCap run1 18:14Z ===
+=== DeePonyCap run2 18:14Z ===
+
+> deeponycap@3.9.10 verify
+> node scripts/check-sw-truth.js && playwright test
+
+SW-truth FAIL:
+  - sw.js CACHE fallback "deeponycap-v73" !== VERSION.json.swCache "deeponycap-v3910"
+  - js/version.js missing SW_CACHE deeponycap-v3910
+  - js/version.js missing APP_VERSION 3.9.10
+
+> deeponycap@3.9.10 verify
+> node scripts/check-sw-truth.js && playwright test
+
+SW-truth FAIL:
+  - sw.js CACHE fallback "deeponycap-v73" !== VERSION.json.swCache "deeponycap-v3910"
+  - js/version.js missing SW_CACHE deeponycap-v3910
+  - js/version.js missing APP_VERSION 3.9.10
