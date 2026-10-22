@@ -76,5 +76,6 @@ _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 - **2026-10-22 — SoulCap verify×2:** 372 passed ×2 after a11y+e2e harden (`456ff35`, `179b38e`). **READY FOR REVIEW: v7-fix** (LH ≥90 still open / documented).
 - **2026-10-22 — Persona recapture round 2:** Travel/Cook/Idea/DeeFoodie/Soul EXIT 0; prune ≤15 MB (3/2/2/2/2 MB); hub deploy `3eb05f2` then `bff0aef`.
 - **2026-10-22 — IdeaCap capture root cause:** Expo export assets are `/IdeaCap/_expo/...`; empty prefix → JS 404 → blank white + persona badge only. Fixed `capture-story.mjs` prefix + hard hydrate wait (`f1809c2`); Kevin/Hamid/Zara recaptured; story.mp4 ~50KB each; hub `bff0aef`.
-- **2026-10-22 — Fleet G-8 SW sync (audit):** SteadyCap `steadycap-v266`; SoulCap `soulcap-v841`; LedgerCap `ledgercap-v35810`; MasteryCap `masterycap-v511012`; CookCap APP 3.7.4 + `cookcap-v374`; ScentCap `scentcap-v222`. VaultCap www/ios staged to **5.4.3** (LH agent in flight). TravelCap hub + DeeFoodie video agents running.
+- **2026-10-22 — Fleet G-8 SW sync (audit):** SteadyCap `steadycap-v266`; SoulCap `soulcap-v841`; LedgerCap `ledgercap-v35810`; MasteryCap `masterycap-v511012`; CookCap APP 3.7.4 + `cookcap-v374`; ScentCap `scentcap-v222`. VaultCap www/ios staged to **5.4.3** (LH agent in flight). TravelCap hub agent running.
+- **2026-10-22 — DeeFoodie stories:** HTML→Flutter beta bridge (`90e0964`) + onboarding dismiss; `story.mp4` ~106KB real home UI (was ~24KB gate); hub `945dd8d`. Tab variety still same-frame (Flutter web nav).
 - **READY FOR REVIEW: v7-fix**
