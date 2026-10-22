@@ -32,7 +32,7 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 | CookCap | ✅ | ✅ ~73 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v3.7.4 | **v7-fix** |
 | IdeaCap | ✅ | ✅ ~72 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v2.1.5 | **v7-fix** |
 | DeeFoodieApp | ✅ | ✅ ~77 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v1.1.2 | **v7-fix** |
-| Website | ✅ | ◐ spot | ✅ stories | — | — | ✅ 39 | ✅ smoke | ✅ | hub `c28a1f1` | **v7-fix** |
+| Website | ✅ | ◐ spot | ✅ stories | — | — | ✅ 39 | ✅ smoke | ✅ | hub `f7a2c56` | **v7-fix** |
 | Wave Z | ✅ | — | — | — | — | — | — | ✅ spot | — | **READY** |
 
 ## Decisions
