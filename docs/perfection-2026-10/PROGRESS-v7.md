@@ -17,7 +17,7 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 
 | App | v6 A–K | HIG audit | HIG fixes | Personas | Capture | Stories live | Tests ×2 | Live verify | Version/tag | Status |
 |---|---|---|---|---|---|---|---|---|---|---|
-| VaultCap | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v5.4.2 | **v7-fix** |
+| VaultCap | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v5.4.3 | **v7-fix** |
 | SteadyCap | ✅ | ✅ ~72 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v2.6.6 | **v7-fix** |
 | PulseCap | ✅ | ✅ ~70 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v6.46.12 | **v7-fix** |
 | SoulCap | ✅ | ✅ ~77 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v8.4.1 | **v7-fix** |
@@ -45,7 +45,6 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 ## Owner-only
 
 - App Store Connect / TestFlight / signing / DNS / Cloudflare secrets.
-- VaultCap LH mobile ≥90 (honest median **70** on 5.4.2; best run 77 — see `VaultCap/qa/v7/LH-MOBILE.md`).
 - Hard-delete AuraCap + PrismCap: `gh auth refresh -h github.com -s delete_repo && gh repo delete shamikhahmed/AuraCap --yes && gh repo delete shamikhahmed/PrismCap --yes`
 
 ## Reviewer defects
@@ -78,4 +77,6 @@ _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 - **2026-10-22 — IdeaCap capture root cause:** Expo export assets are `/IdeaCap/_expo/...`; empty prefix → JS 404 → blank white + persona badge only. Fixed `capture-story.mjs` prefix + hard hydrate wait (`f1809c2`); Kevin/Hamid/Zara recaptured; story.mp4 ~50KB each; hub `bff0aef`.
 - **2026-10-22 — Fleet G-8 SW sync (audit):** SteadyCap `steadycap-v266`; SoulCap `soulcap-v841`; LedgerCap `ledgercap-v35810`; MasteryCap `masterycap-v511012`; CookCap APP 3.7.4 + `cookcap-v374`; ScentCap `scentcap-v222`. VaultCap www/ios staged to **5.4.3** (LH agent in flight). TravelCap hub agent running.
 - **2026-10-22 — DeeFoodie stories:** HTML→Flutter beta bridge (`90e0964`) + onboarding dismiss; `story.mp4` ~106KB real home UI (was ~24KB gate); hub `945dd8d`. Tab variety still same-frame (Flutter web nav).
+- **2026-10-22 — TravelCap hub SW:** `next.config` cacheId from VERSION.json; live `1.1.11` / `travelcap-v1111` (`95f12bc` / hub `8a50e66`+).
+- **2026-10-22 — VaultCap LH ≥90 MET:** **5.4.3** / `v5.4.3` / `vaultcap-v99` (`d3734a5`) — honest mobile median **95** (3×95); see `VaultCap/qa/v7/LH-MOBILE.md`.
 - **READY FOR REVIEW: v7-fix**

@@ -22,10 +22,12 @@
 3. Persona stories — ✅ Travel/Cook/Idea/DeeFoodie/Soul recaptured; hub `bff0aef` (IdeaCap basePath fix; ≤15 MB/app)
 4. Disclaimer — ✅ exact Illustrative story text on all 39 + stories index polish
 5. Simulator — SIM-PASS.md fleet + ScentCap SE shots ✅; full 3-device×AX ◐ (documented)
-6. VaultCap LH — **5.4.2** honest median **70** (best 77); ≥90 not met; documented in LH-MOBILE.md (owner-known)
+6. VaultCap LH — ✅ **5.4.3** honest median **95** (3×95); gate ≥90 met (`d3734a5` / tag `v5.4.3`)
 7. Tooling dirty — ✅ committed
 8. Aura/Prism — stay removed ✅
 
-**Hub spotcheck (2026-10-22):** PASS 4/4 at `bff0aef`+ — no story.mp4 &lt;20KB; IdeaCap personas ~51KB; disclaimer exact on 39; no Aura/Prism. Hub tip `089c46a` (DeeFoodie prune).
+**Hub spotcheck (2026-10-22):** PASS 4/4 at `bff0aef`+ — no story.mp4 &lt;20KB; IdeaCap personas ~51KB; disclaimer exact on 39; no Aura/Prism.
 
-**READY FOR REVIEW: v7-fix** — open known limit: VaultCap LH mobile ≥90 (honest 70).
+**Also:** TravelCap live SW `travelcap-v1111`; DeeFoodie stories ~106KB real UI (`945dd8d`).
+
+**READY FOR REVIEW: v7-fix** — all 8 defects closed (LH ≥90 met).
