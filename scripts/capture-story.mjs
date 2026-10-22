@@ -525,8 +525,41 @@ async function unlockVaultSample(page, baseUrl, personaName, opts = {}) {
 
 const DEE_FOODIE_BETA_TOKEN = 'v7storycapturetokenxxxxxxxxxxxxxxxx'; // 36 chars — matches web/index.html MIN
 
+/** Skip / mark onboarding so story shots hit journal routes, not the welcome carousel. */
+async function dismissDeeFoodieOnboarding(page) {
+  await page.evaluate(() => {
+    try {
+      localStorage.setItem('flutter.onboarding_completed', 'true');
+    } catch (_) { /* ignore */ }
+  });
+  const skip = page.getByText(/^Skip$/i).first();
+  if (await skip.isVisible({ timeout: 2500 }).catch(() => false)) {
+    await skip.click({ timeout: 5000 }).catch(() => {});
+    await page.waitForTimeout(1200);
+  }
+  /* Still on welcome? hammer Continue a few times then Skip again. */
+  for (let i = 0; i < 10; i++) {
+    const welcome = await page.getByText(/Your Karachi food journal/i)
+      .isVisible({ timeout: 800 }).catch(() => false);
+    if (!welcome) break;
+    const skip2 = page.getByText(/^Skip$/i).first();
+    if (await skip2.isVisible({ timeout: 500 }).catch(() => false)) {
+      await skip2.click({ force: true }).catch(() => {});
+    } else {
+      await page.getByRole('button', { name: /Continue|Start|Next/i }).last()
+        .click({ timeout: 2000 }).catch(() => {});
+    }
+    await page.waitForTimeout(700);
+  }
+  const stuck = await page.getByText(/Your Karachi food journal/i)
+    .isVisible({ timeout: 1500 }).catch(() => false);
+  if (stuck) {
+    throw new Error('dismissDeeFoodieOnboarding: still on onboarding welcome');
+  }
+}
+
 /** HTML gate (sessionStorage) then Flutter WebBetaGateScreen (needs semantics tree). */
-async function unlockDeeFoodieWebBeta(page) {
+async function unlockDeeFoodieWebBeta(page, baseUrl) {
   await page.evaluate((t) => {
     try { sessionStorage.setItem('deefoodie_web_beta_token', t); } catch (_) { /* ignore */ }
   }, DEE_FOODIE_BETA_TOKEN);
@@ -536,6 +569,9 @@ async function unlockDeeFoodieWebBeta(page) {
     await page.locator('#dfd-beta-go').click({ timeout: 8000 }).catch(async () => {
       await page.keyboard.press('Enter');
     });
+  } else if (baseUrl) {
+    /* Init script may have seeded storage after first paint — reload so index.html bootstraps Flutter. */
+    await page.goto(`${baseUrl.replace(/\/$/, '')}/`, { waitUntil: 'load', timeout: 90000 }).catch(() => {});
   }
   await page.waitForFunction(
     () => {
@@ -572,7 +608,8 @@ async function unlockDeeFoodieWebBeta(page) {
   if (gated) {
     throw new Error('unlockDeeFoodieWebBeta: still on WebBetaGateScreen after unlock');
   }
-  await page.waitForTimeout(3000);
+  await dismissDeeFoodieOnboarding(page);
+  await page.waitForTimeout(1500);
 }
 
 async function waitForIdeaCapReady(page) {
@@ -598,7 +635,21 @@ async function runStep(page, baseUrl, step) {
     const waitUntil = step._slug === 'ideacap' ? 'domcontentloaded' : 'load';
     await page.goto(`${baseUrl}${step.path}`, { waitUntil, timeout: 90000 });
     if (step._slug === 'deefoodie' || step._slug === 'deefoodieapp') {
-      await unlockDeeFoodieWebBeta(page);
+      await unlockDeeFoodieWebBeta(page, baseUrl);
+      /* Flutter web often ignores path-only reloads — drive glass nav by label. */
+      const tabByPath = {
+        '/': 'Home',
+        '/explore': 'Explore',
+        '/map': 'Map',
+        '/journal': 'Journal',
+        '/profile': 'Profile',
+      };
+      const tab = tabByPath[step.path] || tabByPath[String(step.path).replace(/\/$/, '') || '/'];
+      if (tab && tab !== 'Home') {
+        await page.getByText(new RegExp(`^${tab}$`, 'i')).last()
+          .click({ timeout: 8000 }).catch(() => {});
+        await page.waitForTimeout(900);
+      }
     }
     if (step._slug === 'ideacap') {
       await waitForIdeaCapReady(page);
@@ -691,7 +742,11 @@ try {
       const context = await browser.newContext({ ...viewport, colorScheme: theme, baseURL: baseUrl });
       if (appInfo.slug === 'deefoodie' || appInfo.slug === 'deefoodieapp') {
         await context.addInitScript((t) => {
-          try { sessionStorage.setItem('deefoodie_web_beta_token', t); } catch (_) { /* ignore */ }
+          try {
+            sessionStorage.setItem('deefoodie_web_beta_token', t);
+            /* shared_preferences_web — skip onboarding for story capture */
+            localStorage.setItem('flutter.onboarding_completed', 'true');
+          } catch (_) { /* ignore */ }
         }, DEE_FOODIE_BETA_TOKEN);
       }
       const page = await context.newPage();
@@ -710,7 +765,7 @@ try {
           : [{ action: 'goto', path: cookFor }, { action: 'wait', ms: 1200 }, ...prep];
         await runPrep(page, baseUrl, prep2, { slug: appInfo.slug });
         if (appInfo.slug === 'deefoodie' || appInfo.slug === 'deefoodieapp') {
-          await unlockDeeFoodieWebBeta(page);
+          await unlockDeeFoodieWebBeta(page, baseUrl);
         }
         if (appInfo.slug === 'ideacap') {
           await waitForIdeaCapReady(page);
@@ -726,7 +781,7 @@ try {
         if (!takeShot) continue;
         if (appInfo.slug === 'vaultcap') await dismissVaultChrome(page);
         if (appInfo.slug === 'deefoodie' || appInfo.slug === 'deefoodieapp') {
-          await unlockDeeFoodieWebBeta(page);
+          await unlockDeeFoodieWebBeta(page, baseUrl);
         }
         await applyPersonaOverlay(page, personaName, overlayOpts);
         const id = step.id || 'shot';
