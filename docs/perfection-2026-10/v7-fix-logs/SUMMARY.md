@@ -21,7 +21,7 @@
 2. HIG audits — ✅ **12/12 apps hig-check 8/8**
 3. Persona stories — ✅ Travel/Cook/Idea/DeeFoodie/Soul recaptured (IdeaCap `/IdeaCap` basePath; DeeFoodie HTML→Flutter beta bridge); hub `f7a2c56` after ≤15 MB prune
 4. Disclaimer — ✅ exact Illustrative story text on all 39 + stories index polish
-5. Simulator — SIM-PASS.md fleet + ScentCap SE shots ✅; full 3-device×AX ◐ (documented)
+5. Simulator — full 3-device×light/dark/AX3 matrix ✅ (~120 PNGs) + VO spot notes in all `*/qa/v7/SIM-PASS.md`
 6. VaultCap LH — ✅ **5.4.3** honest median **95** (3×95); gate ≥90 met (`d3734a5` / tag `v5.4.3`)
 7. Tooling dirty — ✅ committed
 8. Aura/Prism — stay removed ✅

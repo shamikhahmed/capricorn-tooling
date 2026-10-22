@@ -74,26 +74,62 @@ if (!udid) {
   process.exit(2);
 }
 
-for (const other of ['Booted']) {
-  /* shutdown other booted sims — one at a time */
-}
+/* One simulator at a time — shut down every other booted device first. */
 const booted = sh('xcrun', ['simctl', 'list', 'devices', 'booted', '-j']);
 try {
   const bootJson = JSON.parse(booted.stdout).devices;
   for (const runtime of Object.values(bootJson)) {
     for (const d of runtime) {
-      if (d.udid !== udid) sh('xcrun', ['simctl', 'shutdown', d.udid]);
+      if (d.udid !== udid) {
+        sh('xcrun', ['simctl', 'shutdown', d.udid]);
+      }
     }
   }
 } catch {
   /* ignore */
 }
 
-sh('xcrun', ['simctl', 'boot', udid]);
-sh('open', ['-a', 'Simulator']);
+const already = sh('xcrun', ['simctl', 'list', 'devices', 'booted', '-j']);
+let isBooted = false;
+try {
+  for (const runtime of Object.values(JSON.parse(already.stdout).devices)) {
+    for (const d of runtime) {
+      if (d.udid === udid) isBooted = true;
+    }
+  }
+} catch {
+  /* ignore */
+}
+if (!isBooted) {
+  sh('xcrun', ['simctl', 'boot', udid]);
+  /* Wait until SpringBoard is ready (avoids hung screenshots). */
+  sh('xcrun', ['simctl', 'bootstatus', udid, '-b'], { timeout: 120000 });
+}
+sh('open', ['-a', 'Simulator', '--args', '-CurrentDeviceUDID', udid]);
 
+/* Reset Dynamic Type so AX3 does not leak into the next light/dark pass. */
 if (opts.ax) {
-  sh('xcrun', ['simctl', 'spawn', udid, 'defaults', 'write', 'com.apple.Accessibility', 'AXDynamicTypeSize', '-int', '3']);
+  sh('xcrun', [
+    'simctl',
+    'spawn',
+    udid,
+    'defaults',
+    'write',
+    'com.apple.Accessibility',
+    'AXDynamicTypeSize',
+    '-int',
+    '3',
+  ]);
+} else {
+  sh('xcrun', [
+    'simctl',
+    'spawn',
+    udid,
+    'defaults',
+    'delete',
+    'com.apple.Accessibility',
+    'AXDynamicTypeSize',
+  ]);
 }
 if (opts.dark) {
   sh('xcrun', ['simctl', 'ui', udid, 'appearance', 'dark']);
@@ -102,14 +138,23 @@ if (opts.dark) {
 }
 
 sh('xcrun', ['simctl', 'openurl', udid, opts.url]);
-spawnSync('sleep', ['5']);
+/* Expo/Flutter web demos need a bit longer than static PWAs. */
+const waitSec = /IdeaCap|DeeFoodie/i.test(opts.app) ? '6' : '3';
+spawnSync('sleep', [waitSec]);
 
-const slug = opts.device.replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+const slug = opts.device
+  .replace(/[^a-z0-9]+/gi, '-')
+  .toLowerCase()
+  .replace(/^-+|-+$/g, '');
 const tag = `${slug}${opts.dark ? '-dark' : '-light'}${opts.ax ? '-ax3' : ''}`;
 const png = join(opts.out, `${opts.app}-${tag}.png`);
-const shot = sh('xcrun', ['simctl', 'io', udid, 'screenshot', png]);
+let shot = sh('xcrun', ['simctl', 'io', udid, 'screenshot', png], { timeout: 60000 });
 if (shot.status !== 0) {
-  console.error('screenshot failed:', shot.stderr);
+  spawnSync('sleep', ['2']);
+  shot = sh('xcrun', ['simctl', 'io', udid, 'screenshot', png], { timeout: 60000 });
+}
+if (shot.status !== 0) {
+  console.error('screenshot failed:', shot.stderr || shot.error);
   process.exit(1);
 }
 

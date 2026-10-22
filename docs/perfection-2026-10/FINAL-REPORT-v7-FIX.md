@@ -14,7 +14,7 @@ Issued 2026-10-22 by Cursor. Orders: `CURSOR-ORDERS-v7-FIX.md`. Progress: `PROGR
 | 2 | HIG audits / hig-check 8 viewports | ✅ | 12/12 apps 8/8; `*/build/qa/v7/hig-check/` |
 | 3 | Persona-seeded stories (Travel/Cook/Idea/DeeFoodie/Soul) | ✅ | Hub `f7a2c56`; lab `e93f18a`+`911b6df`; ≤15 MB/app |
 | 4 | Disclaimer exact text | ✅ | All 39 + stories index |
-| 5 | Simulator §7.4 | ✅ fleet SIM-PASS + ScentCap SE; full 3-device×AX ◐ documented | `*/qa/v7/SIM-PASS.md` |
+| 5 | Simulator §7.4 | ✅ full 3-device × light/dark/AX3 matrix (13 apps, ~120 PNGs) + VO spot notes | `*/qa/v7/SIM-PASS.md` · `build/qa/v7/sim/` |
 | 6 | VaultCap LH mobile ≥90 | ✅ | **5.4.3** median **95** (3×95); tag `v5.4.3`; live Pages |
 | 7 | Tooling dirty file | ✅ | committed |
 | 8 | Aura/Prism | ✅ | stay removed (owner-only repo delete) |
@@ -32,7 +32,7 @@ Issued 2026-10-22 by Cursor. Orders: `CURSOR-ORDERS-v7-FIX.md`. Progress: `PROGR
 
 ## Known limits (honest, non-blocking)
 
-- Full 3-device × Larger Text AX screenshot matrix ◐ (SIM-PASS summaries present).
+- Simulator matrix complete; DeeFoodie/MasteryCap VO spot found fewer than 10 labeled controls on the demo landing surface (documented honestly in SIM-PASS).
 - DeeFoodie story frames often same Home tab (Flutter web path/nav); UI is past beta gate.
 - VaultCap CI `quality` job timed out at 30m on 5.4.3 push (Pages deployed via `workflow_dispatch`); timeout bump tracked separately if still failing.
 

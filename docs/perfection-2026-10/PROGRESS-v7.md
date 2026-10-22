@@ -83,3 +83,4 @@ _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 - **READY FOR REVIEW: v7-fix**
 
 - **2026-10-22 — FINAL-REPORT-v7-FIX.md** issued; VaultCap CI timeout 60m; hub minisite 5.4.3.
+- **2026-10-22 — Defect 5 §7.4 COMPLETE:** `run-v7-sim-fleet.sh` × 13 apps × SE/16 Pro/iPad Air × light/dark/AX3 → `*/build/qa/v7/sim/` (~120 PNGs, gitignored). All `qa/v7/SIM-PASS.md` ✅ + VO a11y-tree spot notes. Tooling: `v7-sim-pass.mjs` + `v7-sim-a11y-spot.mjs`.

@@ -1,0 +1,628 @@
+{
+  "app": "SteadyCap",
+  "url": "https://shamikhahmed.github.io/SteadyCap/?demo=1",
+  "controls": [
+    {
+      "role": "a",
+      "label": "Skip to content",
+      "tag": "a"
+    },
+    {
+      "role": "button",
+      "label": "Profiles",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Edit",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Taken",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Skip",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "History",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Strong",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Okay",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Hard",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Slipped",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "DeePonyCap",
+  "url": "https://shamikhahmed.github.io/DeePonyCap/?demo=1",
+  "controls": [
+    {
+      "role": "a",
+      "label": "Skip to content",
+      "tag": "a"
+    },
+    {
+      "role": "button",
+      "label": "Settings",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Dismiss demo banner",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "💜 Dawn Line 5",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "💜 Meadow Line 6",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "💜 Starlight Line 4",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "💜 Vintage Line 3",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Promo 5",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Series logs",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Pony Map",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "LedgerCap",
+  "url": "https://shamikhahmed.github.io/LedgerCap/?demo=1",
+  "controls": [
+    {
+      "role": "a",
+      "label": "Skip to content",
+      "tag": "a"
+    },
+    {
+      "role": "button",
+      "label": "Dismiss",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Tap to refresh prices",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "More",
+      "tag": "button"
+    },
+    {
+      "role": "main",
+      "label": "LedgerCap content",
+      "tag": "div"
+    },
+    {
+      "role": "button",
+      "label": "Add holdings",
+      "tag": "button"
+    },
+    {
+      "role": "group",
+      "label": "Shortcuts",
+      "tag": "div"
+    },
+    {
+      "role": "button",
+      "label": "CGT & tax",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Annual PDF",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Paper trade",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "ScentCap",
+  "url": "https://shamikhahmed.github.io/ScentCap/?demo=1",
+  "controls": [
+    {
+      "role": "a",
+      "label": "Skip to content",
+      "tag": "a"
+    },
+    {
+      "role": "button",
+      "label": "Use my collection",
+      "tag": "button"
+    },
+    {
+      "role": "div",
+      "label": "Weather 18 degrees",
+      "tag": "div"
+    },
+    {
+      "role": "a",
+      "label": "View Dolce & Gabbana Light Blue Pour Homme",
+      "tag": "a"
+    },
+    {
+      "role": "img",
+      "label": "Dolce & Gabbana Light Blue Pour Homme",
+      "tag": "div"
+    },
+    {
+      "role": "button",
+      "label": "Wear this today",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Share",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Office",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Date",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Weekend",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "SoulCap",
+  "url": "https://shamikhahmed.github.io/SoulCap/?demo=1",
+  "controls": [
+    {
+      "role": "a",
+      "label": "Skip to content",
+      "tag": "a"
+    },
+    {
+      "role": "section",
+      "label": "Now",
+      "tag": "section"
+    },
+    {
+      "role": "group",
+      "label": "How you are arriving",
+      "tag": "div"
+    },
+    {
+      "role": "button",
+      "label": "Steady",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Wired",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Flat",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Heavy",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Not sure",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Begin",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Explore",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "VaultCap",
+  "url": "https://shamikhahmed.github.io/VaultCap/?demo=1",
+  "controls": [
+    {
+      "role": "button",
+      "label": "Exit",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Open sample vault",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Dark",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Light",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "System",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Add item",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Close",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "PulseCap",
+  "url": "https://shamikhahmed.github.io/PulseCap/?demo=1",
+  "controls": [
+    {
+      "role": "button",
+      "label": "Switch profile",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Start workout",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Do a different workout",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Can’t train today?",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Add chest volume — 0/12 sets this week. Open coach",
+      "tag": "button"
+    },
+    {
+      "role": "nav",
+      "label": "Main navigation",
+      "tag": "nav"
+    },
+    {
+      "role": "button",
+      "label": "Today",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Train",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Progress",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Programs",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "CarCap",
+  "url": "https://shamikhahmed.github.io/CarCap/?demo=1",
+  "controls": [
+    {
+      "role": "a",
+      "label": "Skip to content",
+      "tag": "a"
+    },
+    {
+      "role": "button",
+      "label": "Daily Driver",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Log fuel",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Add service",
+      "tag": "button"
+    },
+    {
+      "role": "aside",
+      "label": "Recent activity",
+      "tag": "aside"
+    },
+    {
+      "role": "tablist",
+      "label": "Main",
+      "tag": "nav"
+    },
+    {
+      "role": "tab",
+      "label": "Today",
+      "tag": "button"
+    },
+    {
+      "role": "tab",
+      "label": "Garage",
+      "tag": "button"
+    },
+    {
+      "role": "tab",
+      "label": "Service",
+      "tag": "button"
+    },
+    {
+      "role": "tab",
+      "label": "Fuel",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "MasteryCap",
+  "url": "https://shamikhahmed.github.io/MasteryCap/?demo=1",
+  "controls": [
+    {
+      "role": "a",
+      "label": "Skip to content",
+      "tag": "a"
+    },
+    {
+      "role": "button",
+      "label": "Skip",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Begin application",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "TravelCap",
+  "url": "https://shamikhahmed.github.io/TravelCap/?demo=1",
+  "controls": [
+    {
+      "role": "a",
+      "label": "Skip to content",
+      "tag": "a"
+    },
+    {
+      "role": "button",
+      "label": "Change theme",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Create Trip",
+      "tag": "button"
+    },
+    {
+      "role": "a",
+      "label": "Demo · Barcelona weekBarcelona2026-11-05 → 2026-11-10upcoming",
+      "tag": "a"
+    },
+    {
+      "role": "a",
+      "label": "Open",
+      "tag": "a"
+    },
+    {
+      "role": "button",
+      "label": "Duplicate Demo · Barcelona week",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Archive Demo · Barcelona week",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Delete Demo · Barcelona week",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "New trip",
+      "tag": "button"
+    },
+    {
+      "role": "nav",
+      "label": "Main navigation",
+      "tag": "nav"
+    }
+  ]
+}
+{
+  "app": "CookCap",
+  "url": "https://shamikhahmed.github.io/CookCap/",
+  "controls": [
+    {
+      "role": "button",
+      "label": "Got it",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Mode — Reader",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Search recipes",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Appearance",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Shopping list",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "More",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Cook thisCrispy Spring RollsMidday plate that won’t put you to sleep.",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Or thisRisotto alla MilaneseMidday plate that won’t put you to sleep.",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Or save for SundayZaffarani Biryani (Chicken)Midday plate that won’t put you to",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Fruit Chaat",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "IdeaCap",
+  "url": "https://shamikhahmed.github.io/IdeaCap/",
+  "controls": [
+    {
+      "role": "button",
+      "label": "Open settings",
+      "tag": "button"
+    },
+    {
+      "role": "button",
+      "label": "Capture a new voice note",
+      "tag": "button"
+    },
+    {
+      "role": "tab",
+      "label": "All ideas",
+      "tag": "div"
+    },
+    {
+      "role": "tab",
+      "label": "Inbox",
+      "tag": "div"
+    },
+    {
+      "role": "tab",
+      "label": "Folder Ideas for Caps",
+      "tag": "div"
+    },
+    {
+      "role": "tab",
+      "label": "Folder Personal",
+      "tag": "div"
+    },
+    {
+      "role": "button",
+      "label": "Create folder",
+      "tag": "button"
+    },
+    {
+      "role": "input",
+      "label": "Search ideas",
+      "tag": "input"
+    },
+    {
+      "role": "button",
+      "label": "What if IdeaCap was a voice-first. What if IdeaCap was a voice-first notebook for creative people who lose ideas between the shower and the desk",
+      "tag": "button"
+    }
+  ]
+}
+{
+  "app": "DeeFoodieApp",
+  "url": "https://shamikhahmed.github.io/DeeFoodieApp/",
+  "controls": [
+    {
+      "role": "a",
+      "label": "Privacy",
+      "tag": "a"
+    }
+  ]
+}
