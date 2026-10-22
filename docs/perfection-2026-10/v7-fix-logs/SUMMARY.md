@@ -26,4 +26,6 @@
 7. Tooling dirty — ✅ committed
 8. Aura/Prism — stay removed ✅
 
+**Hub spotcheck (2026-10-22):** PASS 4/4 at `bff0aef`+ — no story.mp4 &lt;20KB; IdeaCap personas ~51KB; disclaimer exact on 39; no Aura/Prism. Hub tip `089c46a` (DeeFoodie prune).
+
 **READY FOR REVIEW: v7-fix** — open known limit: VaultCap LH mobile ≥90 (honest 70).
