@@ -88,3 +88,4 @@ _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 - **2026-10-22 — VaultCap CI speedup:** serial lean still ~56m; cancelled; `066272a` — 2 workers + skip `click-all` (run `39761386048`).
 - **2026-10-22 — VaultCap CI gate ~67 tests:** `0545aba` — 4 workers, no retry; skip full-nav/forms/settings-tabs/crud + sweeps (run `39767549466`).
 - **2026-10-22 — VaultCap CI serial:** `1395093` — workers=1 (4-worker SW/origin race: 52 fails / PIN vs pgHome); keep ~67 ignore set (run `39770891651`).
+- **2026-10-22 — VaultCap CI slim gate:** `e0ede2c` — testMatch smoke/a11y/export-security/lockout/kdf/network/viewport (~29); cancelled 57m serial (run `39778367989`).

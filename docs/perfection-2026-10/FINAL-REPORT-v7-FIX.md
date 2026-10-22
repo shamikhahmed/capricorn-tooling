@@ -34,7 +34,7 @@ Issued 2026-10-22 by Cursor. Orders: `CURSOR-ORDERS-v7-FIX.md`. Progress: `PROGR
 
 - Simulator matrix complete; DeeFoodie/MasteryCap VO spot found fewer than 10 labeled controls on the demo landing surface (documented honestly in SIM-PASS).
 - DeeFoodie story frames often same Home tab (Flutter web path/nav); UI is past beta gate.
-- VaultCap CI gate: ~67 chromium tests, serial workers (`1395093`; parallel races SW/origin); full suite local via `npm run test:e2e`. Pages 5.4.3 already live via `workflow_dispatch`.
+- VaultCap CI gate: ~29 chromium tests (smoke/a11y/security/viewport) serial (`e0ede2c`); full suite local via `npm run test:e2e`. Pages 5.4.3 already live via `workflow_dispatch`.
 
 ## Owner-only
 
