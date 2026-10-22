@@ -32,7 +32,7 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 | CookCap | ✅ | ✅ ~73 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v3.7.4 | **v7-fix** |
 | IdeaCap | ✅ | ✅ ~72 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v2.1.5 | **v7-fix** |
 | DeeFoodieApp | ✅ | ✅ ~77 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v1.1.2 | **v7-fix** |
-| Website | ✅ | ◐ spot | ✅ stories | — | — | ✅ 39 | ✅ smoke | ✅ | hub `089c46a` | **v7-fix** |
+| Website | ✅ | ◐ spot | ✅ stories | — | — | ✅ 39 | ✅ smoke | ✅ | hub `c28a1f1` | **v7-fix** |
 | Wave Z | ✅ | — | — | — | — | — | — | ✅ spot | — | **READY** |
 
 ## Decisions
@@ -79,4 +79,5 @@ _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 - **2026-10-22 — DeeFoodie stories:** HTML→Flutter beta bridge (`90e0964`) + onboarding dismiss; `story.mp4` ~106KB real home UI (was ~24KB gate); hub `945dd8d`. Tab variety still same-frame (Flutter web nav).
 - **2026-10-22 — TravelCap hub SW:** `next.config` cacheId from VERSION.json; live `1.1.11` / `travelcap-v1111` (`95f12bc` / hub `8a50e66`+).
 - **2026-10-22 — VaultCap LH ≥90 MET:** **5.4.3** / `v5.4.3` / `vaultcap-v99` (`d3734a5`) — honest mobile median **95** (3×95); see `VaultCap/qa/v7/LH-MOBILE.md`.
+- **2026-10-22 — Defect 3 closeout:** Cook/Idea/DeeFoodie/Soul persona media live; DeeFoodie lab pruned 100M→5M / hub 4M (`c28a1f1`). Stuck parallel agent abandoned — work already on main.
 - **READY FOR REVIEW: v7-fix**
