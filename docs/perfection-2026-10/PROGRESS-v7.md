@@ -81,3 +81,5 @@ _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 - **2026-10-22 — VaultCap LH ≥90 MET:** **5.4.3** / `v5.4.3` / `vaultcap-v99` (`d3734a5`) — honest mobile median **95** (3×95); see `VaultCap/qa/v7/LH-MOBILE.md`.
 - **2026-10-22 — Defect 3 closeout:** Cook/Idea/DeeFoodie/Soul persona media live; DeeFoodie lab pruned 100M→5M / hub 4M (`c28a1f1`). Stuck parallel agent abandoned — work already on main.
 - **READY FOR REVIEW: v7-fix**
+
+- **2026-10-22 — FINAL-REPORT-v7-FIX.md** issued; VaultCap CI timeout 60m; hub minisite 5.4.3.
