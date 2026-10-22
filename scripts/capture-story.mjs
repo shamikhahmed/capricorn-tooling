@@ -93,14 +93,86 @@ function contentType(p) {
   if (p.endsWith('.png')) return 'image/png';
   if (p.endsWith('.svg')) return 'image/svg+xml';
   if (p.endsWith('.woff2')) return 'font/woff2';
+  if (p.endsWith('.wasm')) return 'application/wasm';
   return 'application/octet-stream';
 }
 
-function startStatic(root) {
+/**
+ * Resolve a working static (or CAPTURE_BASE_URL) target per app.
+ * Next/Expo/Flutter roots 404 when served from the repo root — use export dirs
+ * (and GH Pages basePath prefixes) so capture hits a live SPA, not a 404 page.
+ */
+function resolveServeTarget(slug, appRoot) {
+  if (process.env.CAPTURE_BASE_URL) {
+    return { mode: 'url', baseUrl: process.env.CAPTURE_BASE_URL.replace(/\/$/, ''), close: async () => {} };
+  }
+  const candidates = {
+    travelcap: [{ dir: 'out', prefix: '/TravelCap' }, { dir: 'out', prefix: '' }],
+    cookcap: [{ dir: 'out', prefix: '/CookCap' }, { dir: 'out', prefix: '' }],
+    /* Expo web export uses absolute /IdeaCap/_expo/... asset URLs */
+    ideacap: [{ dir: 'dist', prefix: '/IdeaCap' }, { dir: 'dist', prefix: '' }],
+    deefoodie: [{ dir: 'mobile/build/web', prefix: '' }, { dir: 'build/web', prefix: '' }],
+    deefoodieapp: [{ dir: 'mobile/build/web', prefix: '' }],
+    soulcap: [{ dir: 'docs', prefix: '' }],
+  };
+  for (const c of candidates[slug] || []) {
+    const serveRoot = join(appRoot, c.dir);
+    if (existsSync(join(serveRoot, 'index.html'))) {
+      return { mode: 'static', serveRoot, urlPrefix: c.prefix || '', spa: true };
+    }
+  }
+  if (existsSync(join(appRoot, 'index.html'))) {
+    return { mode: 'static', serveRoot: appRoot, urlPrefix: '', spa: true };
+  }
+  throw new Error(
+    `capture-story: no serveable index.html for ${slug}. Build export (out/dist/docs/web) or set CAPTURE_BASE_URL.`,
+  );
+}
+
+function resolveStaticFile(serveRoot, relPath) {
+  const clean = relPath.replace(/^\/+/, '');
+  const candidates = [];
+  if (!clean || clean.endsWith('/')) {
+    candidates.push(join(serveRoot, clean, 'index.html'));
+  } else {
+    candidates.push(join(serveRoot, clean));
+    candidates.push(join(serveRoot, `${clean}.html`));
+    candidates.push(join(serveRoot, clean, 'index.html'));
+  }
+  for (const f of candidates) {
+    if (!f.startsWith(serveRoot) || !existsSync(f)) continue;
+    try {
+      readFileSync(f);
+      return f;
+    } catch {
+      /* directory */
+    }
+  }
+  return null;
+}
+
+function startStatic(serveRoot, { urlPrefix = '', spa = true } = {}) {
+  const prefix = (urlPrefix || '').replace(/\/$/, '');
   const server = createServer((req, res) => {
-    const path = (req.url || '/').split('?')[0];
-    const file = join(root, decodeURIComponent(path === '/' ? 'index.html' : path.replace(/^\//, '')));
-    if (!file.startsWith(root) || !existsSync(file)) {
+    const raw = decodeURIComponent((req.url || '/').split('?')[0]);
+    if (prefix) {
+      if (raw === '/' || raw === '') {
+        res.writeHead(302, { Location: `${prefix}/` });
+        res.end();
+        return;
+      }
+      if (raw !== prefix && !raw.startsWith(`${prefix}/`)) {
+        res.writeHead(404);
+        res.end('Not found');
+        return;
+      }
+    }
+    const stripped = prefix ? (raw.slice(prefix.length) || '/') : raw;
+    let file = resolveStaticFile(serveRoot, stripped);
+    if (!file && spa && !/\.[a-zA-Z0-9]{1,8}$/.test(stripped)) {
+      file = resolveStaticFile(serveRoot, '/');
+    }
+    if (!file) {
       res.writeHead(404);
       res.end('Not found');
       return;
@@ -111,14 +183,37 @@ function startStatic(root) {
   return new Promise((resolve) => {
     server.listen(0, '127.0.0.1', () => {
       const { port } = server.address();
-      resolve({ server, baseUrl: `http://127.0.0.1:${port}` });
+      const baseUrl = `http://127.0.0.1:${port}${prefix}`;
+      resolve({ server, baseUrl });
     });
   });
 }
 
-async function runPrep(page, baseUrl, prep) {
+async function startCaptureServer(slug, appRoot) {
+  const target = resolveServeTarget(slug, appRoot);
+  if (target.mode === 'url') return target;
+  const { server, baseUrl } = await startStatic(target.serveRoot, {
+    urlPrefix: target.urlPrefix,
+    spa: target.spa !== false,
+  });
+  const probe = await fetch(`${baseUrl}/`).catch(() => null);
+  if (!probe || probe.status >= 400) {
+    server.close();
+    throw new Error(`capture-story: ${slug} serve probe failed (${probe?.status || 'network'}) at ${baseUrl}/`);
+  }
+  console.log(`capture-story: serving ${slug} → ${baseUrl} (root ${target.serveRoot})`);
+  return {
+    mode: 'static',
+    baseUrl,
+    close: async () => { server.close(); },
+  };
+}
+
+async function runPrep(page, baseUrl, prep, { slug } = {}) {
   for (const step of prep || []) {
-    if (step.action === 'goto') await page.goto(`${baseUrl}${step.path || '/'}`, { waitUntil: 'load', timeout: 60000 });
+    /* Expo web never reaches networkidle (HMR websocket) — use domcontentloaded. */
+    const waitUntil = slug === 'ideacap' ? 'domcontentloaded' : 'load';
+    if (step.action === 'goto') await page.goto(`${baseUrl}${step.path || '/'}`, { waitUntil, timeout: 90000 });
     if (step.action === 'wait') await page.waitForTimeout(step.ms || 500);
     if (step.action === 'click' && step.selector) {
       try {
@@ -161,9 +256,21 @@ const PERSONA_SEED = {
   'pulsecap-daniel': 'Daniel Okonkwo',
   'pulsecap-khalid': 'Khalid Hassan',
   'pulsecap-sara': 'Sara Malik',
-  'soulcap-amina': 'Amina Rahman',
-  'soulcap-tom': 'Tom Hughes',
-  'soulcap-zainab': 'Zainab Ali',
+  'soulcap-amina': 'Amina Otieno',
+  'soulcap-tom': 'Tom Weber',
+  'soulcap-zainab': 'Zainab Farooq',
+  'travelcap-sana': 'Sana & Kamran',
+  'travelcap-hassan': 'Hassan Qureshi',
+  'travelcap-malik': 'The Malik family',
+  'cookcap-mariam': 'Mariam Syed',
+  'cookcap-rohan': 'Rohan Mehta',
+  'cookcap-shahida': 'Shahida Begum',
+  'ideacap-zara': 'Zara Malik',
+  'ideacap-kevin': 'Kevin Ortiz',
+  'ideacap-hamid': 'Hamid Siddiqui',
+  'deefoodie-dee': 'Dee Rahman',
+  'deefoodie-arsalan': 'Arsalan Khan',
+  'deefoodie-noor': 'Noor Fatima',
 };
 
 async function applyPersonaOverlay(page, personaName, opts = {}) {
@@ -281,6 +388,24 @@ async function applyPersonaOverlay(page, personaName, opts = {}) {
       setTimeout(paintName, 200);
       if (typeof NavUI !== 'undefined' && NavUI.renderUser) NavUI.renderUser();
       if (typeof updateNavUser === 'function') updateNavUser();
+
+      /* Visible persona label for story OCR (Next/Expo/Flutter/vanilla) */
+      let badge = document.getElementById('cap-story-persona');
+      if (!badge) {
+        badge = document.createElement('div');
+        badge.id = 'cap-story-persona';
+        badge.setAttribute('data-story-persona', name);
+        badge.style.cssText = [
+          'position:fixed', 'top:max(10px,env(safe-area-inset-top))', 'left:10px',
+          'z-index:2147483646', 'font:600 14px/1.25 -apple-system,BlinkMacSystemFont,system-ui,sans-serif',
+          'color:#111', 'background:rgba(255,255,255,.94)', 'padding:6px 10px',
+          'border-radius:8px', 'box-shadow:0 1px 4px rgba(0,0,0,.12)', 'pointer-events:none',
+          'max-width:70vw', 'overflow:hidden', 'text-overflow:ellipsis', 'white-space:nowrap',
+        ].join(';');
+        document.body.appendChild(badge);
+      }
+      badge.textContent = name;
+      badge.setAttribute('data-story-persona', name);
     } catch (_) { /* best-effort overlay */ }
   }, { name: personaName, largeText: !!opts.largeText });
   await page.waitForTimeout(550);
@@ -398,9 +523,76 @@ async function unlockVaultSample(page, baseUrl, personaName, opts = {}) {
   }
 }
 
-async function runStep(page, step) {
+const DEE_FOODIE_BETA_TOKEN = 'v7storycapturetokenxxxxxxxxxxxxxxxx'; // 36 chars — matches web/index.html MIN
+
+/** HTML gate (sessionStorage) then Flutter WebBetaGateScreen (secure-storage encrypted). */
+async function unlockDeeFoodieWebBeta(page) {
+  await page.evaluate((t) => {
+    try { sessionStorage.setItem('deefoodie_web_beta_token', t); } catch (_) { /* ignore */ }
+  }, DEE_FOODIE_BETA_TOKEN);
+  const gate = page.locator('#dfd-beta-gate[data-show="1"]');
+  if (await gate.isVisible({ timeout: 2000 }).catch(() => false)) {
+    await page.locator('#dfd-beta-token').fill(DEE_FOODIE_BETA_TOKEN);
+    await page.locator('#dfd-beta-go').click({ timeout: 8000 }).catch(async () => {
+      await page.keyboard.press('Enter');
+    });
+  }
+  await page.waitForFunction(
+    () => {
+      const g = document.getElementById('dfd-beta-gate');
+      if (g?.getAttribute('data-show') === '1') return false;
+      return document.querySelector('script[src*="flutter_bootstrap"]') != null
+        || !/Private beta — enter your invite/i.test(document.body?.innerText || '');
+    },
+    { timeout: 90000 },
+  ).catch(() => {});
+  /* Flutter-side gate (after bootstrap) — fill Access token TextField */
+  const flutterGate = page.getByText('Private beta', { exact: true });
+  if (await flutterGate.isVisible({ timeout: 25000 }).catch(() => false)) {
+    const field = page.getByLabel(/Access token/i).or(page.locator('input[type="password"]').last());
+    await field.fill(DEE_FOODIE_BETA_TOKEN).catch(async () => {
+      await page.locator('flt-semantics input, input').last().fill(DEE_FOODIE_BETA_TOKEN);
+    });
+    await page.getByRole('button', { name: /Continue/i }).click({ timeout: 8000 }).catch(async () => {
+      await page.keyboard.press('Enter');
+    });
+    await page.waitForFunction(
+      () => !/Your Karachi food journal is invite-only/i.test(document.body?.innerText || ''),
+      { timeout: 60000 },
+    ).catch(() => {});
+  }
+  await page.waitForTimeout(4000);
+}
+
+async function waitForIdeaCapReady(page) {
+  /* Expo web can paint a blank shell before the root hydrates — do not soft-fail. */
+  await page.waitForFunction(
+    () => {
+      const t = (document.body?.innerText || '').replace(/\s+/g, ' ').trim();
+      const root = document.getElementById('root') || document.getElementById('app');
+      const hasUi = /IdeaCap|Capture|Search ideas|Inbox|Ideas for Caps/i.test(t);
+      return hasUi && t.length > 40 && (!root || root.childElementCount > 0);
+    },
+    { timeout: 90000 },
+  );
+  await page.waitForTimeout(1500);
+}
+
+async function runStep(page, baseUrl, step) {
   if (step.action === 'wait') {
     await page.waitForTimeout(step.ms || 500);
+    return;
+  }
+  if (step.action === 'goto' && step.path) {
+    const waitUntil = step._slug === 'ideacap' ? 'domcontentloaded' : 'load';
+    await page.goto(`${baseUrl}${step.path}`, { waitUntil, timeout: 90000 });
+    if (step._slug === 'deefoodie' || step._slug === 'deefoodieapp') {
+      await unlockDeeFoodieWebBeta(page);
+    }
+    if (step._slug === 'ideacap') {
+      await waitForIdeaCapReady(page);
+    }
+    await page.waitForTimeout(step.waitMs || 900);
     return;
   }
   if (step.action === 'nav' && step.page) {
@@ -413,6 +605,14 @@ async function runStep(page, step) {
       }
     }, step.page);
     await page.waitForTimeout(900);
+  }
+  if (step.action === 'click' && step.selector) {
+    try {
+      await page.locator(step.selector).first().click({ timeout: step.optional ? 2000 : 10000 });
+      await page.waitForTimeout(600);
+    } catch {
+      if (!step.optional) throw new Error(`click failed: ${step.selector}`);
+    }
   }
   if (step.action === 'screenshot' || step.screenshot) {
     await page.waitForTimeout(400);
@@ -451,30 +651,38 @@ const DEVICE_ALIAS = {
 };
 
 const { chromium } = await import(pathToFileURL(join(pwCore, 'index.mjs')).href);
-const { server, baseUrl } = await startStatic(appInfo.root);
+const captureServer = await startCaptureServer(appInfo.slug, appInfo.root);
+const baseUrl = captureServer.baseUrl;
 const manifest = {
   personaId,
   personaName,
   app: appInfo.slug,
   gitSha: gitSha(appInfo.root),
   capturedAt: new Date().toISOString(),
+  baseUrl,
   files: [],
 };
 
 const storyOnly = process.env.STORY_DEVICES === '1';
 const canonicalOnly = process.env.CANONICAL_ONLY === '1';
-const themes = canonicalOnly || storyOnly ? ['light'] : ['light', 'dark'];
+/* Spec §5: iPhone + iPad + Mac, light + dark. STORY_DEVICES=1 = all devices (not light-only). */
+const themes = process.env.STORY_THEMES
+  ? process.env.STORY_THEMES.split(',').map((t) => t.trim()).filter(Boolean)
+  : (canonicalOnly ? ['light'] : ['light', 'dark']);
 const viewports = canonicalOnly
   ? VIEWPORTS.filter(([n]) => n === 'iphone-16-pro')
-  : storyOnly
-    ? VIEWPORTS
-    : VIEWPORTS;
+  : VIEWPORTS;
 
 try {
   for (const theme of themes) {
     for (const [deviceName, viewport] of viewports) {
       const browser = await chromium.launch();
       const context = await browser.newContext({ ...viewport, colorScheme: theme, baseURL: baseUrl });
+      if (appInfo.slug === 'deefoodie' || appInfo.slug === 'deefoodieapp') {
+        await context.addInitScript((t) => {
+          try { sessionStorage.setItem('deefoodie_web_beta_token', t); } catch (_) { /* ignore */ }
+        }, DEE_FOODIE_BETA_TOKEN);
+      }
       const page = await context.newPage();
       if (appInfo.slug === 'vaultcap') await unlockVaultSample(page, baseUrl, personaName, overlayOpts);
       else {
@@ -483,27 +691,39 @@ try {
           : [{ action: 'goto', path: '/?demo=1' }, { action: 'wait', ms: 1000 }];
         /* Ensure demo seed path even when steps.json forgot ?demo=1 */
         const hasDemo = prep.some((s) => s.action === 'goto' && String(s.path || '').includes('demo=1'));
+        const cookFor = appInfo.slug === 'cookcap' && personaName
+          ? `/?demo=1&for=${encodeURIComponent(personaName.split(/[&]/)[0].trim().split(/\s+/)[0])}`
+          : '/?demo=1';
         const prep2 = hasDemo
           ? prep
-          : [{ action: 'goto', path: appInfo.slug === 'cookcap' && personaName ? `/?demo=1&for=${encodeURIComponent(personaName.split(' ')[0])}` : '/?demo=1' }, { action: 'wait', ms: 1200 }, ...prep];
-        await runPrep(page, baseUrl, prep2);
+          : [{ action: 'goto', path: cookFor }, { action: 'wait', ms: 1200 }, ...prep];
+        await runPrep(page, baseUrl, prep2, { slug: appInfo.slug });
+        if (appInfo.slug === 'deefoodie' || appInfo.slug === 'deefoodieapp') {
+          await unlockDeeFoodieWebBeta(page);
+        }
+        if (appInfo.slug === 'ideacap') {
+          await waitForIdeaCapReady(page);
+        }
         await applyPersonaOverlay(page, personaName, overlayOpts);
       }
       let stepIndex = 0;
       for (const step of script.steps || []) {
-        await runStep(page, step);
-        if (step.action === 'wait' || step.action === 'click' || step.action === 'nav') {
-          if (step.action !== 'screenshot' && !step.screenshot) continue;
-        }
-        if (step.action && step.action !== 'screenshot' && !step.screenshot) continue;
+        await runStep(page, baseUrl, { ...step, _slug: appInfo.slug });
+        const takeShot = step.action === 'screenshot'
+          || !!step.screenshot
+          || (step.action === 'goto' && step.screenshot !== false);
+        if (!takeShot) continue;
         if (appInfo.slug === 'vaultcap') await dismissVaultChrome(page);
+        if (appInfo.slug === 'deefoodie' || appInfo.slug === 'deefoodieapp') {
+          await unlockDeeFoodieWebBeta(page);
+        }
         await applyPersonaOverlay(page, personaName, overlayOpts);
         const id = step.id || 'shot';
         const base = `${id}-${deviceName}-${theme}`;
         const png = join(outDir, `${base}.png`);
         await page.screenshot({ path: png, fullPage: false });
         const webp = join(outDir, `${base}.webp`);
-        const cwebp = spawnSync('cwebp', ['-quiet', '-q', '80', png, '-o', webp]);
+        const cwebp = spawnSync('cwebp', ['-quiet', '-q', '78', png, '-o', webp]);
         manifest.files.push({ step: id, device: deviceName, theme, png: basename(png), webp: cwebp.status === 0 ? basename(webp) : null });
         if (theme === 'light') {
           const alias = DEVICE_ALIAS[deviceName] || 'iphone';
@@ -527,7 +747,7 @@ try {
     }
   }
 } finally {
-  server.close();
+  await captureServer.close();
 }
 
 writeFileSync(join(outDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
