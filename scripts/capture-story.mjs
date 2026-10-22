@@ -626,6 +626,18 @@ async function waitForIdeaCapReady(page) {
   await page.waitForTimeout(1500);
 }
 
+async function waitForSoulCapReady(page) {
+  await page.waitForFunction(
+    () => {
+      const t = (document.body?.innerText || '').replace(/\s+/g, ' ').trim();
+      return /How are you arriving|Begin|I need help now|Physiological|Getting back to sleep/i.test(t)
+        && t.length > 50;
+    },
+    { timeout: 60000 },
+  );
+  await page.waitForTimeout(800);
+}
+
 async function runStep(page, baseUrl, step) {
   if (step.action === 'wait') {
     await page.waitForTimeout(step.ms || 500);
@@ -653,6 +665,9 @@ async function runStep(page, baseUrl, step) {
     }
     if (step._slug === 'ideacap') {
       await waitForIdeaCapReady(page);
+    }
+    if (step._slug === 'soulcap') {
+      await waitForSoulCapReady(page);
     }
     await page.waitForTimeout(step.waitMs || 900);
     return;
@@ -769,6 +784,9 @@ try {
         }
         if (appInfo.slug === 'ideacap') {
           await waitForIdeaCapReady(page);
+        }
+        if (appInfo.slug === 'soulcap') {
+          await waitForSoulCapReady(page);
         }
         await applyPersonaOverlay(page, personaName, overlayOpts);
       }
