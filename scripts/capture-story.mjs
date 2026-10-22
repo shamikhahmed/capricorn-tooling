@@ -525,7 +525,7 @@ async function unlockVaultSample(page, baseUrl, personaName, opts = {}) {
 
 const DEE_FOODIE_BETA_TOKEN = 'v7storycapturetokenxxxxxxxxxxxxxxxx'; // 36 chars — matches web/index.html MIN
 
-/** HTML gate (sessionStorage) then Flutter WebBetaGateScreen (secure-storage encrypted). */
+/** HTML gate (sessionStorage) then Flutter WebBetaGateScreen (needs semantics tree). */
 async function unlockDeeFoodieWebBeta(page) {
   await page.evaluate((t) => {
     try { sessionStorage.setItem('deefoodie_web_beta_token', t); } catch (_) { /* ignore */ }
@@ -541,27 +541,38 @@ async function unlockDeeFoodieWebBeta(page) {
     () => {
       const g = document.getElementById('dfd-beta-gate');
       if (g?.getAttribute('data-show') === '1') return false;
-      return document.querySelector('script[src*="flutter_bootstrap"]') != null
-        || !/Private beta — enter your invite/i.test(document.body?.innerText || '');
+      return document.querySelector('flutter-view, flt-glass-pane, script[src*="flutter_bootstrap"]') != null;
     },
     { timeout: 90000 },
   ).catch(() => {});
-  /* Flutter-side gate (after bootstrap) — fill Access token TextField */
-  const flutterGate = page.getByText('Private beta', { exact: true });
-  if (await flutterGate.isVisible({ timeout: 25000 }).catch(() => false)) {
-    const field = page.getByLabel(/Access token/i).or(page.locator('input[type="password"]').last());
-    await field.fill(DEE_FOODIE_BETA_TOKEN).catch(async () => {
-      await page.locator('flt-semantics input, input').last().fill(DEE_FOODIE_BETA_TOKEN);
-    });
-    await page.getByRole('button', { name: /Continue/i }).click({ timeout: 8000 }).catch(async () => {
+  await page.waitForTimeout(4000);
+  /* CanvasKit TextFields are not in DOM until semantics placeholder is activated */
+  const sem = page.locator('flt-semantics-placeholder');
+  if (await sem.count().catch(() => 0)) {
+    await sem.first().click({ force: true }).catch(() => {});
+    await page.waitForTimeout(800);
+  }
+  const stillGated = await page.getByText(/Karachi food journal is invite-only/i)
+    .isVisible({ timeout: 8000 }).catch(() => false);
+  if (stillGated) {
+    const field = page.locator('input[aria-label="Access token"], input[type="password"]').last();
+    await field.click({ timeout: 10000 });
+    await field.fill(DEE_FOODIE_BETA_TOKEN);
+    await page.getByRole('button', { name: /^Continue$/i }).last().click({ timeout: 10000 }).catch(async () => {
       await page.keyboard.press('Enter');
     });
     await page.waitForFunction(
-      () => !/Your Karachi food journal is invite-only/i.test(document.body?.innerText || ''),
+      () => !/Karachi food journal is invite-only|Private beta/i.test(document.body?.innerText || ''),
       { timeout: 60000 },
-    ).catch(() => {});
+    );
   }
-  await page.waitForTimeout(4000);
+  /* Hard gate: never screenshot the Flutter beta wall. */
+  const gated = await page.getByText(/Private beta|Karachi food journal is invite-only/i)
+    .isVisible({ timeout: 2000 }).catch(() => false);
+  if (gated) {
+    throw new Error('unlockDeeFoodieWebBeta: still on WebBetaGateScreen after unlock');
+  }
+  await page.waitForTimeout(3000);
 }
 
 async function waitForIdeaCapReady(page) {
