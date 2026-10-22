@@ -54,7 +54,7 @@ Example: https://shamikhahmed.github.io/apps/vaultcap/stories/vaultcap-ayesha/
 
 - App Store Connect / TestFlight / signing / DNS / Cloudflare secrets.
 - Hard-delete archived AuraCap + PrismCap GitHub repos (`delete_repo` scope).
-- VaultCap LH mobile ≥90 (honest median 82).
+- ~~VaultCap LH mobile ≥90~~ → closed in **v7-fix** (5.4.3 median **95**). See `FINAL-REPORT-v7-FIX.md`.
 
 ## Known limits (honest)
 
