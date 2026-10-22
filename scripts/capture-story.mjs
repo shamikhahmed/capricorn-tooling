@@ -525,6 +525,25 @@ async function unlockVaultSample(page, baseUrl, personaName, opts = {}) {
 
 const DEE_FOODIE_BETA_TOKEN = 'v7storycapturetokenxxxxxxxxxxxxxxxx'; // 36 chars — matches web/index.html MIN
 
+/** Tap bottom NavigationBar destination (Home=0 … Profile=4). CanvasKit-only. */
+async function clickDeeFoodieTab(page, path) {
+  const clean = String(path || '/').replace(/\/$/, '') || '/';
+  const idx = ({
+    '/': 0,
+    '/explore': 1,
+    '/map': 2,
+    '/journal': 3,
+    '/profile': 4,
+  })[clean];
+  if (idx == null || idx === 0) return;
+  const vp = page.viewportSize() || { width: 402, height: 874 };
+  /* GlassNavBar height 68 + ~home-indicator padding — aim mid-bar. */
+  const y = Math.max(40, vp.height - 40);
+  const x = Math.round((vp.width / 5) * (idx + 0.5));
+  await page.mouse.click(x, y);
+  await page.waitForTimeout(1400);
+}
+
 /** Skip / mark onboarding so story shots hit journal routes, not the welcome carousel. */
 async function dismissDeeFoodieOnboarding(page) {
   await page.evaluate(() => {
@@ -648,20 +667,8 @@ async function runStep(page, baseUrl, step) {
     await page.goto(`${baseUrl}${step.path}`, { waitUntil, timeout: 90000 });
     if (step._slug === 'deefoodie' || step._slug === 'deefoodieapp') {
       await unlockDeeFoodieWebBeta(page, baseUrl);
-      /* Flutter web often ignores path-only reloads — drive glass nav by label. */
-      const tabByPath = {
-        '/': 'Home',
-        '/explore': 'Explore',
-        '/map': 'Map',
-        '/journal': 'Journal',
-        '/profile': 'Profile',
-      };
-      const tab = tabByPath[step.path] || tabByPath[String(step.path).replace(/\/$/, '') || '/'];
-      if (tab && tab !== 'Home') {
-        await page.getByText(new RegExp(`^${tab}$`, 'i')).last()
-          .click({ timeout: 8000 }).catch(() => {});
-        await page.waitForTimeout(900);
-      }
+      /* CanvasKit has no DOM text — tap glass NavigationBar by geometry. */
+      await clickDeeFoodieTab(page, step.path);
     }
     if (step._slug === 'ideacap') {
       await waitForIdeaCapReady(page);
