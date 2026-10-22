@@ -19,7 +19,7 @@
 
 1. Tests ×2 — ✅ all remaining apps green (SoulCap 372×2, Travel 29×2, Pulse 495×2, Cook, Idea, DeeFoodie, Steady, DeePony, Ledger, Scent, Car, Mastery)
 2. HIG audits — ✅ **12/12 apps hig-check 8/8**
-3. Persona stories — ✅ Travel/Cook/Idea/DeeFoodie/Soul recaptured; hub `3eb05f2` (≤15 MB/app)
+3. Persona stories — ✅ Travel/Cook/Idea/DeeFoodie/Soul recaptured; hub `bff0aef` (IdeaCap basePath fix; ≤15 MB/app)
 4. Disclaimer — ✅ exact Illustrative story text on all 39 + stories index polish
 5. Simulator — SIM-PASS.md fleet + ScentCap SE shots ✅; full 3-device×AX ◐ (documented)
 6. VaultCap LH — **5.4.2** honest median **70** (best 77); ≥90 not met; documented in LH-MOBILE.md (owner-known)

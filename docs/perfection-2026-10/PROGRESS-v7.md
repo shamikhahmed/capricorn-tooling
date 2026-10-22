@@ -32,7 +32,7 @@ Program: `CURSOR-LOOP-v7-HIG-STORIES.md` (2026-10-21). Inherits v6 gates A–K. 
 | CookCap | ✅ | ✅ ~73 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v3.7.4 | **v7-fix** |
 | IdeaCap | ✅ | ✅ ~72 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v2.1.5 | **v7-fix** |
 | DeeFoodieApp | ✅ | ✅ ~77 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | v1.1.2 | **v7-fix** |
-| Website | ✅ | ◐ spot | ✅ stories | — | — | ✅ 39 | ✅ smoke | ✅ | hub `3eb05f2` | **v7-fix** |
+| Website | ✅ | ◐ spot | ✅ stories | — | — | ✅ 39 | ✅ smoke | ✅ | hub `bff0aef` | **v7-fix** |
 | Wave Z | ✅ | — | — | — | — | — | — | ✅ spot | — | **READY** |
 
 ## Decisions
@@ -74,5 +74,6 @@ _(none blocking READY — known limits in FINAL-REPORT-v7.md)_
 - **2026-10-22 — CookCap verify×2:** EXIT 0 both (`cookcap-verify-final-{a,b}.log`). SoulCap had 4 a11y fails (ios-tokens `--bg` undefined + 44px chips); fix pushed, re-verify queued.
 - **2026-10-22 — TravelCap verify×2:** 29 passed ×2 (`travelcap-verify-final-{1,2}.log`).
 - **2026-10-22 — SoulCap verify×2:** 372 passed ×2 after a11y+e2e harden (`456ff35`, `179b38e`). **READY FOR REVIEW: v7-fix** (LH ≥90 still open / documented).
-- **2026-10-22 — Persona recapture round 2:** Travel/Cook/Idea/DeeFoodie/Soul EXIT 0; prune ≤15 MB (3/2/2/2/2 MB); hub deploy `3eb05f2` (Zara included; `story.mp4` ~4.5 KB noted — follow-up quality).
+- **2026-10-22 — Persona recapture round 2:** Travel/Cook/Idea/DeeFoodie/Soul EXIT 0; prune ≤15 MB (3/2/2/2/2 MB); hub deploy `3eb05f2` then `bff0aef`.
+- **2026-10-22 — IdeaCap capture root cause:** Expo export assets are `/IdeaCap/_expo/...`; empty prefix → JS 404 → blank white + persona badge only. Fixed `capture-story.mjs` prefix + hard hydrate wait (`f1809c2`); Kevin/Hamid/Zara recaptured; story.mp4 ~50KB each; hub `bff0aef`.
 - **READY FOR REVIEW: v7-fix**
