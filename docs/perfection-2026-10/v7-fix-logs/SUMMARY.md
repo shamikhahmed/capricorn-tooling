@@ -11,7 +11,7 @@
 | CarCap | 14 passed | 14 passed | `carcap-verify-rerun2.log` | 1.1.4 |
 | MasteryCap | All 8 audits PASS + smoke | same | `masterycap-verify-rerun.log` | 51.10.12 |
 | TravelCap | 29 passed | 29 passed | `travelcap-verify-final-{1,2}.log` EXIT 0 | 1.1.11 |
-| CookCap | 1 passed (verify) | 1 passed | `cookcap-verify-final-{a,b}.log` EXIT 0 | 3.7.4 |
+| CookCap | 1 e2e (full verify) | same | `cookcap-verify-final-{a,b}.log` EXIT 0 · `6b496b0` | 3.7.4 |
 | IdeaCap | 9 jest + expo-doctor OK | same | `ideacap-verify-final-a.log`, `ideacap-verify-final-b.log` | 2.1.5 |
 | DeeFoodieApp | API 5 + Flutter 23 | same | `deefoodieapp-verify-final-a.log`, `deefoodieapp-verify-final-b.log` | 1.1.2 |
 
@@ -19,7 +19,7 @@
 
 1. Tests ×2 — ✅ all remaining apps green (SoulCap 372×2, Travel 29×2, Pulse 495×2, Cook, Idea, DeeFoodie, Steady, DeePony, Ledger, Scent, Car, Mastery)
 2. HIG audits — ✅ **12/12 apps hig-check 8/8**
-3. Persona stories — ✅ Idea/DeeFoodie/Soul recaptured; hub `9192997`
+3. Persona stories — ✅ Travel/Cook/Idea/DeeFoodie/Soul recaptured; hub `3eb05f2` (≤15 MB/app)
 4. Disclaimer — ✅ exact Illustrative story text on all 39 + stories index polish
 5. Simulator — SIM-PASS.md fleet + ScentCap SE shots ✅; full 3-device×AX ◐ (documented)
 6. VaultCap LH — **5.4.2** honest median **70** (best 77); ≥90 not met; documented in LH-MOBILE.md (owner-known)
