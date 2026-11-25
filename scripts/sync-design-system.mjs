@@ -33,7 +33,7 @@ const TARGETS = [
   { app: 'PulseCap', cssDir: 'css', jsDir: 'js', components: false },
   { app: 'PrismCap', cssDir: 'css', jsDir: 'js', components: false },
   { app: 'SteadyCap', cssDir: 'css', jsDir: 'js', components: false },
-  { app: 'LedgerCap', cssDir: 'css', jsDir: 'js', components: false },
+  { app: 'LedgerCap', cssDir: 'css', jsDir: 'js', cssFile: 'tokens.capricorn-core.css', components: false },
   { app: 'DeePonyCap', cssDir: 'css', jsDir: 'js', components: false },
   { app: 'ScentCap', cssDir: 'public/css', jsDir: 'public/js', components: false },
   { app: 'AuraCap', cssDir: 'public/css', jsDir: 'public/js', components: false },
@@ -65,7 +65,7 @@ for (const t of TARGETS) {
   const css = banner(files) + files.map(layer).join('\n');
   const cssDir = join(appDir, t.cssDir);
   mkdirSync(cssDir, { recursive: true });
-  writeFileSync(join(cssDir, 'capricorn-core.css'), css);
+  writeFileSync(join(cssDir, t.cssFile || 'capricorn-core.css'), css);
 
   const jsDirPath = join(appDir, t.jsDir);
   mkdirSync(jsDirPath, { recursive: true });
@@ -78,7 +78,7 @@ for (const t of TARGETS) {
   syncVendor(appDir, t.jsDir);
 
   synced++;
-  console.log(`✓ ${t.app} → ${t.cssDir}/capricorn-core.css + ${JS_FILES.length} JS + vendor`);
+  console.log(`✓ ${t.app} → ${t.cssDir}/${t.cssFile || 'capricorn-core.css'} + ${JS_FILES.length} JS + vendor`);
 
   if (t.app === 'ScentCap') {
     const stylesDir = join(appDir, 'src/styles');

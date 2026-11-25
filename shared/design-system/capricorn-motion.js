@@ -179,26 +179,70 @@
     else if (reduced) dismiss();
   }
 
+  /* Fail-open: never leave content stuck invisible if IO/GSAP/intro missing. */
+  function armFailOpen() {
+    if (isAppShell() || window.__capMotionFailOpen) return;
+    window.__capMotionFailOpen = true;
+    window.setTimeout(function () {
+      revealInstant('.cap-reveal:not(.is-visible), .cap-reveal-scale:not(.is-visible), .cap-reveal-lines:not(.is-visible), .cap-kinetic:not(.is-visible), .cap-stagger:not(.is-visible)');
+      document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) {
+        el.classList.add('visible', 'is-visible');
+      });
+    }, 2800);
+  }
+
+  /* No cinematic canvas → keep first paint readable (bindSplash already no-ops if missing). */
+  function skipIntroIfMissing() {
+    var wantsScene = document.querySelector('#cap-scene, .cap-scene-canvas, #mist-canvas');
+    if (wantsScene) return false;
+    document.querySelectorAll(
+      '.reveal.visible, main.page > .section:first-of-type .reveal, main.page > .section:first-of-type .cap-reveal, .hero.cap-reveal, .hero .cap-reveal'
+    ).forEach(function (el) {
+      el.classList.add('visible', 'is-visible');
+    });
+    return true;
+  }
+
   function init() {
     bindSplash();
     if (isAppShell()) {
       revealInstant('.cap-reveal, .cap-reveal-scale, .cap-reveal-lines, .cap-kinetic, .cap-stagger, .cap-stagger > *');
       return;
     }
+    if (reduced) {
+      revealInstant('.cap-reveal, .cap-reveal-scale, .cap-reveal-lines, .cap-kinetic, .cap-stagger, .cap-stagger > *');
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        el.classList.add('visible', 'is-visible');
+      });
+      return;
+    }
+    skipIntroIfMissing();
     observeVisible('.cap-reveal, .cap-reveal-scale, .cap-reveal-lines', 'is-visible');
     observeVisible('.cap-kinetic', 'is-visible');
     observeVisible('.cap-stagger', 'is-visible');
+    /* Classic hub pages use .reveal + .visible; keep both wired. */
+    observeVisible('.reveal', 'visible');
+    document.querySelectorAll('.reveal.visible').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
     bindRipples();
     bindMagnetic();
     bindTilt();
     bindHero3d();
     initScrollProgress();
     initParallax();
+    armFailOpen();
   }
 
   window.CapricornMotion = {
     init: init,
     bindSplash: bindSplash,
+    skipIntro: function () {
+      revealInstant('.cap-reveal, .cap-reveal-scale, .cap-reveal-lines, .cap-kinetic, .cap-stagger');
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        el.classList.add('visible', 'is-visible');
+      });
+    },
     refresh: function () {
       if (isAppShell()) {
         revealInstant('.cap-reveal:not(.is-visible), .cap-reveal-scale:not(.is-visible), .cap-kinetic:not(.is-visible)');
