@@ -111,6 +111,8 @@ function resolveServeTarget(slug, appRoot) {
     cookcap: [{ dir: 'out', prefix: '/CookCap' }, { dir: 'out', prefix: '' }],
     /* Expo web export uses absolute /IdeaCap/_expo/... asset URLs */
     ideacap: [{ dir: 'dist', prefix: '/IdeaCap' }, { dir: 'dist', prefix: '' }],
+    /* Vite base=/ScentCap/ — serving repo root yields boot-shell blanks */
+    scentcap: [{ dir: 'dist', prefix: '/ScentCap' }, { dir: 'dist', prefix: '' }],
     deefoodie: [{ dir: 'mobile/build/web', prefix: '' }, { dir: 'build/web', prefix: '' }],
     deefoodieapp: [{ dir: 'mobile/build/web', prefix: '' }],
     soulcap: [{ dir: 'docs', prefix: '' }],
@@ -154,7 +156,14 @@ function resolveStaticFile(serveRoot, relPath) {
 function startStatic(serveRoot, { urlPrefix = '', spa = true } = {}) {
   const prefix = (urlPrefix || '').replace(/\/$/, '');
   const server = createServer((req, res) => {
-    const raw = decodeURIComponent((req.url || '/').split('?')[0]);
+    let raw;
+    try {
+      raw = decodeURIComponent((req.url || '/').split('?')[0]);
+    } catch {
+      res.writeHead(400);
+      res.end('Bad request');
+      return;
+    }
     if (prefix) {
       if (raw === '/' || raw === '') {
         res.writeHead(302, { Location: `${prefix}/` });
