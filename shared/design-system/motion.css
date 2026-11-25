@@ -118,7 +118,67 @@
   animation: cap-spin 700ms linear infinite;
 }
 
-/* ── Reduced motion: kill everything ── */
+/* ── Page / view transitions (marketing + multi-route shells) ── */
+@supports (view-transition-name: none) {
+  ::view-transition-old(root) {
+    animation: cap-page-lift var(--cap-dur-page) var(--cap-ease) both;
+  }
+  ::view-transition-new(root) {
+    animation: cap-page-rise var(--cap-dur-page) var(--cap-ease) both;
+  }
+}
+@keyframes cap-page-lift {
+  to { opacity: 0; transform: translateY(-12px); }
+}
+@keyframes cap-page-rise {
+  from { opacity: 0; transform: translateY(16px); }
+}
+
+/* Anchored chrome — set view-transition-name on sticky headers */
+.cap-vt-header { view-transition-name: cap-site-header; }
+
+/* ── Skippable splash / gate (first visit) ──
+   Pair with CapricornMotion.bindSplash() — content paints underneath. */
+.cap-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: var(--cap-bg);
+  transition: opacity var(--cap-dur-sheet) var(--cap-ease),
+              visibility var(--cap-dur-sheet) var(--cap-ease);
+}
+.cap-splash.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.cap-splash-hint {
+  position: absolute;
+  bottom: calc(24px + var(--cap-safe-b));
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--cap-text-faint);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── 10-foot / TV focus (Residence remote, leanback) ── */
+.cap-focus-tv:focus-visible,
+.cap-focus-tv.is-focused {
+  outline: 3px solid var(--cap-accent);
+  outline-offset: 4px;
+  transform: scale(1.06);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--cap-accent) 40%, transparent),
+              0 12px 40px color-mix(in srgb, var(--cap-accent) 25%, transparent);
+  transition: transform var(--cap-dur-base) var(--cap-ease),
+              box-shadow var(--cap-dur-base) var(--cap-ease);
+}
+
+/* ── Reduced motion contract ──
+   Instant reveals; opacity-only feedback ≤ --cap-dur-reduced; no scrub/parallax. */
 @media (prefers-reduced-motion: reduce) {
   .cap-reveal, .cap-reveal-scale,
   .cap-reveal-lines .cap-line > span {
@@ -128,5 +188,12 @@
   }
   .cap-float, .cap-gradient-text, .cap-skeleton { animation: none !important; }
   .cap-lift:hover, .cap-press:active, .cap-magnetic { transform: none !important; }
+  .cap-focus-tv:focus-visible, .cap-focus-tv.is-focused {
+    transform: none !important;
+    transition: outline-color var(--cap-dur-reduced) linear !important;
+  }
+  .cap-splash { transition: opacity var(--cap-dur-reduced) linear !important; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 0s !important; }
   html { scroll-behavior: auto !important; }
 }
