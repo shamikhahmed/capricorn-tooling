@@ -1,0 +1,223 @@
+{
+  "$comment": "Per-app inputs for scripts/motion-audit.mjs. kind: web (static PWA, kit vendored via sync-design-system) | web-gen (static PWA, generated cap-motion-tokens.css) | next | expo | flutter. roots = authored source roots (relative to app). entry = shell entry file(s). splash = files implementing the launch splash ([] = none). Pulse/Ledger/Scent/Aura vendor capricorn-core.css but do not load it (loading would restyle), so they take the generated token file instead.",
+  "apps": {
+    "VaultCap": {
+      "kind": "web",
+      "roots": [
+        "index.html",
+        "css",
+        "js"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": [
+        "index.html",
+        "js/app.js"
+      ]
+    },
+    "PulseCap": {
+      "kind": "web-gen",
+      "roots": [
+        "index.html",
+        "css",
+        "js"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": [
+        "index.html",
+        "js/app.js"
+      ],
+      "genCss": "css/cap-motion-tokens.css"
+    },
+    "SteadyCap": {
+      "kind": "web",
+      "roots": [
+        "index.html",
+        "css",
+        "js"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": [
+        "index.html",
+        "js/app.js"
+      ]
+    },
+    "LedgerCap": {
+      "kind": "web-gen",
+      "roots": [
+        "index.html",
+        "css",
+        "js"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": [
+        "index.html",
+        "js/app.js"
+      ],
+      "genCss": "css/cap-motion-tokens.css"
+    },
+    "DeePonyCap": {
+      "kind": "web",
+      "roots": [
+        "index.html",
+        "css",
+        "js"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": [
+        "index.html",
+        "js/modules/splash.js"
+      ]
+    },
+    "ScentCap": {
+      "kind": "web-gen",
+      "roots": [
+        "index.html",
+        "src"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": [],
+      "genCss": "src/cap-motion-tokens.css"
+    },
+    "AuraCap": {
+      "kind": "web-gen",
+      "roots": [
+        "index.html",
+        "src",
+        "public"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": [],
+      "noGsap": true,
+      "genCss": "src/cap-motion-tokens.css"
+    },
+    "PrismCap": {
+      "kind": "web",
+      "roots": [
+        "index.html",
+        "css",
+        "js"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": []
+    },
+    "MasteryCap": {
+      "kind": "web-gen",
+      "roots": [
+        "index.html",
+        "css",
+        "js"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": [
+        "index.html",
+        "js/app.js"
+      ],
+      "genCss": "css/cap-motion-tokens.css"
+    },
+    "CarCap": {
+      "kind": "web-gen",
+      "roots": [
+        "index.html",
+        "css",
+        "js"
+      ],
+      "entry": [
+        "index.html"
+      ],
+      "splash": [
+        "index.html",
+        "js/app.js"
+      ],
+      "genCss": "css/cap-motion-tokens.css"
+    },
+    "SoulCap": {
+      "kind": "web-gen",
+      "roots": [
+        "docs/index.html",
+        "docs/app.css",
+        "docs/brand.css",
+        "docs/ios-tokens.css",
+        "docs/app.js",
+        "docs/js",
+        "docs/modules"
+      ],
+      "entry": [
+        "docs/index.html"
+      ],
+      "splash": [
+        "docs/index.html",
+        "docs/app.js"
+      ],
+      "genCss": "docs/cap-motion-tokens.css"
+    },
+    "CookCap": {
+      "kind": "next",
+      "roots": [
+        "src"
+      ],
+      "entry": [
+        "src/app/layout.tsx"
+      ],
+      "splash": [
+        "src/components/app/Splash.tsx"
+      ],
+      "genCss": "src/app/cap-motion-tokens.css",
+      "genTs": "src/lib/cap-motion.ts"
+    },
+    "TravelCap": {
+      "kind": "next",
+      "roots": [
+        "src"
+      ],
+      "entry": [
+        "src/app/layout.tsx"
+      ],
+      "splash": [
+        "src/components/layout/splash-screen.tsx"
+      ],
+      "genCss": "src/app/cap-motion-tokens.css",
+      "genTs": "src/lib/cap-motion.ts"
+    },
+    "IdeaCap": {
+      "kind": "expo",
+      "roots": [
+        "App.tsx",
+        "src"
+      ],
+      "entry": [
+        "App.tsx"
+      ],
+      "splash": [],
+      "genTs": "src/theme/capMotion.ts"
+    },
+    "DeeFoodieApp": {
+      "kind": "flutter",
+      "roots": [
+        "mobile/lib"
+      ],
+      "entry": [
+        "mobile/lib/main.dart"
+      ],
+      "splash": [],
+      "genDart": "mobile/lib/theme/cap_motion.dart"
+    }
+  }
+}

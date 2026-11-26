@@ -1,0 +1,72 @@
+{
+  "targets": [
+    {
+      "app": "CookCap",
+      "files": {
+        "cap-motion-tokens.css": "src/app/cap-motion-tokens.css",
+        "capMotion.ts": "src/lib/cap-motion.ts"
+      }
+    },
+    {
+      "app": "TravelCap",
+      "files": {
+        "cap-motion-tokens.css": "src/app/cap-motion-tokens.css",
+        "capMotion.ts": "src/lib/cap-motion.ts"
+      }
+    },
+    {
+      "app": "IdeaCap",
+      "files": {
+        "capMotion.ts": "src/theme/capMotion.ts"
+      }
+    },
+    {
+      "app": "DeeFoodieApp",
+      "files": {
+        "cap_motion.dart": "mobile/lib/theme/cap_motion.dart"
+      }
+    },
+    {
+      "app": "MasteryCap",
+      "files": {
+        "cap-motion-tokens.css": "css/cap-motion-tokens.css"
+      }
+    },
+    {
+      "app": "CarCap",
+      "files": {
+        "cap-motion-tokens.css": "css/cap-motion-tokens.css"
+      }
+    },
+    {
+      "app": "SoulCap",
+      "files": {
+        "cap-motion-tokens.css": "docs/cap-motion-tokens.css"
+      }
+    },
+    {
+      "app": "PulseCap",
+      "files": {
+        "cap-motion-tokens.css": "css/cap-motion-tokens.css"
+      }
+    },
+    {
+      "app": "LedgerCap",
+      "files": {
+        "cap-motion-tokens.css": "css/cap-motion-tokens.css"
+      }
+    },
+    {
+      "app": "ScentCap",
+      "files": {
+        "cap-motion-tokens.css": "src/cap-motion-tokens.css"
+      }
+    },
+    {
+      "app": "AuraCap",
+      "files": {
+        "cap-motion-tokens.css": "src/cap-motion-tokens.css"
+      }
+    }
+  ]
+}
