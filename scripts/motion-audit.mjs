@@ -155,8 +155,10 @@ function auditApp(name, cfg) {
       const missing = cfg.splash.filter((s) => !existsSync(join(root, s)));
       if (missing.length) problems.push(`missing splash file(s): ${missing.join(', ')}`);
       const region = cfg.splash.filter((s) => existsSync(join(root, s))).map((s) => splashRegions(read(join(root, s)))).join('\n');
-      if (!/(session|local)Storage/.test(region)) problems.push('not session-once (no session/localStorage near splash)');
-      if (!/addEventListener\(\s*['"](pointerdown|pointerup|click|keydown|touchstart|wheel)['"]|on(Click|PointerDown|KeyDown)=/.test(region)) problems.push('not skippable (no pointer/key/click handler near splash)');
+      if (!/(session|local)Storage\.(get|set)Item\(\s*[^)]*splash/i.test(region)) problems.push('not session-once (no session/localStorage splash key)');
+      const whole = cfg.splash.filter((s) => existsSync(join(root, s))).map((s) => read(join(root, s))).join('\n');
+      const skipLine = /addEventListener\(\s*['"](pointerdown|pointerup|click|keydown|touchstart|wheel)['"][^\n]*(splash|skip|dismiss|hide)|on(Click|PointerDown|KeyDown)=\{[^\n]*(splash|skip|dismiss|hide)/i;
+      if (!whole.split('\n').some((l) => skipLine.test(l))) problems.push('not skippable (no pointer/key/click listener naming splash/skip/dismiss/hide)');
       if (!/prefers-reduced-motion|useReducedMotion|prefersReducedMotion|reducedMotion|reduceMotion|\breduce\b/.test(region)) problems.push('splash ignores reduced motion');
       set('M4', problems.length === 0, problems.join('; ') || 'skippable + session-once + reduced');
     }

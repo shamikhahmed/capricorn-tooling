@@ -14,7 +14,7 @@ const VANILLA_APPS = [
 
 const REACT_PUBLIC = [
   { app: 'ScentCap', base: 'public' },
-  { app: 'AuraCap', base: 'public' },
+  // AuraCap intentionally absent: MOTION.md rule 5 (no GSAP) — CSS / View Transitions only.
 ];
 
 const HUB = 'shamikhahmed.github.io';

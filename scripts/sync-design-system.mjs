@@ -25,6 +25,8 @@ const JS_FILES = [
   'cap-desktop-nav.js',
 ];
 const VENDOR_FILES = ['gsap.min.js', 'ScrollTrigger.min.js'];
+// GSAP-coupled runtimes; noGsap targets (AuraCap, MOTION.md rule 5) keep their own GSAP-free copies.
+const GSAP_JS = new Set(['capricorn-cinematic.js', 'capricorn-deck.js', 'capricorn-deck-pro.js', 'capricorn-pitch.js']);
 
 // dest: app dir; components: include the marketing component layer
 const TARGETS = [
@@ -36,7 +38,7 @@ const TARGETS = [
   { app: 'LedgerCap', cssDir: 'css', jsDir: 'js', cssFile: 'tokens.capricorn-core.css', components: false },
   { app: 'DeePonyCap', cssDir: 'css', jsDir: 'js', components: false },
   { app: 'ScentCap', cssDir: 'public/css', jsDir: 'public/js', components: false },
-  { app: 'AuraCap', cssDir: 'public/css', jsDir: 'public/js', components: false },
+  { app: 'AuraCap', cssDir: 'public/css', jsDir: 'public/js', components: false, noGsap: true },
 ];
 
 const banner = (files) =>
@@ -71,14 +73,15 @@ for (const t of TARGETS) {
   mkdirSync(jsDirPath, { recursive: true });
 
   for (const jsFile of JS_FILES) {
+    if (t.noGsap && GSAP_JS.has(jsFile)) continue;
     const js = banner([jsFile]) + layer(jsFile);
     writeFileSync(join(jsDirPath, jsFile), js);
   }
 
-  syncVendor(appDir, t.jsDir);
+  if (!t.noGsap) syncVendor(appDir, t.jsDir);
 
   synced++;
-  console.log(`✓ ${t.app} → ${t.cssDir}/${t.cssFile || 'capricorn-core.css'} + ${JS_FILES.length} JS + vendor`);
+  console.log(`✓ ${t.app} → ${t.cssDir}/${t.cssFile || 'capricorn-core.css'} + JS${t.noGsap ? ' (no GSAP)' : ' + vendor'}`);
 
   if (t.app === 'ScentCap') {
     const stylesDir = join(appDir, 'src/styles');
