@@ -126,11 +126,9 @@
       "entry": [
         "index.html"
       ],
-      "splash": [
-        "index.html",
-        "js/app.js"
-      ],
-      "genCss": "css/cap-motion-tokens.css"
+      "splash": [],
+      "genCss": "css/cap-motion-tokens.css",
+      "splashNote": "#splash is a hidden stub removed synchronously in boot(); no launch splash"
     },
     "CarCap": {
       "kind": "web-gen",

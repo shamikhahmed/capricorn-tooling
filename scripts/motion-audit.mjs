@@ -149,7 +149,8 @@ function auditApp(name, cfg) {
   {
     const problems = [];
     if (!cfg.splash.length) {
-      if (/id=["'](boot-)?splash["']|class=["'][^"']*\bsplash\b/.test(entryText)) problems.push('splash markup in entry but none configured');
+      const tags = entryText.match(/<[a-z]+[^>]*(id=["'](boot-)?splash["']|class=["'][^"']*\bsplash\b)[^>]*>/g) || [];
+      if (tags.some((t) => !/\shidden(\s|>|=)/.test(t))) problems.push('splash markup in entry but none configured');
       set('M4', problems.length === 0, problems.join('; ') || 'n/a (no splash)');
     } else {
       const missing = cfg.splash.filter((s) => !existsSync(join(root, s)));
